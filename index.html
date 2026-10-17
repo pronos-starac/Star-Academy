@@ -361,7 +361,9 @@ footer{margin-top:36px;padding-top:14px;border-top:1px solid var(--line);font-si
 .livepill i{width:6px;height:6px;border-radius:50%;background:#fff;animation:blink 1.2s infinite}
 .tab.onair{color:#ff8a9c}.tab.onair[aria-selected="true"]{color:var(--text)}
 .prime-head h2{font-size:22px;margin:0}
-.chat{gap:10px}.chatlog{display:flex;flex-direction:column;gap:8px;max-height:min(60vh,520px);overflow:auto;padding-right:4px}
+:root{--pane-h:min(42vh,360px)}
+.chat{gap:10px}.chatlog{display:flex;flex-direction:column;gap:8px;height:var(--pane-h);overflow:auto;padding-right:4px;overscroll-behavior:contain}
+.songlist{display:flex;flex-direction:column;gap:12px;height:var(--pane-h);overflow:auto;padding-right:4px;overscroll-behavior:contain;border:1px solid var(--line);border-radius:14px;padding:10px}
 .pm{background:var(--panel2);border:1px solid var(--line);border-radius:10px 10px 10px 2px;padding:6px 10px;max-width:88%;align-self:flex-start}
 .pm.own{align-self:flex-end;border-radius:10px 10px 2px 10px;border-color:var(--gold)}
 .pm .who{font-size:12px;color:var(--muted)}.pm .who b{color:var(--text)}.pm p{margin:2px 0 0;white-space:pre-wrap;overflow-wrap:anywhere}
@@ -599,7 +601,7 @@ function vSongs(n){
       <div class="row"><button class="linkbtn" data-act="songOpen" data-id="${sg.id}" aria-expanded="${open}">💬 ${st.rs.filter(r=>r.text).length?st.rs.filter(r=>r.text).length+' avis':'Donner mon avis'}</button>${own||orga?`<button class="linkbtn del" data-act="songDel" data-id="${sg.id}">${S.cmDelArm===sg.id?'Confirmer la suppression':'Supprimer'}</button>`:''}</div>
       ${open?`<div class="cms">${coms||'<p class="muted">Pas encore d’avis.</p>'}${reg?`<div class="cmform"><textarea id="sr-${sg.id}" maxlength="200" rows="2" placeholder="Ce que tu en as pensé…">${esc(S.drafts['sr-'+sg.id]!=null?S.drafts['sr-'+sg.id]:mine.text)}</textarea><button class="btn" data-act="songTxt" data-id="${sg.id}">OK</button></div>`:''}</div>`:''}
     </article>`;}).join('');
-  return form+(list||'<div class="card"><p class="muted">Aucune chanson pour l’instant.</p></div>');
+  return form+`<div class="songlist" id="songlist">${list||'<p class="muted">Aucune chanson pour l’instant.</p>'}</div>`;
 }
 async function pcSend(n){
   if(!needPlayer())return;const t=(S.drafts['pc']||'').trim().slice(0,300);if(!t)return;
@@ -1101,6 +1103,7 @@ function render(){
   if(S.dragging){S.renderLater=true;return;}
   S.renderLater=false;
   const sc=document.querySelector('.bracket-scroll'),left=sc?sc.scrollLeft:0;
+  const sl=document.getElementById('songlist'),songTop=sl?sl.scrollTop:0;
   const act=document.activeElement,keep=act&&(['pname','pcode','song-title','pc-input'].includes(act.id)||/^(cm|sr)-/.test(act.id))?{id:act.id,s:act.selectionStart}:null;
   const tb=document.querySelector('.tabs'),tabLeft=tb?tb.scrollLeft:0;
   if(S.tab==='orga'&&!isOrga())S.tab='select';
@@ -1111,6 +1114,7 @@ function render(){
   const v={prime:vPrime,select:vSelect,bracket:vBracket,mine:vMine,board:vBoard,daily:vDaily,settings:vSettings,orga:vOrga}[S.tab]||vSelect;
   $('#view').innerHTML=v();}
   const sc2=document.querySelector('.bracket-scroll');if(sc2)sc2.scrollLeft=left;
+  const sl2=document.getElementById('songlist');if(sl2)sl2.scrollTop=songTop;
   tabsScroll(tabLeft);
   const cl=document.getElementById('chatlog');if(cl){if(S.chatStick!==false)cl.scrollTop=cl.scrollHeight;cl.onscroll=()=>{S.chatStick=cl.scrollTop+cl.clientHeight>=cl.scrollHeight-40;};}
   if(keep){const i=document.getElementById(keep.id);if(i){i.focus();try{i.setSelectionRange(keep.s,keep.s);}catch(e){}}}
