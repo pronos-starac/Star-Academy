@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-17T20:14:29+02:00",
+  "updated": "2026-10-18T00:05:33+02:00",
   "items": [
     {
       "id": "2026-10-17",
@@ -48,7 +48,7 @@
         "Mosimann lance « All Access », un nouvel atelier qui prépare les élèves à la suite de leur carrière après l’émission.",
         "Répétitions du prime : Isabella travaille Virile de Suzane avec Philippine Lavrey, et Zoé prépare son tableau chanté-dansé avec Jonathan Jenvrin et ses danseurs.",
         "Rappel : après le départ de Khalil, les nominations de la semaine restent annulées, aucun des 16 élèves ne sera éliminé samedi.",
-        "Audience : 989 000 téléspectateurs (12,7 %), première fois sous le million cette saison, soit environ 250 000 de moins que jeudi ; La roue de la fortune sur M6 suit à 974 000 (13,3 %). La rediffusion sur TFX ajoute 172 000 fidèles."
+        "Audience : 989 000 téléspectateurs (12,7 %, et 24,2 % de part auprès des femmes responsables des achats de moins de 50 ans), première fois sous le million cette saison, soit environ 250 000 de moins que jeudi ; La roue de la fortune sur M6 suit à 974 000 (13,3 %). La rediffusion sur TFX ajoute 172 000 fidèles."
       ],
       "eleves": [
         "cameron",
@@ -74,6 +74,10 @@
         {
           "name": "Femin Actu (audiences)",
           "url": "https://www.feminactu.com/2026/10/audiences-tv-access-du-16-octobre-2026/"
+        },
+        {
+          "name": "Puremédias (audiences)",
+          "url": "https://www.ozap.com/actu/audiences-pre-access-la-quotidienne-de-la-star-academy-sous-le-million-sur-tf1-ici-1920-a-un-haut-niveau-sur-france-3/657397"
         }
       ]
     },
