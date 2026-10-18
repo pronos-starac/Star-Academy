@@ -1,6 +1,43 @@
 {
-  "updated": "2026-10-18T00:05:33+02:00",
+  "updated": "2026-10-18T20:00:35+02:00",
   "items": [
+    {
+      "id": "2026-10-18",
+      "title": "Retour au château après le prime : sushis, débrief avec Lydia et Cameron aux NRJ Music Awards",
+      "tag": null,
+      "points": [
+        "De retour au château après un prime sans élimination, les seize élèves trouvent des sushis qui les attendent pour fêter la soirée.",
+        "Maud est encore sur un nuage après sa surprise du prime : choisie par Bigflo & Oli, elle a chanté Picasso avec eux sans répétition préalable.",
+        "Cameron savoure le vote des téléspectateurs, qui l’ont désigné pour chanter Sous influence avec Eddy de Pretto aux NRJ Music Awards, le vendredi 23 octobre à Cannes.",
+        "Débrief du prime avec Lydia : elle montre aux élèves leur premier hymne de la saison et leur conseille de soigner leurs arrivées sur scène, jugées trop timides.",
+        "Lydia félicite Cameron pour son duo avec Ben Mazué, salue la surprise réussie de Maud et le travail énorme fourni par Félix et Mélina depuis les répétitions de vendredi.",
+        "Annoncé pour ce dimanche soir : première sortie de la promo, invitée par Quentin Mosimann, absent du prime, à le rejoindre au Zénith de Paris pour sa Dream Night."
+      ],
+      "eleves": [
+        "maud",
+        "cameron",
+        "felix",
+        "melina"
+      ],
+      "sources": [
+        {
+          "name": "Stars Actu",
+          "url": "https://www.stars-actu.fr/2026/10/star-academy-du-18-octobre-2026-resume-et-replay-de-la-quotidienne/"
+        },
+        {
+          "name": "Série News",
+          "url": "https://www.serie-news.com/tnt/tf1/58990-star-academy-du-17-octobre-quel-eleve-a-ete-choisi-pour-chanter-aux-nrj-music-awards-18-10-2026/"
+        },
+        {
+          "name": "Série News",
+          "url": "https://www.serie-news.com/tnt/tf1/58968-sta-s14-portrait-maud-18-10-2026/"
+        },
+        {
+          "name": "Puremédias",
+          "url": "https://www.ozap.com/actu/la-bonne-nouvelle-cest-que-absent-de-la-star-academy-quentin-mosimann-convie-les-eleves-a-une-premiere-sortie-publique-tres-particuliere-ce-dimanche-18-octobre/657516"
+        }
+      ]
+    },
     {
       "id": "2026-10-17",
       "title": "Dernières répétitions avant le prime : Félix et Mélina peaufinent leur duo avec Lydia",
