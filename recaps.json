@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-18T20:00:35+02:00",
+  "updated": "2026-10-19T00:07:40+02:00",
   "items": [
     {
       "id": "2026-10-18",
@@ -11,13 +11,15 @@
         "Cameron savoure le vote des téléspectateurs, qui l’ont désigné pour chanter Sous influence avec Eddy de Pretto aux NRJ Music Awards, le vendredi 23 octobre à Cannes.",
         "Débrief du prime avec Lydia : elle montre aux élèves leur premier hymne de la saison et leur conseille de soigner leurs arrivées sur scène, jugées trop timides.",
         "Lydia félicite Cameron pour son duo avec Ben Mazué, salue la surprise réussie de Maud et le travail énorme fourni par Félix et Mélina depuis les répétitions de vendredi.",
-        "Annoncé pour ce dimanche soir : première sortie de la promo, invitée par Quentin Mosimann, absent du prime, à le rejoindre au Zénith de Paris pour sa Dream Night."
+        "Lydia pointe aussi chez Noémie et Cameron une manie qu’ils ont sur scène, et demande à Cameron d’abandonner un geste en particulier.",
+        "Annoncé pour ce dimanche soir : première sortie de la promo, invitée par Quentin Mosimann, absent du prime, à le rejoindre au Zénith de Paris (à partir de 20 h, salle complète) pour la clôture de sa Dream Night, un marathon électro d’environ 24 heures."
       ],
       "eleves": [
         "maud",
         "cameron",
         "felix",
-        "melina"
+        "melina",
+        "noemie"
       ],
       "sources": [
         {
@@ -35,6 +37,14 @@
         {
           "name": "Puremédias",
           "url": "https://www.ozap.com/actu/la-bonne-nouvelle-cest-que-absent-de-la-star-academy-quentin-mosimann-convie-les-eleves-a-une-premiere-sortie-publique-tres-particuliere-ce-dimanche-18-octobre/657516"
+        },
+        {
+          "name": "Gossip Addict",
+          "url": "https://www.gossip-addict.com/fr/article/general/star-academy-lydia-bouchard-alerte-noemie-et-cameron-sur-leurs-tics-pendant-le-debrief-du-prime/6ad51e7f304c27a66c0cc243"
+        },
+        {
+          "name": "Série News",
+          "url": "https://www.serie-news.com/tnt/tf1/59043-star-academy-du-18-octobre-pourquoi-mosimann-invite-t-il-les-eleves-au-zenith-de-paris-ce-dimanche-18-10-2026/"
         }
       ]
     },
