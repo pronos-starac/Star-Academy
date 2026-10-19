@@ -1,6 +1,41 @@
 {
-  "updated": "2026-10-19T00:07:40+02:00",
+  "updated": "2026-10-19T20:00:06+02:00",
   "items": [
+    {
+      "id": "2026-10-19",
+      "title": "Première sortie au Zénith pour assister au concert de Mosimann, et suite du débrief avec Lydia",
+      "tag": null,
+      "points": [
+        "Première sortie hors du château pour la promo : un bus emmène les élèves au Zénith de Paris pour le concert de leur directeur, Quentin Mosimann.",
+        "Sur place, ils retrouvent Mélissa, élève de la saison précédente, prennent place dans le public où des fans viennent les féliciter, puis Mosimann les rejoint en fin de soirée pour discuter avant le retour au château.",
+        "Suite du débrief du prime avec Lydia Bouchard : Noémie est félicitée pour son autoportrait, réussi sans se laisser submerger par l’émotion.",
+        "Sur la battle du top 3, Morgan estime avoir été mauvais, ce que Lydia conteste ; Cameron reconnaît avoir été rattrapé par le stress et se dit mécontent de lui, tandis qu’Amel est applaudi par toute la promo.",
+        "Zoé reçoit les compliments de Lydia, assortis de quelques conseils, pour son tableau chanté-dansé ; elle appelle ensuite sa mère, fière d’elle. Antoine, lui, téléphone à son père.",
+        "Lydia dit avoir aimé l’humour du boys band imaginé par Kylian et salue les progrès de Leeloo en confiance en soi dans son duo avec Naïka, tout en jugeant qu’il reste du chemin.",
+        "Medley collectif : chaque élève reçoit des conseils personnalisés de la prof d’expression scénique.",
+        "En conclusion, Lydia qualifie le prime de très beau spectacle, mais prévient que le vrai travail commence maintenant."
+      ],
+      "eleves": [
+        "noemie",
+        "morgan",
+        "cameron",
+        "amel",
+        "zoe",
+        "antoine",
+        "kylian",
+        "leeloo"
+      ],
+      "sources": [
+        {
+          "name": "Stars Actu",
+          "url": "https://www.stars-actu.fr/2026/10/star-academy-du-19-octobre-2026-resume-et-replay-de-la-quotidienne/"
+        },
+        {
+          "name": "Wikipédia",
+          "url": "https://fr.wikipedia.org/wiki/Saison_14_de_Star_Academy"
+        }
+      ]
+    },
     {
       "id": "2026-10-18",
       "title": "Retour au château après le prime : sushis, débrief avec Lydia et Cameron aux NRJ Music Awards",
