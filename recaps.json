@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-20T20:01:15+02:00",
+  "updated": "2026-10-21T00:08:03+02:00",
   "items": [
     {
       "id": "2026-10-20",
@@ -11,7 +11,7 @@
         "Le « petit twist » : chacun devra présenter lui-même sa chanson avec une mise en scène, être dans son personnage dès l’ouverture du rideau et le rester jusqu’à la dernière note.",
         "Le directeur félicite Amel pour son immunité et Cameron pour sa sélection aux NRJ Music Awards, et prévient qu’il n’assistera pas à l’évaluation.",
         "Autre annonce : la promo élira ses délégués mercredi, avec possibilité de faire campagne, une perspective qui enthousiasme Ydriss.",
-        "Place aux binômes : Noémie, qui espérait chanter avec Cameron, se tourne finalement vers Kylian, qui accepte ; Mélina et Maud font équipe.",
+        "Place aux binômes : Noémie, qui espérait chanter avec Cameron, se tourne finalement vers Kylian (Parce que c’est toi) ; trois autres duos se forment, Mélina et Maud puis Tracy et Félix sur Maintenant, Amel et Ydriss sur Les filles d’aujourd’hui. Les autres élèves, dont Cameron (Pas là) et Morgan (Beau-papa, mis en scène avec l’aide d’Amel), partent en solo.",
         "Côté cours, Sofia fait travailler le souffle et la respiration en chant, puis Jonathan enchaîne avec la danse avant la reprise des répétitions.",
         "Coup de fil de Vianney : absent pour les évaluations, il encourage les élèves et promet de venir au château jeudi, ce qui les ravit.",
         "Annoncés pour le prime de samedi par Fanny et Philippine : Vianney, Zazie, Clara Ysé et, en invitée surprise, Héléna, qui doit chanter avec un élève.",
@@ -24,7 +24,8 @@
         "cameron",
         "maud",
         "melina",
-        "amel"
+        "amel",
+        "felix"
       ],
       "sources": [
         {
@@ -42,6 +43,14 @@
         {
           "name": "Paris Match Belgique",
           "url": "https://www.parismatch.be/actualites/people-belgique/2026/10/19/helena-de-retour-a-la-star-academy-cette-surprise-reservee-a-la-nouvelle-promotion-SFJ76B4NHJFZHCPAMEPLK7JFEY/"
+        },
+        {
+          "name": "Stéphane Larue",
+          "url": "https://stephanelarue.com/star-academy-maud-melina-et-isabella-saluees-a-levaluation-vianney/"
+        },
+        {
+          "name": "AlloCiné",
+          "url": "https://www.allocine.fr/tvactu/articles/article-1000228090.html"
         }
       ]
     },
