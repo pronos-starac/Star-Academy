@@ -1,6 +1,50 @@
 {
-  "updated": "2026-10-20T00:07:55+02:00",
+  "updated": "2026-10-20T20:01:15+02:00",
   "items": [
+    {
+      "id": "2026-10-20",
+      "title": "Mosimann lance la semaine Vianney : évaluations mises en scène, duos et élection des délégués",
+      "tag": null,
+      "points": [
+        "Mosimann annonce le programme de la deuxième semaine : les évaluations seront consacrées au répertoire de Vianney, parrain de la promo, qui aura carte blanche au prime de samedi. Les nominations et l’élimination font leur retour.",
+        "Les élèves choisissent parmi six titres de Vianney (Les filles d’aujourd’hui, Parce que c’est toi, Pas là, Beau-papa, La même, Maintenant), seuls ou en duo, mais chacun sera noté individuellement.",
+        "Le « petit twist » : chacun devra présenter lui-même sa chanson avec une mise en scène, être dans son personnage dès l’ouverture du rideau et le rester jusqu’à la dernière note.",
+        "Le directeur félicite Amel pour son immunité et Cameron pour sa sélection aux NRJ Music Awards, et prévient qu’il n’assistera pas à l’évaluation.",
+        "Autre annonce : la promo élira ses délégués mercredi, avec possibilité de faire campagne, une perspective qui enthousiasme Ydriss.",
+        "Place aux binômes : Noémie, qui espérait chanter avec Cameron, se tourne finalement vers Kylian, qui accepte ; Mélina et Maud font équipe.",
+        "Côté cours, Sofia fait travailler le souffle et la respiration en chant, puis Jonathan enchaîne avec la danse avant la reprise des répétitions.",
+        "Coup de fil de Vianney : absent pour les évaluations, il encourage les élèves et promet de venir au château jeudi, ce qui les ravit.",
+        "Annoncés pour le prime de samedi par Fanny et Philippine : Vianney, Zazie, Clara Ysé et, en invitée surprise, Héléna, qui doit chanter avec un élève.",
+        "La journée se termine par de dernières répétitions avant l’évaluation du lendemain matin."
+      ],
+      "eleves": [
+        "ydriss",
+        "noemie",
+        "kylian",
+        "cameron",
+        "maud",
+        "melina",
+        "amel"
+      ],
+      "sources": [
+        {
+          "name": "Stars Actu",
+          "url": "https://www.stars-actu.fr/2026/10/star-academy-du-20-octobre-2026-resume-et-replay-de-la-quotidienne/"
+        },
+        {
+          "name": "AlloCiné",
+          "url": "https://www.allocine.fr/tvactu/articles/article-1000228004.html"
+        },
+        {
+          "name": "Stéphane Larue",
+          "url": "https://stephanelarue.com/star-academy-evaluation-vianney-mardi-retour-des-nominations/"
+        },
+        {
+          "name": "Paris Match Belgique",
+          "url": "https://www.parismatch.be/actualites/people-belgique/2026/10/19/helena-de-retour-a-la-star-academy-cette-surprise-reservee-a-la-nouvelle-promotion-SFJ76B4NHJFZHCPAMEPLK7JFEY/"
+        }
+      ]
+    },
     {
       "id": "2026-10-19",
       "title": "Première sortie au Zénith pour assister au concert de Mosimann, et suite du débrief avec Lydia",
@@ -14,7 +58,8 @@
         "Zoé reçoit les compliments de Lydia, assortis de quelques conseils, pour son tableau chanté-dansé ; elle appelle ensuite sa mère, fière d’elle. Antoine, lui, téléphone à son père.",
         "Lydia dit avoir aimé l’humour du boys band imaginé par Kylian et salue les progrès de Leeloo en confiance en soi dans son duo avec Naïka, tout en jugeant qu’il reste du chemin.",
         "Medley collectif : chaque élève reçoit des conseils personnalisés de la prof d’expression scénique.",
-        "En conclusion, Lydia qualifie le prime de très beau spectacle, mais prévient que le vrai travail commence maintenant."
+        "En conclusion, Lydia qualifie le prime de très beau spectacle, mais prévient que le vrai travail commence maintenant.",
+        "Audience : la quotidienne du lundi a réuni 1,36 million de téléspectateurs (14,5 % de part d’audience), meilleur score de la saison, plus 181 000 pour la rediffusion sur TFX."
       ],
       "eleves": [
         "noemie",
@@ -38,6 +83,10 @@
         {
           "name": "Gossip Addict (d’après Télé-Loisirs)",
           "url": "https://www.gossip-addict.com/fr/article/general/mosimann-star-academy-retrouve-les-eleves-apres-son-concert-au-zenith-de-paris-si-j-ai-chante-faux-vous-ne-diffusez-pas-les-images/6ad64cdb304c27a66c0cc80a"
+        },
+        {
+          "name": "Femin Actu",
+          "url": "https://www.feminactu.com/2026/10/audiences-tv-access-du-19-octobre/"
         }
       ]
     },
