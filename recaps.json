@@ -1,6 +1,56 @@
 {
-  "updated": "2026-10-21T00:08:03+02:00",
+  "updated": "2026-10-21T20:00:05+02:00",
   "items": [
+    {
+      "id": "2026-10-21",
+      "title": "Brieuc, Elija et Zoé nommés après une évaluation Vianney riche en trous de mémoire",
+      "tag": "nominations",
+      "nominees": [
+        "brieuc",
+        "elija",
+        "zoe"
+      ],
+      "points": [
+        "Mosimann annonce les trois nommés de la semaine : Brieuc, Elija et Zoé. Le public vote pour sauver l’un d’eux, et un élève quittera l’aventure au prime de samedi ; Amel, immunisée, n’est pas concernée.",
+        "Ce sont les premières nominations de la saison à aller à leur terme, celles de la semaine passée ayant été annulées après le départ de Khalil. Antoine, Morgan et Tracy, souvent cités dans les pronostics, y échappent.",
+        "Place à l’évaluation sur le répertoire de Vianney : Maud et Mélina ouvrent le bal avec Maintenant et convainquent Mosimann, Jonathan saluant les progrès de Maud et la « remontada » de Mélina.",
+        "Antoine oublie des paroles sur Pas là et sort abattu : Mosimann apprécie son introduction, mais Sofia et Papy n’y voient qu’une démonstration vocale.",
+        "En duo avec Félix, Tracy perd ses paroles dès le début et repart en larmes ; Jonathan parle d’un deuxième rendez-vous manqué et Mosimann regrette qu’elle ne montre pas son potentiel.",
+        "Zoé se trompe de paroles et doit recommencer à plusieurs reprises : les profs louent sa capacité à rebondir, mais Sofia rappelle qu’il faut rester équitable avec tous.",
+        "Sofia juge que Brieuc n’a pas progressé quand Lydia salue ses efforts ; Elija, en retrait selon Sofia et Jonathan, n’a pas retrouvé son niveau du premier prime.",
+        "Moments forts : le duo Noémie-Kylian séduit Lydia et Jonathan (Papy est plus réservé), et Leeloo bouleverse l’équipe en se livrant sur un sujet personnel.",
+        "Dans la boîte aux lettres de Cameron, une clé USB contient un message de Vianney sur les Enfoirés : les élèves partent prêter main-forte dans un centre de distribution alimentaire des Restos du Cœur.",
+        "Au château, Antoine craque, Ydriss se voit déjà élu délégué, Brieuc appelle son frère qui lui confirme que sa prestation n’était pas parfaite, et Kylian consacre sa minute de téléphone à la meilleure amie de Noémie."
+      ],
+      "eleves": [
+        "brieuc",
+        "elija",
+        "zoe",
+        "antoine",
+        "tracy",
+        "leeloo",
+        "maud",
+        "melina"
+      ],
+      "sources": [
+        {
+          "name": "Stars Actu",
+          "url": "https://www.stars-actu.fr/2026/10/star-academy-du-21-octobre-2026-nominations-resume-et-replay-de-la-quotidienne/"
+        },
+        {
+          "name": "Purebreak (Volum)",
+          "url": "https://www.purebreak.com/news/star-academy-2026-voici-les-trois-premiers-eleves-nommes/266487"
+        },
+        {
+          "name": "Puremédias (Ozap)",
+          "url": "https://www.ozap.com/actu/star-academy-2026-brieuc-elija-et-zoe-nommes-qui-doit-rester-votez-dans-notre-sondage/657584"
+        },
+        {
+          "name": "Stéphane Larue",
+          "url": "https://stephanelarue.com/star-academy-brieuc-elija-et-zoe-nommes-avant-le-prime-de-samedi/"
+        }
+      ]
+    },
     {
       "id": "2026-10-20",
       "title": "Mosimann lance la semaine Vianney : évaluations mises en scène, duos et élection des délégués",
