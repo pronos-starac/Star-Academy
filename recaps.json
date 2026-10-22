@@ -1,6 +1,58 @@
 {
-  "updated": "2026-10-22T00:07:46+02:00",
+  "updated": "2026-10-22T20:00:01+02:00",
   "items": [
+    {
+      "id": "2026-10-22",
+      "title": "Isabella, Mélina et Leeloo en top 3, Ydriss et Tracy élus délégués",
+      "tag": null,
+      "immCands": [
+        "isabella",
+        "melina",
+        "leeloo"
+      ],
+      "points": [
+        "Le tableau des évaluations Vianney est dévoilé : Isabella prend la première place devant Mélina et Leeloo, qui se disputeront l’immunité au prime de samedi sur Et bam de Mentissa ; Cameron, quatrième, échoue de peu.",
+        "En bas du classement, les trois nommés : Zoé (14e), Brieuc (15e) et Elija, dernière, qui a du mal à encaisser. Maud est cinquième, Félix dixième.",
+        "Douzième, Ydriss est une nouvelle fois déçu de son rang : il se remet en question et avoue ne pas savoir ce que les professeurs attendent de lui.",
+        "La journée démarre par le cours de sport de Ladji, qui a invité l’ancien rugbyman Nans Ducuing : place au rugby, sans Félix, malade et resté au lit.",
+        "En expression scénique, Lydia fait tenir un ballon de baudruche entre deux élèves ; Leeloo, qui a la phobie des ballons, préfère regarder de loin en s’excusant.",
+        "Le soir, la promo élit ses délégués après une campagne pleine d’humour : Cameron se moque des promesses irréalistes d’Ydriss, mais c’est bien Ydriss qui est élu, en binôme avec Tracy.",
+        "Eddy de Pretto passe au château pour répéter avec Cameron le duo Sous influence prévu aux NRJ Music Awards ; Cameron ne cache pas son stress.",
+        "Fanny et Philippine dévoilent aux élèves les attributions des chansons du prime de samedi, consacré à Vianney."
+      ],
+      "eleves": [
+        "isabella",
+        "melina",
+        "leeloo",
+        "ydriss",
+        "tracy",
+        "cameron",
+        "elija",
+        "felix"
+      ],
+      "sources": [
+        {
+          "name": "Stars Actu",
+          "url": "https://www.stars-actu.fr/2026/10/star-academy-du-22-octobre-2026-resume-et-replay-de-la-quotidienne/"
+        },
+        {
+          "name": "AlloCiné",
+          "url": "https://www.allocine.fr/tvactu/articles/article-1000228615.html"
+        },
+        {
+          "name": "Gossip Addict",
+          "url": "https://www.gossip-addict.com/fr/article/general/je-ne-sais-pas-ce-qu-ils-veulent-ydriss-star-academy-mecontent-des-commentaires-des-professeurs-apres-son-evaluation/6ada41262c490482ef06147e"
+        },
+        {
+          "name": "Gossip Addict",
+          "url": "https://www.gossip-addict.com/fr/article/general/cameron-tacle-les-propositions-d-ydriss-elu-delegue-des-eleves-a-la-star-academy-il-y-aura-des-nommes-des-evaluations/6ad9ca0c5957b1573b01ea02"
+        },
+        {
+          "name": "Paris Match Belgique",
+          "url": "https://www.parismatch.be/culture/medias/2026/10/22/je-suis-desolee-ca-fait-vraiment-bebe-leeloo-contrainte-dabandonner-un-cours-de-la-star-academy-a-cause-dune-drole-de-phobie-N4NR6USPFNBS7H5UA5UDULAGVE/"
+        }
+      ]
+    },
     {
       "id": "2026-10-21",
       "title": "Brieuc, Elija et Zoé nommés après une évaluation Vianney riche en trous de mémoire",
@@ -12,7 +64,7 @@
       ],
       "points": [
         "Mosimann annonce les trois nommés de la semaine : Brieuc, Elija et Zoé. Le public vote pour sauver l’un d’eux, et un élève quittera l’aventure au prime de samedi ; Amel, immunisée, n’est pas concernée.",
-        "Ce sont les premières nominations de la saison à aller à leur terme, celles de la semaine passée ayant été annulées après le départ de Khalil. Antoine, Morgan et Tracy, souvent cités dans les pronostics, y échappent.",
+        "Ce sont les premières nominations de la saison à aller à leur terme, celles de la semaine passée ayant été annulées après le départ de Khalil. Antoine, Morgan et Tracy, souvent cités dans les pronostics, y échappent. Portée par ces nominations, la quotidienne signe son record de la saison : 1,41 million de téléspectateurs (15,6 % de part d’audience).",
         "Place à l’évaluation sur le répertoire de Vianney : Maud et Mélina ouvrent le bal avec Maintenant et convainquent Mosimann, Jonathan saluant les progrès de Maud et la « remontada » de Mélina.",
         "Antoine oublie des paroles sur Pas là et sort abattu : Mosimann apprécie son introduction, mais Sofia et Papy n’y voient qu’une démonstration vocale.",
         "En duo avec Félix, Tracy perd ses paroles dès le début et repart en larmes ; Jonathan parle d’un deuxième rendez-vous manqué et Mosimann regrette qu’elle ne montre pas son potentiel.",
@@ -52,6 +104,10 @@
         {
           "name": "CGTV",
           "url": "https://www.cg-tv.com/articles/star-academy-leeloo-scotche-les-internautes-lors-des-evaluations-avec-un-message-poignant"
+        },
+        {
+          "name": "Puremédias (audiences)",
+          "url": "https://www.ozap.com/actu/audiences-pre-access-la-star-academy-au-plus-haut-grace-aux-nominations-les-masters-de-noubliez-pas-les-paroles-en-baisse-sur-france-2/657570"
         }
       ]
     },
