@@ -1,6 +1,55 @@
 {
-  "updated": "2026-10-23T00:08:01+02:00",
+  "updated": "2026-10-23T20:02:10+02:00",
   "items": [
+    {
+      "id": "2026-10-23",
+      "title": "Vianney surprend les élèves au château : déjeuner, cadeaux et répétition avec Antoine",
+      "tag": null,
+      "points": [
+        "Surprise de la journée : Vianney, parrain de la promo, débarque au château et déjeune avec les élèves, une première cette saison ; ils lui font ensuite visiter les lieux avant une pause crêpes.",
+        "Le chanteur offre à chacun un appareil photo jetable pour immortaliser leurs souvenirs de l’aventure.",
+        "Vianney profite de sa venue pour répéter avec Antoine le duo qu’ils chanteront ensemble au prime de samedi, Je m’en vais.",
+        "Encore marqué par son évaluation, Antoine lui demande son avis : Vianney dit avoir adoré leurs prestations et reconnaît que les paroles de Maintenant ont donné du fil à retordre, au point de s’en excuser.",
+        "Il conseille Félix sur l’angoisse de la page blanche (attendre l’inspiration plutôt que forcer), qualifie Kylian de vrai chanteur et confie vouloir associer les élèves à un hymne pour les Restos du Cœur ; Brieuc est ému de rencontrer l’artiste qu’il écoutait enfant.",
+        "Au réveil, Elija, nommée, se dit prête à se battre pour rester ; elle appelle sa belle-sœur, qui la remotive. Plus tard, Zoé fond en larmes quand Maud chante pour elle.",
+        "Premier cours de la journée : Papy fait travailler les émotions au théâtre.",
+        "Quentin Mosimann reçoit Waxx pour son « All Access », la masterclass hebdomadaire du directeur.",
+        "Jonathan fait répéter à Morgan son tableau chanté et dansé du prime, un vrai défi pour mener chant et danse de front.",
+        "Le soir, les nouveaux délégués Ydriss, ravi de son élection, et Tracy organisent une soirée où chaque élève se présente à tour de rôle."
+      ],
+      "eleves": [
+        "antoine",
+        "elija",
+        "zoe",
+        "maud",
+        "morgan",
+        "kylian",
+        "felix",
+        "brieuc"
+      ],
+      "sources": [
+        {
+          "name": "Stars Actu",
+          "url": "https://www.stars-actu.fr/2026/10/star-academy-du-23-octobre-2026-resume-et-replay-de-la-quotidienne/"
+        },
+        {
+          "name": "Stéphane Larue",
+          "url": "https://stephanelarue.com/star-academy-vianney-debarque-au-chateau-et-dejeune-avec-les-eleves/"
+        },
+        {
+          "name": "Viralmag",
+          "url": "https://viralmag.fr/vianney-evalue-les-eleves-de-star-academy-apres-des-moments-difficiles/"
+        },
+        {
+          "name": "Viralmag (Kylian)",
+          "url": "https://viralmag.fr/vianney-chouchoute-kylian-a-la-star-academy-2026/"
+        },
+        {
+          "name": "ActuaNews",
+          "url": "https://actuanews.fr/2026/10/23/star-academy-2026-vianney-zazie-clara-yse-et-helena-decouvrez-les-duos-et-les-chansons-du-prime-du-24-octobre/"
+        }
+      ]
+    },
     {
       "id": "2026-10-22",
       "title": "Isabella, Mélina et Leeloo en top 3, Ydriss et Tracy élus délégués",
@@ -19,7 +68,8 @@
         "En expression scénique, Lydia fait tenir un ballon de baudruche entre deux élèves ; Leeloo, qui a la phobie des ballons, préfère regarder de loin en s’excusant.",
         "Le soir, la promo élit ses délégués après une campagne pleine d’humour : Cameron se moque des promesses irréalistes d’Ydriss, mais c’est bien Ydriss qui est élu, en binôme avec Tracy.",
         "Eddy de Pretto passe au château pour répéter avec Cameron le duo Sous influence prévu aux NRJ Music Awards ; Cameron ne cache pas son stress.",
-        "Fanny et Philippine dévoilent aux élèves les attributions des chansons du prime de samedi, consacré à Vianney."
+        "Fanny et Philippine dévoilent aux élèves les attributions des chansons du prime de samedi, consacré à Vianney.",
+        "Côté audience, la quotidienne réunit 1,30 million de téléspectateurs (15,5 % de part d’audience), en léger recul par rapport à la veille ; la rediffusion sur TFX en attire 215 000."
       ],
       "eleves": [
         "isabella",
@@ -53,8 +103,8 @@
           "url": "https://www.parismatch.be/culture/medias/2026/10/22/je-suis-desolee-ca-fait-vraiment-bebe-leeloo-contrainte-dabandonner-un-cours-de-la-star-academy-a-cause-dune-drole-de-phobie-N4NR6USPFNBS7H5UA5UDULAGVE/"
         },
         {
-          "name": "Stars Actu (classement)",
-          "url": "https://www.stars-actu.fr/2026/10/star-academy-2026-decouvrez-le-top-3-et-le-classement-complet-de-la-semaine-2/"
+          "name": "Puremédias",
+          "url": "https://www.ozap.com/actu/audiences-pre-acces-record-pour-anne-elisabeth-lemoine-c-a-vous-depasse-les-10-de-pda-pour-la-premiere-fois-de-la-saison-sur-france-5/657611"
         }
       ]
     },
