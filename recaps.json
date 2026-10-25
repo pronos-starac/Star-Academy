@@ -1,6 +1,35 @@
 {
-  "updated": "2026-10-24T20:00:19+02:00",
+  "updated": "2026-10-26T00:09:32+01:00",
   "items": [
+    {
+      "id": "2026-10-25",
+      "title": "Retour au château sans Elija, décor d'Halloween et débrief du prime Vianney avec Lydia",
+      "tag": null,
+      "points": [
+        "Premier retour au château avec une absente : Elija, première élève éliminée de la saison, est partie après le vote des académiciens (7 voix contre 4 pour Brieuc), le public ayant d'abord sauvé Zoé.",
+        "Brieuc et Zoé, rescapés du prime, retrouvent donc leurs camarades dans un château qui compte désormais un élève de moins.",
+        "Surprise à l'arrivée : pendant le prime consacré à Vianney, les lieux ont été entièrement décorés aux couleurs d'Halloween, à quelques jours du prime du 31 octobre.",
+        "Lydia Bouchard mène le troisième débrief de la saison et revient sur le prime : le duo surprise de Noémie avec Helena sur Boule au ventre, le tableau chanté et dansé de Morgan sur Rock Your Body et le top 3 remporté par Isabella face à Mélina et Leeloo."
+      ],
+      "eleves": [
+        "elija",
+        "brieuc",
+        "zoe",
+        "noemie",
+        "morgan",
+        "isabella"
+      ],
+      "sources": [
+        {
+          "name": "Serie News",
+          "url": "https://www.serie-news.com/tnt/m6/61250-star-academy-du-25-octobre-2026-depart-delija-chateau-transforme-pour-halloween-et-debrief-des-professeurs-le-resume-de-la-quotidienne-25-10-2026/"
+        },
+        {
+          "name": "Stéphane Larue",
+          "url": "https://stephanelarue.com/star-academy-une-semaine-consacree-aux-proches-evaluations-mardi/"
+        }
+      ]
+    },
     {
       "id": "2026-10-24",
       "title": "Cameron chante avec Eddy de Pretto aux NRJ Music Awards, les nommés écrivent leurs adieux",
