@@ -1,6 +1,48 @@
 {
-  "updated": "2026-10-26T00:09:32+01:00",
+  "updated": "2026-10-26T20:00:44+01:00",
   "items": [
+    {
+      "id": "2026-10-26",
+      "title": "Cameron « dégoûté » de son Hallelujah, débriefs avec Lydia et soirée d'Halloween",
+      "tag": null,
+      "points": [
+        "Le débrief du prime Vianney se poursuit avec Lydia Bouchard : Zoé revient sur Hypersensible, et la prof salue ses progrès en lui donnant des pistes pour aller plus loin.",
+        "Moment fort de l'épisode : Cameron se dit profondément déçu de son interprétation de Hallelujah, une chanson qui le touche intimement et sur laquelle il s'est livré à nu, et il n'est pas non plus satisfait de la collégiale avec Vianney.",
+        "Lydia l'invite à ne plus se définir par la peur de décevoir ; après son départ, Cameron craque, entouré d'Antoine, Morgan et Tracy qui l'aident à relativiser.",
+        "Leeloo et Noémie sont félicitées pour leur duo sur un titre de Diam's, Lydia relevant l'assurance de Leeloo.",
+        "Pour Antoine, en duo avec Vianney au prime, Lydia souhaite surtout qu'il apprenne à moins stresser ; Maud, elle, était tendue avant son duo avec Clara Ysé, mais rien ne s'est vu et sa prestation est saluée.",
+        "L'autoportrait de Tracy est diffusé, et les académiciens profitent aussi de moments de musique sans pression.",
+        "Leeloo appelle sa grand-mère, ravie de l'entendre, avant une soirée d'Halloween organisée par les délégués pour clore la journée.",
+        "Annoncé pour la suite de la semaine : des évaluations mardi sur le thème des proches (une chanson dédiée à quelqu'un de cher, au choix libre) et un prime du 31 octobre consacré aux proches des élèves."
+      ],
+      "eleves": [
+        "cameron",
+        "zoe",
+        "leeloo",
+        "noemie",
+        "antoine",
+        "maud",
+        "tracy"
+      ],
+      "sources": [
+        {
+          "name": "Stars Actu",
+          "url": "https://www.stars-actu.fr/2026/10/star-academy-du-26-octobre-2026-resume-et-replay-de-la-quotidienne/"
+        },
+        {
+          "name": "Viralmag",
+          "url": "https://viralmag.fr/cameron-star-academy-2026-sa-deception-apres-hallelujah"
+        },
+        {
+          "name": "Stars Actu (évaluations semaine 3)",
+          "url": "https://www.stars-actu.fr/2026/10/star-academy-2026-le-programme-des-evaluations-de-la-semaine-3/"
+        },
+        {
+          "name": "ActuaNews",
+          "url": "https://actuanews.fr/2026/10/26/star-academy-2026-une-semaine-pleine-demotions-attend-les-eleves-quentin-mosimann-annonce-une-grande-surprise/"
+        }
+      ]
+    },
     {
       "id": "2026-10-25",
       "title": "Retour au château sans Elija, décor d'Halloween et débrief du prime Vianney avec Lydia",
