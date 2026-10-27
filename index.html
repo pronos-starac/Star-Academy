@@ -315,6 +315,19 @@ footer{margin-top:36px;padding-top:14px;border-top:1px solid var(--line);font-si
 .baro .who{min-width:0}.baro .who small{display:block;color:var(--muted);font-size:13px;overflow-wrap:anywhere}
 .baro .net{font:400 22px/1 var(--f-display);text-align:right}.baro .net.pos{color:#7fd88f}.baro .net.neg{color:#ff8a65}
 .trend{font-size:13px;font-weight:700;margin-left:4px}.trend.up{color:#7fd88f}.trend.down{color:#ff8a65}
+.baro-top{display:flex;align-items:center;gap:10px;margin-bottom:10px}.baro-top .seg-bar{min-width:0}
+.sw{margin-left:auto;flex:none;display:inline-flex;align-items:center;gap:6px;background:none;border:0;padding:4px 0;color:var(--muted);font-weight:700;font-size:13px}
+.sw i{position:relative;width:38px;height:22px;border-radius:999px;background:var(--panel);border:1px solid var(--line);transition:background .15s}
+.sw i::after{content:"";position:absolute;top:2px;left:2px;width:16px;height:16px;border-radius:50%;background:var(--muted);transition:transform .15s}
+.sw[aria-checked=true]{color:var(--gold2)}.sw[aria-checked=true] i{background:var(--gold);border-color:var(--gold)}.sw[aria-checked=true] i::after{transform:translateX(16px);background:#2a1300}
+.bfly{display:flex;flex-direction:column;gap:5px}
+.bf{display:grid;grid-template-columns:minmax(0,76px) 1fr 1fr 34px;align-items:center;gap:0;font-size:13px}
+.bf .nm{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:700;padding-right:6px}
+.bf .sd{display:flex;align-items:center;height:20px}.bf .sd.l{justify-content:flex-end;border-right:2px solid var(--muted)}
+.bf .sd i{display:block;height:100%;min-width:3px}.bf .sd.l i{background:#d9622b;border-radius:3px 0 0 3px}.bf .sd.r i{background:#e0457b;border-radius:0 3px 3px 0}
+.bf .sd b{font-size:12px;color:var(--muted);padding:0 4px;font-variant-numeric:tabular-nums}
+.bf .bnet{font:400 16px/1 var(--f-display);text-align:right}.bf .bnet.pos{color:#7fd88f}.bf .bnet.neg{color:#ff8a65}
+.bf-leg{display:grid;grid-template-columns:minmax(0,76px) 1fr 1fr 34px;font-size:12px;color:var(--muted);font-weight:700}.bf-leg span:nth-child(2){text-align:right;padding-right:6px}.bf-leg span:nth-child(3){padding-left:6px}
 .lkwho{font-size:14px;color:var(--muted)}
 .fighter .lkline{margin:0;font-weight:700}
 /* quotidiennes */
@@ -509,7 +522,7 @@ function isNetErr(e){const c=e&&e.code||'';return c==='auth/network-request-fail
 /* ===================== cœurs & tomates ===================== */
 const LK_MAX=3;
 function lkMax(n,k){return k==='down'&&n===1?4:LK_MAX;}
-Object.assign(S,{likes:{},likePrefs:{},lkWeek:null});
+Object.assign(S,{likes:{},likePrefs:{},lkWeek:null,lkChart:ls.get('sa14-lkchart')==='1'});
 function likeWeek(){for(let n=1;n<=40;n++){if(Date.now()<lockAt(S.real,n))return n;}return null;}
 function myLikes(n){const x=S.uid&&n?S.likes[n+'_'+S.uid]:null;return{up:x?x.up.slice():[],down:x?x.down.slice():[]};}
 function likeStats(n){const st={};ids.forEach(id=>st[id]={up:[],down:[]});
@@ -1023,9 +1036,16 @@ function baroBlock(){
     const who=[r.a.up.length?'❤️ '+whoNames(r.a.up):'',r.a.down.length?'🍅 '+whoNames(r.a.down):''].filter(Boolean).join(' · ');
     return`<div class="br"><span class="pos">${pos}</span>${av(r.id)}<span class="who"><b>${esc(C[r.id].name)}${out.includes(r.id)?' <span class="muted">(éliminé'+E(r.id)+')</span>':''}</b><small>❤️ ${r.a.up.length} · 🍅 ${r.a.down.length}</small><small>${who}</small></span><span class="net ${r.net>0?'pos':r.net<0?'neg':''}">${sgn(r.net)}${r.tr}</span></div>`;}).join('');
   const seg=weeks.length>1?`<div class="seg-bar">${weeks.map(w=>`<button class="seg${w===n?' on':''}" data-act="lkWeek" data-id="${w}" aria-pressed="${w===n}">S${w}</button>`).join('')}</div>`:'';
-  return`<div class="card"><h3>Baromètre du groupe · semaine ${n}</h3>${seg}
-    <div class="baro">${list||'<p class="empty">Aucun vote pour l’instant.</p>'}</div>
-    <p class="muted gnote">Score net = cœurs moins tomates. La flèche compare à la semaine précédente.</p></div>`;
+  const sw=rows.length?`<button class="sw" role="switch" aria-checked="${S.lkChart}" data-act="lkChart" aria-label="Afficher en graphique">📊<i></i></button>`:'';
+  const top=seg||sw?`<div class="baro-top">${seg}${sw}</div>`:'';
+  // Graphique « papillon » : tomates à gauche de l'axe, cœurs à droite, même échelle des deux côtés.
+  const mx=Math.max(1,...rows.map(r=>Math.max(r.a.up.length,r.a.down.length)));
+  const chart=`<div class="bfly" role="img" aria-label="Cœurs et tomates par élève, semaine ${n}"><div class="bf-leg"><span></span><span>🍅 Tomates</span><span>❤️ Cœurs</span><span></span></div>`+rows.map(r=>{const u=r.a.up.length,d=r.a.down.length;
+    return`<div class="bf"><span class="nm">${esc(C[r.id].name)}</span><span class="sd l">${d?`<b>${d}</b><i style="width:${d/mx*82}%"></i>`:''}</span><span class="sd r">${u?`<i style="width:${u/mx*82}%"></i><b>${u}</b>`:''}</span><span class="bnet ${r.net>0?'pos':r.net<0?'neg':''}">${sgn(r.net)}</span></div>`;}).join('')+'</div>';
+  const body=!rows.length?'<p class="empty">Aucun vote pour l’instant.</p>':S.lkChart?chart:`<div class="baro">${list}</div>`;
+  return`<div class="card"><h3>Baromètre du groupe · semaine ${n}</h3>${top}
+    ${body}
+    <p class="muted gnote">Score net = cœurs moins tomates.${S.lkChart?'':' La flèche compare à la semaine précédente.'}</p></div>`;
 }
 function vDaily(){
   if(!S.recapLoaded){loadRecaps();return`<h2>Les quotidiennes</h2><div class="card"><p class="muted">Chargement…</p></div>`;}
@@ -1297,6 +1317,7 @@ document.addEventListener('click',e=>{
   else if(a==='react')react(id,t.dataset.k);
   else if(a==='like')toggleLike(id,t.dataset.k);
   else if(a==='lkWeek'){S.lkWeek=+id;render();}
+  else if(a==='lkChart'){S.lkChart=!S.lkChart;ls.set('sa14-lkchart',S.lkChart?'1':'0');render();}
   else if(a==='cmSend')sendComment(id);
   else if(a==='cmDel')delComment(id);
   else if(a==='recapHide')toggleRecapHidden(id);
