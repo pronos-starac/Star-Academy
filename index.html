@@ -366,6 +366,7 @@ footer{margin-top:36px;padding-top:14px;border-top:1px solid var(--line);font-si
 .notifcard{border-color:var(--gold)}.notifcard h3{margin:0}.notifcard p{margin:0}.notifcard.on{border-color:var(--ok)}
 .steps{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px;line-height:1.4}.steps .ico{display:inline-block;border:1px solid var(--line);border-radius:4px;padding:0 4px}
 .np{display:flex;flex-direction:column;gap:6px}
+.gear{background:none;border:0;padding:6px;margin:-6px -6px -6px 6px;color:var(--muted);cursor:pointer;display:inline-flex;vertical-align:middle}.gear svg{width:20px;height:20px;fill:currentColor}.gear[aria-pressed=true],.gear:hover{color:var(--gold2)}
 .onl{background:none;border:0;padding:0;color:var(--gold2);font:inherit;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:5px}
 .gdot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#4ee08f;box-shadow:0 0 6px #4ee08f}.gdot.off{background:#6b4a52;box-shadow:none}
 .onlpanel{margin-top:8px;background:var(--panel);border:1px solid var(--gold);border-radius:6px;padding:10px 12px;max-height:50vh;overflow:auto}
@@ -765,7 +766,7 @@ function errText(e){const c=e&&e.code||'';
 /* ===================== vues ===================== */
 function renderHead(){
   const s=S.season,out=outOrder(s).length,alive=N-out,cur=curWeek(s),win=winnerId(s),np=Object.keys(S.players).length;
-  const tabs=[['select','Sélection'],['mine','Mon prono'],['prime','Prime'+(primeLive(latestPrime())?'<span class="livepill" aria-label="prime en direct"><i></i>En direct</span>':'')],['daily','Quotidiennes'+(S.tab!=='daily'&&hasNewRecap()?'<span class="dot" aria-label="nouveau"></span>':'')],['bracket','Tableau'],['board','Classement'],['settings','Paramètres']];
+  const tabs=[['select','Sélection'],['mine','Mon prono'],['prime','Prime'+(primeLive(latestPrime())?'<span class="livepill" aria-label="prime en direct"><i></i>En direct</span>':'')],['daily','Quotidiennes'+(S.tab!=='daily'&&hasNewRecap()?'<span class="dot" aria-label="nouveau"></span>':'')],['bracket','Tableau'],['board','Classement']];
   if(isOrga())tabs.push(['orga','Orga']);
   let banner=S.note;
   if(!banner&&S.conn==='noconfig')banner='Le site n’est pas encore relié à sa base de données : les pronos ne peuvent pas être enregistrés pour l’instant.';
@@ -776,7 +777,7 @@ function renderHead(){
   const spoil=S.noSpoil&&S.masked&&S.tab!=='orga'?`<p class="note spoil">Anti-spoiler activé : les résultats du dernier prime sont masqués jusqu’à dimanche minuit. <button class="linkbtn" data-act="spoil">Tout afficher</button></p>`:'';
   $('#head').innerHTML=`
     <div class="brand"><h1>Pronos <svg class="star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.5l3.1 6.6 7.2.9-5.3 5 1.4 7.1L12 17.6l-6.4 3.5 1.4-7.1-5.3-5 7.2-.9z"/></svg><em>Star Ac’</em></h1>
-      <span class="meta">Saison 14 · ${win?'Vainqueur : '+esc(C[win].name):alive+' en lice · semaine '+cur} · ${np} joueur${np>1?'s':''} · <button class="onl" data-act="online" aria-expanded="${!!S.showOnline}"><i class="gdot"></i>${onlineIds().length} en ligne</button></span></div>${S.showOnline?onlinePanel():''}
+      <span class="meta">Saison 14 · ${win?'Vainqueur : '+esc(C[win].name):alive+' en lice · semaine '+cur} · ${np} joueur${np>1?'s':''} · <button class="onl" data-act="online" aria-expanded="${!!S.showOnline}"><i class="gdot"></i>${onlineIds().length} en ligne</button><button class="gear" data-act="tab" data-id="settings" aria-label="Paramètres" title="Paramètres" aria-pressed="${S.tab==='settings'}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.4 13a7.6 7.6 0 0 0 0-2l2.1-1.6-2-3.5-2.5 1a7.4 7.4 0 0 0-1.7-1L15 3.3h-4l-.4 2.6a7.4 7.4 0 0 0-1.7 1l-2.5-1-2 3.5L6.6 11a7.6 7.6 0 0 0 0 2l-2.1 1.6 2 3.5 2.5-1a7.4 7.4 0 0 0 1.7 1l.4 2.6h4l.4-2.6a7.4 7.4 0 0 0 1.7-1l2.5 1 2-3.5zM12 15.5a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7z"/></svg></button></span></div>${S.showOnline?onlinePanel():''}
     <div class="when"><span class="pill">Nominations <b>${esc(nextDayShort(3))}</b></span><span class="pill">Prime <b>${esc(nextDayShort(6))}</b></span></div>
     <nav class="tabs" role="tablist">${tabs.map(([k,l])=>`<button class="tab${k==='prime'&&primeLive(latestPrime())?' onair':''}" role="tab" aria-selected="${S.tab===k}" data-act="tab" data-id="${k}">${l}</button>`).join('')}</nav>
     ${banner?`<p class="note">${esc(banner)}</p>`:''}${spoil}${nomSpoil}${nudge}`;
@@ -1002,7 +1003,7 @@ function initDrag(){
 function vSettings(){
   const reg=registered()&&!S.anon;
   const app=standalone()?`<p>✓ Tu utilises l’appli installée.</p>`:`<p class="muted">Ajoute le site sur l’écran d’accueil de ton téléphone : il s’ouvre alors comme une vraie appli, en plein écran.</p><div class="row"><button class="btn ghost" data-act="install">📲 Installer sur mon téléphone</button></div>`;
-  return`<h2>Paramètres</h2>
+  return`<div class="row"><button class="btn ghost" data-act="tab" data-id="${S.backTab||'select'}">‹ Retour</button></div><h2>Paramètres</h2>
     <div class="card"><h3>Mon joueur</h3>${whoCard().replace(/^<div class="card[^"]*">/,'<div>')}</div>
     ${reg?notifCard(true):''}
     <div class="card"><h3>Anti-spoiler</h3>
@@ -1369,7 +1370,7 @@ document.addEventListener('click',e=>{
   const a=t.dataset.act,id=t.dataset.id,o=cleanOrder(S.me.order),s=S.tab==='orga'?S.real:S.season;
   const editFinal=()=>{if(!registered()){S.tab='mine';render();toast('Choisis d’abord ton pseudo.');return false;}if(!s.rankingOpen){toast('Les classements finaux sont verrouillés.');return false;}return true;};
   if(a==='reload'){location.reload();return;}
-  if(a==='tab'){S.viewPlayer=null;S.tab=id;S.pendingOut=null;S.scrollTab=true;ls.set('sa14-tab',id);if(id==='daily')loadRecaps();render();window.scrollTo(0,0);}
+  if(a==='tab'){const to=id==='settings'&&S.tab==='settings'?S.backTab||'select':id;if(to==='settings')S.backTab=S.tab;S.viewPlayer=null;S.tab=to;S.pendingOut=null;S.scrollTab=true;ls.set('sa14-tab',to);if(to==='daily')loadRecaps();render();window.scrollTo(0,0);}
   else if(a==='goSel'){S.sel=id;S.tab='select';S.scrollTab=true;ls.set('sa14-tab','select');render();window.scrollTo(0,0);}
   else if(a==='recapReload')loadRecaps(true);
   else if(a==='cmReply'){if(!needPlayer())return;const k='cr-'+id,to=t.dataset.to;S.cmReply=id;if(to&&!S.drafts[k])S.drafts[k]='@'+to+' ';render();const el=document.getElementById(k);if(el){el.scrollIntoView({block:'center',behavior:'smooth'});el.focus({preventScroll:true});el.setSelectionRange(el.value.length,el.value.length);}}
@@ -1413,7 +1414,7 @@ document.addEventListener('click',e=>{
   else if(a==='online'){S.showOnline=!S.showOnline;render();}
   else if(a==='notifOn')enableNotif();
   else if(a==='notifLater'){ls.set('sa14-notifLater','1');S.notifForce=false;render();}
-  else if(a==='notifShow'){S.tab='settings';S.scrollTab=true;ls.set('sa14-tab','settings');render();window.scrollTo(0,0);}
+  else if(a==='notifShow'){S.backTab=S.tab;S.tab='settings';S.scrollTab=true;ls.set('sa14-tab','settings');render();window.scrollTo(0,0);}
   else if(a==='install')doInstall();
   else if(a==='notifTest')testNotif();
   else if(a==='notifOff')disableNotif();
