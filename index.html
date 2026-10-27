@@ -838,7 +838,6 @@ function fighter(id){
   let acts='';
   if(st.k!=='ko'&&st.k!=='win'&&s.rankingOpen)acts+=mi===0?`<button class="btn" disabled>Ton vainqueur ✓</button>`:`<button class="btn" data-act="winner" data-id="${id}">Mon vainqueur</button>`;
   if(open&&st.k==='nom')acts+=`<button class="btn ${p.elim===id?'danger':'ghost'}" data-act="pick" data-f="elim" data-id="${id}">${p.elim===id?`Tu ${PR(id)} vois partir ✓`:`Je ${PR(id)} vois partir`}</button>`;
-  if(open&&st.k!=='ko'&&st.k!=='win')acts+=`<button class="btn ghost" data-act="pick" data-f="immune" data-id="${id}">${p.immune===id?`Tu ${PR(id)} vois immunisé${E(id)} ✓`:`Je ${PR(id)} vois immunisé${E(id)}`}</button>`;
   return`<div class="big">${av(id)}<div><h2>${esc(c.name)}</h2>${c.age?`<span class="muted">${c.age} ans</span><br>`:''}<span class="strow"><span class="status ${st.k}">${lbl(st.k,id)}</span><a class="btn ghost tf1" href="${tf1Url(id)}" target="_blank" rel="noopener">Sa page TF1 ↗</a><a class="btn ghost tf1" href="${xUrl(id)}" target="_blank" rel="noopener">Sur X ↗</a></span></div></div>
     ${st.k==='ko'?`<p class="muted kotxt">${st.quit?'A quitté l’aventure':'Éliminé'+E(id)} en semaine ${st.week}, ${st.quit?'':`, à la place n°${st.place}`}.</p>`:''}
     <p class="fmini">Cote <b>${g.voters?winPct+' %':'—'}</b> · Moy. groupe <b>${avg?avg.toFixed(1).replace('.',','):'—'}</b> · Ton prono <b>${mi>-1?'n°'+(mi+1):'—'}</b></p>
