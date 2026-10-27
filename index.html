@@ -748,6 +748,7 @@ function myPick(n){return S.uid?S.picks[n+'_'+S.uid]||null:null;}
 const TF1='https://www.tf1.fr/';
 const TF1_PAGE={amel:'dossier/amel-star-academy-2026-30781168',antoine:'dossier/antoine-star-academy-2026-02929471',brieuc:'dossier/brieuc-star-academy-2026-72402619',cameron:'dossier/cameron-star-academy-2026-17129215',elija:'dossier/elija-star-academy-2026-38364324',felix:'dossier/felix-star-academy-2026-54569929',isabella:'dossier/isabella-star-academy-2026-87867344',khalil:'dossier/khalil-star-academy-2026-90105466',kylian:'dossier/kylian-star-academy-2026-26602218',leeloo:'dossier/leeloo-star-academy-2026-40122199',maud:'dossier/maud-star-academy-2026-21591832',melina:'dossier/melina-star-academy-2026-37646314',morgan:'dossier/morgan-star-academy-2026-29024870',noemie:'dossier/noemie-star-academy-2026-45450544',tracy:'dossier/tracy-star-academy-2026-62850511',ydriss:'dossier/ydriss-star-academy-2026-85173931',zoe:'dossier/zoe-star-academy-2026-77567446'};
 const tf1Url=id=>TF1+(TF1_PAGE[id]||'tf1/star-academy');
+const xUrl=id=>'https://x.com/search?f=live&q='+encodeURIComponent(C[id].name+' ("star academy" OR #staracademy OR #starac)');
 function fighter(id){
   const c=C[id],st=status(id),g=groupStats(S.players),gs=g.stats[id],mi=cleanOrder(S.me.order).indexOf(id);
   const winPct=g.voters?Math.round(100*gs.win/g.voters):0,avg=gs.n?gs.sum/gs.n:null;
@@ -756,7 +757,7 @@ function fighter(id){
   if(st.k!=='ko'&&st.k!=='win'&&s.rankingOpen)acts+=mi===0?`<button class="btn" disabled>Ton vainqueur ✓</button>`:`<button class="btn" data-act="winner" data-id="${id}">Mon vainqueur</button>`;
   if(open&&st.k==='nom')acts+=`<button class="btn ${p.elim===id?'danger':'ghost'}" data-act="pick" data-f="elim" data-id="${id}">${p.elim===id?`Tu ${PR(id)} vois partir ✓`:`Je ${PR(id)} vois partir`}</button>`;
   if(open&&st.k!=='ko'&&st.k!=='win')acts+=`<button class="btn ghost" data-act="pick" data-f="immune" data-id="${id}">${p.immune===id?`Tu ${PR(id)} vois immunisé${E(id)} ✓`:`Je ${PR(id)} vois immunisé${E(id)}`}</button>`;
-  return`<div class="big">${av(id)}<div><h2>${esc(c.name)}</h2>${c.age?`<span class="muted">${c.age} ans</span><br>`:''}<span class="strow"><span class="status ${st.k}">${lbl(st.k,id)}</span><a class="btn ghost tf1" href="${tf1Url(id)}" target="_blank" rel="noopener">Sa page TF1 ↗</a></span></div></div>
+  return`<div class="big">${av(id)}<div><h2>${esc(c.name)}</h2>${c.age?`<span class="muted">${c.age} ans</span><br>`:''}<span class="strow"><span class="status ${st.k}">${lbl(st.k,id)}</span><a class="btn ghost tf1" href="${tf1Url(id)}" target="_blank" rel="noopener">Sa page TF1 ↗</a><a class="btn ghost tf1" href="${xUrl(id)}" target="_blank" rel="noopener">Sur X ↗</a></span></div></div>
     ${st.k==='ko'?`<p class="muted kotxt">${st.quit?'A quitté l’aventure':'Éliminé'+E(id)} en semaine ${st.week}, ${st.quit?'':`, à la place n°${st.place}`}.</p>`:''}
     <p class="fmini">Cote <b>${g.voters?winPct+' %':'—'}</b> · Moy. groupe <b>${avg?avg.toFixed(1).replace('.',','):'—'}</b> · Ton prono <b>${mi>-1?'n°'+(mi+1):'—'}</b></p>
     ${stat('Cote victoire',g.voters?winPct+' %':'—',winPct,true)}
