@@ -1036,13 +1036,17 @@ function baroBlock(){
     const who=[r.a.up.length?'❤️ '+whoNames(r.a.up):'',r.a.down.length?'🍅 '+whoNames(r.a.down):''].filter(Boolean).join(' · ');
     return`<div class="br"><span class="pos">${pos}</span>${av(r.id)}<span class="who"><b>${esc(C[r.id].name)}${out.includes(r.id)?' <span class="muted">(éliminé'+E(r.id)+')</span>':''}</b><small>❤️ ${r.a.up.length} · 🍅 ${r.a.down.length}</small><small>${who}</small></span><span class="net ${r.net>0?'pos':r.net<0?'neg':''}">${sgn(r.net)}${r.tr}</span></div>`;}).join('');
   const seg=weeks.length>1?`<div class="seg-bar">${weeks.map(w=>`<button class="seg${w===n?' on':''}" data-act="lkWeek" data-id="${w}" aria-pressed="${w===n}">S${w}</button>`).join('')}</div>`:'';
-  const sw=rows.length?`<button class="sw" role="switch" aria-checked="${S.lkChart}" data-act="lkChart" aria-label="Afficher en graphique">📊<i></i></button>`:'';
-  const top=seg||sw?`<div class="baro-top">${seg}${sw}</div>`:'';
+  const sw=`<button class="sw" role="switch" aria-checked="${S.lkChart}" data-act="lkChart" aria-label="Afficher en graphique">📊<i></i></button>`;
+  const top=`<div class="baro-top">${seg}${sw}</div>`;
   // Graphique « papillon » : tomates à gauche de l'axe, cœurs à droite, même échelle des deux côtés.
-  const mx=Math.max(1,...rows.map(r=>Math.max(r.a.up.length,r.a.down.length)));
-  const chart=`<div class="bfly" role="img" aria-label="Cœurs et tomates par élève, semaine ${n}"><div class="bf-leg"><span></span><span>🍅 Tomates</span><span>❤️ Cœurs</span><span></span></div>`+rows.map(r=>{const u=r.a.up.length,d=r.a.down.length;
+  // Tous les élèves votables cette semaine-là (les éliminés des semaines précédentes sont exclus), même à zéro vote.
+  const voted=new Set(rows.map(r=>r.id));
+  const crows=rows.concat(likeEligible(n).filter(id=>!voted.has(id)).map(id=>({id,a:st[id],net:0})))
+    .sort((x,y)=>y.net-x.net||y.a.up.length-x.a.up.length||x.a.down.length-y.a.down.length);
+  const mx=Math.max(1,...crows.map(r=>Math.max(r.a.up.length,r.a.down.length)));
+  const chart=`<div class="bfly" role="img" aria-label="Cœurs et tomates par élève, semaine ${n}"><div class="bf-leg"><span></span><span>🍅 Tomates</span><span>❤️ Cœurs</span><span></span></div>`+crows.map(r=>{const u=r.a.up.length,d=r.a.down.length;
     return`<div class="bf"><span class="nm">${esc(C[r.id].name)}</span><span class="sd l">${d?`<b>${d}</b><i style="width:${d/mx*82}%"></i>`:''}</span><span class="sd r">${u?`<i style="width:${u/mx*82}%"></i><b>${u}</b>`:''}</span><span class="bnet ${r.net>0?'pos':r.net<0?'neg':''}">${sgn(r.net)}</span></div>`;}).join('')+'</div>';
-  const body=!rows.length?'<p class="empty">Aucun vote pour l’instant.</p>':S.lkChart?chart:`<div class="baro">${list}</div>`;
+  const body=S.lkChart?chart:!rows.length?'<p class="empty">Aucun vote pour l’instant.</p>':`<div class="baro">${list}</div>`;
   return`<div class="card"><h3>Baromètre du groupe · semaine ${n}</h3>${top}
     ${body}
     <p class="muted gnote">Score net = cœurs moins tomates.${S.lkChart?'':' La flèche compare à la semaine précédente.'}</p></div>`;
