@@ -135,6 +135,14 @@ footer{margin-top:36px;padding-top:14px;border-top:1px solid var(--line);font-si
 .chip.ghost{border-style:dashed;background:transparent;justify-content:center;color:var(--muted);font-weight:700}
 .chip[disabled]{opacity:.45;cursor:default}
 .nowbar{display:flex;flex-wrap:wrap;gap:6px 18px;align-items:center}
+.trombi{display:flex;flex-direction:column;gap:12px;margin-bottom:16px}
+.trombi .fighter{display:flex;flex-direction:column;gap:10px;padding-bottom:12px;border-bottom:1px solid var(--line)}
+.trombi-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(70px,1fr));gap:6px}
+.trombi-grid .tile{padding:5px 5px 7px;gap:4px}
+.trombi-grid .tile .av{font-size:30px}
+.trombi-grid .tile .nm{font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.trombi-grid .tile .st{font-size:9.5px;letter-spacing:.04em}
+.trombi-grid .tile.st-ko::after{font-size:15px;padding:3px 0}
 .legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:13px;color:var(--muted)}
 .legend b{font-weight:700}
 
@@ -490,7 +498,8 @@ function fmtLeft(ms){const t=Math.max(0,ms-Date.now()),m=Math.floor(t/60000),d=M
 
 /* ===================== état ===================== */
 const ls={get(k){try{return localStorage.getItem(k);}catch(e){return null;}},set(k,v){try{localStorage.setItem(k,v);}catch(e){}},del(k){try{localStorage.removeItem(k);}catch(e){}}};
-const S={tab:ls.get('sa14-tab')||'select',sub:ls.get('sa14-sub')||'week',sel:null,mode:'reel',focus:null,
+const OLD_TAB={select:'trombi',bracket:'trombi',mine:'likes'};
+const S={tab:OLD_TAB[ls.get('sa14-tab')]||ls.get('sa14-tab')||'daily',sub:ls.get('sa14-sub')||'week',sel:null,mode:'reel',focus:null,
   conn:'loading',seasonExists:false,season:normSeason(null),real:normSeason(null),noSpoil:ls.get('sa14-nospoil')==='1',noNom:ls.get('sa14-nonom')!=='0',players:{},picks:{},uid:null,
   me:{name:'',order:[]},meDirty:false,save:'',nameEdit:false,
   form:{name:null,code:''},anon:true,login:'',busy:false,dragging:false,note:'',pendingOut:null,delId:null,badImg:new Set()};
@@ -586,8 +595,9 @@ function vPrime(){
   const live=primeLive(n),upcoming=Date.now()<primeStart(n)-20*60000;
   let html=`<div class="card prime-head"><div class="wk-head"><h2>${esc(primeLabel(n))}</h2>${live?'<span class="live">● En direct</span>':''}</div>
     <p class="muted">${upcoming?'Le prime commence à 21h10 sur TF1. Le chat et les notes sont déjà ouverts.':live?'Commente en direct avec les autres et note chaque chanson.':'Chat et notes de ce prime, toujours ouverts.'}</p>${sel}</div>`;
-  if(primeMasked(n))return html+`<div class="card"><p>🙈 Tu as activé l’anti-spoiler du dimanche : le chat et les notes de ce prime sont masqués jusqu’à dimanche minuit.</p><div class="row"><button class="btn ghost" data-act="primeSpoil" data-id="${n}">Afficher quand même</button></div></div>`;
-  const seg=[['chat','💬 Chat'+(S.pchat.length?' ('+S.pchat.length+')':'')],['songs','🎵 Chansons'+(S.songs.length?' ('+S.songs.length+')':'')]].map(([k,l])=>`<button class="seg${S.primeSub===k?' on':''}" data-act="primeSub" data-id="${k}" aria-pressed="${S.primeSub===k}">${l}</button>`).join('');
+  const seg=[['chat','💬 Chat'+(S.pchat.length?' ('+S.pchat.length+')':'')],['songs','🎵 Chansons'+(S.songs.length?' ('+S.songs.length+')':'')],['prono','🎯 Prono']].map(([k,l])=>`<button class="seg${S.primeSub===k?' on':''}" data-act="primeSub" data-id="${k}" aria-pressed="${S.primeSub===k}">${l}</button>`).join('');
+  if(S.primeSub==='prono')return`<div class="seg-bar">${seg}</div>`+vWeek();
+  if(primeMasked(n))return html+`<div class="seg-bar">${seg}</div><div class="card"><p>🙈 Tu as activé l’anti-spoiler du dimanche : le chat et les notes de ce prime sont masqués jusqu’à dimanche minuit.</p><div class="row"><button class="btn ghost" data-act="primeSpoil" data-id="${n}">Afficher quand même</button></div></div>`;
   return html+`<div class="seg-bar">${seg}</div>`+(S.primeSub==='songs'?vSongs(n):vChat(n));
 }
 function vChat(n){
@@ -766,7 +776,9 @@ function errText(e){const c=e&&e.code||'';
 /* ===================== vues ===================== */
 function renderHead(){
   const s=S.season,out=outOrder(s).length,alive=N-out,cur=curWeek(s),win=winnerId(s),np=Object.keys(S.players).length;
-  const tabs=[['select','Sélection'],['mine','Mon prono'],['prime','Prime'+(primeLive(latestPrime())?'<span class="livepill" aria-label="prime en direct"><i></i>En direct</span>':'')],['daily','Quotidiennes'+(S.tab!=='daily'&&hasNewRecap()?'<span class="dot" aria-label="nouveau"></span>':'')],['bracket','Tableau'],['board','Classement']];
+  const live=primeLive(latestPrime()),T={prime:'Prime'+(live?'<span class="livepill" aria-label="prime en direct"><i></i>En direct</span>':''),likes:'❤️/🍅',daily:'Quotidiennes'+(S.tab!=='daily'&&hasNewRecap()?'<span class="dot" aria-label="nouveau"></span>':''),trombi:'Trombi',board:'Classement'};
+  // pendant le prime, Prime passe en premier
+  const tabs=(live?['prime','likes','daily','trombi','board']:['daily','likes','prime','trombi','board']).map(k=>[k,T[k]]);
   if(isOrga())tabs.push(['orga','Orga']);
   let banner=S.note;
   if(!banner&&S.conn==='noconfig')banner='Le site n’est pas encore relié à sa base de données : les pronos ne peuvent pas être enregistrés pour l’instant.';
@@ -838,9 +850,9 @@ function likeFiche(id){const n=likeWeek()||likeWeeks()[0];if(!n)return'';const a
   return`<p class="lkline">Cote d’amour S${n} : ❤️ ${a.up.length} · 🍅 ${a.down.length} · net ${sgn(t.net)}${t.tr}</p>${who?`<p class="lkwho gnote">${who}</p>`:''}`;}
 function likeActs(id,st){const n=likeWeek();if(!n||!likeEligible(n).includes(id)||!registered()||S.anon)return'';const my=myLikes(n),u=my.up.includes(id),d=my.down.includes(id);
   return`<button class="btn ${u?'':'ghost'}" data-act="like" data-k="up" data-id="${id}" aria-pressed="${u}">${u?'❤️ Coup de cœur ✓':'❤️ Coup de cœur'}</button><button class="btn ${d?'danger':'ghost'}" data-act="like" data-k="down" data-id="${id}" aria-pressed="${d}">${d?'🍅 Tomate ✓':'🍅 Tomate'}</button>`;}
-function vSelect(){
-  return`<div class="sel-wrap"><div class="card fighter${S.sel?'':' empty'}">${S.sel&&C[S.sel]?fighter(S.sel):'<p class="pickhint">Touche un élève pour afficher sa fiche.</p>'}</div>
-    <div class="sel-main"><h2>Choisis ton champion</h2><div class="sel-grid">${ids.filter(id=>status(id).k!=='ko').concat(ids.filter(id=>status(id).k==='ko').sort((x,y)=>(status(x).place||99)-(status(y).place||99))).map(tile).join('')}</div></div></div>`;
+function vTrombi(){
+  const grid=ids.filter(id=>status(id).k!=='ko').concat(ids.filter(id=>status(id).k==='ko').sort((x,y)=>(status(x).place||99)-(status(y).place||99))).map(tile).join('');
+  return`<div class="card trombi">${S.sel&&C[S.sel]?`<div class="fighter">${fighter(S.sel)}</div>`:'<p class="pickhint">Touche un élève pour afficher sa fiche.</p>'}<div class="trombi-grid">${grid}</div></div>`+vBracket();
 }
 
 function chip(x){
@@ -872,19 +884,15 @@ function colsProj(O){
   return cols;
 }
 function vBracket(){
-  const s=S.season,cur=curWeek(s),w=wk(s,cur),imm=wk(s,cur-1).immune,g=groupStats(S.players);
+  const g=groupStats(S.players);
   const seg=[['reel','Réel'],['mine','Mon prono'],['group','Groupe']].map(([k,l])=>`<button class="seg${S.mode===k?' on':''}" data-act="mode" data-id="${k}" aria-pressed="${S.mode===k}">${l}</button>`).join('');
   let cols=null,msg='';
   if(S.mode==='reel')cols=colsReal();
   else if(S.mode==='mine'){const O=cleanOrder(S.me.order);
-    if(O.length===N)cols=colsProj(O);else msg=`Place les ${N} élèves dans Mon prono → Pronostic final pour voir ton tableau (${O.length}/${N}).`;}
+    if(O.length===N)cols=colsProj(O);else msg=`Place les ${N} élèves dans ton pronostic final (Classement, touche ton pseudo) pour voir ton tableau (${O.length}/${N}).`;}
   else{const O=consensus(g);if(O.length){cols=colsProj(O);msg=`Classement moyen de ${g.complete} pronostic${g.complete>1?'s':''} complet${g.complete>1?'s':''}.`;}else msg='Le tableau du groupe apparaît dès qu’un joueur a enregistré un classement complet.';}
-  let now='';
-  if(S.mode==='reel'&&!winnerId(s))now=`<div class="nowbar card"><h3>Semaine ${cur}</h3>
-    <span>${imm?`<b style="color:var(--imm)">◆ Immunisé</b> : ${esc(C[imm].name)}`:'Immunisé : pas encore renseigné'}</span>
-    <span>${w.nominees.length?`<b style="color:var(--nom)">! Nominés</b> : ${w.nominees.map(i=>esc(C[i].name)).join(', ')}`:`Nominés : annoncés ${esc(nextDay(3))}`}</span></div>`;
   return`<div class="row" style="justify-content:space-between"><h2>Le tableau</h2><div class="seg-bar" role="group" aria-label="Affichage">${seg}</div></div>
-    ${now}${msg?`<p class="muted">${esc(msg)}</p>`:''}
+    ${msg?`<p class="muted">${esc(msg)}</p>`:''}
     ${cols?`<div class="bracket-scroll"><div class="bracket">${cols.map(colHtml).join('')}</div></div>
     <div class="legend"><span><b style="color:var(--imm)">◆</b> immunisé</span><span><b style="color:var(--nom)">!</b> nominé</span><span><b style="color:var(--ko)">KO</b> éliminé</span><span><b style="color:var(--gold)">★</b> vainqueur</span>${S.mode!=='reel'?'<span><b style="color:var(--ok)">✓</b>/<b style="color:var(--ko)">✗</b> éliminé deviné ou raté</span>':''}<span>Touche un élève pour suivre son parcours.</span></div>`:''}`;
 }
@@ -1003,7 +1011,7 @@ function initDrag(){
 function vSettings(){
   const reg=registered()&&!S.anon;
   const app=standalone()?`<p>✓ Tu utilises l’appli installée.</p>`:`<p class="muted">Ajoute le site sur l’écran d’accueil de ton téléphone : il s’ouvre alors comme une vraie appli, en plein écran.</p><div class="row"><button class="btn ghost" data-act="install">📲 Installer sur mon téléphone</button></div>`;
-  return`<div class="row"><button class="btn ghost" data-act="tab" data-id="${S.backTab||'select'}">‹ Retour</button></div><h2>Paramètres</h2>
+  return`<div class="row"><button class="btn ghost" data-act="tab" data-id="${S.backTab||'daily'}">‹ Retour</button></div><h2>Paramètres</h2>
     <div class="card"><h3>Mon joueur</h3>${whoCard().replace(/^<div class="card[^"]*">/,'<div>')}</div>
     ${reg?notifCard(true):''}
     <div class="card"><h3>Anti-spoiler</h3>
@@ -1013,11 +1021,6 @@ function vSettings(){
     ${reg?`<div class="card"><h3>Cœurs & tomates</h3><label class="check"><input type="checkbox" id="lkanon"${anonOf(S.uid)?' checked':''}> Mes votes sont anonymes (les autres voient les totaux, pas mon nom)</label></div>`:''}
     <div class="card"><h3>Application</h3>${app}</div>`;
 }
-function vMine(){
-  const seg=[['week','Cette semaine'],['likes','❤️ / 🍅'],['final','Final']].map(([k,l])=>`<button class="seg${S.sub===k?' on':''}" data-act="sub" data-id="${k}" aria-pressed="${S.sub===k}">${l}</button>`).join('');
-  return`<div class="seg-bar" role="tablist" aria-label="Type de pronostic">${seg}</div>${S.sub==='final'?vFinal():S.sub==='likes'?vLikes():vWeek()}`;
-}
-
 function vBoard(){
   if(S.viewPlayer&&S.players[S.viewPlayer])return vPlayer(S.viewPlayer);
   const s=S.season,rows=Object.entries(S.players).map(([uid,p])=>({uid,p,sc:scoreOf(uid,p,s,S.picks),n:cleanOrder(p.order).length}));
@@ -1027,7 +1030,7 @@ function vBoard(){
     const o=cleanOrder(r.p.order),w=o[0]?' · vainqueur : '+esc(C[o[0]].name):'';
     return`<button class="pl plink${r.uid===S.uid?' me':''}" data-act="player" data-id="${r.uid}" aria-label="Voir les pronostics de ${esc(r.p.name)}"><span class="pos">${pos}</span><span class="who"><b>${esc(r.p.name)}${r.uid===S.uid?' (toi)':''}</b><small>Final ${r.sc.rank} · Hebdo ${r.sc.weekly} · Bonus ${r.sc.bonus} · ${r.n}/${N} placés${r.p.validated&&r.n===N?' · validé ✓':''}${w}</small></span><span class="pts">${r.sc.total}<small>pts</small></span><span class="chev" aria-hidden="true">›</span></button>`;}).join('');
   return`<h2>Classement des joueurs</h2><p class="muted">Touche un joueur pour voir ses pronostics.</p>
-    <div class="board">${list||'<p class="empty">Aucun joueur pour l’instant. Va dans Mon prono pour être le premier.</p>'}</div>
+    <div class="board">${list||'<p class="empty">Aucun joueur pour l’instant.</p>'}</div>
     <div class="card"><h3>Barème</h3><ul class="rules">
       <li>Classement final : <b>${SC.exact} pts</b> si l’élève est à sa place exacte, <b>${SC.near1}</b> à une place d’écart, <b>${SC.near2}</b> à deux places.</li>
       <li>Chaque semaine : <b>${SC.elim} pts</b> pour l’éliminé trouvé, <b>${SC.immune} pts</b> pour l’immunisé trouvé.</li>
@@ -1196,12 +1199,12 @@ function render(){
   const sl=document.getElementById('songlist'),songTop=sl?sl.scrollTop:0;
   const act=document.activeElement,keep=act&&(['pname','pcode','song-title','pc-input'].includes(act.id)||/^(cm|sr)-/.test(act.id))?{id:act.id,s:act.selectionStart}:null;
   const tb=document.querySelector('.tabs'),tabLeft=tb?tb.scrollLeft:0;
-  if(S.tab==='orga'&&!isOrga())S.tab='select';
+  if(S.tab==='orga'&&!isOrga())S.tab='daily';
   const gate=needGate();
   document.body.classList.toggle('gated',gate);
   if(gate){$('#head').innerHTML='';$('#view').innerHTML=vGate();}
   else{renderHead();
-  const v={prime:vPrime,select:vSelect,bracket:vBracket,mine:vMine,board:vBoard,daily:vDaily,settings:vSettings,orga:vOrga}[S.tab]||vSelect;
+  const v={prime:vPrime,trombi:vTrombi,likes:vLikes,board:vBoard,daily:vDaily,settings:vSettings,orga:vOrga}[S.tab]||vDaily;
   $('#view').innerHTML=v();}
   const sc2=document.querySelector('.bracket-scroll');if(sc2)sc2.scrollLeft=left;
   const sl2=document.getElementById('songlist');if(sl2)sl2.scrollTop=songTop;
@@ -1274,7 +1277,7 @@ async function logout(){
 }
 async function savePick(field,id){
   const n=curWeek(S.season);
-  if(!registered()){S.tab='mine';S.sub='week';render();toast('Choisis d’abord ton pseudo.');return;}
+  if(!registered()){S.tab='prime';S.primeSub='prono';render();toast('Choisis d’abord ton pseudo.');return;}
   if(!weekOpen(n)){toast('Les choix de cette semaine sont fermés.');return;}
   const key=n+'_'+S.uid,cur=S.picks[key]||{elim:null,immune:null};
   const next={uid:S.uid,week:n,elim:cur.elim||null,immune:cur.immune||null};next[field]=cur[field]===id?null:id;
@@ -1368,10 +1371,10 @@ document.addEventListener('keydown',e=>{if(e.key!=='Enter')return;if(e.target.id
 document.addEventListener('click',e=>{
   const t=e.target.closest('[data-act]');if(!t||t.disabled)return;
   const a=t.dataset.act,id=t.dataset.id,o=cleanOrder(S.me.order),s=S.tab==='orga'?S.real:S.season;
-  const editFinal=()=>{if(!registered()){S.tab='mine';render();toast('Choisis d’abord ton pseudo.');return false;}if(!s.rankingOpen){toast('Les classements finaux sont verrouillés.');return false;}return true;};
+  const editFinal=()=>{if(!registered()){S.tab='board';render();toast('Choisis d’abord ton pseudo.');return false;}if(!s.rankingOpen){toast('Les classements finaux sont verrouillés.');return false;}return true;};
   if(a==='reload'){location.reload();return;}
-  if(a==='tab'){const to=id==='settings'&&S.tab==='settings'?S.backTab||'select':id;if(to==='settings')S.backTab=S.tab;S.viewPlayer=null;S.tab=to;S.pendingOut=null;S.scrollTab=true;ls.set('sa14-tab',to);if(to==='daily')loadRecaps();render();window.scrollTo(0,0);}
-  else if(a==='goSel'){S.sel=id;S.tab='select';S.scrollTab=true;ls.set('sa14-tab','select');render();window.scrollTo(0,0);}
+  if(a==='tab'){const to=id==='settings'&&S.tab==='settings'?S.backTab||'daily':id;if(to==='settings')S.backTab=S.tab;S.viewPlayer=null;S.tab=to;S.pendingOut=null;S.scrollTab=true;ls.set('sa14-tab',to);if(to==='daily')loadRecaps();render();window.scrollTo(0,0);}
+  else if(a==='goSel'){S.sel=id;S.tab='trombi';S.scrollTab=true;ls.set('sa14-tab','trombi');render();window.scrollTo(0,0);}
   else if(a==='recapReload')loadRecaps(true);
   else if(a==='cmReply'){if(!needPlayer())return;const k='cr-'+id,to=t.dataset.to;S.cmReply=id;if(to&&!S.drafts[k])S.drafts[k]='@'+to+' ';render();const el=document.getElementById(k);if(el){el.scrollIntoView({block:'center',behavior:'smooth'});el.focus({preventScroll:true});el.setSelectionRange(el.value.length,el.value.length);}}
   else if(a==='cmSendRe')sendComment(t.dataset.rc,id);
@@ -1449,10 +1452,10 @@ document.addEventListener('click',e=>{
   else if(a==='del'){S.delId=id;render();}
   else if(a==='delNo'){S.delId=null;render();}
   else if(a==='delYes'){S.delId=null;if(fb)fb.fs.deleteDoc(fb.fs.doc(fb.db,'players',id)).catch(err=>toast('Suppression refusée ('+errText(err)+').'));}
-  else if(a==='quitOrga'){S.tab='select';ls.set('sa14-tab','select');render();}
+  else if(a==='quitOrga'){S.tab='daily';ls.set('sa14-tab','daily');render();}
 });
 $('#orga-link').addEventListener('click',e=>{e.preventDefault();enterOrga();});
-setInterval(()=>{const before=S.masked,wasLive=S.onAir;S.onAir=primeLive(latestPrime());S.season=viewSeason();if((before!==S.masked||wasLive!==S.onAir||(S.tab==='mine'&&S.sub==='week'))&&!document.activeElement?.matches('input'))render();},60000);
+setInterval(()=>{const before=S.masked,wasLive=S.onAir;S.onAir=primeLive(latestPrime());S.season=viewSeason();if((before!==S.masked||wasLive!==S.onAir||(S.tab==='prime'&&S.primeSub==='prono'))&&!document.activeElement?.matches('input'))render();},60000);
 
 /* ===================== connexion Firebase ===================== */
 async function initFirebase(){
