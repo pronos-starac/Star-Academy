@@ -2,6 +2,7 @@
 // - aux joueurs qui ont déjà commenté cette quotidienne (option « thread », activée par défaut) ;
 // - aux joueurs qui veulent tous les commentaires (option « all »).
 // Une réponse à un commentaire arrive à son auteur avec le titre « X t’a répondu ».
+// Une réponse à un avis de chanson (onglet Prime) arrive à l'auteur de l'avis et aux joueurs déjà dans ce fil.
 // Jamais à l'auteur. Plusieurs commentaires sont regroupés en une seule notification par joueur.
 import { initializeApp, cert } from 'firebase-admin/app';
 import { getFirestore, Timestamp } from 'firebase-admin/firestore';
@@ -33,10 +34,16 @@ const stRef = db.doc('season/notifs');
 
 const st = await stRef.get();
 // Première fois : on ne rattrape que la dernière heure (pas tout l'historique).
-const last = (st.exists && st.data().lastCommentAt) || Timestamp.fromMillis(Date.now() - 60 * 60 * 1000);
-const fresh = await db.collection('comments').where('at', '>', last).orderBy('at').get();
-if (fresh.empty) { console.log('Aucun nouveau commentaire.'); if (!st.exists || !st.data().lastCommentAt) await stRef.set({ lastCommentAt: Timestamp.now() }, { merge: true }); process.exit(0); }
-console.log(`${fresh.size} nouveau(x) commentaire(s).`);
+const hourAgo = Timestamp.fromMillis(Date.now() - 60 * 60 * 1000);
+const last = (st.exists && st.data().lastCommentAt) || hourAgo;
+const lastSr = (st.exists && st.data().lastSongReplyAt) || hourAgo;
+const [fresh, freshSr] = await Promise.all([
+  db.collection('comments').where('at', '>', last).orderBy('at').get(),
+  db.collection('songreplies').where('at', '>', lastSr).orderBy('at').get()]);
+if (fresh.empty && freshSr.empty) { console.log('Aucun nouveau commentaire.');
+  const init = {}; if (!st.exists || !st.data().lastCommentAt) init.lastCommentAt = Timestamp.now(); if (!st.exists || !st.data().lastSongReplyAt) init.lastSongReplyAt = Timestamp.now();
+  if (Object.keys(init).length) await stRef.set(init, { merge: true }); process.exit(0); }
+console.log(`${fresh.size} nouveau(x) commentaire(s), ${freshSr.size} réponse(s) sur les chansons.`);
 
 const [allComments, prefsSnap, tokSnap, players] = await Promise.all([
   db.collection('comments').get(), db.collection('notifprefs').get(), db.collection('pushTokens').get(), db.collection('players').get()]);
@@ -76,26 +83,49 @@ fresh.forEach(d => {
   }
 });
 
+// Réponses aux avis des chansons : à l'auteur de l'avis et à ceux qui ont déjà répondu dans le fil.
+let maxSr = lastSr;
+if (!freshSr.empty) {
+  const songIds = [...new Set(freshSr.docs.map(d => d.data().song))];
+  const [songDocs, threadSnap] = await Promise.all([
+    Promise.all(songIds.map(id => db.collection('songs').doc(id).get())),
+    db.collection('songreplies').where('song', 'in', songIds.slice(0, 30)).get()]);
+  const titles = {}; songDocs.forEach(d => titles[d.id] = d.exists ? (d.data().title || 'une chanson') : 'une chanson');
+  const thread = {}; threadSnap.forEach(d => { const r = d.data(); (thread[r.parent] = thread[r.parent] || []).push({ uid: r.uid, at: r.at ? r.at.toMillis() : 0 }); });
+  freshSr.forEach(d => {
+    const r = d.data(); if (!r.at) return;
+    if (r.at.toMillis() > maxSr.toMillis()) maxSr = r.at;
+    const owner = r.parent.slice(r.song.length + 1), at = r.at.toMillis();
+    const to = new Set([owner]); (thread[r.parent] || []).forEach(x => { if (x.at < at) to.add(x.uid); });
+    for (const uid of to) {
+      if (uid === r.uid || !tokens[uid] || !pref(uid).thread) continue;
+      (out[uid] = out[uid] || []).push({ prime: r.prime, title: titles[r.song] || 'une chanson', author: names[r.uid] || 'Quelqu’un', text: r.text, at, toMe: uid === owner });
+    }
+  });
+}
+
 const day = id => { const [y, m, d] = id.split('-').map(Number);
   return new Date(Date.UTC(y, m - 1, d, 12)).toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long', timeZone: 'UTC' }); };
 console.log(`${Object.keys(tokens).length} joueur(s) avec notifications activées.`);
 let ok = 0, ko = 0; const dead = [];
 for (const [uid, list] of Object.entries(out)) {
-  const recaps = [...new Set(list.map(x => x.recap))];
-  const one = list.length === 1 ? list[0] : null;
-  const title = one ? (one.toMe ? `↩️ ${one.author} t’a répondu (quotidienne du ${day(one.recap)})` : `💬 ${one.author} sur la quotidienne du ${day(one.recap)}`) : `💬 ${list.length} nouveaux commentaires`;
+  const recaps = [...new Set(list.filter(x => x.recap).map(x => x.recap))];
+  const one = list.length === 1 ? list[0] : null, lastOne = list[list.length - 1];
+  const title = one && one.prime != null ? (one.toMe ? `↩️ ${one.author} t’a répondu (« ${one.title} »)` : `💬 ${one.author} dans le fil de « ${one.title} »`)
+    : one ? (one.toMe ? `↩️ ${one.author} t’a répondu (quotidienne du ${day(one.recap)})` : `💬 ${one.author} sur la quotidienne du ${day(one.recap)}`) : `💬 ${list.length} nouveaux commentaires`;
   const hide = pref(uid).noNom && list.some(x => isSpoil(x.text));
   const hideSun = !hide && pref(uid).noSun && list.some(x => isSunSpoil(x.text, x.at));
-  const body = hide ? '🙈 Message masqué (spoiler possible avant le prime)' : hideSun ? '🙈 Message masqué (spoiler possible du prime)' : one ? one.text.slice(0, 140) : (recaps.length === 1 ? `Sur la quotidienne du ${day(recaps[0])}` : `Sur ${recaps.length} quotidiennes`);
-  const link = SITE + '?rc=' + recaps[recaps.length - 1];
+  const body = hide ? '🙈 Message masqué (spoiler possible avant le prime)' : hideSun ? '🙈 Message masqué (spoiler possible du prime)' : one ? one.text.slice(0, 140) : !recaps.length ? 'Sur les chansons du prime' : (recaps.length === 1 ? `Sur la quotidienne du ${day(recaps[0])}` : `Sur ${recaps.length} quotidiennes`);
+  const isSong = lastOne.prime != null;
+  const link = SITE + (isSong ? '?pr=' + lastOne.prime : '?rc=' + lastOne.recap);
   const res = await getMessaging().sendEachForMulticast({
     tokens: tokens[uid], notification: { title, body },
-    data: { title, body, link, tag: 'cm-' + recaps[recaps.length - 1] },
+    data: { title, body, link, tag: isSong ? 'sr-' + lastOne.prime : 'cm-' + lastOne.recap },
     webpush: { fcmOptions: { link }, notification: { icon: SITE + 'icons/icon-192.png' } }
   });
   res.responses.forEach((r, j) => { if (r.success) ok++; else { ko++; const code = r.error && r.error.code;
     if (code === 'messaging/registration-token-not-registered' || code === 'messaging/invalid-registration-token' || code === 'messaging/invalid-argument') dead.push(tokens[uid][j]); } });
 }
 for (const t of dead) await db.collection('pushTokens').doc(t).delete();
-await stRef.set({ lastCommentAt: maxAt }, { merge: true });
+await stRef.set({ lastCommentAt: maxAt, lastSongReplyAt: maxSr }, { merge: true });
 console.log(`Destinataires : ${Object.keys(out).length} · envoyées : ${ok} · échecs : ${ko} · jetons périmés : ${dead.length}`);

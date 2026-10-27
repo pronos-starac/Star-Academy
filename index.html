@@ -561,20 +561,21 @@ function msgBody(text,id){if(S.revealMsg.has(id))return`<p>${esc(text)}</p>`;
   return why?`<p class="censored">🙈 Message masqué (${why}). <button class="linkbtn" data-act="revealMsg" data-id="${esc(id)}">Afficher</button></p>`:`<p>${esc(text)}</p>`;}
 /* ===================== prime en direct ===================== */
 const SONG_E=[['fire','🔥'],['up','👍'],['meh','😐'],['down','👎'],['tomato','🍅']],SONG_EC=SONG_E.map(x=>x[0]);
-Object.assign(S,{primeSel:null,primeSub:'chat',pchat:[],songs:[],sratings:{},primeUnsub:[],primeFor:null,songForm:null,spoilOk:{},openSong:null});
+Object.assign(S,{primeSel:null,primeSub:'chat',pchat:[],songs:[],sratings:{},sreplies:[],srReply:null,primeUnsub:[],primeFor:null,songForm:null,spoilOk:{},openSong:null});
 function satDate(n){return new Date(Date.UTC(LAUNCH[0],LAUNCH[1],LAUNCH[2]+7*n,12));}
 function latestPrime(){let n=0;while(Date.now()>=primeStart(n+1)-3*3600000)n++;return n;}
 function primeLive(n){const t=Date.now(),a=primeStart(n);return t>=a-20*60000&&t<a+4*3600000;}
 function primeLabel(n){const t=satDate(n).toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long',timeZone:'UTC'});return(n?'Prime '+n:'Prime de lancement')+' · '+t;}
 function primeMasked(n){return S.noSpoil&&!S.spoilOk[n]&&Date.now()<defaultLock(n)&&Date.now()>=primeStart(n)-20*60000;}
 function subscribePrime(n){
-  if(!fb||S.primeFor===n)return;S.primeUnsub.forEach(u=>{try{u();}catch(e){}});S.primeFor=n;S.pchat=[];S.songs=[];S.sratings={};
+  if(!fb||S.primeFor===n)return;S.primeUnsub.forEach(u=>{try{u();}catch(e){}});S.primeFor=n;S.pchat=[];S.songs=[];S.sratings={};S.sreplies=[];S.srReply=null;
   const f=fb.fs,q=c=>f.query(f.collection(fb.db,c),f.where('prime','==',n));
   const ms=x=>toMs(x.at)||+String(x.id).split('_').pop()||0;
   S.primeUnsub=[
     f.onSnapshot(q('primechat'),r=>{const a=[];r.forEach(d=>{const x=d.data();if(x&&typeof x.text==='string')a.push({id:d.id,uid:x.uid,text:x.text.slice(0,300),at:toMs(x.at)});});a.sort((x,y)=>ms(x)-ms(y));S.pchat=a;render();},()=>{}),
     f.onSnapshot(q('songs'),r=>{const a=[];r.forEach(d=>{const x=d.data();if(x&&typeof x.title==='string')a.push({id:d.id,uid:x.uid,title:x.title.slice(0,80),eleves:cleanOrder(x.eleves||[]),cover:typeof x.cover==='string'&&/^https:\/\//.test(x.cover)?x.cover:null,at:toMs(x.at)});});a.sort((x,y)=>ms(y)-ms(x));S.songs=a;render();},()=>{}),
-    f.onSnapshot(q('songratings'),r=>{const o={};r.forEach(d=>{const x=d.data();if(x&&typeof x.song==='string')o[d.id]={uid:x.uid,song:x.song,note:Number.isInteger(x.note)?x.note:null,e:(x.e||[]).filter(k=>SONG_EC.includes(k)),text:typeof x.text==='string'?x.text.slice(0,200):''};});S.sratings=o;render();},()=>{})];
+    f.onSnapshot(q('songratings'),r=>{const o={};r.forEach(d=>{const x=d.data();if(x&&typeof x.song==='string')o[d.id]={uid:x.uid,song:x.song,note:Number.isInteger(x.note)?x.note:null,e:(x.e||[]).filter(k=>SONG_EC.includes(k)),text:typeof x.text==='string'?x.text.slice(0,200):''};});S.sratings=o;render();},()=>{}),
+    f.onSnapshot(q('songreplies'),r=>{const a=[];r.forEach(d=>{const x=d.data();if(x&&typeof x.text==='string'&&typeof x.parent==='string'&&typeof x.song==='string')a.push({id:d.id,uid:x.uid,song:x.song,parent:x.parent,text:x.text.slice(0,300),at:toMs(x.at)});});a.sort((x,y)=>ms(x)-ms(y));S.sreplies=a;render();},()=>{})];
 }
 function vPrime(){
   const last=latestPrime(),n=S.primeSel==null?last:S.primeSel;subscribePrime(n);
@@ -606,10 +607,20 @@ function vSongs(n){
       <div class="pool">${ids.map(id=>`<button class="chip${f.eleves.includes(id)?' focus':''}" data-act="songEl" data-id="${id}" aria-pressed="${f.eleves.includes(id)}">${av(id)}<span class="nm">${esc(C[id].name)}</span></button>`).join('')}</div>
       <div class="row"><button class="btn" data-act="songAdd" data-id="${n}">Ajouter</button><button class="linkbtn" data-act="songCancel">Annuler</button></div></div>`
     :`<div class="row"><button class="btn" data-act="songNew">+ Nouvelle chanson</button><span class="muted">Le premier qui l’entend l’ajoute, tout le monde la note.</span></div>`;
-  const list=S.songs.map(sg=>{const st=songStats(sg.id),mine=S.sratings[sg.id+'_'+S.uid]||{note:null,e:[],text:''},na=st.rs.filter(r=>r.text||r.note).length,open=na>0||S.openSong===sg.id,own=sg.uid===S.uid;
+  const list=S.songs.map(sg=>{const st=songStats(sg.id),mine=S.sratings[sg.id+'_'+S.uid]||{note:null,e:[],text:''},na=st.rs.filter(r=>r.text||r.note).length,srs=S.sreplies.filter(x=>x.song===sg.id),open=na>0||srs.length>0||S.openSong===sg.id,own=sg.uid===S.uid;
     const ecs=SONG_E.map(([k,e])=>`<button class="rx" data-act="songE" data-id="${sg.id}" data-k="${k}" aria-pressed="${mine.e.includes(k)}"${reg?'':' disabled'}>${e}${st.ec[k]?`<b>${st.ec[k]}</b>`:''}</button>`).join('');
     const notes=reg?`<div class="notes">${[1,2,3,4,5,6,7,8,9,10].map(v=>`<button class="nt${mine.note===v?' on':''}" data-act="songNote" data-id="${sg.id}" data-k="${v}" aria-pressed="${mine.note===v}">${v}</button>`).join('')}</div>`:'';
-    const coms=st.rs.filter(r=>r.text||r.note).map(r=>{const p=S.players[r.uid];return`<div class="cm"><span class="who"><b>${esc(p?p.name:'?')}</b>${r.note?` · ${r.note}/10`:''}${r.e.length?' '+r.e.map(k=>SONG_E.find(x=>x[0]===k)[1]).join(''):''}</span>${r.text?`<p>${esc(r.text)}</p>`:''}</div>`;}).join('');
+    // fils : chaque avis et ses réponses (un seul niveau, une réponse à une réponse rejoint le même fil avec @pseudo)
+    const rts=st.rs.filter(r=>r.text||r.note).map(r=>({rid:sg.id+'_'+r.uid,r})),reps={};
+    srs.forEach(x=>{(reps[x.parent]=reps[x.parent]||[]).push(x);});
+    Object.keys(reps).forEach(k=>{if(!rts.some(t=>t.rid===k))rts.push({rid:k,gone:true});});
+    const repBtn=(rid,to)=>reg?`<button class="linkbtn rep" data-act="srReply" data-id="${esc(rid)}" data-to="${esc(to)}">Répondre</button>`:'';
+    const coms=rts.map(({rid,r,gone})=>{const p=r&&S.players[r.uid],rs=reps[rid]||[],k='sq-'+rid;
+      const head=gone?`<div class="cm gone"><p>Avis supprimé</p></div>`:`<div class="cm"><span class="who"><b>${esc(p?p.name:'?')}</b>${r.note?` · ${r.note}/10`:''}${r.e.length?' '+r.e.map(k=>SONG_E.find(x=>x[0]===k)[1]).join(''):''}</span>${r.text?`<p>${esc(r.text)}</p>`:''}${repBtn(rid,'')}</div>`;
+      const sub=rs.map(y=>{const q=S.players[y.uid],mineR=y.uid===S.uid;
+        return`<div class="cm"><span class="who"><b>${esc(q?q.name:'Ancien joueur')}</b> · ${esc(cmTime(y))}${mineR||orga?`<button class="linkbtn del" data-act="srDel" data-id="${esc(y.id)}">${S.cmDelArm===y.id?'Confirmer la suppression':'Supprimer'}</button>`:''}</span>${mineR?`<p>${esc(y.text)}</p>`:msgBody(y.text,y.id)}${repBtn(rid,mineR||!q?'':q.name)}</div>`;}).join('');
+      const rf=reg&&S.srReply===rid?`<div class="cmform"><textarea id="${esc(k)}" maxlength="300" rows="2" placeholder="Ta réponse…" aria-label="Ta réponse">${esc(S.drafts[k]||'')}</textarea><button class="btn" data-act="srSend" data-id="${esc(rid)}" data-sg="${sg.id}">Répondre</button></div>`:'';
+      return`<div class="cmth">${head}${sub||rf?`<div class="cmrs">${sub}${rf}</div>`:''}</div>`;}).join('');
     return`<article class="card song">
       <div class="song-top"><div class="song-av">${sg.cover?`<img class="cov" src="${esc(sg.cover)}" alt="" loading="lazy">`:''}${sg.eleves.map(av).join('')}</div>
         <div class="song-t"><h3>${esc(sg.title)}</h3><span class="muted">${sg.eleves.map(id=>esc(C[id].name)).join(' & ')||'—'}</span></div>
@@ -645,6 +656,11 @@ async function songAdd(n){
   if(!t){toast('Indique le titre de la chanson.');return;}
   try{await fb.fs.setDoc(fb.fs.doc(fb.db,'songs',S.uid+'_'+Date.now()),Object.assign({uid:S.uid,prime:n,title:t,eleves:(f.eleves||[]).slice(0,4),at:fb.fs.serverTimestamp()},f.cover&&/^https:\/\//.test(f.cover)?{cover:f.cover}:{}));S.songForm=null;S.songSugg=[];render();}
   catch(e){toast('Chanson non ajoutée ('+errText(e)+').');}
+}
+async function songReply(sid,rid){
+  if(!needPlayer())return;const k='sq-'+rid,txt=(S.drafts[k]||'').trim().slice(0,300);if(!txt){toast('Écris quelque chose avant d’envoyer.');return;}
+  try{await fb.fs.setDoc(fb.fs.doc(fb.db,'songreplies',S.uid+'_'+Date.now()),{uid:S.uid,prime:S.primeFor,song:sid,parent:rid,text:txt,at:fb.fs.serverTimestamp()});S.drafts[k]='';S.srReply=null;render();}
+  catch(e){toast('Réponse non envoyée ('+errText(e)+').');}
 }
 async function songRate(id,patch){
   if(!needPlayer())return;const sg=S.songs.find(x=>x.id===id);if(!sg)return;
@@ -1343,7 +1359,7 @@ document.addEventListener('change',e=>{if(e.target.id==='nospoil')setNoSpoil(e.t
   if(e.target.id==='orgaNoElim'&&isOrga()){const v=e.target.checked;editWeek(curWeek(S.real),w=>{w.noElim=v;});}
   if(e.target.dataset&&e.target.dataset.np)setNotifPref(e.target.dataset.np,e.target.checked);
   else if(e.target.id==='validate'){if(cleanOrder(S.me.order).length!==N){e.target.checked=false;return;}S.me.validated=e.target.checked;queueMe();toast(S.me.validated?'Classement validé ✓':'Classement dévalidé.');}});
-document.addEventListener('input',e=>{if(e.target.id==='pc-input'){S.drafts['pc']=e.target.value;return;}if(e.target.id==='song-title'&&S.songForm){S.songForm.title=e.target.value;S.songForm.cover=null;songSearch(e.target.value);return;}if(/^sr-/.test(e.target.id)){S.drafts[e.target.id]=e.target.value;return;}if(/^cm-/.test(e.target.id)){S.drafts[e.target.id.slice(3)]=e.target.value;return;}if(/^cr-/.test(e.target.id)){S.drafts[e.target.id]=e.target.value;return;}if(e.target.id==='pname'&&$('#pcode'))S.form.name=e.target.value;else if(e.target.id==='pcode')S.form.code=e.target.value.replace(/\D/g,'');});
+document.addEventListener('input',e=>{if(e.target.id==='pc-input'){S.drafts['pc']=e.target.value;return;}if(e.target.id==='song-title'&&S.songForm){S.songForm.title=e.target.value;S.songForm.cover=null;songSearch(e.target.value);return;}if(/^s[rq]-/.test(e.target.id)){S.drafts[e.target.id]=e.target.value;return;}if(/^cm-/.test(e.target.id)){S.drafts[e.target.id.slice(3)]=e.target.value;return;}if(/^cr-/.test(e.target.id)){S.drafts[e.target.id]=e.target.value;return;}if(e.target.id==='pname'&&$('#pcode'))S.form.name=e.target.value;else if(e.target.id==='pcode')S.form.code=e.target.value.replace(/\D/g,'');});
 document.addEventListener('keydown',e=>{if(e.key!=='Enter')return;if(e.target.id==='pc-input'&&!e.shiftKey){e.preventDefault();pcSend(S.primeFor);return;}
   if(e.target.id==='pcode'||(e.target.id==='pname'&&$('#pcode'))){e.preventDefault();join();}
   else if(e.target.id==='pname'){e.preventDefault();saveName();}});
@@ -1386,6 +1402,9 @@ document.addEventListener('click',e=>{
   else if(a==='songEl'&&S.songForm){const e=S.songForm.eleves;S.songForm.eleves=e.includes(id)?e.filter(x=>x!==id):e.length<4?e.concat(id):e;render();}
   else if(a==='songAdd')songAdd(+id);
   else if(a==='songDel')delDoc('songs',id);
+  else if(a==='srReply'){if(!needPlayer())return;const k='sq-'+id,to=t.dataset.to;S.srReply=id;if(to&&!S.drafts[k])S.drafts[k]='@'+to+' ';render();const el=document.getElementById(k);if(el){el.scrollIntoView({block:'center',behavior:'smooth'});el.focus({preventScroll:true});el.setSelectionRange(el.value.length,el.value.length);}}
+  else if(a==='srSend')songReply(t.dataset.sg,id);
+  else if(a==='srDel')delDoc('songreplies',id);
   else if(a==='songOpen'){S.openSong=S.openSong===id?null:id;render();}
   else if(a==='songNote'){const k=+t.dataset.k,cur=(S.sratings[id+'_'+S.uid]||{}).note;songRate(id,{note:cur===k?null:k});}
   else if(a==='songE'){const k=t.dataset.k,cur=((S.sratings[id+'_'+S.uid]||{}).e||[]).slice();songRate(id,{e:cur.includes(k)?cur.filter(x=>x!==k):cur.concat(k)});}
@@ -1546,9 +1565,10 @@ async function disableNotif(){
     const m=await import(FB+'firebase-messaging.js');await m.deleteToken(m.getMessaging(fb.app));}catch(e){}
   ls.del('sa14-pushtok');toast('Notifications désactivées sur cet appareil.');
 }
-(function(){const q=new URLSearchParams(location.search),rc=q.get('rc');if(rc&&/^\d{4}-\d{2}-\d{2}$/.test(rc)){S.deepRc=rc;S.tab='daily';history.replaceState(null,'',location.pathname);}})();
+(function(){const q=new URLSearchParams(location.search),rc=q.get('rc');if(rc&&/^\d{4}-\d{2}-\d{2}$/.test(rc)){S.deepRc=rc;S.tab='daily';history.replaceState(null,'',location.pathname);}
+  const pr=q.get('pr');if(pr&&/^\d{1,2}$/.test(pr)&&+pr<=latestPrime()){S.tab='prime';S.primeSel=+pr;S.primeSub='songs';history.replaceState(null,'',location.pathname);}})();
 /* ===================== clavier mobile : garder le champ visible ===================== */
-const isTyping=el=>el&&el.tagName==='TEXTAREA'&&/^(cm-|sr-|pc-input)/.test(el.id);
+const isTyping=el=>el&&el.tagName==='TEXTAREA'&&/^(cm-|cr-|sr-|sq-|pc-input)/.test(el.id);
 function revealField(el){if(!el)return;const vv=window.visualViewport;
   const r=el.getBoundingClientRect(),vh=vv?vv.height:innerHeight,top=vv?vv.offsetTop:0;
   if(r.bottom>top+vh-8||r.top<top+70){el.scrollIntoView({block:'center',behavior:'smooth'});}}

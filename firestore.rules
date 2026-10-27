@@ -4,6 +4,7 @@ rules_version = '2';
 // À coller dans la console Firebase : Firestore Database → Règles → Publier.
 // Seul le joueur « aurelien » (pseudo + code) est organisateur, sur n'importe quel appareil.
 //
+// VERSION 16 — 27/10/2026 : réponses aux avis des chansons de l'onglet Prime (collection songreplies).
 // VERSION 15 — 27/10/2026 : réponses aux commentaires des quotidiennes (champ optionnel « parent »).
 // VERSION 14 — 17/10/2026 : emoji 🍅 (tomato) sur les chansons de l'onglet Prime.
 // VERSION 13 — 17/10/2026 : option anti-spoiler du dimanche (noSun) enregistrée dans les préférences de notification.
@@ -192,6 +193,25 @@ service cloud.firestore {
         && request.resource.data.e is list && request.resource.data.e.size() <= 5
         && request.resource.data.e.hasOnly(['fire', 'up', 'meh', 'down', 'tomato'])
         && request.resource.data.text is string && request.resource.data.text.size() <= 200;
+    }
+
+    // Onglet Prime : réponses aux avis des chansons (« parent » = identifiant de l'avis, chanson_joueur).
+    match /songreplies/{rid} {
+      allow read: if true;
+      allow delete: if isAdmin() || (signedIn() && resource.data.uid == request.auth.uid);
+      allow update: if false;
+      allow create: if isPlayer()
+        && request.resource.data.keys().hasOnly(['uid', 'prime', 'song', 'parent', 'text', 'at'])
+        && request.resource.data.uid == request.auth.uid
+        && rid.matches(request.auth.uid + '_[0-9]+')
+        && request.resource.data.prime is int
+        && request.resource.data.song is string
+        && request.resource.data.song.matches('[A-Za-z0-9]+_[0-9]+')
+        && request.resource.data.parent is string
+        && request.resource.data.parent.matches(request.resource.data.song + '_[A-Za-z0-9]+')
+        && request.resource.data.text is string
+        && request.resource.data.text.size() > 0 && request.resource.data.text.size() <= 300
+        && request.resource.data.at == request.time;
     }
   }
 }
