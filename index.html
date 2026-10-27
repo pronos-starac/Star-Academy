@@ -1568,6 +1568,11 @@ async function disableNotif(){
 }
 (function(){const q=new URLSearchParams(location.search),rc=q.get('rc');if(rc&&/^\d{4}-\d{2}-\d{2}$/.test(rc)){S.deepRc=rc;S.tab='daily';history.replaceState(null,'',location.pathname);}
   const pr=q.get('pr');if(pr&&/^\d{1,2}$/.test(pr)&&+pr<=latestPrime()){S.tab='prime';S.primeSel=+pr;S.primeSub='songs';history.replaceState(null,'',location.pathname);}})();
+// pendant le prime, l'ouverture de l'appli (ou son retour au premier plan) bascule une fois sur l'onglet Prime ; l'onglet mémorisé reste inchangé
+function autoPrime(){const n=latestPrime();if(S.autoPrimeFor===n||!primeLive(n))return false;S.autoPrimeFor=n;
+  if(S.deepRc||S.tab==='orga'||S.tab==='prime')return false;S.tab='prime';S.primeSel=null;S.viewPlayer=null;S.pendingOut=null;return true;}
+autoPrime();
+document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'&&autoPrime()){render();window.scrollTo(0,0);}});
 /* ===================== clavier mobile : garder le champ visible ===================== */
 const isTyping=el=>el&&el.tagName==='TEXTAREA'&&/^(cm-|cr-|sr-|sq-|pc-input)/.test(el.id);
 function revealField(el){if(!el)return;const vv=window.visualViewport;
