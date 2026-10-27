@@ -606,7 +606,7 @@ function vSongs(n){
       <div class="pool">${ids.map(id=>`<button class="chip${f.eleves.includes(id)?' focus':''}" data-act="songEl" data-id="${id}" aria-pressed="${f.eleves.includes(id)}">${av(id)}<span class="nm">${esc(C[id].name)}</span></button>`).join('')}</div>
       <div class="row"><button class="btn" data-act="songAdd" data-id="${n}">Ajouter</button><button class="linkbtn" data-act="songCancel">Annuler</button></div></div>`
     :`<div class="row"><button class="btn" data-act="songNew">+ Nouvelle chanson</button><span class="muted">Le premier qui l’entend l’ajoute, tout le monde la note.</span></div>`;
-  const list=S.songs.map(sg=>{const st=songStats(sg.id),mine=S.sratings[sg.id+'_'+S.uid]||{note:null,e:[],text:''},open=S.openSong===sg.id,own=sg.uid===S.uid;
+  const list=S.songs.map(sg=>{const st=songStats(sg.id),mine=S.sratings[sg.id+'_'+S.uid]||{note:null,e:[],text:''},na=st.rs.filter(r=>r.text).length,open=na>0||S.openSong===sg.id,own=sg.uid===S.uid;
     const ecs=SONG_E.map(([k,e])=>`<button class="rx" data-act="songE" data-id="${sg.id}" data-k="${k}" aria-pressed="${mine.e.includes(k)}"${reg?'':' disabled'}>${e}${st.ec[k]?`<b>${st.ec[k]}</b>`:''}</button>`).join('');
     const notes=reg?`<div class="notes">${[1,2,3,4,5,6,7,8,9,10].map(v=>`<button class="nt${mine.note===v?' on':''}" data-act="songNote" data-id="${sg.id}" data-k="${v}" aria-pressed="${mine.note===v}">${v}</button>`).join('')}</div>`:'';
     const coms=st.rs.filter(r=>r.text||r.note).map(r=>{const p=S.players[r.uid];return`<div class="cm"><span class="who"><b>${esc(p?p.name:'?')}</b>${r.note?` · ${r.note}/10`:''}${r.e.length?' '+r.e.map(k=>SONG_E.find(x=>x[0]===k)[1]).join(''):''}</span>${r.text?`<p>${esc(r.text)}</p>`:''}</div>`;}).join('');
@@ -615,7 +615,7 @@ function vSongs(n){
         <div class="song-t"><h3>${esc(sg.title)}</h3><span class="muted">${sg.eleves.map(id=>esc(C[id].name)).join(' & ')||'—'}</span></div>
         <div class="avg">${st.avg!=null?st.avg.toFixed(1).replace('.',','):'–'}<small>/10 · ${st.nn} note${st.nn>1?'s':''}</small></div></div>
       ${notes}<div class="rc-react">${ecs}</div>
-      <div class="row"><button class="linkbtn" data-act="songOpen" data-id="${sg.id}" aria-expanded="${open}">💬 ${st.rs.filter(r=>r.text).length?st.rs.filter(r=>r.text).length+' avis':'Donner mon avis'}</button>${own||orga?`<button class="linkbtn del" data-act="songDel" data-id="${sg.id}">${S.cmDelArm===sg.id?'Confirmer la suppression':'Supprimer'}</button>`:''}</div>
+      <div class="row">${na?`<span class="muted">💬 ${na} avis</span>`:`<button class="linkbtn" data-act="songOpen" data-id="${sg.id}" aria-expanded="${open}">💬 Donner mon avis</button>`}${own||orga?`<button class="linkbtn del" data-act="songDel" data-id="${sg.id}">${S.cmDelArm===sg.id?'Confirmer la suppression':'Supprimer'}</button>`:''}</div>
       ${open?`<div class="cms">${coms||'<p class="muted">Pas encore d’avis.</p>'}${reg?`<div class="cmform"><textarea id="sr-${sg.id}" maxlength="200" rows="2" placeholder="Ce que tu en as pensé…">${esc(S.drafts['sr-'+sg.id]!=null?S.drafts['sr-'+sg.id]:mine.text)}</textarea><button class="btn" data-act="songTxt" data-id="${sg.id}">OK</button></div>`:''}</div>`:''}
     </article>`;}).join('');
   return form+`<div class="songlist" id="songlist">${list||'<p class="muted">Aucune chanson pour l’instant.</p>'}</div>`;
