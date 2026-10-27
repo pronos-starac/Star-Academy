@@ -4,7 +4,7 @@ rules_version = '2';
 // À coller dans la console Firebase : Firestore Database → Règles → Publier.
 // Seul le joueur « aurelien » (pseudo + code) est organisateur, sur n'importe quel appareil.
 //
-// VERSION 17 — 27/10/2026 : chansons chantées par plus de 4 élèves (jusqu'à 17) ; clé de reconnaissance audio AudD (config/audd).
+// VERSION 17 — 27/10/2026 : chansons chantées par plus de 4 élèves (jusqu'à 17).
 // VERSION 16 — 27/10/2026 : réponses aux avis des chansons de l'onglet Prime (collection songreplies).
 // VERSION 15 — 27/10/2026 : réponses aux commentaires des quotidiennes (champ optionnel « parent »).
 // VERSION 14 — 17/10/2026 : emoji 🍅 (tomato) sur les chansons de l'onglet Prime.
@@ -18,13 +18,6 @@ service cloud.firestore {
     function isAdmin() { return signedIn() && request.auth.token.email == 'aurelien@pronos-star-ac.firebaseapp.com'; }
     function isPlayer() { return signedIn() && exists(/databases/$(database)/documents/players/$(request.auth.uid)); }
     function season() { return get(/databases/$(database)/documents/season/main).data; }
-
-    // Clé de l'API de reconnaissance audio (AudD) : lisible par les joueurs inscrits, modifiable par l'organisateur.
-    match /config/{docId} {
-      allow read: if docId == 'audd' && (isPlayer() || isAdmin());
-      allow write: if docId == 'audd' && isAdmin()
-        && (request.resource == null || (request.resource.data.keys().hasOnly(['token']) && request.resource.data.token is string && request.resource.data.token.size() <= 100));
-    }
 
     // Résultats de la saison : lisibles par tous, modifiables par l'organisateur uniquement.
     match /season/{docId} {
