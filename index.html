@@ -435,7 +435,7 @@ const N=ids.length;
 function cleanOrder(o){const seen=new Set();return(Array.isArray(o)?o:[]).filter(id=>C[id]&&!seen.has(id)&&seen.add(id));}
 function toMs(v){if(v==null)return null;if(typeof v==='number')return v;if(typeof v.toMillis==='function')return v.toMillis();return null;}
 function normSeason(d){const s=d&&typeof d==='object'?d:{};
-  const weeks={};if(s.weeks&&typeof s.weeks==='object')Object.keys(s.weeks).forEach(k=>{if(+k>=0){const w=s.weeks[k]||{};weeks[String(+k)]={immune:C[w.immune]?w.immune:null,nominees:cleanOrder(w.nominees),out:cleanOrder(w.out),quit:cleanOrder(w.quit),noElim:typeof w.noElim==='boolean'?w.noElim:null,immCands:cleanOrder(w.immCands)};}});
+  const weeks={};if(s.weeks&&typeof s.weeks==='object')Object.keys(s.weeks).forEach(k=>{if(+k>=0){const w=s.weeks[k]||{};weeks[String(+k)]={immune:C[w.immune]?w.immune:null,nominees:cleanOrder(w.nominees),out:cleanOrder(w.out),quit:cleanOrder(w.quit),noElim:typeof w.noElim==='boolean'?w.noElim:null,immCands:cleanOrder(w.immCands)};if(w.autoOff===true)weeks[String(+k)].autoOff=true;}});
   const locks={};if(s.locks&&typeof s.locks==='object')Object.keys(s.locks).forEach(k=>{const m=toMs(s.locks[k]);if(m)locks[k]=m;});
   return{rankingOpen:s.rankingOpen!==false,weeks,locks};}
 function maskSeason(s,now){
@@ -675,7 +675,7 @@ function startPresence(){if(presTimer)return;beat();presTimer=setInterval(beat,2
 const REACT=[['love','😍'],['lol','😂'],['wow','😱'],['sad','😢'],['fire','🔥'],['clap','👏']];
 const RCODES=REACT.map(r=>r[0]);
 Object.assign(S,{recaps:[],recapLoaded:false,recapErr:false,recapAt:0,recapHidden:[],reacts:{},comments:[],drafts:{},cmDelArm:null,cmReply:null});
-S.autoNoms={};S.autoNomWeeks=new Set();S.realRaw=null;
+S.autoNoms={};S.autoNomWeeks=new Set();S.realRaw=null;S.autoRes={};S.autoResOn={};S.autoResWarn=[];
 function withAuto(raw){const v=JSON.parse(JSON.stringify(raw));S.autoNomWeeks=new Set();
   Object.keys(S.autoNoms).forEach(k=>{const w=v.weeks[k]||(v.weeks[k]={immune:null,nominees:[],out:[]});
     if(!w.nominees.length&&!w.out.length){w.nominees=S.autoNoms[k].slice();S.autoNomWeeks.add(+k);}});
@@ -684,12 +684,33 @@ function withAuto(raw){const v=JSON.parse(JSON.stringify(raw));S.autoNomWeeks=ne
     if(x.immCands&&!(w.immCands||[]).length)w.immCands=x.immCands.slice();
     if(x.quit&&!(w.quit||[]).length)w.quit=x.quit.slice();});
   Object.keys(v.weeks).forEach(k=>{const w=v.weeks[k];if(w.noElim===true&&S.autoNomWeeks.has(+k)){w.nominees=[];S.autoNomWeeks.delete(+k);}});
+  applyAutoRes(v);
   return v;}
+// Résultat du prime (éliminé, immunisé) lu dans le résumé de la quotidienne du dimanche.
+// Appliqué seulement s'il est cohérent avec la semaine ; la saisie de l'orga l'emporte toujours, et « Rejeter » (autoOff) le coupe.
+function applyAutoRes(v){S.autoResOn={};S.autoResWarn=[];
+  Object.keys(S.autoRes).map(Number).sort((a,b)=>a-b).forEach(n=>{const k=String(n),x=S.autoRes[k];
+    const w=v.weeks[k]||(v.weeks[k]={immune:null,nominees:[],out:[],quit:[],noElim:null,immCands:[]});if(w.autoOff)return;
+    const gone=new Set();Object.keys(v.weeks).forEach(j=>{if(+j<n)(v.weeks[j].out||[]).concat(v.weeks[j].quit||[]).forEach(id=>gone.add(id));});
+    (w.quit||[]).forEach(id=>gone.add(id));
+    const on={src:x.src,out:null,immune:null},nm=i=>esc(C[i].name),warn=t=>S.autoResWarn.push({week:n,src:x.src,t});
+    if(x.out.length&&!(w.out||[]).length){
+      if(w.noElim===true)warn(`éliminé indiqué (${x.out.map(nm).join(', ')}) alors que la semaine est sans élimination`);
+      else if(!(w.nominees||[]).length)warn(`éliminé indiqué (${x.out.map(nm).join(', ')}) mais aucun nominé connu pour la semaine`);
+      else if(x.out.length>=w.nominees.length)warn(`trop d’éliminés indiqués (${x.out.map(nm).join(', ')})`);
+      else{const bad=x.out.filter(id=>!w.nominees.includes(id)||gone.has(id));
+        if(bad.length)warn(`${bad.map(nm).join(', ')} indiqué éliminé mais pas parmi les nominés encore en lice`);
+        else{w.out=x.out.slice();on.out=x.out.slice();}}}
+    if(x.immune&&!w.immune){const id=x.immune;
+      if(gone.has(id)||(w.out||[]).includes(id))warn(`${nm(id)} indiqué immunisé mais éliminé ou parti`);
+      else if((w.immCands||[]).length&&!w.immCands.includes(id))warn(`${nm(id)} indiqué immunisé mais pas parmi les candidats à l’immunité`);
+      else{w.immune=id;on.immune=id;}}
+    if(on.out||on.immune)S.autoResOn[k]=on;});}
 function setReal(raw){S.realRaw=raw;S.real=withAuto(raw);S.season=viewSeason();}
 function cleanRecap(x){
   if(!x||typeof x.id!=='string'||!/^\d{4}-\d{2}-\d{2}$/.test(x.id)||typeof x.title!=='string')return null;
   const str=v=>typeof v==='string'&&v.trim()?v.trim():null;
-  return{id:x.id,title:x.title.trim().slice(0,140),tag:x.tag==='nominations'?'nominations':null,nominees:cleanOrder(Array.isArray(x.nominees)?x.nominees:[]),noElim:x.noElim===true,immCands:cleanOrder(Array.isArray(x.immCands)?x.immCands:[]),quit:cleanOrder(Array.isArray(x.quit)?x.quit:[]),
+  return{id:x.id,title:x.title.trim().slice(0,140),tag:x.tag==='nominations'?'nominations':null,nominees:cleanOrder(Array.isArray(x.nominees)?x.nominees:[]),noElim:x.noElim===true,immCands:cleanOrder(Array.isArray(x.immCands)?x.immCands:[]),quit:cleanOrder(Array.isArray(x.quit)?x.quit:[]),primeOut:cleanOrder(Array.isArray(x.primeOut)?x.primeOut:[]),primeImmune:typeof x.primeImmune==='string'&&C[x.primeImmune]?x.primeImmune:null,
     points:(Array.isArray(x.points)?x.points:[]).map(str).filter(Boolean).slice(0,10).map(t=>t.slice(0,400)),
     eleves:cleanOrder(Array.isArray(x.eleves)?x.eleves:[]),
     sources:(Array.isArray(x.sources)?x.sources:[]).filter(o=>o&&str(o.name)&&typeof o.url==='string'&&/^https:\/\//.test(o.url)).slice(0,6)};}
@@ -701,12 +722,16 @@ async function loadRecaps(force){
     S.recapErr=false;
     const an={},ax={};S.recaps.slice().reverse().forEach(r=>{const k=String(recapWeek(r.id)),o=ax[k]||(ax[k]={});if(r.nominees.length>=2&&r.nominees.length<=8)an[k]=r.nominees;
       if(r.noElim)o.noElim=true;if(r.immCands.length)o.immCands=r.immCands;if(r.quit.length)o.quit=[...new Set((o.quit||[]).concat(r.quit))];});S.autoX=ax;
+    const ar={};S.recaps.slice().reverse().forEach(r=>{if(!r.primeOut.length&&!r.primeImmune)return;const k=String(recapPrimeWeek(r.id));if(+k<1)return;
+      const o=ar[k]||(ar[k]={out:[],immune:null,src:r.id});if(r.primeOut.length)o.out=r.primeOut;if(r.primeImmune)o.immune=r.primeImmune;o.src=r.id;});S.autoRes=ar;
     S.autoNoms=an;if(S.realRaw)setReal(S.realRaw);}catch(e){S.recapErr=true;}
   S.recapLoaded=true;
   if(S.deepRc&&S.recaps.some(r=>r.id===S.deepRc)){const id=S.deepRc;S.deepRc=null;render();setTimeout(()=>{const el=document.getElementById('rc-'+id);if(el)el.scrollIntoView({block:'start'});},80);return;}
   render();}
 function recapDate(id){const[y,m,d]=id.split('-').map(Number);return{y,m:m-1,d};}
 function recapWeek(id){const{y,m,d}=recapDate(id);return Math.max(0,Math.ceil((Date.UTC(y,m,d)-Date.UTC(LAUNCH[0],LAUNCH[1],LAUNCH[2]))/864e5/7));}
+// semaine du dernier prime diffusé au plus tard ce jour-là (la quotidienne du dimanche revient sur le prime de la veille)
+function recapPrimeWeek(id){const{y,m,d}=recapDate(id);return Math.floor((Date.UTC(y,m,d)-Date.UTC(LAUNCH[0],LAUNCH[1],LAUNCH[2]))/864e5/7);}
 function recapLabel(id){const{y,m,d}=recapDate(id);const t=new Date(Date.UTC(y,m,d,12)).toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long',timeZone:'UTC'});return t.charAt(0).toUpperCase()+t.slice(1);}
 // anti-spoiler : la quotidienne du dimanche revient sur le prime du samedi ; masquée jusqu'à dimanche minuit
 function recapSpoiler(id){if(!S.noSpoil)return false;const{y,m,d}=recapDate(id);if(new Date(Date.UTC(y,m,d)).getUTCDay()!==0)return false;
@@ -747,6 +772,16 @@ function stat(label,val,pct,gold){
   return`<div class="stat"><div class="lbl"><span>${label}</span><span>${val}</span></div><div class="hp${gold?' gold':''}"><i style="width:${Math.max(0,Math.min(100,pct))}%"></i></div></div>`;
 }
 function primeStart(n){const y=LAUNCH[0],m=LAUNCH[1],d=LAUNCH[2]+7*n;return Date.UTC(y,m,d,21-parisOffset(y,m,d),10);}
+function autoResCard(s){
+  const nm=id=>esc(C[id].name);
+  const ok=Object.keys(S.autoResOn).sort((a,b)=>a-b).map(k=>{const a=S.autoResOn[k];
+    return`<div class="card"><h3>Prime de la semaine ${k} · rempli automatiquement</h3>
+      <p class="muted">D’après le résumé de la quotidienne du ${esc(recapLabel(a.src).toLowerCase())}. Les points comptent déjà pour tout le monde. Vérifie, puis valide pour l’enregistrer, ou rejette pour saisir le résultat à la main.</p>
+      <p>${a.out?`Éliminé : <b>${a.out.map(nm).join(', ')}</b>`:'Éliminé : à saisir'}<br>${a.immune?`Immunisé : <b>${nm(a.immune)}</b>`:'Immunisé : à saisir'}</p>
+      <div class="row"><button class="btn" data-act="autoOk" data-id="${k}">Valider</button><button class="btn ghost" data-act="autoNo" data-id="${k}">Rejeter</button></div></div>`;}).join('');
+  const warn=S.autoResWarn.map(x=>`<p class="note">Semaine ${x.week}, résumé du ${esc(recapLabel(x.src).toLowerCase())} : ${x.t}. Ignoré, saisis le résultat à la main.</p>`).join('');
+  const off=weekKeys(s).filter(n=>S.real.weeks[String(n)].autoOff&&S.autoRes[String(n)]).map(n=>`<p class="muted">Semaine ${n} : résultat automatique rejeté. <button class="linkbtn" data-act="autoBack" data-id="${n}">Le réactiver</button></p>`).join('');
+  return ok+(warn||off?`<div class="card"><h3>Résultats automatiques</h3>${warn}${off}</div>`:'');}
 function viewSeason(){let v=S.real;S.masked=0;S.nomMasked=0;
   if(S.noSpoil){const r=maskSeason(S.real,Date.now());S.masked=r.hidden;v=r.v;}
   if(S.noNom){const now=Date.now();Object.keys(v.weeks).forEach(k=>{const w=v.weeks[k];
@@ -1116,6 +1151,7 @@ function vOrga(){
       <span class="sub">Prime de samedi · éliminé</span>${pickRow(cand,id=>S.pendingOut===id,'pendOut',id=>w.immune===id)}
       <div class="row"><button class="btn danger" data-act="confirmOut"${S.pendingOut?'':' disabled'}>${S.pendingOut?'Confirmer le KO de '+esc(C[S.pendingOut].name):'Choisis l’éliminé'}</button></div>
       <p class="muted">Après le KO, la semaine ${cur+1} s’ouvre. Chaque clic est enregistré tout de suite.</p></div>`;}
+  week=autoResCard(s)+week;
   const stale=Object.keys(s.locks).some(k=>+k>=cur&&s.locks[k]!==defaultLock(+k));
   if(stale)week=`<div class="card"><h3>Heures de fermeture à mettre à jour</h3><p class="muted">Les heures enregistrées ne correspondent plus au réglage actuel (dimanche à minuit). Semaine ${cur} : ${esc(fmtLockFull(lockAt(s,cur)))}.</p>
     <div class="row"><button class="btn" data-act="fixLocks">Passer à dimanche minuit</button></div></div>`+week;
@@ -1278,9 +1314,12 @@ async function toggleRecapHidden(rid){
   try{await fb.fs.setDoc(fb.fs.doc(fb.db,'season','recaps'),{hidden:next});}
   catch(err){S.recapHidden=prev;render();toast('Non enregistré ('+errText(err)+').');}
 }
-async function saveSeason(mut){
+async function saveSeason(mut,keepAuto){
   if(!fb)return;
   const next=JSON.parse(JSON.stringify(S.real));mut(next);
+  // le résultat automatique du prime n'est enregistré dans Firestore que si l'orga le valide
+  if(!keepAuto)Object.keys(S.autoResOn).forEach(k=>{const w=next.weeks[k],a=S.autoResOn[k];if(!w)return;
+    if(a.out&&JSON.stringify(cleanOrder(w.out))===JSON.stringify(a.out))w.out=[];if(a.immune&&w.immune===a.immune)w.immune=null;});
   [...S.autoNomWeeks].forEach(n=>{const w=next.weeks[String(n)],a=S.autoNoms[String(n)];if(w&&a&&JSON.stringify(cleanOrder(w.nominees))===JSON.stringify(a))w.nominees=[];});
   const prev=S.realRaw;setReal(normSeason(next));render();
   try{await fb.fs.setDoc(fb.fs.doc(fb.db,'season','main'),seasonDoc(next));}
@@ -1376,7 +1415,11 @@ document.addEventListener('click',e=>{
   else if(a==='quit'){editWeek(curWeek(S.real),w=>{const q=cleanOrder(w.quit);w.quit=q.includes(id)?q.filter(x=>x!==id):q.concat(id);});}
   else if(a==='confirmOut'){const k=S.pendingOut;if(k){S.pendingOut=null;editWeek(curWeek(s),w=>{w.out=[k];});}}
   else if(a==='lock'){saveSeason(x=>{x.rankingOpen=!x.rankingOpen;});}
+  else if(a==='autoOk'){const k=String(id),on=S.autoResOn[k];if(on)saveSeason(x=>{const w=x.weeks[k];if(on.out)w.out=on.out.slice();if(on.immune)w.immune=on.immune;},true);}
+  else if(a==='autoNo'){const k=String(id);editWeek(+k,w=>{w.autoOff=true;});}
+  else if(a==='autoBack'){const k=String(id);editWeek(+k,w=>{delete w.autoOff;});}
   else if(a==='undo'){const ks=weekKeys(s).filter(n=>wk(s,n).out.length);if(ks.length){const n=String(ks[ks.length-1]);
+    if(S.autoResOn[n]&&S.autoResOn[n].out){editWeek(+n,w=>{w.autoOff=true;});return;}
     saveSeason(x=>{Object.keys(x.weeks).forEach(k=>{if(+k>+n){const w=x.weeks[k];if(!(w.out||[]).length&&!(w.nominees||[]).length&&!w.immune)delete x.weeks[k];}});x.weeks[n].out=[];});}}
   else if(a==='del'){S.delId=id;render();}
   else if(a==='delNo'){S.delId=null;render();}
