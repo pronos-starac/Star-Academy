@@ -989,7 +989,8 @@ function vPlayer(uid){
       <p class="muted">Final ${sc.rank} · Hebdo ${sc.weekly} · Bonus ${sc.bonus}</p></div>
     <div class="card"><h3>Choix de la semaine</h3><div class="hist">${wrows||'<p class="empty">Pas encore de semaine.</p>'}</div></div>
     <div class="card"><h3>Cœurs & tomates</h3><div class="hist">${lkrows}</div></div>
-    <div class="card"><h3>Pronostic final · ${o.length}/${N}${p.validated&&o.length===N?' · validé ✓':''}</h3>${cards?`<div class="cards">${cards}</div>`:'<p class="empty">Pas encore de classement.</p>'}</div>`;
+    ${me&&registered()&&s.rankingOpen?vFinal() // sa propre fiche : classement final modifiable tant qu'il n'est pas verrouillé
+      :`<div class="card"><h3>Pronostic final · ${o.length}/${N}${p.validated&&o.length===N?' · validé ✓':''}</h3>${cards?`<div class="cards">${cards}</div>`:'<p class="empty">Pas encore de classement.</p>'}</div>`}`;
 }
 
 /* ---------- organisateur ---------- */
