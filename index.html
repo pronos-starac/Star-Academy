@@ -134,9 +134,10 @@ footer{margin-top:36px;padding-top:14px;border-top:1px solid var(--line);font-si
 .chip.focus{outline:2px solid var(--gold);outline-offset:1px}
 .chip.ghost{border-style:dashed;background:transparent;justify-content:center;color:var(--muted);font-weight:700}
 .chip[disabled]{opacity:.45;cursor:default}
+.wr{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;padding:8px 0;border-top:1px solid var(--line)}
+.wr>b{min-width:80px}.wr-el{display:inline-flex;align-items:center;gap:8px;font-weight:700}.wr-el .av{width:34px;aspect-ratio:4/5;font-size:16px}
 .nowbar{display:flex;flex-wrap:wrap;gap:6px 18px;align-items:center}
-.trombi{display:flex;flex-direction:column;gap:12px;margin-bottom:16px}
-.trombi .fighter{display:flex;flex-direction:column;gap:10px;padding-bottom:12px;border-bottom:1px solid var(--line)}
+.trombi{margin-bottom:22px}
 .trombi-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(70px,1fr));gap:6px}
 .trombi-grid .tile{padding:5px 5px 7px;gap:4px}
 .trombi-grid .tile .av{font-size:30px}
@@ -589,14 +590,17 @@ function subscribePrime(n){
     f.onSnapshot(q('songreplies'),r=>{const a=[];r.forEach(d=>{const x=d.data();if(x&&typeof x.text==='string'&&typeof x.parent==='string'&&typeof x.song==='string')a.push({id:d.id,uid:x.uid,song:x.song,parent:x.parent,text:x.text.slice(0,300),at:toMs(x.at)});});a.sort((x,y)=>ms(x)-ms(y));S.sreplies=a;render();},()=>{})];
 }
 function vPrime(){
-  const last=latestPrime(),n=S.primeSel==null?last:S.primeSel;subscribePrime(n);
-  const arch=[];for(let i=last;i>=0;i--)arch.push(i);
+  const last=latestPrime(),pr=S.primeSub==='prono',cur=curWeek(S.season);
+  // en Prono, la semaine en cours (prime à venir) est proposée aussi, et pas le lancement (aucun prono)
+  const top=pr?Math.max(last,cur):last;let n=S.primeSel==null?top:Math.min(S.primeSel,top);if(pr&&n<1)n=1;
+  subscribePrime(Math.min(n,last));
+  const arch=[];for(let i=top;i>=(pr?1:0);i--)arch.push(i);
   const sel=arch.length>1?`<div class="seg-bar">${arch.map(i=>`<button class="seg${i===n?' on':''}" data-act="primeSel" data-id="${i}" aria-pressed="${i===n}">${i?'P'+i:'Lancement'}</button>`).join('')}</div>`:'';
   const live=primeLive(n),upcoming=Date.now()<primeStart(n)-20*60000;
   let html=`<div class="card prime-head"><div class="wk-head"><h2>${esc(primeLabel(n))}</h2>${live?'<span class="live">● En direct</span>':''}</div>
-    <p class="muted">${upcoming?'Le prime commence à 21h10 sur TF1. Le chat et les notes sont déjà ouverts.':live?'Commente en direct avec les autres et note chaque chanson.':'Chat et notes de ce prime, toujours ouverts.'}</p>${sel}</div>`;
+    <p class="muted">${pr?'Qui sera éliminé, qui sera immunisé à ce prime ? '+SC.elim+' points par bon choix.':upcoming?'Le prime commence à 21h10 sur TF1. Le chat et les notes sont déjà ouverts.':live?'Commente en direct avec les autres et note chaque chanson.':'Chat et notes de ce prime, toujours ouverts.'}</p>${sel}</div>`;
   const seg=[['chat','💬 Chat'+(S.pchat.length?' ('+S.pchat.length+')':'')],['songs','🎵 Chansons'+(S.songs.length?' ('+S.songs.length+')':'')],['prono','🎯 Prono']].map(([k,l])=>`<button class="seg${S.primeSub===k?' on':''}" data-act="primeSub" data-id="${k}" aria-pressed="${S.primeSub===k}">${l}</button>`).join('');
-  if(S.primeSub==='prono')return`<div class="seg-bar">${seg}</div>`+vWeek();
+  if(pr)return html+`<div class="seg-bar">${seg}</div>`+vWeek(n);
   if(primeMasked(n))return html+`<div class="seg-bar">${seg}</div><div class="card"><p>🙈 Tu as activé l’anti-spoiler du dimanche : le chat et les notes de ce prime sont masqués jusqu’à dimanche minuit.</p><div class="row"><button class="btn ghost" data-act="primeSpoil" data-id="${n}">Afficher quand même</button></div></div>`;
   return html+`<div class="seg-bar">${seg}</div>`+(S.primeSub==='songs'?vSongs(n):vChat(n));
 }
@@ -852,7 +856,8 @@ function likeActs(id,st){const n=likeWeek();if(!n||!likeEligible(n).includes(id)
   return`<button class="btn ${u?'':'ghost'}" data-act="like" data-k="up" data-id="${id}" aria-pressed="${u}">${u?'❤️ Coup de cœur ✓':'❤️ Coup de cœur'}</button><button class="btn ${d?'danger':'ghost'}" data-act="like" data-k="down" data-id="${id}" aria-pressed="${d}">${d?'🍅 Tomate ✓':'🍅 Tomate'}</button>`;}
 function vTrombi(){
   const grid=ids.filter(id=>status(id).k!=='ko').concat(ids.filter(id=>status(id).k==='ko').sort((x,y)=>(status(x).place||99)-(status(y).place||99))).map(tile).join('');
-  return`<div class="card trombi">${S.sel&&C[S.sel]?`<div class="fighter">${fighter(S.sel)}</div>`:'<p class="pickhint">Touche un élève pour afficher sa fiche.</p>'}<div class="trombi-grid">${grid}</div></div>`+vBracket();
+  return`<div class="sel-wrap trombi"><div class="card fighter${S.sel?'':' empty'}">${S.sel&&C[S.sel]?fighter(S.sel):'<p class="pickhint">Touche un élève pour afficher sa fiche.</p>'}</div>
+    <div class="sel-main"><div class="trombi-grid">${grid}</div></div></div>`+vBracket();
 }
 
 function chip(x){
@@ -944,10 +949,11 @@ function saveLine(){const s=S.save;if(!s)return'';
   return`<span class="save err">Non enregistré (${esc(s)})</span>`;}
 function pickBtn(n,field,id,on,dis){
   return`<button class="pick ${field==='elim'?'el':'im'}" data-act="pick" data-f="${field}" data-id="${id}" aria-pressed="${on}"${dis?' disabled':''}>${av(id)}<b>${esc(C[id].name)}</b></button>`;}
-function vWeek(){
-  const s=S.season,cur=curWeek(s),w=wk(s,cur),win=winnerId(s);
-  if(win)return`<div class="card"><h3>Saison terminée</h3><p>Vainqueur : ${esc(C[win].name)}.</p></div>${histBlock()}`;
-  const lk=lockAt(s,cur),open=Date.now()<lk,p=myPick(cur)||{},can=registered()&&open;
+function vWeek(n){
+  const s=S.season,cur=curWeek(s),win=winnerId(s);
+  if(n<cur||win)return weekResult(n);
+  if(n>cur)return`<div class="card"><h3>Semaine ${n}</h3><p class="muted">Les choix de cette semaine ouvriront quand le résultat de la semaine ${cur} sera connu.</p></div>`;
+  const w=wk(s,cur),lk=lockAt(s,cur),open=Date.now()<lk,p=myPick(cur)||{},can=registered()&&open;
   const alive=ids.filter(id=>!outOrder(s).includes(id));
   const head=`<div class="card"><div class="wk-head"><h3>Semaine ${cur}</h3>
       <span class="lock ${open?'open':'closed'}">${open?`Ouvert · ferme dans ${fmtLeft(lk)}`:'Fermé'}</span></div>
@@ -963,15 +969,16 @@ function vWeek(){
   const immList=w.immCands.length?w.immCands.filter(id=>alive.includes(id)):alive;
   const imm=`<div class="card"><h3>Qui sera immunisé ?</h3><p class="muted">${w.immCands.length?`L’immunité se joue au prime de samedi entre ces ${immList.length} élèves.`:'L’élève protégé des nominations la semaine prochaine, désigné au prime de samedi.'}</p>
       <div class="pick-grid">${immList.map(id=>pickBtn(cur,'immune',id,p.immune===id,!can)).join('')}</div></div>`;
-  return head+elim+imm+histBlock();
+  return head+elim+imm;
 }
-function histBlock(){
-  const s=S.season,done=weekKeys(s).filter(n=>{const w=wk(s,n);return w.out.length||w.immune;});
-  if(!done.length||!S.uid)return'';
-  const rows=done.slice().reverse().map(n=>{const w=wk(s,n),p=myPick(n)||{};
-    const part=(lab,real,mine,okFn)=>`<span><b>${lab}</b> : ${real?esc(C[real].name):'—'} · toi : ${mine?esc(C[mine].name):'rien'} ${mine&&real?(okFn()?`<span class="r-ok">+${SC.elim}</span>`:'<span class="r-bad">✗</span>'):''}</span>`;
-    return`<div><b>S${n}</b>${part('Éliminé',w.out[0],p.elim,()=>w.out.includes(p.elim))}${part('Immunisé',w.immune,p.immune,()=>w.immune===p.immune)}</div>`;}).join('');
-  return`<div class="card"><h3>Mes semaines passées</h3><div class="hist">${rows}</div></div>`;
+function weekResult(n){
+  const s=S.season,w=wk(s,n),p=myPick(n)||{},imm=w.immune;
+  const row=(lab,real,mine,ok)=>`<div class="wr"><b>${lab}</b>${real?`<span class="wr-el">${av(real)}<span>${esc(C[real].name)}</span></span>`:'<span class="muted">pas encore renseigné</span>'}
+    <span>Ton choix : ${mine?esc(C[mine].name):'<span class="muted">rien</span>'} ${mine&&real?(ok?`<b class="r-ok">+${SC.elim}</b>`:'<b class="r-bad">✗</b>'):''}</span></div>`;
+  const nom=w.nominees.length?`<p class="muted">Nominés : ${w.nominees.map(i=>esc(C[i].name)).join(', ')}</p>`:'';
+  return`<div class="card"><div class="wk-head"><h3>Semaine ${n}</h3><span class="lock closed">Terminé</span></div>${nom}
+    ${w.noElim?`<p>Pas d’élimination cette semaine${w.quit.length?' ('+w.quit.map(i=>esc(C[i].name)).join(', ')+' a quitté l’aventure)':''}.</p>`:row('Éliminé',w.out[0],p.elim,w.out.includes(p.elim))}
+    ${row('Immunisé',imm,p.immune,imm===p.immune)}</div>`;
 }
 function vFinal(){
   const s=S.season,o=cleanOrder(S.me.order),P=places(s),edit=registered()&&s.rankingOpen,full=o.length===N,val=!!S.me.validated&&full;
@@ -1023,6 +1030,8 @@ function vSettings(){
 }
 function vBoard(){
   if(S.viewPlayer&&S.players[S.viewPlayer])return vPlayer(S.viewPlayer);
+  // tant que son classement final n'est pas complet, on ne montre que de quoi le faire
+  if(registered()&&S.season.rankingOpen&&cleanOrder(S.me.order).length<N)return`<h2>Mon classement final</h2>${vFinal()}`;
   const s=S.season,rows=Object.entries(S.players).map(([uid,p])=>({uid,p,sc:scoreOf(uid,p,s,S.picks),n:cleanOrder(p.order).length}));
   rows.sort((a,b)=>b.sc.total-a.sc.total||b.n-a.n||a.p.name.localeCompare(b.p.name,'fr'));
   let pos=0,prev=null;
@@ -1061,10 +1070,10 @@ function vPlayer(uid){
   return`<div class="row"><button class="btn ghost" data-act="player" data-id="">‹ Classement</button></div>
     <div class="card"><div class="wk-head"><h2>${esc(p.name)}${me?' (toi)':''}</h2><span class="ptsbig">${sc.total}<small> pts</small></span></div>
       <p class="muted">Final ${sc.rank} · Hebdo ${sc.weekly} · Bonus ${sc.bonus}</p></div>
-    <div class="card"><h3>Choix de la semaine</h3><div class="hist">${wrows||'<p class="empty">Pas encore de semaine.</p>'}</div></div>
-    <div class="card"><h3>Cœurs & tomates</h3><div class="hist">${lkrows}</div></div>
     ${me&&registered()&&s.rankingOpen?vFinal() // sa propre fiche : classement final modifiable tant qu'il n'est pas verrouillé
-      :`<div class="card"><h3>Pronostic final · ${o.length}/${N}${p.validated&&o.length===N?' · validé ✓':''}</h3>${cards?`<div class="cards">${cards}</div>`:'<p class="empty">Pas encore de classement.</p>'}</div>`}`;
+      :`<div class="card"><h3>Pronostic final · ${o.length}/${N}${p.validated&&o.length===N?' · validé ✓':''}</h3>${cards?`<div class="cards">${cards}</div>`:'<p class="empty">Pas encore de classement.</p>'}</div>`}
+    <div class="card"><h3>Choix de la semaine</h3><div class="hist">${wrows||'<p class="empty">Pas encore de semaine.</p>'}</div></div>
+    <div class="card"><h3>Cœurs & tomates</h3><div class="hist">${lkrows}</div></div>`;
 }
 
 /* ---------- organisateur ---------- */
@@ -1423,7 +1432,7 @@ document.addEventListener('click',e=>{
   else if(a==='notifOff')disableNotif();
   else if(a==='logout')logout();
   else if(a==='pick')savePick(t.dataset.f,id);
-  else if(a==='rank'){if(editFinal()){const wasVal=S.me.validated;S.me.order=o.includes(id)?o.filter(x=>x!==id):o.concat(id);S.me.validated=false;S.resetAsk=false;queueMe();if(wasVal)toast('Classement modifié : pense à le revalider.');}}
+  else if(a==='rank'){if(editFinal()){const wasVal=S.me.validated;S.me.order=o.includes(id)?o.filter(x=>x!==id):o.concat(id);S.me.validated=false;if(S.tab==='board'&&S.me.order.length===N)S.viewPlayer=S.uid;S.resetAsk=false;queueMe();if(wasVal)toast('Classement modifié : pense à le revalider.');}}
   else if(a==='reset'){S.resetAsk=true;render();}
   else if(a==='resetNo'){S.resetAsk=false;render();}
   else if(a==='resetYes'){if(editFinal()){S.me.order=[];S.me.validated=false;S.resetAsk=false;queueMe();}}
