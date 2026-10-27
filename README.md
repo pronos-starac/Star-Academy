@@ -43,6 +43,7 @@ Une fois ces étapes faites, tes amis peuvent jouer.
 **Toi**, dans l'*Espace organisateur* :
 - le mercredi, saisis les **nominés** ;
 - le samedi, saisis l'**immunisé** désigné au prime, puis l'**éliminé**, et confirme le KO ;
+- sinon, l'éliminé et l'immunisé sont remplis automatiquement d'après le résumé de la quotidienne du dimanche (champs `primeOut` et `primeImmune` de `recaps.json`), seulement s'ils sont cohérents (éliminé parmi les nominés, immunisé parmi les candidats). Les points comptent aussitôt ; dans l'espace organisateur, **Valider** les enregistre, **Rejeter** les ignore pour saisir le résultat à la main. Ta saisie l'emporte toujours ;
 - quand tu le décides, clique sur **Verrouiller les classements finaux**.
 
 Chaque clic est enregistré tout de suite et visible par tout le monde.
