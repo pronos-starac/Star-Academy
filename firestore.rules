@@ -4,6 +4,7 @@ rules_version = '2';
 // À coller dans la console Firebase : Firestore Database → Règles → Publier.
 // Seul le joueur « aurelien » (pseudo + code) est organisateur, sur n'importe quel appareil.
 //
+// VERSION 15 — 27/10/2026 : réponses aux commentaires des quotidiennes (champ optionnel « parent »).
 // VERSION 14 — 17/10/2026 : emoji 🍅 (tomato) sur les chansons de l'onglet Prime.
 // VERSION 13 — 17/10/2026 : option anti-spoiler du dimanche (noSun) enregistrée dans les préférences de notification.
 // VERSION 12 — 15/10/2026 : option anti-spoiler des nominés enregistrée dans les préférences de notification.
