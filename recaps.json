@@ -1,6 +1,46 @@
 {
-  "updated": "2026-10-27T00:07:05+01:00",
+  "updated": "2026-10-27T20:00:58+01:00",
   "items": [
+    {
+      "id": "2026-10-27",
+      "title": "« On va tous chialer » : Mosimann lance la semaine des proches, Isabella ouvrira sur Thriller",
+      "tag": null,
+      "points": [
+        "Quentin Mosimann réunit les 15 élèves au théâtre pour dévoiler le thème des évaluations : chacun doit chanter un titre dédié à un proche, avec carte blanche totale sur le choix, en prévision du « prime des proches » du 31 octobre.",
+        "Les académiciens cherchent aussitôt leur chanson : Ydriss pense à sa mère, Zoé hésite entre son grand-père et ses amis, Morgan penche pour Pierre Garnier, et Antoine opte pour un titre entraînant qui lui rappelle le meilleur ami qui l'a poussé à passer le casting, tout en avouant son trac face au niveau de la promo.",
+        "Semaine d'Halloween oblige, Sofia arrive masquée à son cours de chant, consacré à la justesse, et fait travailler chaque élève.",
+        "Au cours de danse, Jonathan initie la promo au contemporain avec une chorégraphie ; les groupes de niveau sont revus et plusieurs élèves changent de groupe.",
+        "Les répétitrices, menées par Fanny Delaigue, viennent annoncer les invités du prime : Marguerite, ancienne élève de la Star Ac, Sheryfa Luna, Claudio Capéo et TeddyBear.",
+        "Isabella, immunisée après sa victoire au top 3, ouvrira le prime en chantant et dansant sur Thriller de Michael Jackson, sa deuxième ouverture de la saison.",
+        "Avant de monter sur scène pour les évaluations, les élèves reçoivent des messages vidéo de leurs proches.",
+        "Annoncé pour la suite : les évaluations ont lieu mardi matin, le top 3 se disputera l'immunité au prime et les trois moins bons seront nommés mercredi."
+      ],
+      "eleves": [
+        "isabella",
+        "ydriss",
+        "zoe",
+        "morgan",
+        "antoine"
+      ],
+      "sources": [
+        {
+          "name": "Stars Actu",
+          "url": "https://www.stars-actu.fr/2026/10/star-academy-du-27-octobre-2026-resume-et-replay-de-la-quotidienne/"
+        },
+        {
+          "name": "Viralmag (thème des évaluations)",
+          "url": "https://viralmag.fr/on-va-tous-chialer-star-academy-2026-theme-evaluations-proches/"
+        },
+        {
+          "name": "Viralmag (invités du prime)",
+          "url": "https://viralmag.fr/star-academy-2026-invites-prime-31-octobre-reveles/"
+        },
+        {
+          "name": "Stéphane Larue",
+          "url": "https://stephanelarue.com/star-academy-les-15-chansons-choisies-par-les-eleves-pour-leurs-proches/"
+        }
+      ]
+    },
     {
       "id": "2026-10-26",
       "title": "Cameron « dégoûté » de son Hallelujah, débriefs avec Lydia et soirée d'Halloween",
