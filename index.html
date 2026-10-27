@@ -138,12 +138,13 @@ footer{margin-top:36px;padding-top:14px;border-top:1px solid var(--line);font-si
 .wr>b{min-width:80px}.wr-el{display:inline-flex;align-items:center;gap:8px;font-weight:700}.wr-el .av{width:34px;aspect-ratio:4/5;font-size:16px}
 .nowbar{display:flex;flex-wrap:wrap;gap:6px 18px;align-items:center}
 .trombi{margin-bottom:22px}
-.trombi-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(70px,1fr));gap:6px}
-.trombi-grid .tile{padding:5px 5px 7px;gap:4px}
-.trombi-grid .tile .av{font-size:30px}
-.trombi-grid .tile .nm{font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.trombi-grid .tile .st{font-size:9.5px;letter-spacing:.04em}
-.trombi-grid .tile.st-ko::after{font-size:15px;padding:3px 0}
+.trombi-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+.trombi-grid .tile{padding:6px 6px 8px;gap:5px}
+.trombi-grid .tile .av{font-size:44px}
+.trombi-grid .tile .nm{font-size:18px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.trombi-grid .tile .st{font-size:11px;letter-spacing:.05em}
+.trombi-grid .tile.st-ko::after{font-size:22px;padding:4px 0}
+@media (max-width:820px){.trombi-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.trombi-grid .tile .nm{font-size:16px}.trombi-grid .tile .st{font-size:10px}}
 .legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:13px;color:var(--muted)}
 .legend b{font-weight:700}
 
