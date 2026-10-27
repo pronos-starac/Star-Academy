@@ -591,14 +591,14 @@ function subscribePrime(n){
 }
 function vPrime(){
   const last=latestPrime(),pr=S.primeSub==='prono',cur=curWeek(S.season);
-  // en Prono, la semaine en cours (prime à venir) est proposée aussi, et pas le lancement (aucun prono)
-  const top=pr?Math.max(last,cur):last;let n=S.primeSel==null?top:Math.min(S.primeSel,top);if(pr&&n<1)n=1;
+  // en Prono, la semaine en cours (prime à venir) est proposée aussi
+  const top=pr?Math.max(last,cur):last,n=S.primeSel==null?top:Math.min(S.primeSel,top);
   subscribePrime(Math.min(n,last));
-  const arch=[];for(let i=top;i>=(pr?1:0);i--)arch.push(i);
+  const arch=[];for(let i=top;i>=0;i--)arch.push(i);
   const sel=arch.length>1?`<div class="seg-bar">${arch.map(i=>`<button class="seg${i===n?' on':''}" data-act="primeSel" data-id="${i}" aria-pressed="${i===n}">${i?'P'+i:'Lancement'}</button>`).join('')}</div>`:'';
   const live=primeLive(n),upcoming=Date.now()<primeStart(n)-20*60000;
   let html=`<div class="card prime-head"><div class="wk-head"><h2>${esc(primeLabel(n))}</h2>${live?'<span class="live">● En direct</span>':''}</div>
-    <p class="muted">${pr?'Qui sera éliminé, qui sera immunisé à ce prime ? '+SC.elim+' points par bon choix.':upcoming?'Le prime commence à 21h10 sur TF1. Le chat et les notes sont déjà ouverts.':live?'Commente en direct avec les autres et note chaque chanson.':'Chat et notes de ce prime, toujours ouverts.'}</p>${sel}</div>`;
+    <p class="muted">${pr&&n<1?'':pr?'Qui sera éliminé, qui sera immunisé à ce prime ? '+SC.elim+' points par bon choix.':upcoming?'Le prime commence à 21h10 sur TF1. Le chat et les notes sont déjà ouverts.':live?'Commente en direct avec les autres et note chaque chanson.':'Chat et notes de ce prime, toujours ouverts.'}</p>${sel}</div>`;
   const seg=[['chat','💬 Chat'+(S.pchat.length?' ('+S.pchat.length+')':'')],['songs','🎵 Chansons'+(S.songs.length?' ('+S.songs.length+')':'')],['prono','🎯 Prono']].map(([k,l])=>`<button class="seg${S.primeSub===k?' on':''}" data-act="primeSub" data-id="${k}" aria-pressed="${S.primeSub===k}">${l}</button>`).join('');
   if(pr)return html+`<div class="seg-bar">${seg}</div>`+vWeek(n);
   if(primeMasked(n))return html+`<div class="seg-bar">${seg}</div><div class="card"><p>🙈 Tu as activé l’anti-spoiler du dimanche : le chat et les notes de ce prime sont masqués jusqu’à dimanche minuit.</p><div class="row"><button class="btn ghost" data-act="primeSpoil" data-id="${n}">Afficher quand même</button></div></div>`;
@@ -951,6 +951,7 @@ function pickBtn(n,field,id,on,dis){
   return`<button class="pick ${field==='elim'?'el':'im'}" data-act="pick" data-f="${field}" data-id="${id}" aria-pressed="${on}"${dis?' disabled':''}>${av(id)}<b>${esc(C[id].name)}</b></button>`;}
 function vWeek(n){
   const s=S.season,cur=curWeek(s),win=winnerId(s);
+  if(n<1)return`<div class="card"><p class="muted">Pas de prono au prime de lancement : les choix de la semaine commencent avec le prime 1.</p></div>`;
   if(n<cur||win)return weekResult(n);
   if(n>cur)return`<div class="card"><h3>Semaine ${n}</h3><p class="muted">Les choix de cette semaine ouvriront quand le résultat de la semaine ${cur} sera connu.</p></div>`;
   const w=wk(s,cur),lk=lockAt(s,cur),open=Date.now()<lk,p=myPick(cur)||{},can=registered()&&open;
