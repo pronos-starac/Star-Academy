@@ -599,7 +599,7 @@ function vPrime(){
   const sel=arch.length>1?`<div class="seg-bar">${arch.map(i=>`<button class="seg${i===n?' on':''}" data-act="primeSel" data-id="${i}" aria-pressed="${i===n}">${i?'P'+i:'Lancement'}</button>`).join('')}</div>`:'';
   const live=primeLive(n),upcoming=Date.now()<primeStart(n)-20*60000;
   let html=`<div class="card prime-head"><div class="wk-head"><h2>${esc(primeLabel(n))}</h2>${live?'<span class="live">● En direct</span>':''}</div>
-    <p class="muted">${pr?(n<1?'Pas de prono pour ce prime.':'Éliminé, immunisé : '+SC.elim+' pts par bon choix.'):upcoming?'Début à 21h10 sur TF1. Chat déjà ouvert.':live?'Commente en direct et note chaque chanson.':'Chat et notes de ce prime, toujours ouverts.'}</p>${sel}</div>`;
+    <p class="muted">${pr?(n<1?'Pas de prono pour ce prime.':'Qui sera éliminé ? Qui sera immunisé ?'):upcoming?'Début à 21h10 sur TF1. Chat déjà ouvert.':live?'Commente en direct et note chaque chanson.':'Chat et notes de ce prime, toujours ouverts.'}</p>${sel}</div>`;
   const seg=[['chat','💬 Chat'+(S.pchat.length?' ('+S.pchat.length+')':'')],['songs','🎵 Chansons'+(S.songs.length?' ('+S.songs.length+')':'')],['prono','🎯 Prono']].map(([k,l])=>`<button class="seg${S.primeSub===k?' on':''}" data-act="primeSub" data-id="${k}" aria-pressed="${S.primeSub===k}">${l}</button>`).join('');
   if(pr)return html+`<div class="seg-bar">${seg}</div>`+vWeek(n);
   if(primeMasked(n))return html+`<div class="seg-bar">${seg}</div><div class="card"><p>🙈 Tu as activé l’anti-spoiler du dimanche : le chat et les notes de ce prime sont masqués jusqu’à dimanche minuit.</p><div class="row"><button class="btn ghost" data-act="primeSpoil" data-id="${n}">Afficher quand même</button></div></div>`;
