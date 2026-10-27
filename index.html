@@ -337,6 +337,10 @@ footer{margin-top:36px;padding-top:14px;border-top:1px solid var(--line);font-si
 .cm{display:flex;flex-direction:column;gap:2px}.cm .who{font-size:13px;color:var(--muted)}.cm .who b{color:var(--text)}
 .cm p{margin:0;white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.4}
 .cm .del{margin-left:8px;font-size:12px}
+.cm .rep{font-size:12px;align-self:flex-start;margin-top:2px}
+.cmth{display:flex;flex-direction:column;gap:8px}
+.cmrs{display:flex;flex-direction:column;gap:8px;margin-left:14px;padding-left:10px;border-left:2px solid var(--line)}
+.cm.gone p{color:var(--muted);font-style:italic}
 .cmform{display:flex;gap:8px;align-items:flex-end}
 .cmform textarea{flex:1;min-width:0;resize:vertical;min-height:44px;background:#0e0206;color:var(--text);border:1px solid var(--line);border-radius:3px;padding:8px 10px;font:inherit;font-size:16px}
 .disclaim{font-size:14px}
@@ -657,7 +661,7 @@ function startPresence(){if(presTimer)return;beat();presTimer=setInterval(beat,2
 /* ===================== quotidiennes ===================== */
 const REACT=[['love','😍'],['lol','😂'],['wow','😱'],['sad','😢'],['fire','🔥'],['clap','👏']];
 const RCODES=REACT.map(r=>r[0]);
-Object.assign(S,{closedCm:new Set(),recaps:[],recapLoaded:false,recapErr:false,recapAt:0,recapHidden:[],reacts:{},comments:[],openCm:new Set(),drafts:{},cmDelArm:null});
+Object.assign(S,{recaps:[],recapLoaded:false,recapErr:false,recapAt:0,recapHidden:[],reacts:{},comments:[],drafts:{},cmDelArm:null,cmReply:null});
 S.autoNoms={};S.autoNomWeeks=new Set();S.realRaw=null;
 function withAuto(raw){const v=JSON.parse(JSON.stringify(raw));S.autoNomWeeks=new Set();
   Object.keys(S.autoNoms).forEach(k=>{const w=v.weeks[k]||(v.weeks[k]={immune:null,nominees:[],out:[]});
@@ -686,7 +690,7 @@ async function loadRecaps(force){
       if(r.noElim)o.noElim=true;if(r.immCands.length)o.immCands=r.immCands;if(r.quit.length)o.quit=[...new Set((o.quit||[]).concat(r.quit))];});S.autoX=ax;
     S.autoNoms=an;if(S.realRaw)setReal(S.realRaw);}catch(e){S.recapErr=true;}
   S.recapLoaded=true;
-  if(S.deepRc&&S.recaps.some(r=>r.id===S.deepRc)){S.openCm.add(S.deepRc);const id=S.deepRc;S.deepRc=null;render();setTimeout(()=>{const el=document.getElementById('rc-'+id);if(el)el.scrollIntoView({block:'start'});},80);return;}
+  if(S.deepRc&&S.recaps.some(r=>r.id===S.deepRc)){const id=S.deepRc;S.deepRc=null;render();setTimeout(()=>{const el=document.getElementById('rc-'+id);if(el)el.scrollIntoView({block:'start'});},80);return;}
   render();}
 function recapDate(id){const[y,m,d]=id.split('-').map(Number);return{y,m:m-1,d};}
 function recapWeek(id){const{y,m,d}=recapDate(id);return Math.max(0,Math.ceil((Date.UTC(y,m,d)-Date.UTC(LAUNCH[0],LAUNCH[1],LAUNCH[2]))/864e5/7));}
@@ -1042,10 +1046,17 @@ function vDaily(){
 function recapCard(r,orga){
   const hid=S.recapHidden.includes(r.id),reg=registered()&&!S.anon;
   const{c,mine}=reactCounts(r.id);
-  const cms=S.comments.filter(x=>x.recap===r.id),open=cms.length?!S.closedCm.has(r.id):S.openCm.has(r.id);
+  const cms=S.comments.filter(x=>x.recap===r.id);
   const rx=REACT.map(([k,e])=>`<button class="rx" data-act="react" data-id="${r.id}" data-k="${k}" aria-pressed="${mine.has(k)}" aria-label="Réagir ${e}">${e}${c[k]?`<b>${c[k]}</b>`:''}</button>`).join('');
-  const cmList=cms.map(x=>{const p=S.players[x.uid],own=x.uid===S.uid,canDel=own||orga;
-    return`<div class="cm"><span class="who"><b>${esc(p?p.name:'Ancien joueur')}</b> · ${esc(cmTime(x))}${canDel?`<button class="linkbtn del" data-act="cmDel" data-id="${esc(x.id)}">${S.cmDelArm===x.id?'Confirmer la suppression':'Supprimer'}</button>`:''}</span>${own?`<p>${esc(x.text)}</p>`:msgBody(x.text,x.id)}</div>`;}).join('');
+  // fils : un commentaire racine et ses réponses (un seul niveau, une réponse à une réponse rejoint le même fil)
+  const byId={},roots=[],reps={};cms.forEach(x=>byId[x.id]=x);
+  cms.forEach(x=>{if(x.parent&&x.parent!==x.id){(reps[x.parent]=reps[x.parent]||[]).push(x);if(!byId[x.parent]&&!reps[x.parent].gone){reps[x.parent].gone=1;roots.push({id:x.parent,gone:true});}}else roots.push(x);});
+  const one=(x,root)=>{if(x.gone)return`<div class="cm gone"><p>Commentaire supprimé</p></div>`;
+    const p=S.players[x.uid],own=x.uid===S.uid,canDel=own||orga;
+    return`<div class="cm"><span class="who"><b>${esc(p?p.name:'Ancien joueur')}</b> · ${esc(cmTime(x))}${canDel?`<button class="linkbtn del" data-act="cmDel" data-id="${esc(x.id)}">${S.cmDelArm===x.id?'Confirmer la suppression':'Supprimer'}</button>`:''}</span>${own?`<p>${esc(x.text)}</p>`:msgBody(x.text,x.id)}${reg?`<button class="linkbtn rep" data-act="cmReply" data-id="${esc(root)}" data-to="${esc(x===byId[root]||own||!p?'':p.name)}">Répondre</button>`:''}</div>`;};
+  const cmList=roots.map(x=>{const rs=reps[x.id]||[],k='cr-'+x.id;
+    const rf=reg&&S.cmReply===x.id?`<div class="cmform"><textarea id="${esc(k)}" maxlength="500" rows="2" placeholder="Ta réponse…" aria-label="Ta réponse">${esc(S.drafts[k]||'')}</textarea><button class="btn" data-act="cmSendRe" data-id="${esc(x.id)}" data-rc="${r.id}">Répondre</button></div>`:'';
+    return`<div class="cmth">${one(x,x.id)}${rs.length||rf?`<div class="cmrs">${rs.map(y=>one(y,x.id)).join('')}${rf}</div>`:''}</div>`;}).join('');
   const form=reg?`<div class="cmform"><textarea id="cm-${r.id}" maxlength="500" rows="2" placeholder="Ton commentaire…" aria-label="Ton commentaire">${esc(S.drafts[r.id]||'')}</textarea><button class="btn" data-act="cmSend" data-id="${r.id}">Envoyer</button></div>`:'';
   return`<article class="card recap${hid?' hid':''}" id="rc-${r.id}">
     <div class="rc-h"><span class="rc-date">${esc(recapLabel(r.id))}</span>${r.tag==='nominations'?'<span class="pill">Nominations</span>':''}${hid?'<span class="pill">Masqué aux joueurs</span>':''}</div>
@@ -1054,9 +1065,8 @@ function recapCard(r,orga){
     ${r.eleves.length?`<div class="rc-el">${r.eleves.map(id=>`<button class="chip" data-act="goSel" data-id="${id}">${av(id)}<span class="nm">${esc(C[id].name)}</span></button>`).join('')}</div>`:''}
     ${r.sources.length?`<p class="rc-src">D’après ${r.sources.map(o=>`<a href="${esc(o.url)}" target="_blank" rel="noopener">${esc(o.name)}</a>`).join(', ')}</p>`:''}
     <div class="rc-react">${rx}</div>
-    <div class="row"><button class="linkbtn" data-act="cmToggle" data-id="${r.id}" aria-expanded="${open}">💬 ${cms.length?cms.length+' commentaire'+(cms.length>1?'s':'')+(open?' ▴':' ▾'):'Commenter'}</button>
-      ${orga?`<button class="btn ghost" data-act="recapHide" data-id="${r.id}">${hid?'Réafficher':'Masquer'}</button>`:''}</div>
-    ${open?`<div class="cms">${cmList||'<p class="muted">Aucun commentaire pour l’instant.</p>'}${form}</div>`:''}
+    ${orga?`<div class="row"><button class="btn ghost" data-act="recapHide" data-id="${r.id}">${hid?'Réafficher':'Masquer'}</button></div>`:''}
+    <div class="cms"><span class="muted">💬 ${cms.length?cms.length+' commentaire'+(cms.length>1?'s':''):'Aucun commentaire pour l’instant.'}</span>${cmList}${form}</div>
   </article>`;
 }
 function vOrga(){
@@ -1227,11 +1237,12 @@ async function react(rid,k){
     if(e.length)await fb.fs.setDoc(ref,{uid:S.uid,recap:rid,e});else await fb.fs.deleteDoc(ref);}
   catch(err){if(prev)S.reacts[key]=prev;else delete S.reacts[key];render();toast('Réaction non enregistrée ('+errText(err)+').');}
 }
-async function sendComment(rid){
+async function sendComment(rid,parent){
   if(!needPlayer())return;
-  const txt=(S.drafts[rid]||'').trim().slice(0,500);if(!txt){toast('Écris quelque chose avant d’envoyer.');return;}
-  const id=S.uid+'_'+Date.now();
-  try{await fb.fs.setDoc(fb.fs.doc(fb.db,'comments',id),{uid:S.uid,recap:rid,text:txt,at:fb.fs.serverTimestamp()});S.drafts[rid]='';render();}
+  const k=parent?'cr-'+parent:rid;
+  const txt=(S.drafts[k]||'').trim().slice(0,500);if(!txt){toast('Écris quelque chose avant d’envoyer.');return;}
+  const id=S.uid+'_'+Date.now(),doc={uid:S.uid,recap:rid,text:txt,at:fb.fs.serverTimestamp()};if(parent)doc.parent=parent;
+  try{await fb.fs.setDoc(fb.fs.doc(fb.db,'comments',id),doc);S.drafts[k]='';if(parent)S.cmReply=null;render();}
   catch(err){toast('Commentaire non envoyé ('+errText(err)+').');}
 }
 async function delComment(cid){
@@ -1268,7 +1279,7 @@ document.addEventListener('change',e=>{if(e.target.id==='nospoil')setNoSpoil(e.t
   if(e.target.id==='orgaNoElim'&&isOrga()){const v=e.target.checked;editWeek(curWeek(S.real),w=>{w.noElim=v;});}
   if(e.target.dataset&&e.target.dataset.np)setNotifPref(e.target.dataset.np,e.target.checked);
   else if(e.target.id==='validate'){if(cleanOrder(S.me.order).length!==N){e.target.checked=false;return;}S.me.validated=e.target.checked;queueMe();toast(S.me.validated?'Classement validé ✓':'Classement dévalidé.');}});
-document.addEventListener('input',e=>{if(e.target.id==='pc-input'){S.drafts['pc']=e.target.value;return;}if(e.target.id==='song-title'&&S.songForm){S.songForm.title=e.target.value;S.songForm.cover=null;songSearch(e.target.value);return;}if(/^sr-/.test(e.target.id)){S.drafts[e.target.id]=e.target.value;return;}if(/^cm-/.test(e.target.id)){S.drafts[e.target.id.slice(3)]=e.target.value;return;}if(e.target.id==='pname'&&$('#pcode'))S.form.name=e.target.value;else if(e.target.id==='pcode')S.form.code=e.target.value.replace(/\D/g,'');});
+document.addEventListener('input',e=>{if(e.target.id==='pc-input'){S.drafts['pc']=e.target.value;return;}if(e.target.id==='song-title'&&S.songForm){S.songForm.title=e.target.value;S.songForm.cover=null;songSearch(e.target.value);return;}if(/^sr-/.test(e.target.id)){S.drafts[e.target.id]=e.target.value;return;}if(/^cm-/.test(e.target.id)){S.drafts[e.target.id.slice(3)]=e.target.value;return;}if(/^cr-/.test(e.target.id)){S.drafts[e.target.id]=e.target.value;return;}if(e.target.id==='pname'&&$('#pcode'))S.form.name=e.target.value;else if(e.target.id==='pcode')S.form.code=e.target.value.replace(/\D/g,'');});
 document.addEventListener('keydown',e=>{if(e.key!=='Enter')return;if(e.target.id==='pc-input'&&!e.shiftKey){e.preventDefault();pcSend(S.primeFor);return;}
   if(e.target.id==='pcode'||(e.target.id==='pname'&&$('#pcode'))){e.preventDefault();join();}
   else if(e.target.id==='pname'){e.preventDefault();saveName();}});
@@ -1280,7 +1291,8 @@ document.addEventListener('click',e=>{
   if(a==='tab'){S.viewPlayer=null;S.tab=id;S.pendingOut=null;S.scrollTab=true;ls.set('sa14-tab',id);if(id==='daily')loadRecaps();render();window.scrollTo(0,0);}
   else if(a==='goSel'){S.sel=id;S.tab='select';S.scrollTab=true;ls.set('sa14-tab','select');render();window.scrollTo(0,0);}
   else if(a==='recapReload')loadRecaps(true);
-  else if(a==='cmToggle'){const has=S.comments.some(x=>x.recap===id);if(has){S.closedCm.has(id)?S.closedCm.delete(id):S.closedCm.add(id);}else{S.openCm.has(id)?S.openCm.delete(id):S.openCm.add(id);}render();if(has?!S.closedCm.has(id):S.openCm.has(id)){const t=document.getElementById('cm-'+id);if(t){t.scrollIntoView({block:'center',behavior:'smooth'});t.focus({preventScroll:true});}}}
+  else if(a==='cmReply'){if(!needPlayer())return;const k='cr-'+id,to=t.dataset.to;S.cmReply=id;if(to&&!S.drafts[k])S.drafts[k]='@'+to+' ';render();const el=document.getElementById(k);if(el){el.scrollIntoView({block:'center',behavior:'smooth'});el.focus({preventScroll:true});el.setSelectionRange(el.value.length,el.value.length);}}
+  else if(a==='cmSendRe')sendComment(t.dataset.rc,id);
   else if(a==='react')react(id,t.dataset.k);
   else if(a==='like')toggleLike(id,t.dataset.k);
   else if(a==='lkWeek'){S.lkWeek=+id;render();}
@@ -1368,7 +1380,7 @@ async function initFirebase(){
     fs.onSnapshot(fs.collection(db,'likeprefs'),q=>{const r={};q.forEach(d=>{const x=d.data();if(x&&x.anon===true)r[d.id]=true;});S.likePrefs=r;render();},()=>{});
     fs.onSnapshot(fs.doc(db,'season','recaps'),snap=>{const d=snap.exists()?snap.data():{};S.recapHidden=Array.isArray(d.hidden)?d.hidden.filter(x=>typeof x==='string'):[];render();},()=>{});
     fs.onSnapshot(fs.collection(db,'reactions'),q=>{const r={};q.forEach(d=>{const x=d.data();if(x&&typeof x.uid==='string'&&typeof x.recap==='string'&&Array.isArray(x.e))r[d.id]={uid:x.uid,recap:x.recap,e:x.e.filter(k=>RCODES.includes(k))};});S.reacts=r;render();},()=>{});
-    fs.onSnapshot(fs.collection(db,'comments'),q=>{const c=[];q.forEach(d=>{const x=d.data();if(x&&typeof x.uid==='string'&&typeof x.recap==='string'&&typeof x.text==='string')c.push({id:d.id,uid:x.uid,recap:x.recap,text:x.text.slice(0,500),at:toMs(x.at)});});
+    fs.onSnapshot(fs.collection(db,'comments'),q=>{const c=[];q.forEach(d=>{const x=d.data();if(x&&typeof x.uid==='string'&&typeof x.recap==='string'&&typeof x.text==='string')c.push({id:d.id,uid:x.uid,recap:x.recap,text:x.text.slice(0,500),at:toMs(x.at),parent:typeof x.parent==='string'?x.parent:null});});
       c.sort((a,b)=>(a.at||+a.id.split('_').pop())-(b.at||+b.id.split('_').pop()));S.comments=c;render();},()=>{});
     let first=true;
     authM.onAuthStateChanged(auth,u=>{

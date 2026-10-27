@@ -1,6 +1,7 @@
 // Envoie une notification pour chaque nouveau commentaire sur une quotidienne :
 // - aux joueurs qui ont déjà commenté cette quotidienne (option « thread », activée par défaut) ;
 // - aux joueurs qui veulent tous les commentaires (option « all »).
+// Une réponse à un commentaire arrive à son auteur avec le titre « X t’a répondu ».
 // Jamais à l'auteur. Plusieurs commentaires sont regroupés en une seule notification par joueur.
 import { initializeApp, cert } from 'firebase-admin/app';
 import { getFirestore, Timestamp } from 'firebase-admin/firestore';
@@ -54,6 +55,8 @@ const isSpoil = text => { const t = fold(text); if (SPOIL_RE.test(t)) return tru
 const pref = uid => prefs[uid] || DEF;
 const names = {}; players.forEach(d => names[d.id] = (d.data().name || 'Quelqu’un'));
 const tokens = {}; tokSnap.forEach(d => { const u = d.data().uid; (tokens[u] = tokens[u] || []).push(d.id); });
+const authorOf = {};                // auteur de chaque commentaire (pour les réponses)
+allComments.forEach(d => authorOf[d.id] = d.data().uid);
 const lastAtOf = {};                // premier commentaire de chaque joueur par quotidienne
 allComments.forEach(d => { const c = d.data(); const k = c.recap + '|' + c.uid, t = c.at ? c.at.toMillis() : 0;
   if (!(k in lastAtOf) || t < lastAtOf[k]) lastAtOf[k] = t; });
@@ -68,7 +71,8 @@ fresh.forEach(d => {
     if (uid === c.uid) continue;
     const p = pref(uid);
     const inThread = (c.recap + '|' + uid) in lastAtOf && lastAtOf[c.recap + '|' + uid] < c.at.toMillis();
-    if (p.all || (p.thread && inThread)) (out[uid] = out[uid] || []).push({ recap: c.recap, author: names[c.uid] || 'Quelqu’un', text: c.text, at: c.at.toMillis() });
+    const toMe = typeof c.parent === 'string' && authorOf[c.parent] === uid;
+    if (p.all || (p.thread && (inThread || toMe))) (out[uid] = out[uid] || []).push({ recap: c.recap, author: names[c.uid] || 'Quelqu’un', text: c.text, at: c.at.toMillis(), toMe });
   }
 });
 
@@ -79,7 +83,7 @@ let ok = 0, ko = 0; const dead = [];
 for (const [uid, list] of Object.entries(out)) {
   const recaps = [...new Set(list.map(x => x.recap))];
   const one = list.length === 1 ? list[0] : null;
-  const title = one ? `💬 ${one.author} sur la quotidienne du ${day(one.recap)}` : `💬 ${list.length} nouveaux commentaires`;
+  const title = one ? (one.toMe ? `↩️ ${one.author} t’a répondu (quotidienne du ${day(one.recap)})` : `💬 ${one.author} sur la quotidienne du ${day(one.recap)}`) : `💬 ${list.length} nouveaux commentaires`;
   const hide = pref(uid).noNom && list.some(x => isSpoil(x.text));
   const hideSun = !hide && pref(uid).noSun && list.some(x => isSunSpoil(x.text, x.at));
   const body = hide ? '🙈 Message masqué (spoiler possible avant le prime)' : hideSun ? '🙈 Message masqué (spoiler possible du prime)' : one ? one.text.slice(0, 140) : (recaps.length === 1 ? `Sur la quotidienne du ${day(recaps[0])}` : `Sur ${recaps.length} quotidiennes`);

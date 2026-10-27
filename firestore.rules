@@ -73,7 +73,7 @@ service cloud.firestore {
       allow delete: if isAdmin() || (signedIn() && resource.data.uid == request.auth.uid);
       allow update: if false;
       allow create: if isPlayer()
-        && request.resource.data.keys().hasOnly(['uid', 'recap', 'text', 'at'])
+        && request.resource.data.keys().hasOnly(['uid', 'recap', 'text', 'at', 'parent'])
         && request.resource.data.uid == request.auth.uid
         && cid.matches(request.auth.uid + '_[0-9]+')
         && request.resource.data.recap is string
@@ -81,7 +81,11 @@ service cloud.firestore {
         && request.resource.data.text is string
         && request.resource.data.text.size() > 0
         && request.resource.data.text.size() <= 500
-        && request.resource.data.at == request.time;
+        && request.resource.data.at == request.time
+        // réponse : « parent » est l'identifiant du commentaire auquel on répond
+        && (!('parent' in request.resource.data)
+            || (request.resource.data.parent is string
+                && request.resource.data.parent.matches('[A-Za-z0-9]+_[0-9]+')));
     }
 
     // Cœurs & tomates : jusqu'à 3 de chaque par joueur et par semaine, modifiables jusqu'à dimanche minuit.
