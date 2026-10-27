@@ -35,6 +35,8 @@ Une fois ces étapes faites, tes amis peuvent jouer.
 
 ## Pendant la saison
 
+**Reconnaissance des chansons (onglet Prime → Chansons)** : « Nouvelle chanson » écoute 10 secondes au micro et remplit le titre grâce à l'API AudD (https://audd.io, 300 requêtes offertes puis environ 5 $ les 1 000). L'organisateur colle la clé AudD dans l'onglet *Orga* ; elle est rangée dans Firestore (`config/audd`, règles VERSION 17) et lisible par les joueurs inscrits, donc pense à plafonner la dépense sur le compte AudD. Les reprises chantées en direct sont souvent mal reconnues : le titre reste modifiable à la main. Le bouton « Tous les élèves » sélectionne tous les élèves encore en lice.
+
 **Les joueurs**, dans l'onglet *Mon prono* (après avoir saisi pseudo et code) :
 - **Cette semaine** : ils choisissent qui sera éliminé (parmi les nominés) et qui sera immunisé. C'est enregistré dès qu'ils touchent un élève, et fermé automatiquement le dimanche à minuit.
 - **Anti-spoiler** : chaque joueur peut cocher « Je regarde le prime le dimanche ». Les résultats du samedi sont alors masqués pour lui jusqu'à dimanche minuit. Du début du prime (samedi 21h10) à dimanche minuit, les commentaires écrits pendant ou après le prime qui citent un élève ou parlent du résultat sont aussi censurés (bouton « Afficher »), ainsi que le texte des notifications de commentaires. Pour le robot des notifications, l'option est enregistrée dans `notifprefs` (champ `noSun`, règles Firestore VERSION 13).
