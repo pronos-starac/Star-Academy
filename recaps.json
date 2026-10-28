@@ -1,6 +1,63 @@
 {
-  "updated": "2026-10-28T00:08:47+01:00",
+  "updated": "2026-10-28T19:59:50+01:00",
   "items": [
+    {
+      "id": "2026-10-28",
+      "title": "Antoine, Ydriss et Maud nommés, premier 20/20 de la saison pour Mélina",
+      "tag": "nominations",
+      "nominees": [
+        "antoine",
+        "ydriss",
+        "maud"
+      ],
+      "points": [
+        "Mosimann annonce les trois nommés du prime du 31 octobre : Antoine, Ydriss et Maud. Isabella, dernière des évaluations, aurait dû l'être, mais son immunité fait que Maud est nommée à sa place.",
+        "La quotidienne revient sur les évaluations consacrées aux proches : Mélina bouleverse le jury avec Mourir sur scène de Dalida, dédiée à son grand-père, et Mosimann lui accorde le premier 20/20 de la saison.",
+        "Kylian se livre en lisant un texte sur l'absence de son père avant d'interpréter Si seulement je pouvais lui manquer de Calogero, avec Mélina au piano : Jonathan en pleure et Mosimann salue sa vulnérabilité.",
+        "Coup dur pour Isabella sur Grâce à vous : Lydia la trouve trop sur la réserve, Sofia pas assez convaincante, et Mosimann se dit très déçu.",
+        "Ydriss se présente en chaussons et se fait reprendre par Sofia avant de chanter Ne me jugez pas de Camille Lellouche pour sa mère ; Jonathan ne le voit pas progresser et sa posture jugée trop timide lui coûte cher.",
+        "Antoine, sur The Night We Met de Lord Huron pour sa grand-mère, est jugé trop sage et en dessous du niveau général ; Maud, au piano sur J'suis là de Danyl pour ses frères, est trahie par son stress selon les profs.",
+        "Cameron, sur Les Yeux de la Mama pour sa mère, est au contraire très applaudi : Sofia parle d'une prestation magnifique et Jonathan le trouve libéré.",
+        "Les autres passages défilent aussi, de Leeloo (Raye, pour sa sœur) à Tracy (Camille Yembe, pour sa mère), en passant par Brieuc (Adele), Morgan (Pierre Garnier) et Noémie.",
+        "À côté, atelier créatif d'Halloween et cours particuliers ; stressée par sa chorégraphie de Thriller pour l'ouverture du prime, Isabella reçoit l'aide de Morgan, qui la connaît par cœur."
+      ],
+      "eleves": [
+        "antoine",
+        "ydriss",
+        "maud",
+        "melina",
+        "kylian",
+        "isabella",
+        "cameron",
+        "morgan"
+      ],
+      "sources": [
+        {
+          "name": "Stars Actu",
+          "url": "https://www.stars-actu.fr/2026/10/star-academy-du-28-octobre-2026-nominations-resume-et-replay-de-la-quotidienne/"
+        },
+        {
+          "name": "Purepeople",
+          "url": "https://www.purepeople.com/article/star-academy-on-connait-les-3-nommes-de-la-semaine-une-eleve-designee-a-la-place-dune-autre-en-derniere-minute_a555626/1"
+        },
+        {
+          "name": "Stéphane Larue",
+          "url": "https://stephanelarue.com/star-academy-antoine-ydriss-et-maud-nommes-pour-le-prime-du-samedi-31-octobre/"
+        },
+        {
+          "name": "CGTV",
+          "url": "https://www.cg-tv.com/articles/star-academy-qui-sont-les-eleves-nommes-pour-le-prime-du-31-octobre"
+        },
+        {
+          "name": "AlloCiné",
+          "url": "https://www.allocine.fr/tvactu/articles/article-1000229296.html"
+        },
+        {
+          "name": "Puremédias",
+          "url": "https://www.ozap.com/actu/star-academy-2026-antoine-maud-et-ydriss-nommes-qui-doit-rester-votez-dans-notre-sondage/657694"
+        }
+      ]
+    },
     {
       "id": "2026-10-27",
       "title": "« On va tous chialer » : Mosimann lance la semaine des proches, Isabella ouvrira sur Thriller",
@@ -13,7 +70,8 @@
         "Les répétitrices, menées par Fanny Delaigue, viennent annoncer les invités du prime : Marguerite, ancienne élève de la Star Ac, Sheryfa Luna, Claudio Capéo et TeddyBear.",
         "Isabella, immunisée après sa victoire au top 3, ouvrira le prime en chantant et dansant sur Thriller de Michael Jackson, sa deuxième ouverture de la saison.",
         "Avant de monter sur scène pour les évaluations, les élèves reçoivent des messages vidéo de leurs proches.",
-        "Annoncé pour la suite : les évaluations ont lieu mardi matin, le top 3 se disputera l'immunité au prime et les trois moins bons seront nommés mercredi."
+        "Annoncé pour la suite : les évaluations ont lieu mardi matin, le top 3 se disputera l'immunité au prime et les trois moins bons seront nommés mercredi.",
+        "Audience : 1,33 million de téléspectateurs (14,7 % de part d'audience, 31,5 % chez les femmes responsables des achats), en hausse d'un point par rapport à la veille."
       ],
       "eleves": [
         "isabella",
@@ -45,6 +103,10 @@
         {
           "name": "AlloCiné",
           "url": "https://www.allocine.fr/tvactu/articles/article-1000229160.html"
+        },
+        {
+          "name": "Puremédias (audiences)",
+          "url": "https://www.ozap.com/actu/audiences-pre-access-tout-le-monde-a-son-mot-a-dire-au-plus-haut-sur-france-2-depuis-5-mois-pluie-de-records-pour-cyril-hanouna-sur-w9/657688"
         }
       ]
     },
