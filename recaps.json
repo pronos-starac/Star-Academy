@@ -1,20 +1,31 @@
 {
-  "updated": "2026-10-29T20:01:23+01:00",
+  "updated": "2026-10-30T00:07:28+01:00",
   "items": [
     {
       "id": "2026-10-29",
-      "title": "Eva en visite au château : la « grande sœur » de la promo se livre sans filtre",
+      "title": "Visite d'Eva, Amel malade et coups de fil réconfortants pour Ydriss et Antoine",
       "tag": null,
       "points": [
         "Eva, l'une des deux « grandes sœurs » de la saison, rend visite aux académiciens au château et revient sans détour sur son parcours.",
+        "La journée démarre mal pour Amel, malade ; prévenu par les élèves, Ladji axe son cours de sport sur le cardio, avec des cadeaux venus des proches à la clé : appels téléphoniques pour certains, messages vocaux pour d'autres, et une lettre remise à chacun avant son départ.",
+        "Encore secoué par sa nomination, Ydriss appelle sa mère et reconnaît que la nouvelle lui a « mis une claque ».",
+        "Antoine, lui aussi nommé, téléphone à Mosimann, qui s'emploie à le rassurer et à le remotiver avant le prime.",
         "La chanteuse raconte son changement d'image, loin de l'époque « Eva Queen », par peur que sa carrière s'arrête, et confie s'être trouvée « plouc » en se regardant à ce moment-là.",
         "Elle évoque aussi son arrivée à Paris loin du Sud, la solitude et les doutes, et explique qu'il lui a fallu environ deux ans de travail acharné pour se réinventer, en insistant sur l'importance de connaître ses faiblesses.",
         "Brieuc ouvre les questions en l'interrogeant sur ce « rebranding », tandis que Maud, nommée cette semaine, lui demande comment changer d'univers musical.",
-        "Questionnée sur la Star Academy, Eva avoue qu'elle n'aurait jamais osé y participer, n'osant pas chanter devant un public à ses débuts ; elle salue le courage des élèves et dit vouloir revenir au château."
+        "Questionnée sur la Star Academy, Eva avoue qu'elle n'aurait jamais osé y participer, n'osant pas chanter devant un public à ses débuts ; elle salue le courage des élèves et dit vouloir revenir au château.",
+        "Avant la visite d'Eva, Lydia donne son cours d'expression scénique ; la chanteuse reste ensuite déjeuner avec la promo.",
+        "Les répétitrices dévoilent la répartition des chansons du prime : Leeloo avec Marguerite (Un peu beaucoup), Cameron avec TeddyBear (Chaussures roses), Tracy et Amel avec Sheryfa Luna (Il avait les mots), Félix avec Claudio Capéo ; les nommés chanteront des titres choisis par leurs proches, Évidemment pour Antoine, Ils me rient tous au nez pour Maud et The Winner Takes It All pour Ydriss."
       ],
       "eleves": [
+        "ydriss",
+        "antoine",
+        "amel",
+        "maud",
         "brieuc",
-        "maud"
+        "leeloo",
+        "cameron",
+        "felix"
       ],
       "sources": [
         {
@@ -24,6 +35,18 @@
         {
           "name": "Gossip Addict (d'après Télé Star)",
           "url": "https://www.gossip-addict.com/fr/article/general/je-suis-une-plouc-eva-explique-un-cap-dans-sa-vie-aux-candidats-de-la-star-academy-2026-qu-elle-trouve-courageux/6ae38d629aa472da170b689c"
+        },
+        {
+          "name": "Stars Actu",
+          "url": "https://www.stars-actu.fr/2026/10/star-academy-du-29-octobre-2026-resume-et-replay-de-la-quotidienne/"
+        },
+        {
+          "name": "Stéphane Larue (d'après Télé Star)",
+          "url": "https://stephanelarue.com/star-academy-eva-aux-eleves-je-naurais-jamais-eu-le-courage/"
+        },
+        {
+          "name": "Viralmag (chansons du prime)",
+          "url": "https://viralmag.fr/star-academy-2026-prime-31-octobre-duos-invites-reveles/"
         }
       ]
     },
