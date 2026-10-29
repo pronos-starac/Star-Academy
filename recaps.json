@@ -1,6 +1,32 @@
 {
-  "updated": "2026-10-28T19:59:50+01:00",
+  "updated": "2026-10-29T20:01:23+01:00",
   "items": [
+    {
+      "id": "2026-10-29",
+      "title": "Eva en visite au château : la « grande sœur » de la promo se livre sans filtre",
+      "tag": null,
+      "points": [
+        "Eva, l'une des deux « grandes sœurs » de la saison, rend visite aux académiciens au château et revient sans détour sur son parcours.",
+        "La chanteuse raconte son changement d'image, loin de l'époque « Eva Queen », par peur que sa carrière s'arrête, et confie s'être trouvée « plouc » en se regardant à ce moment-là.",
+        "Elle évoque aussi son arrivée à Paris loin du Sud, la solitude et les doutes, et explique qu'il lui a fallu environ deux ans de travail acharné pour se réinventer, en insistant sur l'importance de connaître ses faiblesses.",
+        "Brieuc ouvre les questions en l'interrogeant sur ce « rebranding », tandis que Maud, nommée cette semaine, lui demande comment changer d'univers musical.",
+        "Questionnée sur la Star Academy, Eva avoue qu'elle n'aurait jamais osé y participer, n'osant pas chanter devant un public à ses débuts ; elle salue le courage des élèves et dit vouloir revenir au château."
+      ],
+      "eleves": [
+        "brieuc",
+        "maud"
+      ],
+      "sources": [
+        {
+          "name": "Viral Mag",
+          "url": "https://viralmag.fr/eva-se-confie-aux-eleves-de-la-star-academy-2026/"
+        },
+        {
+          "name": "Gossip Addict (d'après Télé Star)",
+          "url": "https://www.gossip-addict.com/fr/article/general/je-suis-une-plouc-eva-explique-un-cap-dans-sa-vie-aux-candidats-de-la-star-academy-2026-qu-elle-trouve-courageux/6ae38d629aa472da170b689c"
+        }
+      ]
+    },
     {
       "id": "2026-10-28",
       "title": "Antoine, Ydriss et Maud nommés, premier 20/20 de la saison pour Mélina",
@@ -19,7 +45,8 @@
         "Antoine, sur The Night We Met de Lord Huron pour sa grand-mère, est jugé trop sage et en dessous du niveau général ; Maud, au piano sur J'suis là de Danyl pour ses frères, est trahie par son stress selon les profs.",
         "Cameron, sur Les Yeux de la Mama pour sa mère, est au contraire très applaudi : Sofia parle d'une prestation magnifique et Jonathan le trouve libéré.",
         "Les autres passages défilent aussi, de Leeloo (Raye, pour sa sœur) à Tracy (Camille Yembe, pour sa mère), en passant par Brieuc (Adele), Morgan (Pierre Garnier) et Noémie.",
-        "À côté, atelier créatif d'Halloween et cours particuliers ; stressée par sa chorégraphie de Thriller pour l'ouverture du prime, Isabella reçoit l'aide de Morgan, qui la connaît par cœur."
+        "À côté, atelier créatif d'Halloween et cours particuliers ; stressée par sa chorégraphie de Thriller pour l'ouverture du prime, Isabella reçoit l'aide de Morgan, qui la connaît par cœur.",
+        "Côté audience, cette quotidienne des nominations a réuni 1,46 million de téléspectateurs (15,5 %), son meilleur score de la saison en nombre de téléspectateurs, avec 37,2 % de part d'audience chez les femmes responsables des achats."
       ],
       "eleves": [
         "antoine",
@@ -54,7 +81,7 @@
         },
         {
           "name": "Puremédias",
-          "url": "https://www.ozap.com/actu/star-academy-2026-antoine-maud-et-ydriss-nommes-qui-doit-rester-votez-dans-notre-sondage/657694"
+          "url": "https://www.ozap.com/actu/audiences-pre-access-record-pour-la-star-academy-sur-tf1-cyril-hanouna-toujours-au-top-sur-w9-ici-1920-au-plus-haut-sur-france-3/657706"
         }
       ]
     },
