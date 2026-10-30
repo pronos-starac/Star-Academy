@@ -1,6 +1,40 @@
 {
-  "updated": "2026-10-30T00:07:28+01:00",
+  "updated": "2026-10-30T20:00:09+01:00",
   "items": [
+    {
+      "id": "2026-10-30",
+      "title": "Marguerite dîne au château, Ydriss chante sa nomination et larmes de Maud",
+      "tag": null,
+      "points": [
+        "Au lendemain de l'annonce, les trois nommés du prime des proches, Antoine, Maud et Ydriss, se réveillent encore sonnés.",
+        "Marguerite, ancienne élève et invitée d'honneur du prime de samedi, débarque au château pour dîner et passer la soirée avec la promo : elle partage son expérience avant de répéter son duo avec Leeloo.",
+        "Dans sa chambre avec Morgan et Brieuc, Ydriss accepte d'improviser une chanson pour conjurer la nomination, Brieuc au synthé : il y glisse qu'il visait le top 3 et se retrouve dans le « mauvais top 3 », et conclut en espérant revenir samedi.",
+        "Plus sérieusement, Ydriss confie à la répétitrice Philippine Lavrey sa tristesse et sa surprise, lui qui pensait avoir suivi toutes les consignes, et avoue face caméra avoir du mal à voir les autres répéter pour le prime.",
+        "Après le départ de Marguerite, Maud appelle sa mère et fond en larmes quand celle-ci lui annonce qu'elle ne pourra pas venir au prime.",
+        "La journée commence par un cours de théâtre avec Papy, qui fait travailler la mise en scène aux élèves.",
+        "Mélina répète en salle de danse son tableau chanté et dansé avec Jonathan, qui la rassure et lui apprend la chorégraphie.",
+        "La soirée se termine autour d'une soirée pizza partagée par toute la promo."
+      ],
+      "eleves": [
+        "ydriss",
+        "maud",
+        "antoine",
+        "leeloo",
+        "brieuc",
+        "morgan",
+        "melina"
+      ],
+      "sources": [
+        {
+          "name": "Stars Actu",
+          "url": "https://www.stars-actu.fr/2026/10/star-academy-du-30-octobre-2026-resume-et-replay-de-la-quotidienne/"
+        },
+        {
+          "name": "Femme Actuelle (via Yahoo)",
+          "url": "https://fr.style.yahoo.com/arr%C3%AAtez-nommer-ydriss-star-academy-180732517.html"
+        }
+      ]
+    },
     {
       "id": "2026-10-29",
       "title": "Visite d'Eva, Amel malade et coups de fil réconfortants pour Ydriss et Antoine",
@@ -10,11 +44,11 @@
         "La journée démarre mal pour Amel, malade ; prévenu par les élèves, Ladji axe son cours de sport sur le cardio, avec des cadeaux venus des proches à la clé : appels téléphoniques pour certains, messages vocaux pour d'autres, et une lettre remise à chacun avant son départ.",
         "Encore secoué par sa nomination, Ydriss appelle sa mère et reconnaît que la nouvelle lui a « mis une claque ».",
         "Antoine, lui aussi nommé, téléphone à Mosimann, qui s'emploie à le rassurer et à le remotiver avant le prime.",
-        "La chanteuse raconte son changement d'image, loin de l'époque « Eva Queen », par peur que sa carrière s'arrête, et confie s'être trouvée « plouc » en se regardant à ce moment-là.",
-        "Elle évoque aussi son arrivée à Paris loin du Sud, la solitude et les doutes, et explique qu'il lui a fallu environ deux ans de travail acharné pour se réinventer, en insistant sur l'importance de connaître ses faiblesses.",
+        "La chanteuse raconte son changement d'image, loin de l'époque « Eva Queen », par peur que sa carrière s'arrête, et confie s'être trouvée « plouc » en se regardant à ce moment-là ; elle évoque aussi son arrivée à Paris loin du Sud, la solitude et les doutes, et explique qu'il lui a fallu environ deux ans de travail acharné pour se réinventer, en insistant sur l'importance de connaître ses faiblesses.",
         "Brieuc ouvre les questions en l'interrogeant sur ce « rebranding », tandis que Maud, nommée cette semaine, lui demande comment changer d'univers musical.",
         "Questionnée sur la Star Academy, Eva avoue qu'elle n'aurait jamais osé y participer, n'osant pas chanter devant un public à ses débuts ; elle salue le courage des élèves et dit vouloir revenir au château.",
         "Avant la visite d'Eva, Lydia donne son cours d'expression scénique ; la chanteuse reste ensuite déjeuner avec la promo.",
+        "La quotidienne réunit 1,43 million de téléspectateurs sur TF1 (15,6 % de part d'audience, 36,5 % des femmes responsables des achats), un chiffre stable, plus 284 000 curieux pour la rediffusion de 19h sur TFX.",
         "Les répétitrices dévoilent la répartition des chansons du prime : Leeloo avec Marguerite (Un peu beaucoup), Cameron avec TeddyBear (Chaussures roses), Tracy et Amel avec Sheryfa Luna (Il avait les mots), Félix avec Claudio Capéo ; les nommés chanteront des titres choisis par leurs proches, Évidemment pour Antoine, Ils me rient tous au nez pour Maud et The Winner Takes It All pour Ydriss."
       ],
       "eleves": [
@@ -47,6 +81,10 @@
         {
           "name": "Viralmag (chansons du prime)",
           "url": "https://viralmag.fr/star-academy-2026-prime-31-octobre-duos-invites-reveles/"
+        },
+        {
+          "name": "Puremédias",
+          "url": "https://www.ozap.com/actu/audiences-pre-access-record-pour-la-meilleure-cuisine-regionale-cest-chez-moi-sur-m6-premiere-hausse-pour-mot-de-passe-sur-france-3/657720"
         }
       ]
     },
