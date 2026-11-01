@@ -1,6 +1,62 @@
 {
-  "updated": "2026-11-01T00:06:59+01:00",
+  "updated": "2026-11-01T20:00:26+01:00",
   "items": [
+    {
+      "id": "2026-11-01",
+      "title": "Retour au château sans Antoine : sa lettre lue à la promo et Raphaëlle Ricci revient au débrief",
+      "tag": null,
+      "primeOut": [
+        "antoine"
+      ],
+      "primeImmune": "noemie",
+      "points": [
+        "Retour en bus très triste après le prime d'Halloween : Antoine a été éliminé, Ydriss gardé par le vote des élèves après que le public a sauvé Maud ; il reste 14 académiciens.",
+        "Noémie a remporté l'immunité au prime à l'unanimité des professeurs, face à Mélina et Kylian ; elle échappe aux nominations de la semaine.",
+        "Mélina et Morgan récupèrent la lettre d'adieu d'Antoine et la lisent à tout le groupe, un moment chargé d'émotion.",
+        "En découvrant le planning, les élèves apprennent que les évaluations ont lieu dès lundi, le prime étant exceptionnellement avancé au vendredi 6 novembre.",
+        "Surprise : Raphaëlle Ricci, prof d'expression scénique emblématique des premières saisons, remplace exceptionnellement Lydia pour le débrief, 18 ans après son départ ; elle trouve le prime globalement réussi mais prévient qu'on peut ne pas être d'accord avec elle.",
+        "Elle juge la justesse difficile à tenir sur l'hymne collectif « Dans un autre monde » et donne des conseils sur l'interprétation et le regard caméra.",
+        "Retours individuels : Isabella félicitée pour son ouverture sur « Thriller », Kylian gêné par un souci de son, Mélina déçue de sa battle (prompteur, justesse) mais saluée pour son tableau chanté-dansé, Noémie félicitée.",
+        "Coup de cœur pour Cameron et sa maman sur « Les yeux de la mama », tandis qu'Amel et Tracy manquaient d'interprétation sur leur passage avec Sheryfa Luna.",
+        "Émue, Raphaëlle confie avoir l'impression de revenir dans une maison habitée enfant, trouve la cuisine plus petite qu'avant et échange en privé avec les élèves dans la salle à manger."
+      ],
+      "eleves": [
+        "antoine",
+        "noemie",
+        "melina",
+        "morgan",
+        "isabella",
+        "kylian",
+        "cameron",
+        "ydriss"
+      ],
+      "sources": [
+        {
+          "name": "Stars Actu",
+          "url": "https://www.stars-actu.fr/2026/11/star-academy-du-1er-novembre-2026-resume-et-replay-de-la-quotidienne/"
+        },
+        {
+          "name": "Bsean Media TV",
+          "url": "https://www.bseanmediatv.fr/post/star-academy-raphaelle-ricci-critique-la-justesse-des-eleves-apres-leur-interpretation-de"
+        },
+        {
+          "name": "Femme Actuelle (via Yahoo)",
+          "url": "https://fr.style.yahoo.com/c-sensation-tr%C3%A8s-d%C3%A9routante-ex-133840302.html"
+        },
+        {
+          "name": "La DH",
+          "url": "https://www.dhnet.be/medias/television/2026/11/01/star-academy-lot-de-surprises-absence-remarquee-defi-fou-immunite-et-elimination-voici-tout-ce-que-vous-avez-rate-du-prime-du-31-octobre-NXK36GREJRB7NJFTVLGY7ISPIA/"
+        },
+        {
+          "name": "Serie News",
+          "url": "https://www.serie-news.com/tnt/tf1/63617-star-academy-qui-est-noemie-la-candidate-immunisee-apres-le-prime-dhalloween-01-11-2026/"
+        },
+        {
+          "name": "Stéphane Larue",
+          "url": "https://stephanelarue.com/star-academy-antoine-elimine-ydriss-garde-par-les-eleves/"
+        }
+      ]
+    },
     {
       "id": "2026-10-31",
       "title": "Veille de prime d'Halloween : Lydia en Mosimann, lettres d'adieu et clown au château",
@@ -13,7 +69,8 @@
         "Waxx revient échanger avec les nommés : Antoine, qui se livre rarement au château, raconte avoir perdu sa mère à 9 ans alors qu'il avait « une vie parfaite », se souvient de la guitare qu'elle lui avait offerte à son entrée dans une académie de musique, et explique que chanter l'a aidé à exprimer sa colère et sa tristesse.",
         "Soirée d'Halloween : la production dresse un buffet, des enfants de Dammarie-les-Lys viennent réclamer des bonbons, visitent le château avec les académiciens et posent pour une photo souvenir dans le foyer.",
         "Le dernier dîner à 15 est teinté d'appréhension chez les nommés, avant qu'un clown ne débarque pour faire peur à toute la promo.",
-        "Annoncé pour le prime du soir (21h10) : le public sauvera un des trois nommés, les élèves départageront les deux autres."
+        "Annoncé pour le prime du soir (21h10) : le public sauvera un des trois nommés, les élèves départageront les deux autres.",
+        "Audience : la quotidienne du samedi passe sous le million avec 755 000 téléspectateurs (8,8 % de part d'audience, 19 % des femmes responsables des achats)."
       ],
       "eleves": [
         "antoine",
@@ -40,6 +97,10 @@
         {
           "name": "Viral Mag",
           "url": "https://viralmag.fr/antoine-star-academy-confie-la-perte-de-sa-mere/"
+        },
+        {
+          "name": "Puremédias",
+          "url": "https://www.ozap.com/actu/audiences-samedi-20h30-le-samedi-et-c-dans-lair-au-plus-haut-la-roue-de-la-fortune-avec-eric-antoine-et-le-maillon-faible-dolivier-minne-en-forme/657647"
         }
       ]
     },
