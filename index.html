@@ -723,7 +723,8 @@ Object.assign(S,{recaps:[],recapLoaded:false,recapErr:false,recapAt:0,recapHidde
 S.autoNoms={};S.autoNomWeeks=new Set();S.realRaw=null;S.autoRes={};S.autoResOn={};S.autoResWarn=[];
 function withAuto(raw){const v=JSON.parse(JSON.stringify(raw));S.autoNomWeeks=new Set();
   Object.keys(S.autoNoms).forEach(k=>{const w=v.weeks[k]||(v.weeks[k]={immune:null,nominees:[],out:[]});
-    if(!w.nominees.length&&!w.out.length){w.nominees=S.autoNoms[k].slice();S.autoNomWeeks.add(+k);}});
+    // aussi pour les semaines terminées : le tableau garde la trace des nominés de chaque semaine
+    if(!w.nominees.length){w.nominees=S.autoNoms[k].slice();S.autoNomWeeks.add(+k);}});
   Object.keys(S.autoX||{}).forEach(k=>{const x=S.autoX[k],w=v.weeks[k]||(v.weeks[k]={immune:null,nominees:[],out:[],quit:[],noElim:null,immCands:[]});
     if(x.noElim&&w.noElim==null)w.noElim=true;
     if(x.immCands&&!(w.immCands||[]).length)w.immCands=x.immCands.slice();
