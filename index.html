@@ -560,6 +560,8 @@ function netTrend(id,n){const a=likeStats(n)[id],net=a.up.length-a.down.length;
   return{net,tr:d>0?`<span class="trend up">▲${d}</span>`:d<0?`<span class="trend down">▼${-d}</span>`:''};}
 function sgn(v){return v>0?'+'+v:String(v);}
 function aliveIds(){const out=outOrder(S.season);return ids.filter(id=>!out.includes(id));}
+// élèves encore en lice au prime n : éliminés des primes précédents et abandons de la semaine exclus
+function aliveAt(n){const s=S.season,out=[];weekKeys(s).forEach(k=>{const w=wk(s,k);if(+k<n)out.push(...w.out,...w.quit);else if(+k===n)out.push(...w.quit);});return ids.filter(id=>!out.includes(id));}
 // Cœurs & tomates : un élève éliminé ou parti reste votable jusqu'à la fin de sa semaine, il disparaît la semaine suivante.
 function likeEligible(n){const gone=new Set();weekKeys(S.season).forEach(k=>{if(k<n){const w=wk(S.season,k);w.out.concat(w.quit).forEach(id=>gone.add(id));}});return ids.filter(id=>!gone.has(id));}
 /* ===================== censure anti-spoiler des messages ===================== */
@@ -624,14 +626,14 @@ function vChat(n){
 function songStats(id){const rs=Object.values(S.sratings).filter(r=>r.song===id),notes=rs.filter(r=>r.note).map(r=>r.note),ec={};
   rs.forEach(r=>r.e.forEach(k=>ec[k]=(ec[k]||0)+1));return{rs,avg:notes.length?notes.reduce((a,b)=>a+b,0)/notes.length:null,nn:notes.length,ec};}
 function vSongs(n){
-  const reg=registered()&&!S.anon,orga=isOrga(),f=S.songForm,alive=aliveIds(),allSel=!!f&&alive.every(id=>f.eleves.includes(id));
+  const reg=registered()&&!S.anon,orga=isOrga(),f=S.songForm,alive=aliveAt(n),allSel=!!f&&alive.every(id=>f.eleves.includes(id));
   const form=!reg?'':f?`<div class="card songform"><h3>Nouvelle chanson</h3>
       <div class="ac"><input type="text" id="song-title" maxlength="80" placeholder="Commence à taper le titre ou l’artiste…" value="${esc(f.title||'')}" aria-label="Titre de la chanson" autocomplete="off" role="combobox" aria-expanded="${!!(S.songSugg&&S.songSugg.length)}">
       ${S.songSugg&&S.songSugg.length?`<ul class="ac-list" role="listbox">${S.songSugg.map((x,i)=>`<li><button type="button" data-act="songPick" data-id="${i}">${x.cover?`<img src="${esc(x.cover)}" alt="" loading="lazy">`:'<span class="nocov">♪</span>'}<span><b>${esc(x.title)}</b><small>${esc(x.artist)}</small></span></button></li>`).join('')}</ul>`:''}
       ${f.cover?`<p class="muted picked"><img src="${esc(f.cover)}" alt=""> Chanson trouvée sur Deezer</p>`:''}</div>
       <span class="sub">Qui chante ? (touche les élèves)</span>
       <div class="row"><button class="btn ghost" data-act="songAll" aria-pressed="${allSel}">${allSel?'Retirer tout le monde':'Tous les élèves'}</button></div>
-      <div class="pool">${ids.map(id=>`<button class="chip${f.eleves.includes(id)?' focus':''}" data-act="songEl" data-id="${id}" aria-pressed="${f.eleves.includes(id)}">${av(id)}<span class="nm">${esc(C[id].name)}</span></button>`).join('')}</div>
+      <div class="pool">${alive.map(id=>`<button class="chip${f.eleves.includes(id)?' focus':''}" data-act="songEl" data-id="${id}" aria-pressed="${f.eleves.includes(id)}">${av(id)}<span class="nm">${esc(C[id].name)}</span></button>`).join('')}</div>
       <div class="row"><button class="btn" data-act="songAdd" data-id="${n}">Ajouter</button><button class="linkbtn" data-act="songCancel">Annuler</button></div></div>`
     :`<div class="row"><button class="btn" data-act="songNew">+ Nouvelle chanson</button><span class="muted">Le premier qui l’entend l’ajoute, tout le monde la note.</span></div>`;
   const list=S.songs.map(sg=>{const st=songStats(sg.id),mine=S.sratings[sg.id+'_'+S.uid]||{note:null,e:[],text:''},na=st.rs.filter(r=>r.text||r.note).length,srs=S.sreplies.filter(x=>x.song===sg.id),open=na>0||srs.length>0||S.openSong===sg.id,own=sg.uid===S.uid;
@@ -1425,7 +1427,7 @@ document.addEventListener('click',e=>{
   else if(a==='pcDel')delDoc('primechat',id);
   else if(a==='songNew'){S.songForm={title:'',eleves:[]};render();const i=$('#song-title');if(i)i.focus();}
   else if(a==='songCancel'){S.songForm=null;S.songSugg=[];render();}
-  else if(a==='songAll'&&S.songForm){const al=aliveIds(),f=S.songForm;f.eleves=al.every(x=>f.eleves.includes(x))?[]:al.slice();render();}
+  else if(a==='songAll'&&S.songForm){const al=aliveAt(S.primeFor),f=S.songForm;f.eleves=al.every(x=>f.eleves.includes(x))?[]:al.slice();render();}
   else if(a==='songPick')songPick(+id);
   else if(a==='songEl'&&S.songForm){const e=S.songForm.eleves;S.songForm.eleves=e.includes(id)?e.filter(x=>x!==id):e.concat(id);render();}
   else if(a==='songAdd')songAdd(+id);
