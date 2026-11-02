@@ -1,6 +1,58 @@
 {
-  "updated": "2026-11-02T00:07:03+01:00",
+  "updated": "2026-11-02T20:00:37+01:00",
   "items": [
+    {
+      "id": "2026-11-02",
+      "title": "Adieux de Raphaëlle Ricci et évaluations inédites : chaque élève joue le futur gagnant",
+      "tag": null,
+      "points": [
+        "Raphaëlle Ricci prolonge son débrief du prime : Kylian est félicité pour son autoportrait, Félix pour son duo avec Claudio Capéo, et Cameron la fascine sur « Teddy Bear » même si elle lui demande de travailler justesse et technique.",
+        "Le moment de Maud avec son petit frère l'émeut, mais elle reste sur sa faim côté technique ; Ydriss, qui confie détester sa voix et regrette ses fausses notes, reçoit ses conseils.",
+        "La promo refait le défi chanté « Fous ta cagoule », que l'ancienne prof savoure, avant une visite du château avec les académiciens : émue, elle leur souhaite de vivre l'aventure à fond et salue un niveau déjà élevé.",
+        "Mosimann dévoile le thème des évaluations : se glisser dans la peau du gagnant de la saison, avec une annonce de victoire enregistrée par Nikos Aliagas, un discours de vainqueur puis une chanson a cappella choisie dans une liste.",
+        "En découvrant les chansons et en commençant à travailler, Mélina craque et fond en larmes.",
+        "Les évaluations ont lieu lundi matin devant les profs et Marine, ancienne gagnante : au programme « A Million Dreams », « Somewhere Only We Know », « Roi » ou « Je ne suis pas un héros », et un choix original de « Roar » pour Ydriss.",
+        "Selon les comptes rendus du live, Ydriss signe sa meilleure évaluation, Brieuc et Noémie bluffent, tandis que Mélina (trou de paroles sur « Roi », sortie en larmes) et Amel (justesse) passent à côté ; Cameron a ému Marine aux larmes.",
+        "L'exercice du discours de gagnant divise les internautes, beaucoup le jugeant long et peu naturel.",
+        "Annoncé pour mercredi : les trois élèves les moins bien classés seront nommés ; Noémie, immunisée, est à l'abri. Le prime est avancé au vendredi 6 novembre et réunira d'anciens gagnants."
+      ],
+      "eleves": [
+        "ydriss",
+        "melina",
+        "cameron",
+        "maud",
+        "kylian",
+        "felix",
+        "brieuc",
+        "noemie"
+      ],
+      "sources": [
+        {
+          "name": "Stars Actu (quotidienne)",
+          "url": "https://www.stars-actu.fr/2026/11/star-academy-du-2-novembre-2026-resume-et-replay-de-la-quotidienne/"
+        },
+        {
+          "name": "Stars Actu (évaluations)",
+          "url": "https://www.stars-actu.fr/2026/11/star-academy-les-evaluations-du-2-novembre-noemie-brieuc-et-ydriss-au-top-melina-et-amel-se-loupent-le-resume-complet/"
+        },
+        {
+          "name": "AlloCiné (évaluations)",
+          "url": "https://www.allocine.fr/tvactu/articles/article-1000230175.html"
+        },
+        {
+          "name": "AlloCiné (réactions)",
+          "url": "https://www.allocine.fr/tvactu/articles/article-1000230190.html"
+        },
+        {
+          "name": "Stéphane Larue",
+          "url": "https://stephanelarue.com/star-academy-lundi-chaque-eleve-joue-le-gagnant-de-la-saison-en-evaluation/"
+        },
+        {
+          "name": "L'essentiel",
+          "url": "https://www.lessentiel.lu/fr/story/star-academy-raphaelle-ricci-a-eu-un-peu-de-sang-qui-a-coule-de-ses-oreilles-103660756"
+        }
+      ]
+    },
     {
       "id": "2026-11-01",
       "title": "Retour au château sans Antoine : sa lettre lue à la promo et Raphaëlle Ricci revient au débrief",
@@ -18,7 +70,8 @@
         "Elle juge la justesse difficile à tenir sur l'hymne collectif « Dans un autre monde » et donne des conseils sur l'interprétation et le regard caméra.",
         "Retours individuels : Isabella félicitée pour son ouverture sur « Thriller » (Raphaëlle lui donne même un symbolique 19,9/20), Kylian gêné par un souci de son, Mélina déçue de sa battle (prompteur, justesse) mais saluée pour son tableau chanté-dansé, Noémie félicitée.",
         "Coup de cœur pour Cameron et sa maman sur « Les yeux de la mama », tandis qu'Amel et Tracy manquaient d'interprétation sur leur passage avec Sheryfa Luna.",
-        "Émue, Raphaëlle confie avoir l'impression de revenir dans une maison habitée enfant, trouve la cuisine plus petite qu'avant et échange en privé avec les élèves dans la salle à manger."
+        "Émue, Raphaëlle confie avoir l'impression de revenir dans une maison habitée enfant, trouve la cuisine plus petite qu'avant et échange en privé avec les élèves dans la salle à manger.",
+        "Audience : 1,15 million de téléspectateurs (13,6 %) pour cette quotidienne du dimanche, un record de saison pour ce jour, en hausse de 1,5 point sur une semaine."
       ],
       "eleves": [
         "antoine",
@@ -52,8 +105,8 @@
           "url": "https://www.serie-news.com/tnt/tf1/63733-star-academy-sur-tf1-lettre-dantoine-et-debrief-de-raphaelle-ricci-la-quotidienne-du-1er-novembre-2026-01-11-2026/"
         },
         {
-          "name": "Stéphane Larue",
-          "url": "https://stephanelarue.com/star-academy-antoine-elimine-ydriss-garde-par-les-eleves/"
+          "name": "Puremédias",
+          "url": "https://www.ozap.com/actu/audiences-dimanche-plus-faible-ecart-de-la-saison-entre-les-20-heures-de-tf1-et-france-2/657785"
         }
       ]
     },
