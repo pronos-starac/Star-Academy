@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-03T20:00:39+01:00",
+  "updated": "2026-11-04T00:07:28+01:00",
   "items": [
     {
       "id": "2026-11-03",
@@ -12,12 +12,13 @@
       ],
       "points": [
         "Mosimann vient au château annoncer les trois nommés de la semaine : Amel, Félix et Morgan, qui joueront leur place au prime avancé au vendredi 6 novembre.",
+        "Morgan ferme le classement pour un tout petit point devant Kylian, à qui Mosimann glisse qu'il est « passé à rien » ; le directeur avoue que c'est frustrant pour tout le monde, regrettant que Morgan ait choisi un titre aussi difficile.",
         "Noémie, immunisée depuis sa victoire face à Kylian et Mélina au dernier prime, était à l'abri ; elle ouvrira le prime de vendredi.",
         "Retour sur les évaluations de lundi : Félix est jugé en retrait, sans l'énergie d'un gagnant, et Sofia Morgavi estime que ça ne va pas.",
         "Amel, sur « Somewhere Only We Know », paie des soucis de justesse ; Marine lui conseille de mieux doser ses effets vocaux.",
         "Morgan, très dur avec lui-même après sa prestation sur « Je ne suis pas un héros », se dit déçu de ne pas avoir défendu son morceau.",
         "Côté réussites, Isabella est trouvée « spectaculaire » par Sofia, Maud fait carton plein et Tracy est saluée pour ses envolées.",
-        "Mélina, trahie par un oubli de paroles sur « Roi », laisse les profs mitigés mais voit sa progression saluée ; elle échappe à la nomination, tout comme Kylian, pronostiqué en danger par plusieurs médias.",
+        "Mélina, trahie par un oubli de paroles sur « Roi », laisse les profs mitigés mais voit sa progression saluée ; elle échappe à la nomination.",
         "Au prime, le public sauvera l'un des trois nommés, puis les élèves départageront les deux autres ; le prime est avancé à cause du match de rugby France-Fidji et réunira d'anciens gagnants."
       ],
       "eleves": [
@@ -50,6 +51,10 @@
         {
           "name": "ActuaNews",
           "url": "https://actuanews.fr/2026/11/03/star-academy-2026-apres-des-evaluations-mouvementees-trois-eleves-se-retrouvent-deja-dans-la-zone-rouge/"
+        },
+        {
+          "name": "Viralmag",
+          "url": "https://viralmag.fr/star-academy-2026-trois-eleves-nommes-ce-mardi-tension-au-chateau/"
         }
       ]
     },
