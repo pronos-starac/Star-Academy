@@ -1,6 +1,58 @@
 {
-  "updated": "2026-11-03T00:07:25+01:00",
+  "updated": "2026-11-03T20:00:39+01:00",
   "items": [
+    {
+      "id": "2026-11-03",
+      "title": "Amel, Félix et Morgan nommés : Mosimann tranche après les évaluations des « gagnants »",
+      "tag": "nominations",
+      "nominees": [
+        "amel",
+        "felix",
+        "morgan"
+      ],
+      "points": [
+        "Mosimann vient au château annoncer les trois nommés de la semaine : Amel, Félix et Morgan, qui joueront leur place au prime avancé au vendredi 6 novembre.",
+        "Noémie, immunisée depuis sa victoire face à Kylian et Mélina au dernier prime, était à l'abri ; elle ouvrira le prime de vendredi.",
+        "Retour sur les évaluations de lundi : Félix est jugé en retrait, sans l'énergie d'un gagnant, et Sofia Morgavi estime que ça ne va pas.",
+        "Amel, sur « Somewhere Only We Know », paie des soucis de justesse ; Marine lui conseille de mieux doser ses effets vocaux.",
+        "Morgan, très dur avec lui-même après sa prestation sur « Je ne suis pas un héros », se dit déçu de ne pas avoir défendu son morceau.",
+        "Côté réussites, Isabella est trouvée « spectaculaire » par Sofia, Maud fait carton plein et Tracy est saluée pour ses envolées.",
+        "Mélina, trahie par un oubli de paroles sur « Roi », laisse les profs mitigés mais voit sa progression saluée ; elle échappe à la nomination, tout comme Kylian, pronostiqué en danger par plusieurs médias.",
+        "Au prime, le public sauvera l'un des trois nommés, puis les élèves départageront les deux autres ; le prime est avancé à cause du match de rugby France-Fidji et réunira d'anciens gagnants."
+      ],
+      "eleves": [
+        "amel",
+        "felix",
+        "morgan",
+        "noemie",
+        "melina",
+        "isabella",
+        "maud",
+        "tracy"
+      ],
+      "sources": [
+        {
+          "name": "AlloCiné",
+          "url": "https://www.allocine.fr/tvactu/articles/article-1000230362.html"
+        },
+        {
+          "name": "Puremédias",
+          "url": "https://www.ozap.com/actu/star-academy-2026-amel-felix-et-morgan-nommes-qui-doit-rester-votez-dans-notre-sondage/657820"
+        },
+        {
+          "name": "PureBreak",
+          "url": "https://www.purebreak.com/news/star-academy-qui-sont-les-nommes-de-la-semaine/266643"
+        },
+        {
+          "name": "Stéphane Larue",
+          "url": "https://stephanelarue.com/star-academy-amel-felix-et-morgan-nommes-prime-avance-a-vendredi/"
+        },
+        {
+          "name": "ActuaNews",
+          "url": "https://actuanews.fr/2026/11/03/star-academy-2026-apres-des-evaluations-mouvementees-trois-eleves-se-retrouvent-deja-dans-la-zone-rouge/"
+        }
+      ]
+    },
     {
       "id": "2026-11-02",
       "title": "Adieux de Raphaëlle Ricci et évaluations inédites : chaque élève joue le futur gagnant",
@@ -14,7 +66,8 @@
         "Les évaluations ont lieu lundi matin devant les profs et Marine, ancienne gagnante : au programme « A Million Dreams », « Somewhere Only We Know », « Roi » ou « Je ne suis pas un héros », et un choix original de « Roar » pour Ydriss.",
         "Selon les comptes rendus du live, Ydriss signe sa meilleure évaluation, Brieuc et Noémie bluffent, tandis que Mélina (trou de paroles sur « Roi », sortie en larmes) et Amel (justesse) passent à côté ; Cameron a ému Marine aux larmes.",
         "L'exercice du discours de gagnant divise les internautes, beaucoup le jugeant long et peu naturel.",
-        "Annoncé pour mercredi : les trois élèves les moins bien classés seront nommés ; Noémie, immunisée, est à l'abri. Le prime est avancé au vendredi 6 novembre et réunira d'anciens gagnants."
+        "Annoncé pour mercredi : les trois élèves les moins bien classés seront nommés ; Noémie, immunisée, est à l'abri. Le prime est avancé au vendredi 6 novembre et réunira d'anciens gagnants.",
+        "Audience : la quotidienne a réuni 1,26 million de téléspectateurs sur TF1 (13,6 % de part d'audience, 30,1 % chez les femmes responsables des achats), quasi stable sur une semaine."
       ],
       "eleves": [
         "ydriss",
@@ -27,10 +80,6 @@
         "noemie"
       ],
       "sources": [
-        {
-          "name": "Stars Actu (quotidienne)",
-          "url": "https://www.stars-actu.fr/2026/11/star-academy-du-2-novembre-2026-resume-et-replay-de-la-quotidienne/"
-        },
         {
           "name": "Voici (via Titres Presse)",
           "url": "https://www.titrespresse.com/27535132603/tf1-star-academy"
@@ -50,6 +99,10 @@
         {
           "name": "L'essentiel",
           "url": "https://www.lessentiel.lu/fr/story/star-academy-raphaelle-ricci-a-eu-un-peu-de-sang-qui-a-coule-de-ses-oreilles-103660756"
+        },
+        {
+          "name": "Puremédias (audiences)",
+          "url": "https://www.ozap.com/actu/audiences-pre-access-c-a-vous-de-retour-en-grande-forme-mot-de-passe-au-plus-haut-sur-france-3/657760"
         }
       ]
     },
