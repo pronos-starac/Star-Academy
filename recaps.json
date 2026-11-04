@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-04T20:01:34+01:00",
+  "updated": "2026-11-04T23:21:51+01:00",
   "items": [
     {
       "id": "2026-11-04",
@@ -18,7 +18,8 @@
         "Isabella, Tracy et Zoé forment le top 3 des évaluations : elles s'affronteront au prime sur « D'aventure en aventure » de Serge Lama, la gagnante remportant l'immunité de la semaine suivante.",
         "Amel, Félix et Morgan, nommés la veille, préparent la chanson qui doit les sauver vendredi ; Kylian a échappé à la nomination pour un seul point.",
         "Les répétitrices Fanny et Philippine dévoilent le programme du prime : Maud décroche le tableau chanté-dansé sur « Only Girl » de Rihanna et Noémie, immunisée, ouvrira la soirée sur « Never Enough ».",
-        "Annoncé pour vendredi : des duos avec d'anciens gagnants, Isabella avec Jenifer, Mélina avec Nolwenn Leroy, Ydriss avec Magalie Vaé, Zoé avec Anisha Jo, Noémie avec Marine et Tracy avec Ambre, plus un défi acoustique sur « Les Sardines » pour Mélina et Kylian.",
+        "Annoncé pour vendredi : des duos avec d'anciens gagnants, Isabella avec Jenifer, Mélina avec Nolwenn Leroy, Ydriss avec Magalie Vaé, Zoé avec Anisha Jo, Noémie avec Marine et Tracy avec Ambre, plus le défi chanson lancé par Zoé et Morgan à Mélina et Kylian : « Les Sardines » de Patrick Sébastien en version acoustique.",
+        "Également au programme du prime : un autoportrait plus personnel pour Cameron, un hommage à Grégory Lemarchal auquel participera Mosimann, et un duel du top 3 arbitré par le directeur et les profs.",
         "Semaine des gagnants au château : Anisha Jo, lauréate 2022, s'est glissée dans le cours de chant de Sofia Morgavi pour travailler les « vibes » des élèves, a partagé ses souvenirs puis a revisité les lieux."
       ],
       "eleves": [
@@ -45,16 +46,16 @@
           "url": "https://fr.style.yahoo.com/arrives-dis-%C3%A0-peine-bonjour-171126835.html"
         },
         {
-          "name": "Viralmag",
-          "url": "https://viralmag.fr/mosimann-recadre-kylian-star-academy-attitude-nonchalante/"
-        },
-        {
           "name": "CGTV",
           "url": "https://www.cg-tv.com/articles/star-academy-decouvrez-le-top-3-de-cette-semaine"
         },
         {
           "name": "Purepeople",
           "url": "https://www.purepeople.com/article/anisha-jo-star-academy-moins-mise-en-avant-que-les-autres-gagnants-sa-reponse-sans-detour_a555812/1"
+        },
+        {
+          "name": "ActuaNews",
+          "url": "https://actuanews.fr/2026/11/04/star-academy-top-3-tableau-chante-danse-anciens-gagnants-tout-ce-qui-vous-attend-lors-du-prime-exceptionnel-de-vendredi/"
         }
       ]
     },
