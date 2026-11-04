@@ -2,6 +2,7 @@
 import { initializeApp, cert } from 'firebase-admin/app';
 import { getFirestore, FieldValue } from 'firebase-admin/firestore';
 import { getMessaging } from 'firebase-admin/messaging';
+import { loadRecaps, setPrimeMoves, isPrimeDay } from './calendrier.mjs';
 
 const SITE = 'https://pronos-starac.github.io/Star-Academy/';
 const test = process.env.TEST_SEND === 'true';
@@ -16,7 +17,8 @@ const minutes = (+parts.hour) * 60 + (+parts.minute);
 console.log(`Paris : ${parts.weekday} ${today} ${parts.hour}:${parts.minute} · test=${test}`);
 
 if (!test) {
-  if (!/^sam/i.test(parts.weekday)) { console.log('Pas samedi : rien à envoyer.'); process.exit(0); }
+  setPrimeMoves(loadRecaps().items);
+  if (!isPrimeDay(today)) { console.log('Pas de prime aujourd’hui : rien à envoyer.'); process.exit(0); }
   if (minutes < 20 * 60 + 40 || minutes > 21 * 60 + 40) { console.log('Hors du créneau 20h40-21h40 : rien à envoyer.'); process.exit(0); }
 }
 

@@ -1,12 +1,13 @@
 # Envoie la notification « le prime commence » à tous les appareils inscrits.
-# Deux créneaux le samedi (en UTC) pour couvrir l'heure d'été et l'heure d'hiver :
-# le script n'envoie que si l'heure de Paris est entre 20h40 et 21h40, et une seule fois par samedi.
+# Deux créneaux chaque jour (en UTC) pour couvrir l'heure d'été et l'heure d'hiver :
+# le script n'envoie que les jours de prime (samedi par défaut, ou la date annoncée dans recaps.json),
+# si l'heure de Paris est entre 20h40 et 21h40, et une seule fois par jour.
 name: Notification début du prime
 
 on:
   schedule:
-    - cron: '45 18 * * 6'
-    - cron: '45 19 * * 6'
+    - cron: '45 18 * * *'
+    - cron: '45 19 * * *'
   workflow_dispatch:
     inputs:
       test:

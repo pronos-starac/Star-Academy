@@ -437,7 +437,7 @@ import { firebaseConfig, vapidKey } from './firebase-config.js?v=8';
 
 /* ===================== Réglages ===================== */
 const LAUNCH = [2026, 9, 10];      // prime de lancement : samedi 10 octobre 2026 (mois 0-11)
-const LOCK_DAYS = 2;              // fermeture des choix de la semaine : dimanche à minuit = lundi 0h00 (heure de Paris), 2 jours après le samedi
+// fermeture des choix de la semaine : le dimanche à minuit (lundi 0h00, heure de Paris) qui suit le prime
 const SC = {exact:5, near1:3, near2:1, elim:3, immune:3, winner:10};
 const FB = 'https://www.gstatic.com/firebasejs/10.12.2/';
 
@@ -476,7 +476,21 @@ function places(s){const q=quitSet(s),out=outOrder(s).filter(id=>!q.has(id)),M=N
 function rankedOrder(o,s){const q=quitSet(s);return o.filter(id=>!q.has(id));}
 function winnerId(s){const out=outOrder(s);const rem=ids.filter(id=>!out.includes(id));return rem.length===1?rem[0]:null;}
 function parisOffset(y,m,d){const t=Date.UTC(y,m,d);return(t>=Date.UTC(2026,9,25)&&t<Date.UTC(2027,2,28))?1:2;}
-function defaultLock(n){const d=new Date(Date.UTC(LAUNCH[0],LAUNCH[1],LAUNCH[2]+7*n+LOCK_DAYS));const y=d.getUTCFullYear(),m=d.getUTCMonth(),day=d.getUTCDate();
+/* Calendrier des primes : le samedi par défaut, déplacé quand une quotidienne annonce une autre date
+   (champ "primeDate" d'un résumé de recaps.json = date du prochain prime, celui qui clôt la semaine de ce résumé). */
+let PRIME_MOVES={};
+function dayNum(y,m,d){return Math.round(Date.UTC(y,m,d)/864e5);}
+function primeDay(n){if(PRIME_MOVES[n])return PRIME_MOVES[n];const d=new Date(Date.UTC(LAUNCH[0],LAUNCH[1],LAUNCH[2]+7*n));return[d.getUTCFullYear(),d.getUTCMonth(),d.getUTCDate()];}
+function primeDayNum(n){const[y,m,d]=primeDay(n);return dayNum(y,m,d);}
+function idDayNum(id){const[y,m,d]=id.split('-').map(Number);return dayNum(y,m-1,d);}
+function setPrimeMoves(items){PRIME_MOVES={};const re=/^\d{4}-\d{2}-\d{2}$/;
+  (Array.isArray(items)?items:[]).filter(x=>x&&typeof x.id==='string'&&re.test(x.id)&&typeof x.primeDate==='string'&&re.test(x.primeDate))
+    .sort((a,b)=>a.id.localeCompare(b.id)).forEach(x=>{const day=idDayNum(x.id),pd=idDayNum(x.primeDate);if(pd<day||pd>day+13)return;
+      let n=1;while(n<60&&primeDayNum(n)<day)n++;if(n>=60)return;
+      if(pd<=primeDayNum(n-1)||pd>=primeDayNum(n+1))return; // l'ordre des primes reste intact
+      const[y,m,d]=x.primeDate.split('-').map(Number);PRIME_MOVES[n]=[y,m-1,d];});}
+function primeDow(n){const[y,m,d]=primeDay(n);return new Date(Date.UTC(y,m,d,12)).toLocaleDateString('fr-FR',{weekday:'long',timeZone:'UTC'});}
+function defaultLock(n){const[py,pm,pdd]=primeDay(n),dow=new Date(Date.UTC(py,pm,pdd)).getUTCDay();const d=new Date(Date.UTC(py,pm,pdd+((8-dow)%7||7)));const y=d.getUTCFullYear(),m=d.getUTCMonth(),day=d.getUTCDate();
   return Date.UTC(y,m,day,0-parisOffset(y,m,day),0);}
 function lockAt(s,n){return s.locks[String(n)]||defaultLock(n);}
 function weeklyScore(uid,s,picks){let elim=0,imm=0;
@@ -498,8 +512,10 @@ function groupStats(players){
   return{stats,complete,voters};
 }
 function consensus(g){if(!g.complete)return[];return ids.slice().sort((a,b)=>g.stats[a].sum/g.stats[a].n-g.stats[b].sum/g.stats[b].n||C[a].name.localeCompare(C[b].name,'fr'));}
-function nextDayShort(dow){const d=new Date();const diff=(dow-d.getDay()+7)%7;if(diff===0)return'aujourd’hui';d.setDate(d.getDate()+diff);return d.toLocaleDateString('fr-FR',{weekday:'short',day:'numeric',month:'short'});}
-function nextDay(dow){const d=new Date();const diff=(dow-d.getDay()+7)%7;if(diff===0)return'aujourd’hui';d.setDate(d.getDate()+diff);return d.toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long'});}
+function shortDay(y,m,d){const t=new Date();if(t.getFullYear()===y&&t.getMonth()===m&&t.getDate()===d)return'aujourd’hui';return new Date(Date.UTC(y,m,d,12)).toLocaleDateString('fr-FR',{weekday:'short',day:'numeric',month:'short',timeZone:'UTC'});}
+function primeWhen(n){const[y,m,d]=primeDay(n);return shortDay(y,m,d);}
+// date de la quotidienne qui a annoncé les nominés de la semaine, sinon « à venir »
+function nomWhen(n){const r=S.recaps.filter(x=>x.nominees.length&&recapWeek(x.id)===n).map(x=>x.id).sort()[0];if(!r)return'à venir';const[y,m,d]=r.split('-').map(Number);return shortDay(y,m-1,d);}
 function fmtLock(ms){const p=new Date(ms).toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit',timeZone:'Europe/Paris'});
   if(p==='00:00')return new Date(ms-60000).toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long',timeZone:'Europe/Paris'})+' à minuit';
   return fmtLockFull(ms);}
@@ -586,7 +602,7 @@ function msgBody(text,id){if(S.revealMsg.has(id))return`<p>${esc(text)}</p>`;
 /* ===================== prime en direct ===================== */
 const SONG_E=[['fire','🔥'],['up','👍'],['meh','😐'],['down','👎'],['tomato','🍅']],SONG_EC=SONG_E.map(x=>x[0]);
 Object.assign(S,{primeSel:null,primeSub:'chat',pchat:[],songs:[],sratings:{},sreplies:[],srReply:null,primeUnsub:[],primeFor:null,songForm:null,spoilOk:{},openSong:null});
-function satDate(n){return new Date(Date.UTC(LAUNCH[0],LAUNCH[1],LAUNCH[2]+7*n,12));}
+function satDate(n){const[y,m,d]=primeDay(n);return new Date(Date.UTC(y,m,d,12));}
 function latestPrime(){let n=0;while(Date.now()>=primeStart(n+1)-3*3600000)n++;return n;}
 function primeLive(n){const t=Date.now(),a=primeStart(n);return t>=a-20*60000&&t<a+4*3600000;}
 function primeLabel(n){const t=satDate(n).toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long',timeZone:'UTC'});return(n?'Prime '+n:'Prime de lancement')+' · '+t;}
@@ -756,14 +772,14 @@ function setReal(raw){S.realRaw=raw;S.real=withAuto(raw);S.season=viewSeason();}
 function cleanRecap(x){
   if(!x||typeof x.id!=='string'||!/^\d{4}-\d{2}-\d{2}$/.test(x.id)||typeof x.title!=='string')return null;
   const str=v=>typeof v==='string'&&v.trim()?v.trim():null;
-  return{id:x.id,title:x.title.trim().slice(0,140),tag:x.tag==='nominations'?'nominations':null,nominees:cleanOrder(Array.isArray(x.nominees)?x.nominees:[]),noElim:x.noElim===true,immCands:cleanOrder(Array.isArray(x.immCands)?x.immCands:[]),quit:cleanOrder(Array.isArray(x.quit)?x.quit:[]),primeOut:cleanOrder(Array.isArray(x.primeOut)?x.primeOut:[]),primeImmune:typeof x.primeImmune==='string'&&C[x.primeImmune]?x.primeImmune:null,
+  return{id:x.id,title:x.title.trim().slice(0,140),tag:x.tag==='nominations'?'nominations':null,nominees:cleanOrder(Array.isArray(x.nominees)?x.nominees:[]),noElim:x.noElim===true,immCands:cleanOrder(Array.isArray(x.immCands)?x.immCands:[]),quit:cleanOrder(Array.isArray(x.quit)?x.quit:[]),primeOut:cleanOrder(Array.isArray(x.primeOut)?x.primeOut:[]),primeImmune:typeof x.primeImmune==='string'&&C[x.primeImmune]?x.primeImmune:null,primeDate:typeof x.primeDate==='string'&&/^\d{4}-\d{2}-\d{2}$/.test(x.primeDate)?x.primeDate:null,
     points:(Array.isArray(x.points)?x.points:[]).map(str).filter(Boolean).slice(0,10).map(t=>t.slice(0,400)),
     eleves:cleanOrder(Array.isArray(x.eleves)?x.eleves:[]),
     sources:(Array.isArray(x.sources)?x.sources:[]).filter(o=>o&&str(o.name)&&typeof o.url==='string'&&/^https:\/\//.test(o.url)).slice(0,6)};}
 async function loadRecaps(force){
   if(!force&&Date.now()-S.recapAt<5*60000)return;S.recapAt=Date.now();
   try{const r=await fetch('recaps.json?t='+Math.floor(Date.now()/60000),{cache:'no-store'});if(!r.ok)throw new Error(r.status);
-    const j=await r.json();const seen={};
+    const j=await r.json();const seen={};setPrimeMoves(j.items);
     S.recaps=(Array.isArray(j.items)?j.items:[]).map(cleanRecap).filter(x=>x&&!seen[x.id]&&(seen[x.id]=1)).sort((a,b)=>b.id.localeCompare(a.id));
     S.recapErr=false;
     const an={},ax={};S.recaps.slice().reverse().forEach(r=>{const k=String(recapWeek(r.id)),o=ax[k]||(ax[k]={});if(r.nominees.length>=2&&r.nominees.length<=8)an[k]=r.nominees;
@@ -775,13 +791,13 @@ async function loadRecaps(force){
   if(S.deepRc&&S.recaps.some(r=>r.id===S.deepRc)){const id=S.deepRc;S.deepRc=null;render();setTimeout(()=>{const el=document.getElementById('rc-'+id);if(el)el.scrollIntoView({block:'start'});},80);return;}
   render();}
 function recapDate(id){const[y,m,d]=id.split('-').map(Number);return{y,m:m-1,d};}
-function recapWeek(id){const{y,m,d}=recapDate(id);return Math.max(0,Math.ceil((Date.UTC(y,m,d)-Date.UTC(LAUNCH[0],LAUNCH[1],LAUNCH[2]))/864e5/7));}
-// semaine du dernier prime diffusé au plus tard ce jour-là (la quotidienne du dimanche revient sur le prime de la veille)
-function recapPrimeWeek(id){const{y,m,d}=recapDate(id);return Math.floor((Date.UTC(y,m,d)-Date.UTC(LAUNCH[0],LAUNCH[1],LAUNCH[2]))/864e5/7);}
+// semaine d'une quotidienne : celle du prochain prime (la quotidienne du jour du prime en fait encore partie)
+function recapWeek(id){const day=idDayNum(id);if(day<=primeDayNum(0))return 0;let n=1;while(n<60&&primeDayNum(n)<day)n++;return n;}
+// dernier prime diffusé AVANT ce jour-là (la quotidienne du lendemain du prime revient dessus)
+function recapPrimeWeek(id){const day=idDayNum(id);let n=-1;while(n<60&&primeDayNum(n+1)<day)n++;return n;}
 function recapLabel(id){const{y,m,d}=recapDate(id);const t=new Date(Date.UTC(y,m,d,12)).toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long',timeZone:'UTC'});return t.charAt(0).toUpperCase()+t.slice(1);}
-// anti-spoiler : la quotidienne du dimanche revient sur le prime du samedi ; masquée jusqu'à dimanche minuit
-function recapSpoiler(id){if(!S.noSpoil)return false;const{y,m,d}=recapDate(id);if(new Date(Date.UTC(y,m,d)).getUTCDay()!==0)return false;
-  return Date.now()<Date.UTC(y,m,d+1,0-parisOffset(y,m,d+1),0);}
+// anti-spoiler : les quotidiennes diffusées après le prime reviennent dessus ; masquées jusqu'au dimanche minuit qui suit le prime
+function recapSpoiler(id){if(!S.noSpoil)return false;const n=recapPrimeWeek(id);return n>=0&&Date.now()<defaultLock(n);}
 function newestRecap(){const r=S.recaps.find(x=>!S.recapHidden.includes(x.id)&&!recapSpoiler(x.id)&&!recapNomHidden(x));return r?r.id:'';}
 function hasNewRecap(){const n=newestRecap();return!!n&&n>(ls.get('sa14-recapSeen')||'');}
 function reactCounts(rid){const c={},mine=new Set();Object.values(S.reacts).forEach(x=>{if(x.recap!==rid)return;x.e.forEach(k=>{c[k]=(c[k]||0)+1;});if(x.uid===S.uid)x.e.forEach(k=>mine.add(k));});return{c,mine};}
@@ -801,14 +817,14 @@ function renderHead(){
   let banner=S.note;
   if(!banner&&S.conn==='noconfig')banner='Le site n’est pas encore relié à sa base de données : les pronos ne peuvent pas être enregistrés pour l’instant.';
   else if(!banner&&S.conn==='ok'&&!S.seasonExists)banner='La saison n’est pas encore ouverte par l’organisateur.';
-  const nomSpoil=S.noNom&&S.tab!=='orga'&&S.tab!=='prime'&&(S.nomMasked||S.recaps.some(recapNomHidden))?`<p class="note spoil">Nominés et nouvelles de la semaine masqués jusqu’au début du prime, samedi 21h10. <button class="linkbtn" data-act="nonomOff">Tout afficher</button></p>`:'';
+  const nomSpoil=S.noNom&&S.tab!=='orga'&&S.tab!=='prime'&&(S.nomMasked||S.recaps.some(recapNomHidden))?`<p class="note spoil">Nominés et nouvelles de la semaine masqués jusqu’au début du prime, ${esc(primeDow(cur))} 21h10. <button class="linkbtn" data-act="nonomOff">Tout afficher</button></p>`:'';
   const ns=registered()&&!S.anon&&S.tab!=='settings'&&S.tab!=='orga'&&S.tab!=='prime'&&ls.get('sa14-notifLater')!=='1'?notifState():'off';
   const nudge=['ready','ios-install','denied'].includes(ns)?`<p class="note notifnudge">🔔 Active les notifications : début du prime, commentaires des quotidiennes… <button class="linkbtn" data-act="notifShow">Comment faire</button> · <button class="linkbtn" data-act="notifLater">Plus tard</button></p>`:'';
   const spoil=S.noSpoil&&S.masked&&S.tab!=='orga'?`<p class="note spoil">Anti-spoiler activé : les résultats du dernier prime sont masqués jusqu’à dimanche minuit. <button class="linkbtn" data-act="spoil">Tout afficher</button></p>`:'';
   $('#head').innerHTML=`
     <div class="brand"><h1>Pronos <svg class="star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.5l3.1 6.6 7.2.9-5.3 5 1.4 7.1L12 17.6l-6.4 3.5 1.4-7.1-5.3-5 7.2-.9z"/></svg><em>Star Ac’</em></h1>
       <span class="meta">Saison 14 · ${win?'Vainqueur : '+esc(C[win].name):alive+' en lice · semaine '+cur} · ${np} joueur${np>1?'s':''} · <button class="onl" data-act="online" aria-expanded="${!!S.showOnline}"><i class="gdot"></i>${onlineIds().length} en ligne</button><button class="gear" data-act="tab" data-id="settings" aria-label="Paramètres" title="Paramètres" aria-pressed="${S.tab==='settings'}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.4 13a7.6 7.6 0 0 0 0-2l2.1-1.6-2-3.5-2.5 1a7.4 7.4 0 0 0-1.7-1L15 3.3h-4l-.4 2.6a7.4 7.4 0 0 0-1.7 1l-2.5-1-2 3.5L6.6 11a7.6 7.6 0 0 0 0 2l-2.1 1.6 2 3.5 2.5-1a7.4 7.4 0 0 0 1.7 1l.4 2.6h4l.4-2.6a7.4 7.4 0 0 0 1.7-1l2.5 1 2-3.5zM12 15.5a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7z"/></svg></button></span></div>${S.showOnline?onlinePanel():''}
-    <div class="when"><span class="pill">Nominations <b>${esc(nextDayShort(3))}</b></span><span class="pill">Prime <b>${esc(nextDayShort(6))}</b></span></div>
+    <div class="when"><span class="pill">Nominations <b>${esc(nomWhen(cur))}</b></span><span class="pill">Prime <b>${esc(primeWhen(cur))}</b></span></div>
     <nav class="tabs" role="tablist">${tabs.map(([k,l])=>`<button class="tab${k==='prime'&&primeLive(latestPrime())?' onair':''}" role="tab" aria-selected="${S.tab===k}" data-act="tab" data-id="${k}">${l}</button>`).join('')}</nav>
     ${banner?`<p class="note">${esc(banner)}</p>`:''}${spoil}${nomSpoil}${nudge}`;
 }
@@ -819,7 +835,7 @@ function tile(id){
 function stat(label,val,pct,gold){
   return`<div class="stat"><div class="lbl"><span>${label}</span><span>${val}</span></div><div class="hp${gold?' gold':''}"><i style="width:${Math.max(0,Math.min(100,pct))}%"></i></div></div>`;
 }
-function primeStart(n){const y=LAUNCH[0],m=LAUNCH[1],d=LAUNCH[2]+7*n;return Date.UTC(y,m,d,21-parisOffset(y,m,d),10);}
+function primeStart(n){const[y,m,d]=primeDay(n);return Date.UTC(y,m,d,21-parisOffset(y,m,d),10);}
 function autoResCard(s){
   const nm=id=>esc(C[id].name);
   const ok=Object.keys(S.autoResOn).sort((a,b)=>a-b).map(k=>{const a=S.autoResOn[k];
@@ -975,13 +991,13 @@ function vWeek(n){
       ${registered()?'':'<p class="muted">Choisis d’abord ton pseudo ci-dessus.</p>'}</div>`;
   const quitN=w.quit.map(id=>esc(C[id].name)).join(', ');
   const elim=w.noElim?`<div class="card"><h3>Départ cette semaine</h3>
-      <p>${quitN?`<b>${quitN}</b> a quitté l’aventure.`:'Pas d’élimination cette semaine.'} Il n’y a pas d’éliminé au prime de samedi : pas de pronostic d’éliminé cette semaine.</p>
+      <p>${quitN?`<b>${quitN}</b> a quitté l’aventure.`:'Pas d’élimination cette semaine.'} Il n’y a pas d’éliminé au prime de ${esc(primeDow(cur))} : pas de pronostic d’éliminé cette semaine.</p>
       ${w.quit.length?`<div class="pick-grid">${w.quit.map(id=>`<div class="pick off">${av(id)}<span class="nm">${esc(C[id].name)}</span><span class="st">Départ</span></div>`).join('')}</div>`:''}</div>`
     :`<div class="card"><h3>Qui sera éliminé ?</h3>
       ${w.nominees.length?`<div class="pick-grid">${w.nominees.filter(id=>alive.includes(id)).map(id=>pickBtn(cur,'elim',id,p.elim===id,!can)).join('')}</div>`
-        :`<p class="muted">Les nominés sont annoncés ${esc(nextDay(3))}. Reviens alors choisir celui qui quitte le château.</p>`}</div>`;
+        :`<p class="muted">Les nominés seront annoncés dans une quotidienne de la semaine. Reviens alors choisir celui qui quitte le château.</p>`}</div>`;
   const immList=w.immCands.length?w.immCands.filter(id=>alive.includes(id)):alive;
-  const imm=`<div class="card"><h3>Qui sera immunisé ?</h3><p class="muted">${w.immCands.length?`L’immunité se joue au prime de samedi entre ces ${immList.length} élèves.`:'L’élève protégé des nominations la semaine prochaine, désigné au prime de samedi.'}</p>
+  const imm=`<div class="card"><h3>Qui sera immunisé ?</h3><p class="muted">${w.immCands.length?`L’immunité se joue au prime de ${esc(primeDow(cur))} entre ces ${immList.length} élèves.`:`L’élève protégé des nominations la semaine prochaine, désigné au prime de ${esc(primeDow(cur))}.`}</p>
       <div class="pick-grid">${immList.map(id=>pickBtn(cur,'immune',id,p.immune===id,!can)).join('')}</div></div>`;
   return head+elim+imm;
 }
@@ -1036,8 +1052,8 @@ function vSettings(){
     <div class="card"><h3>Mon joueur</h3>${whoCard().replace(/^<div class="card[^"]*">/,'<div>')}</div>
     ${reg?notifCard(true):''}
     <div class="card"><h3>Anti-spoiler</h3>
-      <label class="check"><input type="checkbox" id="nospoil"${S.noSpoil?' checked':''}> Je regarde le prime le dimanche : masquer les résultats du samedi jusqu’à dimanche minuit</label>
-      <label class="check"><input type="checkbox" id="nonom"${S.noNom?' checked':''}> Je ne veux pas connaître les nominés avant le début du prime (samedi 21h10)</label>
+      <label class="check"><input type="checkbox" id="nospoil"${S.noSpoil?' checked':''}> Je regarde le prime en différé : masquer ses résultats jusqu’au dimanche minuit qui suit</label>
+      <label class="check"><input type="checkbox" id="nonom"${S.noNom?' checked':''}> Je ne veux pas connaître les nominés avant le début du prime (21h10)</label>
       <p class="muted">Ces réglages valent pour cet appareil.</p></div>
     ${reg?`<div class="card"><h3>Cœurs & tomates</h3><label class="check"><input type="checkbox" id="lkanon"${anonOf(S.uid)?' checked':''}> Mes votes sont anonymes (les autres voient les totaux, pas mon nom)</label></div>`:''}
     <div class="card"><h3>Application</h3>${app}</div>`;
@@ -1138,7 +1154,7 @@ function vDaily(){
   const spoilN=S.recaps.filter(r=>recapSpoiler(r.id)&&!S.recapHidden.includes(r.id)).length;
   let html=`<h2>Les quotidiennes</h2>
     <p class="muted disclaim">Un résumé chaque soir, rédigé automatiquement par Claude à partir des articles de presse publiés après la diffusion. Il peut contenir des erreurs ou des oublis : les sources sont indiquées sous chaque résumé.</p>
-    ${spoilN?`<p class="note spoil">Anti-spoiler : le résumé de la quotidienne du dimanche est masqué jusqu’à dimanche minuit.</p>`:''}
+    ${spoilN?`<p class="note spoil">Anti-spoiler : les résumés des quotidiennes qui suivent le prime sont masqués jusqu’à dimanche minuit.</p>`:''}
     ${S.recapErr?`<p class="note">Impossible de charger les résumés pour l’instant. <button class="linkbtn" data-act="recapReload">Réessayer</button></p>`:''}`;
   if(!list.length)return html+`<div class="card"><p class="empty">Pas encore de résumé. Le premier arrive après la prochaine quotidienne.</p></div>`;
   let wkCur=null;
@@ -1191,12 +1207,12 @@ function vOrga(){
     week=`<div class="card"><h3>Semaine ${cur}</h3>
       <p class="muted">Choix des joueurs fermés le ${esc(fmtLock(lk))}.</p>
       <span class="sub">Immunisé cette semaine (désigné au prime précédent)</span>${pickRow(alive,id=>prevImm===id,'setPrevImm')}
-      <span class="sub">Nominés (mercredi)</span>${S.autoNomWeeks.has(cur)?`<p class="note">Remplis automatiquement d’après le résumé de la quotidienne. Vérifie-les : touche un élève pour l’ajouter ou le retirer, ta liste remplacera alors la liste automatique.</p>`:''}${pickRow(alive,id=>w.nominees.includes(id),'nominee',id=>prevImm===id)}
+      <span class="sub">Nominés de la semaine</span>${S.autoNomWeeks.has(cur)?`<p class="note">Remplis automatiquement d’après le résumé de la quotidienne. Vérifie-les : touche un élève pour l’ajouter ou le retirer, ta liste remplacera alors la liste automatique.</p>`:''}${pickRow(alive,id=>w.nominees.includes(id),'nominee',id=>prevImm===id)}
       <label class="check"><input type="checkbox" id="orgaNoElim"${w.noElim?' checked':''}> Pas d’éliminé au prime de cette semaine (la semaine se clôt dès que l’immunisé est saisi)</label>
       <span class="sub">Candidats à l’immunité (limite le choix des joueurs ; aucun = tous les élèves)</span>${pickRow(alive,id=>w.immCands.includes(id),'immCand')}
       <span class="sub">Abandon en cours de semaine (ne compte pas comme l’éliminé, ne rapporte aucun point)</span>${w.quit.length?`<div class="pool">${w.quit.map(id=>`<button class="chip focus" data-act="quit" data-id="${id}" aria-pressed="true">${av(id)}<span class="nm">${esc(C[id].name)} ✕</span></button>`).join('')}</div>`:''}${pickRow(alive,()=>false,'quit')}
-      <span class="sub">Prime de samedi · immunisé pour la semaine suivante</span>${pickRow(alive,id=>w.immune===id,'setImm',id=>S.pendingOut===id||w.out.includes(id))}
-      <span class="sub">Prime de samedi · éliminé</span>${pickRow(cand,id=>S.pendingOut===id,'pendOut',id=>w.immune===id)}
+      <span class="sub">Prime de ${esc(primeDow(cur))} · immunisé pour la semaine suivante</span>${pickRow(alive,id=>w.immune===id,'setImm',id=>S.pendingOut===id||w.out.includes(id))}
+      <span class="sub">Prime de ${esc(primeDow(cur))} · éliminé</span>${pickRow(cand,id=>S.pendingOut===id,'pendOut',id=>w.immune===id)}
       <div class="row"><button class="btn danger" data-act="confirmOut"${S.pendingOut?'':' disabled'}>${S.pendingOut?'Confirmer le KO de '+esc(C[S.pendingOut].name):'Choisis l’éliminé'}</button></div>
       <p class="muted">Après le KO, la semaine ${cur+1} s’ouvre. Chaque clic est enregistré tout de suite.</p></div>`;}
   week=autoResCard(s)+week;
@@ -1532,7 +1548,7 @@ async function setNotifPref(k,v){
   catch(e){S.notifPrefs=prev;render();toast('Réglage non enregistré ('+errText(e)+').');}}
 function notifPrefsBlock(){const np=myNotifPrefs();
   return`<div class="np"><span class="sub">Me prévenir pour</span>
-    <label class="check"><input type="checkbox" data-np="prime"${np.prime?' checked':''}> Le début du prime (samedi soir)</label>
+    <label class="check"><input type="checkbox" data-np="prime"${np.prime?' checked':''}> Le début du prime (21h10)</label>
     <label class="check"><input type="checkbox" data-np="thread"${np.thread?' checked':''}> Les nouveaux commentaires sur les quotidiennes où j’ai commenté</label>
     <label class="check"><input type="checkbox" data-np="all"${np.all?' checked':''}> Tous les nouveaux commentaires sur les quotidiennes</label>
     <p class="muted">Les notifications de commentaires arrivent avec quelques minutes de décalage (5 à 15 min environ). Tes propres commentaires ne te sont jamais notifiés.</p></div>`;}
