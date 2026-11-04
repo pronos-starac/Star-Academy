@@ -1,6 +1,63 @@
 {
-  "updated": "2026-11-04T00:07:28+01:00",
+  "updated": "2026-11-04T20:01:34+01:00",
   "items": [
+    {
+      "id": "2026-11-04",
+      "title": "Mosimann recadre Kylian, le « nonchalant », avant le prime des anciens gagnants",
+      "tag": null,
+      "primeDate": "2026-11-06",
+      "immCands": [
+        "isabella",
+        "tracy",
+        "zoe"
+      ],
+      "points": [
+        "Mosimann prend Kylian à part pour un avertissement de comportement : il le trouve « nonchalant », lui reproche d'arriver en saluant à peine et lui demande de réfléchir positivement avant de parler.",
+        "Le directeur, qui se décrit lui-même comme arrogant et désinvolte du temps où il était élève, précise ne pas le traiter d'arrogant et assure que c'est parce que Kylian est un « bon gars » qu'il intervient ; il l'invite à se fixer des objectifs et à simplement faire de son mieux.",
+        "Kylian ne conteste pas, reconnaît qu'on lui fait souvent la remarque et qu'il râle beaucoup ; plutôt cartésien, il trouve les affirmations positives un peu trop « cérébrales » mais accroche quelques pancartes dans sa chambre, encouragé par Ydriss.",
+        "Isabella, Tracy et Zoé forment le top 3 des évaluations : elles s'affronteront au prime sur « D'aventure en aventure » de Serge Lama, la gagnante remportant l'immunité de la semaine suivante.",
+        "Amel, Félix et Morgan, nommés la veille, préparent la chanson qui doit les sauver vendredi ; Kylian a échappé à la nomination pour un seul point.",
+        "Les répétitrices Fanny et Philippine dévoilent le programme du prime : Maud décroche le tableau chanté-dansé sur « Only Girl » de Rihanna et Noémie, immunisée, ouvrira la soirée sur « Never Enough ».",
+        "Annoncé pour vendredi : des duos avec d'anciens gagnants, Isabella avec Jenifer, Mélina avec Nolwenn Leroy, Ydriss avec Magalie Vaé, Zoé avec Anisha Jo, Noémie avec Marine et Tracy avec Ambre, plus un défi acoustique sur « Les Sardines » pour Mélina et Kylian.",
+        "Semaine des gagnants au château : Anisha Jo, lauréate 2022, s'est glissée dans le cours de chant de Sofia Morgavi pour travailler les « vibes » des élèves, a partagé ses souvenirs puis a revisité les lieux."
+      ],
+      "eleves": [
+        "kylian",
+        "ydriss",
+        "isabella",
+        "tracy",
+        "zoe",
+        "maud",
+        "amel",
+        "felix"
+      ],
+      "sources": [
+        {
+          "name": "AlloCiné",
+          "url": "https://www.allocine.fr/tvactu/articles/article-1000230672.html"
+        },
+        {
+          "name": "Stéphane Larue",
+          "url": "https://stephanelarue.com/kylian-star-academy-mosimann-le-juge-nonchalant-et-le-recadre/"
+        },
+        {
+          "name": "Femme Actuelle (via Yahoo)",
+          "url": "https://fr.style.yahoo.com/arrives-dis-%C3%A0-peine-bonjour-171126835.html"
+        },
+        {
+          "name": "Viralmag",
+          "url": "https://viralmag.fr/mosimann-recadre-kylian-star-academy-attitude-nonchalante/"
+        },
+        {
+          "name": "CGTV",
+          "url": "https://www.cg-tv.com/articles/star-academy-decouvrez-le-top-3-de-cette-semaine"
+        },
+        {
+          "name": "Purepeople",
+          "url": "https://www.purepeople.com/article/anisha-jo-star-academy-moins-mise-en-avant-que-les-autres-gagnants-sa-reponse-sans-detour_a555812/1"
+        }
+      ]
+    },
     {
       "id": "2026-11-03",
       "title": "Amel, Félix et Morgan nommés : Mosimann tranche après les évaluations des « gagnants »",
@@ -20,7 +77,8 @@
         "Morgan, très dur avec lui-même après sa prestation sur « Je ne suis pas un héros », se dit déçu de ne pas avoir défendu son morceau.",
         "Côté réussites, Isabella est trouvée « spectaculaire » par Sofia, Maud fait carton plein et Tracy est saluée pour ses envolées.",
         "Mélina, trahie par un oubli de paroles sur « Roi », laisse les profs mitigés mais voit sa progression saluée ; elle échappe à la nomination.",
-        "Au prime, le public sauvera l'un des trois nommés, puis les élèves départageront les deux autres ; le prime est avancé à cause du match de rugby France-Fidji et réunira d'anciens gagnants."
+        "Au prime, le public sauvera l'un des trois nommés, puis les élèves départageront les deux autres ; le prime est avancé à cause du match de rugby France-Fidji et réunira d'anciens gagnants.",
+        "Audience : la quotidienne des nominations a réuni 1,35 million de téléspectateurs (14,4 % de part d'audience, plus de 30 % chez les femmes responsables des achats), en hausse de 0,8 point en un jour."
       ],
       "eleves": [
         "amel",
