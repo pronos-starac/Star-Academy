@@ -1,6 +1,38 @@
 {
-  "updated": "2026-11-05T00:06:51+01:00",
+  "updated": "2026-11-06T00:09:23+01:00",
   "items": [
+    {
+      "id": "2026-11-05",
+      "title": "Ambre en visite au château, Morgan cherche à relativiser à la veille du prime",
+      "tag": null,
+      "points": [
+        "Premier réveil en tant que nommé pour Morgan, qui essaie de prendre du recul ; plus tard dans la journée, il appelle sa mère, qui tente de lui redonner le moral.",
+        "Ambre, gagnante de la saison précédente, débarque au château : elle fait le tour des lieux, prend le temps de discuter avec les académiciens et partage leur déjeuner.",
+        "La visite se conclut par un moment musical improvisé autour du piano sur son single « J'me demande ».",
+        "Tracy, qui chantera en duo avec Ambre au prime, se dit ravie de partager la scène avec la dernière lauréate : elle salue sa présence scénique et sa voix, et croit en leur binôme.",
+        "Côté cours, Papy fait travailler l'improvisation en théâtre, puis Lydia enchaîne avec l'expression scénique.",
+        "Maud retrouve Jonathan pour préparer son tableau chanté-dansé, tandis que les répétitions du prime se poursuivent avec Fanny, Cameron peaufinant son autoportrait.",
+        "Le vote du public reste ouvert pour départager Amel, Félix et Morgan, qui joueront leur place au prime avancé à vendredi."
+      ],
+      "eleves": [
+        "morgan",
+        "tracy",
+        "maud",
+        "cameron",
+        "amel",
+        "felix"
+      ],
+      "sources": [
+        {
+          "name": "Stars Actu",
+          "url": "https://www.stars-actu.fr/2026/11/star-academy-du-5-novembre-2026-resume-et-replay-de-la-quotidienne/"
+        },
+        {
+          "name": "Femme Actuelle (via Yahoo)",
+          "url": "https://fr.style.yahoo.com/prime-gagnants-star-academy-d%C3%A9couvrez-174515541.html"
+        }
+      ]
+    },
     {
       "id": "2026-11-04",
       "title": "Mosimann recadre Kylian, le « nonchalant », avant le prime des anciens gagnants",
