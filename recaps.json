@@ -1,6 +1,45 @@
 {
-  "updated": "2026-11-06T00:09:23+01:00",
+  "updated": "2026-11-06T19:59:47+01:00",
   "items": [
+    {
+      "id": "2026-11-06",
+      "title": "Johnny Depp surprend les élèves au studio 217, les nommés écrivent leurs lettres",
+      "tag": null,
+      "points": [
+        "Grosse surprise lors des répétitions au studio 217 : Johnny Depp, de passage en France pour la promotion de son film « Scrooge », offre aux académiciens une masterclass d'environ une heure, en présence de Nikos Aliagas.",
+        "L'acteur échange avec les élèves sur l'interprétation, son approche des personnages et la gestion du trac ; les académiciens improvisent même une interview de la star.",
+        "Amel, Félix et Morgan, les trois nommés, ne sont pas du voyage : ils suivent un cours d'expression scénique avec Lydia, qui les guide sur l'interprétation de la chanson qui doit les sauver.",
+        "Côté répétitions du prime, Ambre travaille son duo avec Tracy sur « I Love Rock'n Roll », et Anisha répète « Purple Rain » avec Zoé.",
+        "De retour au château, les nommés rédigent la lettre d'adieu qu'ils liront en cas d'élimination, puis cuisinent pour accueillir leurs camarades, qui leur racontent leur rencontre avec Johnny Depp.",
+        "Dernière soirée à 14 au château, dans la bonne humeur, avant le prime des 25 ans avancé à ce vendredi à cause du match de rugby France-Fidji de samedi.",
+        "Annoncé pour le prime : le retour des anciens gagnants, dont Jenifer, Nolwenn Leroy, Pierre Garnier, Marine et Ambre, et l'élimination de l'un des trois nommés."
+      ],
+      "eleves": [
+        "amel",
+        "felix",
+        "morgan",
+        "tracy",
+        "zoe"
+      ],
+      "sources": [
+        {
+          "name": "Stars Actu",
+          "url": "https://www.stars-actu.fr/2026/11/star-academy-du-6-novembre-2026-resume-et-replay-de-la-quotidienne/"
+        },
+        {
+          "name": "Serie News",
+          "url": "https://www.serie-news.com/tnt/tf1/66013-star-academy-johnny-depp-debarque-par-surprise-devant-les-eleves-une-rencontre-inattendue-avant-le-prime-de-tf1-06-11-2026/"
+        },
+        {
+          "name": "Stéphane Larue",
+          "url": "https://stephanelarue.com/star-academy-johnny-depp-donne-une-masterclass-aux-eleves-au-studio-217/"
+        },
+        {
+          "name": "Actuanews",
+          "url": "https://actuanews.fr/2026/11/06/star-academy-2026-johnny-depp-debarque-au-studio-217-et-offre-une-rencontre-exceptionnelle-aux-eleves-video/"
+        }
+      ]
+    },
     {
       "id": "2026-11-05",
       "title": "Ambre en visite au château, Morgan cherche à relativiser à la veille du prime",
@@ -12,7 +51,8 @@
         "Tracy, qui chantera en duo avec Ambre au prime, se dit ravie de partager la scène avec la dernière lauréate : elle salue sa présence scénique et sa voix, et croit en leur binôme.",
         "Côté cours, Papy fait travailler l'improvisation en théâtre, puis Lydia enchaîne avec l'expression scénique.",
         "Maud retrouve Jonathan pour préparer son tableau chanté-dansé, tandis que les répétitions du prime se poursuivent avec Fanny, Cameron peaufinant son autoportrait.",
-        "Le vote du public reste ouvert pour départager Amel, Félix et Morgan, qui joueront leur place au prime avancé à vendredi."
+        "Le vote du public reste ouvert pour départager Amel, Félix et Morgan, qui joueront leur place au prime avancé à vendredi.",
+        "Audience : la quotidienne de jeudi a réuni 1,19 million de téléspectateurs sur TF1 (12,6 % de part d'audience), son plus bas score de la saison en part d'audience, plus 218 000 fidèles pour la rediffusion sur TFX."
       ],
       "eleves": [
         "morgan",
@@ -30,6 +70,10 @@
         {
           "name": "Femme Actuelle (via Yahoo)",
           "url": "https://fr.style.yahoo.com/prime-gagnants-star-academy-d%C3%A9couvrez-174515541.html"
+        },
+        {
+          "name": "Puremédias",
+          "url": "https://www.ozap.com/actu/audiences-pre-access-la-quotidienne-de-la-star-academy-2026-au-plus-bas-sur-tf1-record-pour-cyril-et-la-famille-p2-sur-w9/657857"
         }
       ]
     },
