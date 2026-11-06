@@ -1,13 +1,13 @@
 {
-  "updated": "2026-11-06T19:59:47+01:00",
+  "updated": "2026-11-07T00:07:42+01:00",
   "items": [
     {
       "id": "2026-11-06",
       "title": "Johnny Depp surprend les élèves au studio 217, les nommés écrivent leurs lettres",
       "tag": null,
       "points": [
-        "Grosse surprise lors des répétitions au studio 217 : Johnny Depp, de passage en France pour la promotion de son film « Scrooge », offre aux académiciens une masterclass d'environ une heure, en présence de Nikos Aliagas.",
-        "L'acteur échange avec les élèves sur l'interprétation, son approche des personnages et la gestion du trac ; les académiciens improvisent même une interview de la star.",
+        "Grosse surprise lors des répétitions au studio 217 : Johnny Depp, de passage en France pour la promotion de son film « Scrooge », adaptation du conte de Dickens qui sort en salles le 11 novembre, offre aux académiciens une masterclass d'environ une heure, en présence de Nikos Aliagas.",
+        "L'acteur échange avec les élèves sur l'interprétation, son approche des personnages et la gestion du trac, et partage aussi son expérience de musicien, lui qui est guitariste des Hollywood Vampires ; les académiciens improvisent même une interview de la star.",
         "Amel, Félix et Morgan, les trois nommés, ne sont pas du voyage : ils suivent un cours d'expression scénique avec Lydia, qui les guide sur l'interprétation de la chanson qui doit les sauver.",
         "Côté répétitions du prime, Ambre travaille son duo avec Tracy sur « I Love Rock'n Roll », et Anisha répète « Purple Rain » avec Zoé.",
         "De retour au château, les nommés rédigent la lettre d'adieu qu'ils liront en cas d'élimination, puis cuisinent pour accueillir leurs camarades, qui leur racontent leur rencontre avec Johnny Depp.",
@@ -37,6 +37,10 @@
         {
           "name": "Actuanews",
           "url": "https://actuanews.fr/2026/11/06/star-academy-2026-johnny-depp-debarque-au-studio-217-et-offre-une-rencontre-exceptionnelle-aux-eleves-video/"
+        },
+        {
+          "name": "Watson",
+          "url": "https://www.watson.ch/fr/divertissement/musique/599622134-johnny-depp-debarque-a-la-star-ac-pour-donner-ses-conseils"
         }
       ]
     },
