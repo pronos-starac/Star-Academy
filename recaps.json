@@ -1,6 +1,58 @@
 {
-  "updated": "2026-11-07T00:07:42+01:00",
+  "updated": "2026-11-07T20:00:00+01:00",
   "items": [
+    {
+      "id": "2026-11-07",
+      "title": "Retour sur le prime des 25 ans : Morgan éliminé, sa lettre lue au château",
+      "tag": null,
+      "primeOut": [
+        "morgan"
+      ],
+      "primeImmune": "zoe",
+      "points": [
+        "La quotidienne revient sur la journée du prime avancé à vendredi : verdict, Félix est sauvé par le public, puis Amel par ses camarades, et Morgan quitte l'aventure sans rentrer au château.",
+        "Le vote des élèves a été net : six voix pour Amel, une seule pour Morgan, celle d'Isabella.",
+        "Au top 3, Zoé l'emporte face à Isabella et Tracy et décroche l'immunité pour la semaine qui commence ; elle ouvrira le prochain prime.",
+        "Avant le direct, Noémie, chargée d'ouvrir la soirée, est très stressée ; elle répète « Tricheur » avec Marine et se dit finalement satisfaite de sa prestation.",
+        "Répétitions au studio 217 : Isabella travaille son duo avec Jenifer, sur lequel Jonathan Janvrin lui fait apprendre une petite chorégraphie, Mélina prépare « Ophélia » avec Nolwenn Leroy, et Mosimann fait répéter aux élèves la collégiale « Et si tu sens », en hommage à Grégory Lemarchal.",
+        "Le prime s'ouvre sur « La musique », l'hymne de la première saison, puis sur la chanson de la promo, « Dans un autre monde » ; Pierre Garnier vole quelques secondes le rôle de Nikos Aliagas.",
+        "Au fil de la soirée : l'autoportrait de Cameron, le tableau chanté-dansé de Maud, noté 15,5, qui ne lui permet pas de dépasser Zoé dans la course à la tournée, et la chanson challenge de Kylian et Mélina, une version acoustique des « Sardines ».",
+        "Zoé, en duo avec Anisha sur « Purple Rain », obtient une standing ovation des professeurs.",
+        "Retour en bus à Dammarie-les-Lys et dîner de sushis : Félix savoure d'avoir été sauvé par les téléspectateurs, Amel remercie les élèves, puis Mélina et Cameron vont chercher la lettre de Morgan, qui a laissé un petit mot à chacun, et la lisent à la promo."
+      ],
+      "eleves": [
+        "morgan",
+        "amel",
+        "felix",
+        "zoe",
+        "noemie",
+        "melina",
+        "cameron",
+        "isabella"
+      ],
+      "sources": [
+        {
+          "name": "Stars Actu",
+          "url": "https://www.stars-actu.fr/2026/11/star-academy-du-7-novembre-2026-resume-et-replay-de-la-quotidienne/"
+        },
+        {
+          "name": "Serie News",
+          "url": "https://www.serie-news.com/tnt/tf1/66329-sta-s14-2026-11-06-resume-07-11-2026/"
+        },
+        {
+          "name": "Stéphane Larue",
+          "url": "https://stephanelarue.com/star-academy-morgan-elimine-au-prime-des-gagnants-amel-sauvee-par-les-eleves/"
+        },
+        {
+          "name": "Femin Actu",
+          "url": "https://www.feminactu.com/2026/11/star-academy-du-6-novembre-morgan/"
+        },
+        {
+          "name": "La DH",
+          "url": "https://www.dhnet.be/medias/television/2026/11/07/tu-as-laisse-une-empreinte-ce-soir-standing-ovation-pour-une-candidate-retour-des-gagnants-ce-que-vous-avez-rate-du-prime-de-la-star-academy-OBN43HSGCBDAVLLAIPPBM5G64U/"
+        }
+      ]
+    },
     {
       "id": "2026-11-06",
       "title": "Johnny Depp surprend les élèves au studio 217, les nommés écrivent leurs lettres",
