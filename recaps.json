@@ -1,6 +1,51 @@
 {
-  "updated": "2026-11-07T20:00:00+01:00",
+  "updated": "2026-11-08T20:10:00+01:00",
   "items": [
+    {
+      "id": "2026-11-08",
+      "title": "Nuit en forêt avec Vianney, puis carton rouge de Lydia pour Kylian au débrief",
+      "tag": null,
+      "points": [
+        "Grande première dans l'histoire de l'émission : les 13 élèves restants quittent le château pour une nuit de camping en forêt avec leur parrain Vianney, qui avait annoncé cette « classe verte » par vidéo pendant le prime.",
+        "Sur place, il faut monter le campement : cinq tentes pour treize, donc des binômes et trinômes à former ; pour la plupart, c'est une première, mais tout le monde finit par y arriver.",
+        "Ydriss, inquiet à l'idée de cette nuit dehors, est rassuré par Vianney ; Cameron, qui vit à la montagne, est dans son élément pour ramasser le bois du feu, et joue même le thème de « Titanic » à la flûte pendant la balade.",
+        "Autour du feu, emmitouflés dans manteaux et écharpes par un froid mordant, les élèves écoutent Vianney chanter son nouveau single à la guitare.",
+        "Le parrain leur dévoile aussi un titre écrit le matin même pour les Restos du Cœur, dont il veut leur faire enregistrer le refrain ; il passe ensuite la nuit à la belle étoile près du feu.",
+        "De retour au château, débrief du prime avec Lydia, qui sort son « premier et dernier » carton rouge contre Kylian : il a cessé de chanter pendant l'hymne alors que la caméra le filmait.",
+        "Lydia y voit un lâchage du groupe et un manque de respect, lui reproche de ne même pas avoir fait semblant et lui rappelle que ceux qui tiennent le micro doivent travailler davantage ; Kylian explique s'être entendu chanter faux et avoir préféré se retirer, sans la convaincre.",
+        "Isabella reconnaît avoir chanté faux sur son duo avec Jenifer ; Lydia estime qu'elle peut faire mieux.",
+        "Annoncé pour la semaine : des évaluations par équipes (rouge, bleue, jaune) formées par les élèves ; la meilleure équipe sera protégée, puis le public sauvera l'une des deux autres au prime du samedi 14 novembre, laissant quatre ou cinq nommés.",
+        "Rugby oblige, cette quotidienne était diffusée sur TFX à 16h05 ; même chose prévue le dimanche 15 novembre."
+      ],
+      "eleves": [
+        "kylian",
+        "isabella",
+        "cameron",
+        "ydriss"
+      ],
+      "sources": [
+        {
+          "name": "Stars Actu",
+          "url": "https://www.stars-actu.fr/2026/11/star-academy-du-8-novembre-2026-resume-et-replay-de-la-quotidienne/"
+        },
+        {
+          "name": "Stéphane Larue",
+          "url": "https://stephanelarue.com/video-star-academy-vianney-emmene-les-13-eleves-camper-en-foret/"
+        },
+        {
+          "name": "Purepeople",
+          "url": "https://www.purepeople.com/article/vianney-de-retour-dans-la-foret-cette-fois-avec-les-eleves-de-la-star-academy-le-parrain-partage-des-images-de-cette-initiative-inedite-dans-lhistoire-de-lemission_a555935/1"
+        },
+        {
+          "name": "Portail Free",
+          "url": "https://portail.free.fr/divertissement/musique/star-academy-kylian-accuse-davoir-lache-et-manque-de-respect-a-ses-camarades-en-plein-prime-il-se-fait-remonter-les-bretelles/"
+        },
+        {
+          "name": "Serie News",
+          "url": "https://www.serie-news.com/tnt/tf1/66804-star-academy-equipes-rouges-bleues-et-jaunes-comment-vont-fonctionner-les-evaluations-cette-semaine-08-11-2026/"
+        }
+      ]
+    },
     {
       "id": "2026-11-07",
       "title": "Retour sur le prime des 25 ans : Morgan éliminé, sa lettre lue au château",
@@ -18,7 +63,8 @@
         "Le prime s'ouvre sur « La musique », l'hymne de la première saison, puis sur la chanson de la promo, « Dans un autre monde » ; Pierre Garnier vole quelques secondes le rôle de Nikos Aliagas.",
         "Au fil de la soirée : l'autoportrait de Cameron, le tableau chanté-dansé de Maud, noté 15,5, qui ne lui permet pas de dépasser Zoé dans la course à la tournée, et la chanson challenge de Kylian et Mélina, une version acoustique des « Sardines ».",
         "Zoé, en duo avec Anisha sur « Purple Rain », obtient une standing ovation des professeurs.",
-        "Retour en bus à Dammarie-les-Lys et dîner de sushis : Félix savoure d'avoir été sauvé par les téléspectateurs, Amel remercie les élèves, puis Mélina et Cameron vont chercher la lettre de Morgan, qui a laissé un petit mot à chacun, et la lisent à la promo."
+        "Retour en bus à Dammarie-les-Lys et dîner de sushis : Félix savoure d'avoir été sauvé par les téléspectateurs, Amel remercie les élèves, puis Mélina et Cameron vont chercher la lettre de Morgan, qui a laissé un petit mot à chacun, et la lisent à la promo.",
+        "Audience du prime de vendredi : 3,15 millions de téléspectateurs (19,2 % de part d'audience) pour la première partie, puis 2,33 millions (25,6 %) pour la seconde."
       ],
       "eleves": [
         "morgan",
@@ -50,6 +96,10 @@
         {
           "name": "La DH",
           "url": "https://www.dhnet.be/medias/television/2026/11/07/tu-as-laisse-une-empreinte-ce-soir-standing-ovation-pour-une-candidate-retour-des-gagnants-ce-que-vous-avez-rate-du-prime-de-la-star-academy-OBN43HSGCBDAVLLAIPPBM5G64U/"
+        },
+        {
+          "name": "Puremédias",
+          "url": "https://www.ozap.com/actu/audiences-quel-score-pour-le-prime-exceptionnel-de-la-star-academy-reunissant-tous-les-gagnants-de-lemission/657766"
         }
       ]
     },
