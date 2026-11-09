@@ -1,6 +1,55 @@
 {
-  "updated": "2026-11-08T20:10:00+01:00",
+  "updated": "2026-11-09T20:00:54+01:00",
   "items": [
+    {
+      "id": "2026-11-09",
+      "title": "Débrief du prime avec Lydia : larmes de Mélina, coup de blues de Leeloo",
+      "tag": null,
+      "points": [
+        "La quotidienne revient sur la fin du débrief du prime des 25 ans avec Lydia, qui passe en revue les prestations de chacun.",
+        "Mélina est félicitée pour sa chanson challenge, mais en revoyant son duo « Ophélia » avec Nolwenn Leroy, où Lydia l'a trouvée fausse, elle fond en larmes.",
+        "Noémie reçoit des compliments pour l'ouverture du prime, qui a été un coup de cœur de Mosimann ; Ydriss, en duo avec Magalie, a encore quelques soucis de justesse mais son travail est salué.",
+        "Maud est félicitée pour son tableau chanté-dansé, Cameron pour un autoportrait jugé sincère : il raconte que Nikos Aliagas a été touché par son « Oh Marie ».",
+        "Félix et Amel, rescapés du prime, sont eux aussi complimentés pour leurs solos.",
+        "Leeloo et sa partenaire de duo Élodie Frégé se font reprendre : elles se sont trop appuyées sur le prompteur ; après le débrief, Leeloo a un coup de blues et Cameron tente de la consoler.",
+        "Moment de détente ensuite au château, avec une partie de « devine tête », tandis qu'Amel appelle son petit ami.",
+        "Au château ce lundi matin, Mosimann a lancé la « semaine des équipes » : trois équipes formées en vingt minutes, non sans tensions (Kylian et Félix ont affiché leur mécontentement), qui devront monter une mini comédie musicale sur « Encore un matin » de Jean-Jacques Goldman, avec chorégraphie de Jonathan et improvisation théâtrale.",
+        "Composition annoncée : Mélina, Maud, Isabella, Cameron et Zoé (déjà immunisée) d'un côté, Kylian, Ydriss, Félix et Brieuc de l'autre, et une équipe 100 % féminine Tracy, Amel, Leeloo et Noémie.",
+        "Annoncé pour la semaine : évaluations ce mardi 10 novembre ; l'équipe gagnante sera protégée, le public sauvera l'une des deux autres au prime du samedi 14 novembre, et les membres de l'équipe restante joueront leur place."
+      ],
+      "eleves": [
+        "melina",
+        "leeloo",
+        "cameron",
+        "noemie",
+        "ydriss",
+        "maud",
+        "amel",
+        "felix"
+      ],
+      "sources": [
+        {
+          "name": "Stars Actu",
+          "url": "https://www.stars-actu.fr/2026/11/star-academy-du-9-novembre-2026-resume-et-replay-de-la-quotidienne/"
+        },
+        {
+          "name": "AlloCiné",
+          "url": "https://www.allocine.fr/tvactu/articles/article-1000231335.html"
+        },
+        {
+          "name": "CGTV",
+          "url": "https://www.cg-tv.com/articles/star-academy-mosimann-annonce-la-semaine-des-equipes-les-eleves-chamboules"
+        },
+        {
+          "name": "Actuanews",
+          "url": "https://actuanews.fr/2026/11/09/star-academy-trois-equipes-une-seule-immunisee-et-des-eliminations-sous-haute-tension-les-evaluations-vont-tout-bouleverser/"
+        },
+        {
+          "name": "Serie News",
+          "url": "https://www.serie-news.com/tnt/tf1/67219-star-academy-du-9-novembre-quelles-equipes-vont-saffronter-lors-des-evaluations-cette-semaine-09-11-2026/"
+        }
+      ]
+    },
     {
       "id": "2026-11-08",
       "title": "Nuit en forêt avec Vianney, puis carton rouge de Lydia pour Kylian au débrief",
@@ -15,7 +64,7 @@
         "Lydia y voit un lâchage du groupe et un manque de respect, lui reproche de ne même pas avoir fait semblant et lui rappelle que ceux qui tiennent le micro doivent travailler davantage ; Kylian explique s'être entendu chanter faux et avoir préféré se retirer, sans la convaincre.",
         "Isabella reconnaît avoir chanté faux sur son duo avec Jenifer ; Lydia estime qu'elle peut faire mieux.",
         "Annoncé pour la semaine : des évaluations par équipes (rouge, bleue, jaune) formées par les élèves ; la meilleure équipe sera protégée, puis le public sauvera l'une des deux autres au prime du samedi 14 novembre, laissant quatre ou cinq nommés.",
-        "Rugby oblige, cette quotidienne était diffusée sur TFX à 16h05 ; même chose prévue le dimanche 15 novembre."
+        "Rugby oblige, cette quotidienne était diffusée sur TFX à 16h05 (même chose prévue le dimanche 15 novembre) ; elle y a réuni 430 000 téléspectateurs, soit 4,7 % de part d'audience et 13 % sur les femmes responsables des achats de moins de 50 ans."
       ],
       "eleves": [
         "kylian",
@@ -43,6 +92,10 @@
         {
           "name": "Serie News",
           "url": "https://www.serie-news.com/tnt/tf1/66804-star-academy-equipes-rouges-bleues-et-jaunes-comment-vont-fonctionner-les-evaluations-cette-semaine-08-11-2026/"
+        },
+        {
+          "name": "Puremédias",
+          "url": "https://www.ozap.com/actu/audiences-dimanche-66-minutes-en-grande-forme-sur-m6-record-pour-20h30-le-dimanche-avec-laurent-delahousse-sur-france-2/657772"
         }
       ]
     },
