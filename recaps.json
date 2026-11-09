@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-09T20:00:54+01:00",
+  "updated": "2026-11-10T00:07:17+01:00",
   "items": [
     {
       "id": "2026-11-09",
@@ -14,8 +14,8 @@
         "Leeloo et sa partenaire de duo Élodie Frégé se font reprendre : elles se sont trop appuyées sur le prompteur ; après le débrief, Leeloo a un coup de blues et Cameron tente de la consoler.",
         "Moment de détente ensuite au château, avec une partie de « devine tête », tandis qu'Amel appelle son petit ami.",
         "Au château ce lundi matin, Mosimann a lancé la « semaine des équipes » : trois équipes formées en vingt minutes, non sans tensions (Kylian et Félix ont affiché leur mécontentement), qui devront monter une mini comédie musicale sur « Encore un matin » de Jean-Jacques Goldman, avec chorégraphie de Jonathan et improvisation théâtrale.",
-        "Composition annoncée : Mélina, Maud, Isabella, Cameron et Zoé (déjà immunisée) d'un côté, Kylian, Ydriss, Félix et Brieuc de l'autre, et une équipe 100 % féminine Tracy, Amel, Leeloo et Noémie.",
-        "Annoncé pour la semaine : évaluations ce mardi 10 novembre ; l'équipe gagnante sera protégée, le public sauvera l'une des deux autres au prime du samedi 14 novembre, et les membres de l'équipe restante joueront leur place."
+        "Composition annoncée : les Bleus, seule équipe mixte et seule à cinq alors que la consigne prévoyait des groupes de quatre (Mélina, Maud, Isabella, Cameron et Zoé, déjà immunisée), les Jaunes 100 % garçons (Kylian, Ydriss, Félix et Brieuc) et les Rouges 100 % filles (Tracy, Amel, Leeloo et Noémie).",
+        "Annoncé pour la semaine : évaluations ce mardi 10 novembre, résultats le mercredi 11 ; l'équipe gagnante sera protégée, le public sauvera l'une des deux autres au prime du samedi 14 novembre, et les membres de l'équipe restante joueront leur place."
       ],
       "eleves": [
         "melina",
@@ -47,6 +47,10 @@
         {
           "name": "Serie News",
           "url": "https://www.serie-news.com/tnt/tf1/67219-star-academy-du-9-novembre-quelles-equipes-vont-saffronter-lors-des-evaluations-cette-semaine-09-11-2026/"
+        },
+        {
+          "name": "Viralmag",
+          "url": "https://viralmag.fr/star-academy-2026-semaine-des-equipes-filles-contre-garcons/"
         }
       ]
     },
