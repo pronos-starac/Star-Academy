@@ -1,6 +1,44 @@
 {
-  "updated": "2026-11-10T00:07:17+01:00",
+  "updated": "2026-11-10T20:05:13+01:00",
   "items": [
+    {
+      "id": "2026-11-10",
+      "title": "Chefs d'équipe, répétitions avant les évaluations, Zoé ouvrira le prime sur « Earth Song »",
+      "tag": null,
+      "points": [
+        "Au lendemain de l'annonce de la « semaine des équipes », les élèves préparent les évaluations du mardi matin : chaque équipe doit mettre en scène « Encore un matin » de Jean-Jacques Goldman comme une mini comédie musicale, avec une chorégraphie et une improvisation théâtrale.",
+        "En cours de danse, Jonathan apprend la chorégraphie aux trois chefs d'équipe, Leeloo pour les Rouges, Félix pour les Jaunes et Zoé pour les Bleus, chargés ensuite de la transmettre à leur groupe ; chaque équipe doit conclure sur sa propre création.",
+        "En cours de chant, Sofia félicite les élèves pour leurs progrès et pour avoir chanté juste, puis leur fait travailler les intervalles.",
+        "Fanny et Philippine dévoilent les invités du prime du samedi 14 novembre : Grand Corps Malade en invité d'honneur, Hélène Ségara et Léa Doffey, finaliste de la saison précédente.",
+        "Zoé, immunisée depuis sa victoire au top 3 du dernier prime, ouvrira la soirée avec « Earth Song » de Michael Jackson.",
+        "La soirée au château est consacrée aux répétitions des équipes pour les évaluations du lendemain matin.",
+        "Annoncé pour le prime : trois titres de Grand Corps Malade (« Derrière le brouillard », « Le prochain rêve », « Mesdames ») et trois d'Hélène Ségara (« Elle, tu l'aimes », « Vivre », « Vivo per lei ») sont travaillés, avec un élève de chaque équipe en danger en duo, et Léa Doffey chantera « Hurt » de Christina Aguilera ; l'équipe gagnante n'aura pas de duo avec les invités.",
+        "Annoncé pour la suite : l'équipe protégée sera révélée mercredi en fin de quotidienne ; au prime, le public sauvera l'une des deux autres équipes, puis dans l'équipe restante le public, les professeurs et les élèves sauveront chacun un élève, et le dernier quittera l'aventure."
+      ],
+      "eleves": [
+        "zoe",
+        "leeloo",
+        "felix"
+      ],
+      "sources": [
+        {
+          "name": "Stars Actu",
+          "url": "https://www.stars-actu.fr/2026/11/star-academy-du-10-novembre-2026-resume-et-replay-de-la-quotidienne/"
+        },
+        {
+          "name": "Purebreak",
+          "url": "https://www.purebreak.com/news/ca-devient-un-sketch-les-invites-du-prochain-prime-de-la-star-academy-devoiles-et-ca-nemballe-pas-les-telespectateurs/266720"
+        },
+        {
+          "name": "Serie News",
+          "url": "https://www.serie-news.com/tnt/tf1/68295-star-academy-du-14-novembre-grand-corps-malade-helene-segara-et-une-ancienne-finaliste-invites-du-prochain-prime-sur-tf1-10-11-2026/"
+        },
+        {
+          "name": "Stéphane Larue",
+          "url": "https://stephanelarue.com/star-academy-trois-equipes-pour-levaluation-goldman-de-mardi-zoe-immunisee/"
+        }
+      ]
+    },
     {
       "id": "2026-11-09",
       "title": "Débrief du prime avec Lydia : larmes de Mélina, coup de blues de Leeloo",
@@ -9,13 +47,13 @@
         "La quotidienne revient sur la fin du débrief du prime des 25 ans avec Lydia, qui passe en revue les prestations de chacun.",
         "Mélina est félicitée pour sa chanson challenge, mais en revoyant son duo « Ophélia » avec Nolwenn Leroy, où Lydia l'a trouvée fausse, elle fond en larmes.",
         "Noémie reçoit des compliments pour l'ouverture du prime, qui a été un coup de cœur de Mosimann ; Ydriss, en duo avec Magalie, a encore quelques soucis de justesse mais son travail est salué.",
-        "Maud est félicitée pour son tableau chanté-dansé, Cameron pour un autoportrait jugé sincère : il raconte que Nikos Aliagas a été touché par son « Oh Marie ».",
-        "Félix et Amel, rescapés du prime, sont eux aussi complimentés pour leurs solos.",
+        "Maud est félicitée pour son tableau chanté-dansé, Cameron pour un autoportrait jugé sincère : il raconte que Nikos Aliagas a été touché par son « Oh Marie » ; Félix et Amel, rescapés du prime, sont eux aussi complimentés pour leurs solos.",
         "Leeloo et sa partenaire de duo Élodie Frégé se font reprendre : elles se sont trop appuyées sur le prompteur ; après le débrief, Leeloo a un coup de blues et Cameron tente de la consoler.",
         "Moment de détente ensuite au château, avec une partie de « devine tête », tandis qu'Amel appelle son petit ami.",
         "Au château ce lundi matin, Mosimann a lancé la « semaine des équipes » : trois équipes formées en vingt minutes, non sans tensions (Kylian et Félix ont affiché leur mécontentement), qui devront monter une mini comédie musicale sur « Encore un matin » de Jean-Jacques Goldman, avec chorégraphie de Jonathan et improvisation théâtrale.",
         "Composition annoncée : les Bleus, seule équipe mixte et seule à cinq alors que la consigne prévoyait des groupes de quatre (Mélina, Maud, Isabella, Cameron et Zoé, déjà immunisée), les Jaunes 100 % garçons (Kylian, Ydriss, Félix et Brieuc) et les Rouges 100 % filles (Tracy, Amel, Leeloo et Noémie).",
-        "Annoncé pour la semaine : évaluations ce mardi 10 novembre, résultats le mercredi 11 ; l'équipe gagnante sera protégée, le public sauvera l'une des deux autres au prime du samedi 14 novembre, et les membres de l'équipe restante joueront leur place."
+        "Annoncé pour la semaine : évaluations ce mardi 10 novembre, résultats le mercredi 11 ; l'équipe gagnante sera protégée, le public sauvera l'une des deux autres au prime du samedi 14 novembre, et les membres de l'équipe restante joueront leur place.",
+        "Audience : 1,33 million de téléspectateurs sur TF1, soit 14 % de part d'audience et 30,2 % sur les femmes responsables des achats de moins de 50 ans."
       ],
       "eleves": [
         "melina",
@@ -49,8 +87,8 @@
           "url": "https://www.serie-news.com/tnt/tf1/67219-star-academy-du-9-novembre-quelles-equipes-vont-saffronter-lors-des-evaluations-cette-semaine-09-11-2026/"
         },
         {
-          "name": "Viralmag",
-          "url": "https://viralmag.fr/star-academy-2026-semaine-des-equipes-filles-contre-garcons/"
+          "name": "Wikipédia",
+          "url": "https://fr.wikipedia.org/wiki/Saison_14_de_Star_Academy"
         }
       ]
     },
