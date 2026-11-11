@@ -1,6 +1,64 @@
 {
-  "updated": "2026-11-10T20:05:13+01:00",
+  "updated": "2026-11-11T20:01:29+01:00",
   "items": [
+    {
+      "id": "2026-11-11",
+      "title": "Évaluations par équipes : les Bleus immunisés, Rouges et Jaunes tous nommés",
+      "tag": "nominations",
+      "nominees": [
+        "leeloo",
+        "tracy",
+        "amel",
+        "noemie",
+        "kylian",
+        "felix",
+        "ydriss",
+        "brieuc"
+      ],
+      "points": [
+        "Verdict en fin de quotidienne, lors de la connexion avec le château : Mosimann annonce que l'équipe bleue (Cameron, Maud, Mélina, Isabella et Zoé) remporte les évaluations ; les huit membres des Rouges (Leeloo, Tracy, Amel, Noémie) et des Jaunes (Kylian, Félix, Ydriss, Brieuc) sont donc nommés.",
+        "La quotidienne montre les évaluations collectives du mardi : chaque équipe chante « Encore un matin » de Jean-Jacques Goldman en mini comédie musicale, présente une chorégraphie à Jonathan et improvise une scène de théâtre devant Papy sur un sujet tiré au sort.",
+        "Les Bleus ouvrent le bal ; leur histoire, centrée sur le monde du travail avec Mélina en nouvelle employée dépassée, n'est pas très lisible, et sur le thème « tensions à la mi-temps » ils jouent un entracte au lieu d'une scène sportive : en sortant, Mélina et Maud doutent d'avoir respecté le sujet.",
+        "Les profs saluent pourtant leur cohésion : Sofia trouve que le groupe s'écoute, Jonathan apprécie la chorégraphie et Papy aime leur façon de s'approprier le thème.",
+        "Chez les Jaunes (sujet « La mouette bleue est de retour »), Sofia félicite Ydriss pour son écoute, Jonathan est séduit par le second degré et Lydia par le travail fourni ; Papy regrette une idée pas assez affirmée, mais Mosimann a ri du début à la fin.",
+        "Les Rouges tirent « tatouages énigmatiques » : Lydia apprécie l'entrée et la chute de leur impro, Jonathan adore le début de la mise en scène mais relève des oublis dans la danse.",
+        "Mosimann se dit fier de ses élèves et prévient qu'il sera difficile de les départager, le niveau ayant été jugé « extraordinaire ».",
+        "Au prime de samedi, le public sauvera l'une des deux équipes nommées ; dans l'autre, chacun défendra sa place en chanson, puis le public, les professeurs et les élèves sauveront chacun un élève, et le dernier sera éliminé.",
+        "Le reste de la journée : cours particuliers avec Sofia, Jonathan et Lydia, séance de sport nocturne avec Ladji, et Tracy qui appelle sa maman avant d'aller se coucher."
+      ],
+      "eleves": [
+        "melina",
+        "maud",
+        "cameron",
+        "isabella",
+        "zoe",
+        "ydriss",
+        "tracy",
+        "kylian"
+      ],
+      "sources": [
+        {
+          "name": "Stars Actu",
+          "url": "https://www.stars-actu.fr/2026/11/star-academy-du-11-novembre-2026-nominations-resume-et-replay-de-la-quotidienne/"
+        },
+        {
+          "name": "Serieously (Ouest-France)",
+          "url": "https://serieously.ouest-france.fr/nominations-star-academy-2026-qui-sont-les-huit-eleves-nommes-ce-11-novembre"
+        },
+        {
+          "name": "AlloCiné",
+          "url": "https://www.allocine.fr/tvactu/articles/article-1000231578.html"
+        },
+        {
+          "name": "Quartz",
+          "url": "https://fr.qz.com/equipe-bleue-star-academy-evaluations-huit-eleves-nommes-111126"
+        },
+        {
+          "name": "Viral Mag",
+          "url": "https://viralmag.fr/star-academy-2026-bleus-immunises-ce-mercredi/"
+        }
+      ]
+    },
     {
       "id": "2026-11-10",
       "title": "Chefs d'équipe, répétitions avant les évaluations, Zoé ouvrira le prime sur « Earth Song »",
@@ -13,7 +71,8 @@
         "Zoé, immunisée depuis sa victoire au top 3 du dernier prime, ouvrira la soirée avec « Earth Song » de Michael Jackson.",
         "La soirée au château est consacrée aux répétitions des équipes pour les évaluations du lendemain matin.",
         "Annoncé pour le prime : trois titres de Grand Corps Malade (« Derrière le brouillard », « Le prochain rêve », « Mesdames ») et trois d'Hélène Ségara (« Elle, tu l'aimes », « Vivre », « Vivo per lei ») sont travaillés, avec un élève de chaque équipe en danger en duo, et Léa Doffey chantera « Hurt » de Christina Aguilera ; l'équipe gagnante n'aura pas de duo avec les invités.",
-        "Annoncé pour la suite : l'équipe protégée sera révélée mercredi en fin de quotidienne ; au prime, le public sauvera l'une des deux autres équipes, puis dans l'équipe restante le public, les professeurs et les élèves sauveront chacun un élève, et le dernier quittera l'aventure."
+        "Annoncé pour la suite : l'équipe protégée sera révélée mercredi en fin de quotidienne ; au prime, le public sauvera l'une des deux autres équipes, puis dans l'équipe restante le public, les professeurs et les élèves sauveront chacun un élève, et le dernier quittera l'aventure.",
+        "Audience : la quotidienne a réuni 1,35 million de téléspectateurs sur TF1 (14,4 % de part d'audience, +0,4 point sur la veille, 34,3 % des FRDA-50) ; la rediffusion sur TFX a attiré 199 000 curieux."
       ],
       "eleves": [
         "zoe",
@@ -36,6 +95,10 @@
         {
           "name": "Stéphane Larue",
           "url": "https://stephanelarue.com/star-academy-trois-equipes-pour-levaluation-goldman-de-mardi-zoe-immunisee/"
+        },
+        {
+          "name": "Puremédias (Ozap)",
+          "url": "https://www.ozap.com/actu/audiences-pre-access-mot-de-passe-avec-damien-thevenot-au-plus-haut-demain-nous-appartient-sous-les-10-de-pda-sur-les-frda/657776"
         }
       ]
     },
