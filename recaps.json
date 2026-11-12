@@ -1,6 +1,51 @@
 {
-  "updated": "2026-11-11T20:01:29+01:00",
+  "updated": "2026-11-12T20:00:48+01:00",
   "items": [
+    {
+      "id": "2026-11-12",
+      "title": "Rouges et Jaunes digèrent la nomination, Adèle Castillon en atelier et blind-test avec Paul de Saint Sernin",
+      "tag": null,
+      "points": [
+        "Au réveil, les nominations occupent tous les esprits : chez les Rouges, les filles vivent très mal d'être nommées, et Mosimann vient rencontrer chaque équipe pour rassurer les élèves en rappelant le très haut niveau des évaluations.",
+        "Tracy lui dit franchement qu'elle ne comprend pas pourquoi les Bleus ont été immunisés, leur improvisation de théâtre ayant semblé hors sujet à beaucoup.",
+        "Adèle Castillon, l'une des deux « grandes sœurs » de la saison, anime l'atelier du directeur : elle explique aux élèves comment écrire une chanson et leur laisse des devoirs à lui rendre à son retour, dans une dizaine de jours.",
+        "Fanny et Philippine dévoilent les attributions du prime : Brieuc (« Mesdames ») et Amel (« Le prochain rêve ») chanteront avec Grand Corps Malade, Noémie (« Elle, tu l'aimes ») et Kylian (« Vivo per lei ») avec Hélène Ségara, Tracy et Ydriss avec Léa Doffey.",
+        "Côté Bleus immunisés, Isabella prépare un autoportrait et Cameron un tableau chanté-dansé, sur « Mad World » ; un défi acoustique opposera aussi Leeloo au piano et Félix à la guitare.",
+        "Annoncé pour le prime : les nommés chanteront ensemble « The Show Must Go On », et les cinq Bleus s'affronteront sur « Non, je ne regrette rien » pour décrocher l'immunité de la semaine suivante.",
+        "Félix n'a pas le moral et appelle sa maman, qui tente de le remotiver ; Brieuc, lui, improvise au piano, un moment apprécié de tous.",
+        "En soirée, l'humoriste Paul de Saint Sernin débarque au château avec un énorme gâteau, fait parler les élèves sans filtre puis organise un blind-test entre les trois équipes : il faut trouver l'artiste et le titre, puis en chanter un extrait.",
+        "L'équipe gagnante est invitée à son spectacle à l'Olympia : ce sont les Bleus qui l'emportent de justesse, Zoé et Isabella ayant particulièrement marqué l'humoriste.",
+        "Au moment du gâteau, Kylian fait les parts et réserve une tranche généreuse à Ydriss, qui l'attendait depuis le début de la soirée."
+      ],
+      "eleves": [
+        "tracy",
+        "felix",
+        "brieuc",
+        "amel",
+        "kylian",
+        "noemie",
+        "isabella",
+        "zoe"
+      ],
+      "sources": [
+        {
+          "name": "Stars Actu",
+          "url": "https://www.stars-actu.fr/2026/11/star-academy-du-12-novembre-2026-resume-et-replay-de-la-quotidienne/"
+        },
+        {
+          "name": "Viral Mag",
+          "url": "https://viralmag.fr/les-bleus-de-star-academy-2026-immunises-remportent-l-olympia/"
+        },
+        {
+          "name": "Viral Mag (attributions)",
+          "url": "https://viralmag.fr/star-academy-2026-prime-14-novembre-attributions-equipes-invites/"
+        },
+        {
+          "name": "AlloCiné",
+          "url": "https://www.allocine.fr/tvactu/articles/article-1000231951.html"
+        }
+      ]
+    },
     {
       "id": "2026-11-11",
       "title": "Évaluations par équipes : les Bleus immunisés, Rouges et Jaunes tous nommés",
@@ -24,7 +69,8 @@
         "Les Rouges tirent « tatouages énigmatiques » : Lydia apprécie l'entrée et la chute de leur impro, Jonathan adore le début de la mise en scène mais relève des oublis dans la danse.",
         "Mosimann se dit fier de ses élèves et prévient qu'il sera difficile de les départager, le niveau ayant été jugé « extraordinaire ».",
         "Au prime de samedi, le public sauvera l'une des deux équipes nommées ; dans l'autre, chacun défendra sa place en chanson, puis le public, les professeurs et les élèves sauveront chacun un élève, et le dernier sera éliminé.",
-        "Le reste de la journée : cours particuliers avec Sofia, Jonathan et Lydia, séance de sport nocturne avec Ladji, et Tracy qui appelle sa maman avant d'aller se coucher."
+        "Le reste de la journée : cours particuliers avec Sofia, Jonathan et Lydia, séance de sport nocturne avec Ladji, et Tracy qui appelle sa maman avant d'aller se coucher.",
+        "Audience : la quotidienne a réuni 1,58 million de téléspectateurs sur TF1 (14,4 % de part de marché), record de la saison et première fois au-dessus de 1,5 million."
       ],
       "eleves": [
         "melina",
@@ -56,6 +102,10 @@
         {
           "name": "Viral Mag",
           "url": "https://viralmag.fr/star-academy-2026-bleus-immunises-ce-mercredi/"
+        },
+        {
+          "name": "Puremédias (Ozap)",
+          "url": "https://www.ozap.com/actu/audiences-pre-access-pour-la-premiere-fois-de-la-saison-la-quotidienne-de-la-star-academy-2026-depasse-les-15-million-de-telespectateurs/657943"
         }
       ]
     },
