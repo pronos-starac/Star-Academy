@@ -1,6 +1,48 @@
 {
-  "updated": "2026-11-13T00:09:52+01:00",
+  "updated": "2026-11-13T19:59:39+01:00",
   "items": [
+    {
+      "id": "2026-11-13",
+      "title": "Grand Corps Malade partage des pizzas au château, Ydriss craque avant le prime",
+      "tag": null,
+      "points": [
+        "Grand Corps Malade, invité d'honneur du prime, passe au château pour un déjeuner pizzas avec les élèves, dans une ambiance détendue.",
+        "Tout le monde chante ensuite dans le salon, Maud au piano, puis l'artiste répète ses duos du prime avec Brieuc et Amel.",
+        "En cours de théâtre, sur un créneau réduit à une heure cette semaine, Papy recadre Kylian, arrivé une dizaine de minutes en retard, avant de féliciter toute la classe pour les évaluations.",
+        "Les Bleus immunisés préparent leurs prestations : Cameron répète son tableau chanté-dansé avec Jonathan, et Isabella, très émue, travaille son autoportrait avec Fanny.",
+        "Ydriss, qui se sent mis de côté par la complicité grandissante entre Kylian et Félix, finit par craquer et fondre en larmes ; il confie mal vivre de ne pas être « numéro un ».",
+        "Zoé, Noémie et Brieuc le réconfortent, puis Félix revient avec des chocolats chauds, un de sa part et un de la part de Kylian, ce qui apaise les tensions.",
+        "Annoncé pour le prime de samedi : le public choisira quelle équipe nommée sauver, les Rouges (Amel, Leeloo, Noémie, Tracy) ou les Jaunes (Kylian, Ydriss, Brieuc, Félix)."
+      ],
+      "eleves": [
+        "ydriss",
+        "felix",
+        "kylian",
+        "brieuc",
+        "amel",
+        "maud",
+        "isabella",
+        "cameron"
+      ],
+      "sources": [
+        {
+          "name": "Stars Actu",
+          "url": "https://www.stars-actu.fr/2026/11/star-academy-du-13-novembre-2026-resume-et-replay-de-la-quotidienne/"
+        },
+        {
+          "name": "Viral Mag (Ydriss)",
+          "url": "https://viralmag.fr/ydriss-star-academy-2026-jaloux-de-kylian-et-felix/"
+        },
+        {
+          "name": "Viral Mag (Papy)",
+          "url": "https://viralmag.fr/papy-star-academy-perd-patience-face-aux-retards-des-eleves/"
+        },
+        {
+          "name": "Serie News",
+          "url": "https://www.serie-news.com/tnt/tf1/69715-sta-s14-2026-11-14-nomines-13-11-2026/"
+        }
+      ]
+    },
     {
       "id": "2026-11-12",
       "title": "Rouges et Jaunes digèrent la nomination, Adèle Castillon en atelier et blind-test avec Paul de Saint Sernin",
