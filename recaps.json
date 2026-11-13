@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-13T19:59:39+01:00",
+  "updated": "2026-11-14T00:07:36+01:00",
   "items": [
     {
       "id": "2026-11-13",
@@ -8,10 +8,11 @@
       "points": [
         "Grand Corps Malade, invité d'honneur du prime, passe au château pour un déjeuner pizzas avec les élèves, dans une ambiance détendue.",
         "Tout le monde chante ensuite dans le salon, Maud au piano, puis l'artiste répète ses duos du prime avec Brieuc et Amel.",
-        "En cours de théâtre, sur un créneau réduit à une heure cette semaine, Papy recadre Kylian, arrivé une dizaine de minutes en retard, avant de féliciter toute la classe pour les évaluations.",
+        "En cours de théâtre, sur un créneau réduit à une heure cette semaine, Kylian arrive en courant, écouteurs autour du cou, une dizaine de minutes en retard : Papy le recadre sans hausser le ton et le fait sauter sur place au milieu du groupe, avant de féliciter toute la classe pour des évaluations jugées « incroyables ».",
         "Les Bleus immunisés préparent leurs prestations : Cameron répète son tableau chanté-dansé avec Jonathan, et Isabella, très émue, travaille son autoportrait avec Fanny.",
-        "Ydriss, qui se sent mis de côté par la complicité grandissante entre Kylian et Félix, finit par craquer et fondre en larmes ; il confie mal vivre de ne pas être « numéro un ».",
-        "Zoé, Noémie et Brieuc le réconfortent, puis Félix revient avec des chocolats chauds, un de sa part et un de la part de Kylian, ce qui apaise les tensions.",
+        "Ydriss, qui se sent remplacé par Félix dans son duo avec Kylian, le lui reproche ; Kylian, décontenancé, lui rappelle qu'ils ne sont « pas mariés », et Ydriss finit par fondre en larmes, avouant mal vivre de ne plus être « numéro un ».",
+        "Il repousse d'abord Félix venu le raisonner ; Zoé, Noémie et Brieuc le réconfortent, puis Félix revient avec deux chocolats chauds, un de sa part et un de la part de Kylian, ce qui apaise les tensions.",
+        "Cameron joue les médiateurs, tandis qu'Amel détend l'atmosphère en surnommant Ydriss le « coach de vie » du château.",
         "Annoncé pour le prime de samedi : le public choisira quelle équipe nommée sauver, les Rouges (Amel, Leeloo, Noémie, Tracy) ou les Jaunes (Kylian, Ydriss, Brieuc, Félix)."
       ],
       "eleves": [
@@ -40,6 +41,14 @@
         {
           "name": "Serie News",
           "url": "https://www.serie-news.com/tnt/tf1/69715-sta-s14-2026-11-14-nomines-13-11-2026/"
+        },
+        {
+          "name": "Viral Mag (Kylian)",
+          "url": "https://viralmag.fr/kylian-en-retard-au-cours-de-theatre-star-academy-2026/"
+        },
+        {
+          "name": "Voici (via Titres Presse)",
+          "url": "https://www.titrespresse.com/29032372603/tf1-ydriss-star"
         }
       ]
     },
