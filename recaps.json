@@ -1,6 +1,43 @@
 {
-  "updated": "2026-11-14T00:07:36+01:00",
+  "updated": "2026-11-14T20:00:37+01:00",
   "items": [
+    {
+      "id": "2026-11-14",
+      "title": "Jour du prime des équipes : dernières répétitions, lettres des nommés et lasagnes des Bleus",
+      "tag": null,
+      "points": [
+        "Dès le matin, Lydia reçoit l'équipe jaune (Brieuc, Félix, Kylian, Ydriss) au théâtre pour faire répéter les chansons individuelles qu'ils devront défendre en cas de passage en danger au prime ; elle fait ensuite le même travail avec les Rouges (Amel, Leeloo, Noémie, Tracy).",
+        "Sur le plateau du prime, les Bleus immunisés répètent leurs prestations, notamment la battle du top 5.",
+        "Au studio 217, les élèves enchaînent les répétitions avec les artistes invités, dont Léa Doffey, finaliste de la saison précédente.",
+        "Les Bleus rentrent ensuite au château pour un cours de sport avec Ladji, puis cuisinent des lasagnes maison pour accueillir les Jaunes et les Rouges à leur retour.",
+        "Avant le dîner partagé, les nommés écrivent leurs lettres en prévision d'une éventuelle élimination.",
+        "Annoncé pour le prime : le public sauvera d'abord une des deux équipes nommées, puis les membres de l'autre seront départagés individuellement (un sauvé par le public, un par les profs, un par les élèves) ; les Bleus s'affronteront dans la battle sur « Non, je ne regrette rien »."
+      ],
+      "eleves": [
+        "brieuc",
+        "felix",
+        "kylian",
+        "ydriss",
+        "amel",
+        "leeloo",
+        "noemie",
+        "tracy"
+      ],
+      "sources": [
+        {
+          "name": "Stars Actu",
+          "url": "https://www.stars-actu.fr/2026/11/star-academy-du-14-novembre-2026-resume-et-replay-de-la-quotidienne/"
+        },
+        {
+          "name": "Femin Actu",
+          "url": "https://www.feminactu.com/2026/11/star-academy-du-14-novembre-2026/"
+        },
+        {
+          "name": "Serie News",
+          "url": "https://www.serie-news.com/tnt/tf1/69716-sta-s14-2026-11-14-avant-14-11-2026/"
+        }
+      ]
+    },
     {
       "id": "2026-11-13",
       "title": "Grand Corps Malade partage des pizzas au château, Ydriss craque avant le prime",
