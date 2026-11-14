@@ -249,6 +249,12 @@ footer{margin-top:36px;padding-top:14px;border-top:1px solid var(--line);font-si
 .pick.el[aria-pressed=true]::after{background:var(--ko);color:#fff}
 .pick.im[aria-pressed=true]::after{background:var(--imm)}
 .pick[disabled]{cursor:default;opacity:.55}
+.team-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.pick.tm{align-items:center;text-align:center;padding:14px 8px}
+.tm-dot{width:56px;height:56px;border-radius:50%;border:3px solid rgba(255,255,255,.25)}
+.tm-jaune .tm-dot{background:#f4c400}.tm-rouge .tm-dot{background:#d8262f}
+.pick.tm-jaune[aria-pressed=true]{border-color:#f4c400}.pick.tm-rouge[aria-pressed=true]{border-color:#d8262f}
+.pick.tm-jaune[aria-pressed=true]::after{background:#f4c400;color:#2a1300}.pick.tm-rouge[aria-pressed=true]::after{background:#d8262f;color:#fff}
 .pick[disabled][aria-pressed=true]{opacity:1}
 .hist{display:flex;flex-direction:column;gap:6px;font-size:15px}
 .hist>div{display:flex;gap:6px 12px;flex-wrap:wrap;align-items:baseline;background:var(--panel2);padding:8px 10px;border:1px solid var(--line)}
@@ -438,7 +444,10 @@ import { firebaseConfig, vapidKey } from './firebase-config.js?v=8';
 /* ===================== Réglages ===================== */
 const LAUNCH = [2026, 9, 10];      // prime de lancement : samedi 10 octobre 2026 (mois 0-11)
 // fermeture des choix de la semaine : le dimanche à minuit (lundi 0h00, heure de Paris) qui suit le prime
-const SC = {exact:5, near1:3, near2:1, elim:3, immune:3, winner:10};
+const SC = {exact:5, near1:3, near2:1, elim:3, immune:3, team:3, winner:10};
+// vote « quelle équipe va gagner ? », activé semaine par semaine par l'orga
+const TEAMS={jaune:{name:'Jaune',e:'🟡'},rouge:{name:'Rouge',e:'🔴'}};
+const tmName=t=>TEAMS[t]?TEAMS[t].e+' Équipe '+TEAMS[t].name.toLowerCase():'';
 const FB = 'https://www.gstatic.com/firebasejs/10.12.2/';
 
 const ELEVES=[
@@ -456,16 +465,16 @@ const N=ids.length;
 function cleanOrder(o){const seen=new Set();return(Array.isArray(o)?o:[]).filter(id=>C[id]&&!seen.has(id)&&seen.add(id));}
 function toMs(v){if(v==null)return null;if(typeof v==='number')return v;if(typeof v.toMillis==='function')return v.toMillis();return null;}
 function normSeason(d){const s=d&&typeof d==='object'?d:{};
-  const weeks={};if(s.weeks&&typeof s.weeks==='object')Object.keys(s.weeks).forEach(k=>{if(+k>=0){const w=s.weeks[k]||{};weeks[String(+k)]={immune:C[w.immune]?w.immune:null,nominees:cleanOrder(w.nominees),out:cleanOrder(w.out),quit:cleanOrder(w.quit),noElim:typeof w.noElim==='boolean'?w.noElim:null,immCands:cleanOrder(w.immCands)};if(w.autoOff===true)weeks[String(+k)].autoOff=true;}});
+  const weeks={};if(s.weeks&&typeof s.weeks==='object')Object.keys(s.weeks).forEach(k=>{if(+k>=0){const w=s.weeks[k]||{};weeks[String(+k)]={immune:C[w.immune]?w.immune:null,nominees:cleanOrder(w.nominees),out:cleanOrder(w.out),quit:cleanOrder(w.quit),noElim:typeof w.noElim==='boolean'?w.noElim:null,immCands:cleanOrder(w.immCands)};if(w.teams===true){weeks[String(+k)].teams=true;weeks[String(+k)].team=TEAMS[w.team]?w.team:null;}if(w.autoOff===true)weeks[String(+k)].autoOff=true;}});
   const locks={};if(s.locks&&typeof s.locks==='object')Object.keys(s.locks).forEach(k=>{const m=toMs(s.locks[k]);if(m)locks[k]=m;});
   return{rankingOpen:s.rankingOpen!==false,weeks,locks};}
 function maskSeason(s,now){
   const v=JSON.parse(JSON.stringify(s));let hidden=0;
-  Object.keys(v.weeks).forEach(k=>{const w=v.weeks[k];if((w.out&&w.out.length||w.immune)&&now<(s.locks[k]||defaultLock(+k))){
-    if(w.out&&w.out.length)hidden++;w.out=[];w.immune=null;}});
+  Object.keys(v.weeks).forEach(k=>{const w=v.weeks[k];if((w.out&&w.out.length||w.immune||w.team)&&now<(s.locks[k]||defaultLock(+k))){
+    if(w.out&&w.out.length)hidden++;w.out=[];w.immune=null;if(w.team)w.team=null;}});
   v.locks=s.locks;return{v,hidden};}
 function weekKeys(s){return Object.keys(s.weeks).map(Number).filter(n=>n>0).sort((a,b)=>a-b);}
-function wk(s,n){const w=s.weeks[String(n)]||{};return{immune:C[w.immune]?w.immune:null,nominees:cleanOrder(w.nominees),out:cleanOrder(w.out),quit:cleanOrder(w.quit),noElim:w.noElim===true,immCands:cleanOrder(w.immCands)};}
+function wk(s,n){const w=s.weeks[String(n)]||{};return{immune:C[w.immune]?w.immune:null,nominees:cleanOrder(w.nominees),out:cleanOrder(w.out),quit:cleanOrder(w.quit),noElim:w.noElim===true,immCands:cleanOrder(w.immCands),teams:w.teams===true,team:w.teams===true&&TEAMS[w.team]?w.team:null};}
 function outOrder(s){const o=[];weekKeys(s).forEach(n=>{const w=wk(s,n);w.quit.concat(w.out).forEach(id=>{if(!o.includes(id))o.push(id);});});return o;}
 function weekDone(s,n){const w=wk(s,n);return w.out.length>0||(w.noElim&&!!w.immune);}
 function curWeek(s){const ks=weekKeys(s);for(const n of ks){if(!weekDone(s,n))return n;}return ks.length?ks[ks.length-1]+1:1;}
@@ -493,17 +502,18 @@ function primeDow(n){const[y,m,d]=primeDay(n);return new Date(Date.UTC(y,m,d,12)
 function defaultLock(n){const[py,pm,pdd]=primeDay(n),dow=new Date(Date.UTC(py,pm,pdd)).getUTCDay();const d=new Date(Date.UTC(py,pm,pdd+((8-dow)%7||7)));const y=d.getUTCFullYear(),m=d.getUTCMonth(),day=d.getUTCDate();
   return Date.UTC(y,m,day,0-parisOffset(y,m,day),0);}
 function lockAt(s,n){return s.locks[String(n)]||defaultLock(n);}
-function weeklyScore(uid,s,picks){let elim=0,imm=0;
+function weeklyScore(uid,s,picks){let elim=0,imm=0,team=0;
   Object.values(picks).forEach(p=>{if(p.uid!==uid)return;const w=wk(s,p.week);
     if(p.elim&&w.out.includes(p.elim))elim+=SC.elim;
-    if(p.immune&&w.immune&&w.immune===p.immune)imm+=SC.immune;});
-  return{elim,imm};}
+    if(p.immune&&w.immune&&w.immune===p.immune)imm+=SC.immune;
+    if(p.team&&w.team&&w.team===p.team)team+=SC.team;});
+  return{elim,imm,team};}
 function scoreOf(uid,p,s,picks){
   const P=places(s),full=cleanOrder(p.order),o=rankedOrder(full,s);let rank=0,bonus=0;
   if(full.length===N){o.forEach((id,i)=>{const a=P[id];if(a==null)return;const d=Math.abs(a-(i+1));
     if(d===0){rank+=SC.exact;if(a===1)bonus+=SC.winner;}else if(d===1)rank+=SC.near1;else if(d===2)rank+=SC.near2;});}
   const w=weeklyScore(uid,s,picks);
-  return{rank,bonus,weekly:w.elim+w.imm,total:rank+bonus+w.elim+w.imm};
+  return{rank,bonus,weekly:w.elim+w.imm+w.team,total:rank+bonus+w.elim+w.imm+w.team};
 }
 function groupStats(players){
   const stats={};ids.forEach(id=>{stats[id]={sum:0,n:0,win:0};});let complete=0,voters=0;
@@ -626,7 +636,7 @@ function vPrime(){
   const sel=arch.length>1?`<div class="seg-bar">${arch.map(i=>`<button class="seg${i===n?' on':''}" data-act="primeSel" data-id="${i}" aria-pressed="${i===n}">${i?'P'+i:'Lancement'}</button>`).join('')}</div>`:'';
   const live=primeLive(n),upcoming=Date.now()<primeStart(n)-20*60000;
   let html=`<div class="card prime-head"><div class="wk-head"><h2>${esc(primeLabel(n))}</h2>${live?'<span class="live">● En direct</span>':''}</div>
-    <p class="muted">${pr?(n<1?'Pas de prono pour ce prime.':'Qui sera éliminé ? Qui sera immunisé ?'):upcoming?'Début à 21h10 sur TF1. Chat déjà ouvert.':live?'Commente en direct et note chaque chanson.':'Chat et notes de ce prime, toujours ouverts.'}</p>${sel}</div>`;
+    <p class="muted">${pr?(n<1?'Pas de prono pour ce prime.':'Qui sera éliminé ? Qui sera immunisé ?'+(wk(S.season,n).teams?' Quelle équipe va gagner ?':'')):upcoming?'Début à 21h10 sur TF1. Chat déjà ouvert.':live?'Commente en direct et note chaque chanson.':'Chat et notes de ce prime, toujours ouverts.'}</p>${sel}</div>`;
   const seg=[['chat','💬 Chat'+(S.pchat.length?' ('+S.pchat.length+')':'')],['songs','🎵 Chansons'+(S.songs.length?' ('+S.songs.length+')':'')],['prono','🎯 Prono']].map(([k,l])=>`<button class="seg${S.primeSub===k?' on':''}" data-act="primeSub" data-id="${k}" aria-pressed="${S.primeSub===k}">${l}</button>`).join('');
   if(pr)return html+`<div class="seg-bar">${seg}</div>`+vWeek(n);
   if(primeMasked(n))return html+`<div class="seg-bar">${seg}</div><div class="card"><p>🙈 Tu as activé l’anti-spoiler du dimanche : le chat et les notes de ce prime sont masqués jusqu’à dimanche minuit.</p><div class="row"><button class="btn ghost" data-act="primeSpoil" data-id="${n}">Afficher quand même</button></div></div>`;
@@ -999,7 +1009,9 @@ function vWeek(n){
   const immList=w.immCands.length?w.immCands.filter(id=>alive.includes(id)):alive;
   const imm=`<div class="card"><h3>Qui sera immunisé ?</h3><p class="muted">${w.immCands.length?`L’immunité se joue au prime de ${esc(primeDow(cur))} entre ces ${immList.length} élèves.`:`L’élève protégé des nominations la semaine prochaine, désigné au prime de ${esc(primeDow(cur))}.`}</p>
       <div class="pick-grid">${immList.map(id=>pickBtn(cur,'immune',id,p.immune===id,!can)).join('')}</div></div>`;
-  return head+elim+imm;
+  const team=w.teams?`<div class="card"><h3>Quelle équipe va gagner ?</h3><p class="muted">Jaune ou rouge : l’équipe gagnante du prime de ${esc(primeDow(cur))}. ${SC.team} points si tu trouves.</p>
+      <div class="team-grid">${Object.keys(TEAMS).map(t=>`<button class="pick tm tm-${t}" data-act="pick" data-f="team" data-id="${t}" aria-pressed="${p.team===t}"${can?'':' disabled'}><span class="tm-dot" aria-hidden="true"></span><b>Équipe ${esc(TEAMS[t].name.toLowerCase())}</b></button>`).join('')}</div></div>`:'';
+  return head+elim+imm+team;
 }
 function weekResult(n){
   const s=S.season,w=wk(s,n),p=myPick(n)||{},imm=w.immune;
@@ -1008,7 +1020,9 @@ function weekResult(n){
   const nom=w.nominees.length?`<p class="muted">Nominés : ${w.nominees.map(i=>esc(C[i].name)).join(', ')}</p>`:'';
   return`<div class="card"><div class="wk-head"><h3>Semaine ${n}</h3><span class="lock closed">Terminé</span></div>${nom}
     ${w.noElim?`<p>Pas d’élimination cette semaine${w.quit.length?' ('+w.quit.map(i=>esc(C[i].name)).join(', ')+' a quitté l’aventure)':''}.</p>`:row('Éliminé',w.out[0],p.elim,w.out.includes(p.elim))}
-    ${row('Immunisé',imm,p.immune,imm===p.immune)}</div>`;
+    ${row('Immunisé',imm,p.immune,imm===p.immune)}
+    ${w.teams?`<div class="wr"><b>Équipe gagnante</b>${w.team?`<span>${tmName(w.team)}</span>`:'<span class="muted">pas encore renseignée</span>'}
+    <span>Ton choix : ${p.team?tmName(p.team):'<span class="muted">rien</span>'} ${p.team&&w.team?(p.team===w.team?`<b class="r-ok">+${SC.team}</b>`:'<b class="r-bad">✗</b>'):''}</span></div>`:''}</div>`;
 }
 function vFinal(){
   const s=S.season,o=cleanOrder(S.me.order),P=places(s),edit=registered()&&s.rankingOpen,full=o.length===N,val=!!S.me.validated&&full;
@@ -1072,7 +1086,7 @@ function vBoard(){
     <div class="board">${list||'<p class="empty">Aucun joueur pour l’instant.</p>'}</div>
     <div class="card"><h3>Barème</h3><ul class="rules">
       <li>Classement final : <b>${SC.exact} pts</b> si l’élève est à sa place exacte, <b>${SC.near1}</b> à une place d’écart, <b>${SC.near2}</b> à deux places.</li>
-      <li>Chaque semaine : <b>${SC.elim} pts</b> pour l’éliminé trouvé, <b>${SC.immune} pts</b> pour l’immunisé trouvé.</li>
+      <li>Chaque semaine : <b>${SC.elim} pts</b> pour l’éliminé trouvé, <b>${SC.immune} pts</b> pour l’immunisé trouvé, <b>${SC.team} pts</b> pour l’équipe gagnante trouvée (jaune ou rouge, les semaines où le vote est proposé).</li>
       <li>Vainqueur trouvé dans le classement final : <b>+${SC.winner} pts</b> de bonus.</li>
       <li>Les points du classement final ne comptent que pour un classement complet (${N} élèves).</li></ul></div>`;
 }
@@ -1084,10 +1098,11 @@ function vPlayer(uid){
   const weeks=[];for(let n=last;n>=1;n--)weeks.push(n);
   const res=(mine,real,done)=>!mine?'<span class="muted">rien</span>':`${esc(C[mine].name)} ${done&&real?(mine===real||(Array.isArray(real)&&real.includes(mine))?`<b class="r-ok">+${SC.elim}</b>`:'<b class="r-bad">✗</b>'):''}`;
   const wrows=weeks.map(n=>{const w=wk(s,n),pk=S.picks[n+'_'+uid]||{},open=Date.now()<lockAt(s,n),hide=open&&!me;
-    if(hide)return`<div><b>S${n}</b><span class="muted">Choix cachés jusqu’au ${esc(fmtLock(lockAt(s,n)))}${pk.elim||pk.immune?' (déjà votés)':''}</span></div>`;
+    if(hide)return`<div><b>S${n}</b><span class="muted">Choix cachés jusqu’au ${esc(fmtLock(lockAt(s,n)))}${pk.elim||pk.immune||pk.team?' (déjà votés)':''}</span></div>`;
     const done=w.out.length>0;
     return`<div><b>S${n}</b><span><b>Éliminé</b> : ${res(pk.elim,w.out,done)}${done?` <span class="muted">(réel : ${esc(C[w.out[0]].name)})</span>`:''}</span>
-      <span><b>Immunisé</b> : ${res(pk.immune,w.immune,!!w.immune)}${w.immune?` <span class="muted">(réel : ${esc(C[w.immune].name)})</span>`:''}</span></div>`;}).join('');
+      <span><b>Immunisé</b> : ${res(pk.immune,w.immune,!!w.immune)}${w.immune?` <span class="muted">(réel : ${esc(C[w.immune].name)})</span>`:''}</span>${w.teams?`
+      <span><b>Équipe</b> : ${pk.team?tmName(pk.team)+(w.team?(pk.team===w.team?` <b class="r-ok">+${SC.team}</b>`:' <b class="r-bad">✗</b>'):''):'<span class="muted">rien</span>'}${w.team?` <span class="muted">(réel : ${esc(TEAMS[w.team].name.toLowerCase())})</span>`:''}</span>`:''}</div>`;}).join('');
   const lkw=likeWeeks().filter(n=>S.likes[n+'_'+uid]);
   const lkrows=anonOf(uid)&&!me?'<p class="muted">Ce joueur vote en anonyme.</p>':lkw.map(n=>{const x=S.likes[n+'_'+uid];
     return`<div><b>S${n}</b><span>❤️ ${x.up.length?x.up.map(id=>esc(C[id].name)).join(', '):'<span class="muted">rien</span>'}</span><span>🍅 ${x.down.length?x.down.map(id=>esc(C[id].name)).join(', '):'<span class="muted">rien</span>'}</span></div>`;}).join('')||'<p class="muted">Aucun vote.</p>';
@@ -1193,6 +1208,7 @@ function vOrga(){
   if(S.conn==='noconfig')return`<h2>Espace organisateur</h2><div class="card"><h3>Relier le site à Firebase</h3>
     <p>Le fichier <code>firebase-config.js</code> du dépôt est encore vide. Suis les étapes du README, puis colle la configuration Firebase dans ce fichier.</p></div>`;
   const s=S.real,cur=curWeek(s),w=wk(s,cur),prevImm=wk(s,cur-1).immune,out=outOrder(s),alive=ids.filter(id=>!out.includes(id)),win=winnerId(s);
+  const teamRow=(n,on)=>`<div class="pool">${Object.keys(TEAMS).map(t=>`<button class="chip${on===t?' focus':''}" data-act="setTeam" data-id="${n}:${t}" aria-pressed="${on===t}"><span class="nm">${TEAMS[t].e} ${TEAMS[t].name}</span></button>`).join('')}</div>`;
   const pickRow=(list,on,act,dis)=>`<div class="pool">${list.map(id=>`<button class="chip${on(id)?' focus':''}" data-act="${act}" data-id="${id}" aria-pressed="${on(id)}"${dis&&dis(id)?' disabled':''}>${av(id)}<span class="nm">${esc(C[id].name)}</span></button>`).join('')}</div>`;
   const idCard=`<div class="card"><h3>Ton identifiant</h3>
     <p class="mono" id="myuid">${esc(S.uid||'connexion…')}</p>
@@ -1213,8 +1229,12 @@ function vOrga(){
       <span class="sub">Abandon en cours de semaine (ne compte pas comme l’éliminé, ne rapporte aucun point)</span>${w.quit.length?`<div class="pool">${w.quit.map(id=>`<button class="chip focus" data-act="quit" data-id="${id}" aria-pressed="true">${av(id)}<span class="nm">${esc(C[id].name)} ✕</span></button>`).join('')}</div>`:''}${pickRow(alive,()=>false,'quit')}
       <span class="sub">Prime de ${esc(primeDow(cur))} · immunisé pour la semaine suivante</span>${pickRow(alive,id=>w.immune===id,'setImm',id=>S.pendingOut===id||w.out.includes(id))}
       <span class="sub">Prime de ${esc(primeDow(cur))} · éliminé</span>${pickRow(cand,id=>S.pendingOut===id,'pendOut',id=>w.immune===id)}
+      <label class="check"><input type="checkbox" id="orgaTeams"${w.teams?' checked':''}> Vote « quelle équipe va gagner : jaune ou rouge ? » cette semaine</label>
+      ${w.teams?`<span class="sub">Prime de ${esc(primeDow(cur))} · équipe gagnante (à saisir avant le KO)</span>${teamRow(cur,w.team)}`:''}
       <div class="row"><button class="btn danger" data-act="confirmOut"${S.pendingOut?'':' disabled'}>${S.pendingOut?'Confirmer le KO de '+esc(C[S.pendingOut].name):'Choisis l’éliminé'}</button></div>
       <p class="muted">Après le KO, la semaine ${cur+1} s’ouvre. Chaque clic est enregistré tout de suite.</p></div>`;}
+  const pw=wk(s,cur-1);
+  if(cur>1&&pw.teams&&!pw.team)week=`<div class="card"><h3>Semaine ${cur-1} · équipe gagnante</h3><p class="muted">Le vote des équipes de la semaine ${cur-1} attend son résultat.</p>${teamRow(cur-1,null)}</div>`+week;
   week=autoResCard(s)+week;
   const stale=Object.keys(s.locks).some(k=>+k>=cur&&s.locks[k]!==defaultLock(+k));
   if(stale)week=`<div class="card"><h3>Heures de fermeture à mettre à jour</h3><p class="muted">Les heures enregistrées ne correspondent plus au réglage actuel (dimanche à minuit). Semaine ${cur} : ${esc(fmtLockFull(lockAt(s,cur)))}.</p>
@@ -1320,11 +1340,12 @@ async function savePick(field,id){
   const n=curWeek(S.season);
   if(!registered()){S.tab='prime';S.primeSub='prono';render();toast('Choisis d’abord ton pseudo.');return;}
   if(!weekOpen(n)){toast('Les choix de cette semaine sont fermés.');return;}
-  const key=n+'_'+S.uid,cur=S.picks[key]||{elim:null,immune:null};
-  const next={uid:S.uid,week:n,elim:cur.elim||null,immune:cur.immune||null};next[field]=cur[field]===id?null:id;
+  if(field==='team'&&(!TEAMS[id]||!wk(S.season,n).teams))return;
+  const key=n+'_'+S.uid,cur=S.picks[key]||{elim:null,immune:null,team:null};
+  const next={uid:S.uid,week:n,elim:cur.elim||null,immune:cur.immune||null,team:cur.team||null};next[field]=cur[field]===id?null:id;
   S.picks={...S.picks,[key]:next};render();
   try{await fb.fs.setDoc(fb.fs.doc(fb.db,'picks',key),{...next,updatedAt:fb.fs.serverTimestamp()});
-    toast(next[field]?`Enregistré : ${C[id].name} ${field==='elim'?'éliminé':'immunisé'}${E(id)}`:'Choix retiré');}
+    toast(next[field]?(field==='team'?`Enregistré : ${tmName(id)} gagnante`:`Enregistré : ${C[id].name} ${field==='elim'?'éliminé':'immunisé'}${E(id)}`):'Choix retiré');}
   catch(e){toast(errText(e)==='refusé'?'Trop tard : les choix de cette semaine sont fermés.':'Non enregistré ('+errText(e)+').');}
 }
 function seasonDoc(s){
@@ -1402,6 +1423,7 @@ function setNoNom(v){S.noNom=v;ls.set('sa14-nonom',v?'1':'0');S.season=viewSeaso
 document.addEventListener('change',e=>{if(e.target.id==='nospoil')setNoSpoil(e.target.checked);
   if(e.target.id==='nonom')setNoNom(e.target.checked);
   if(e.target.id==='lkanon')setLikeAnon(e.target.checked);
+  if(e.target.id==='orgaTeams'&&isOrga()){const v=e.target.checked;editWeek(curWeek(S.real),w=>{if(v)w.teams=true;else{delete w.teams;delete w.team;}});}
   if(e.target.id==='orgaNoElim'&&isOrga()){const v=e.target.checked;editWeek(curWeek(S.real),w=>{w.noElim=v;});}
   if(e.target.dataset&&e.target.dataset.np)setNotifPref(e.target.dataset.np,e.target.checked);
   else if(e.target.id==='validate'){if(cleanOrder(S.me.order).length!==N){e.target.checked=false;return;}S.me.validated=e.target.checked;queueMe();toast(S.me.validated?'Classement validé ✓':'Classement dévalidé.');}});
@@ -1478,6 +1500,7 @@ document.addEventListener('click',e=>{
   else if(a==='initSeason'){const locks={};for(let n=1;n<=25;n++)locks[String(n)]=defaultLock(n);
     saveSeason(x=>{x.rankingOpen=true;x.weeks={'1':{immune:null,nominees:[],out:[]}};x.locks=locks;});}
   else if(a==='setPrevImm'){const n=curWeek(s)-1;editWeek(n,w=>{w.immune=w.immune===id?null:id;});}
+  else if(a==='setTeam'){const[n,t]=String(id).split(':');if(TEAMS[t]&&+n>0)editWeek(+n,w=>{w.teams=true;w.team=w.team===t?null:t;});}
   else if(a==='setImm'){editWeek(curWeek(s),w=>{w.immune=w.immune===id?null:id;});}
   else if(a==='nominee'){editWeek(curWeek(s),w=>{const nm=cleanOrder(w.nominees);w.nominees=nm.includes(id)?nm.filter(x=>x!==id):nm.concat(id);});}
   else if(a==='pendOut'){S.pendingOut=S.pendingOut===id?null:id;render();}
@@ -1509,7 +1532,7 @@ async function initFirebase(){
     const fail=what=>err=>{S.note=`Lecture ${what} impossible (${errText(err)}).`;render();};
     fs.onSnapshot(fs.doc(db,'season','main'),snap=>{S.snapOk=true;if(S.note===BLOCK_MSG&&S.authReady)S.note='';S.seasonExists=snap.exists();setReal(normSeason(snap.exists()?snap.data():null));S.conn='ok';render();},fail('de la saison'));
     fs.onSnapshot(fs.collection(db,'players'),q=>{const p={};q.forEach(d=>{const x=d.data();if(x&&typeof x.name==='string'&&x.name.trim())p[d.id]={name:x.name.trim().slice(0,40),order:cleanOrder(x.order),validated:x.validated===true};});S.players=p;syncMe();if(registered()&&!S.anon)startPresence();render();},fail('des joueurs'));
-    fs.onSnapshot(fs.collection(db,'picks'),q=>{const p={};q.forEach(d=>{const x=d.data();if(x&&typeof x.uid==='string'&&Number.isInteger(x.week))p[x.week+'_'+x.uid]={uid:x.uid,week:x.week,elim:C[x.elim]?x.elim:null,immune:C[x.immune]?x.immune:null};});S.picks=p;render();},fail('des choix'));
+    fs.onSnapshot(fs.collection(db,'picks'),q=>{const p={};q.forEach(d=>{const x=d.data();if(x&&typeof x.uid==='string'&&Number.isInteger(x.week))p[x.week+'_'+x.uid]={uid:x.uid,week:x.week,elim:C[x.elim]?x.elim:null,immune:C[x.immune]?x.immune:null,team:TEAMS[x.team]?x.team:null};});S.picks=p;render();},fail('des choix'));
     fs.onSnapshot(fs.collection(db,'presence'),q=>{const r={};q.forEach(d=>{const t=toMs(d.data().at);if(t)r[d.id]=t;});S.presence=r;render();},()=>{});
     fs.onSnapshot(fs.collection(db,'likes'),q=>{const r={};q.forEach(d=>{const x=d.data();if(x&&typeof x.uid==='string'&&Number.isInteger(x.week))r[x.week+'_'+x.uid]={uid:x.uid,week:x.week,up:cleanOrder(x.up).slice(0,lkMax(x.week,'up')),down:cleanOrder(x.down).slice(0,lkMax(x.week,'down'))};});S.likes=r;render();},()=>{});
     fs.onSnapshot(fs.collection(db,'likeprefs'),q=>{const r={};q.forEach(d=>{const x=d.data();if(x&&x.anon===true)r[d.id]=true;});S.likePrefs=r;render();},()=>{});

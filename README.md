@@ -44,6 +44,7 @@ Une fois ces étapes faites, tes amis peuvent jouer.
 
 **Toi**, dans l'*Espace organisateur* :
 - le mercredi, saisis les **nominés** ;
+- si le prime oppose deux équipes, coche « Vote quelle équipe va gagner : jaune ou rouge ? » : le vote apparaît dans l'onglet Prono pour la semaine en cours. Saisis l'**équipe gagnante** avant le KO (sinon une carte te la redemande pour la semaine terminée) ;
 - le samedi, saisis l'**immunisé** désigné au prime, puis l'**éliminé**, et confirme le KO ;
 - sinon, l'éliminé et l'immunisé sont remplis automatiquement d'après le résumé de la quotidienne du dimanche (champs `primeOut` et `primeImmune` de `recaps.json`), seulement s'ils sont cohérents (éliminé parmi les nominés, immunisé parmi les candidats). Les points comptent aussitôt ; dans l'espace organisateur, **Valider** les enregistre, **Rejeter** les ignore pour saisir le résultat à la main. Ta saisie l'emporte toujours ;
 - quand tu le décides, clique sur **Verrouiller les classements finaux**.
@@ -71,6 +72,7 @@ Si un prime tombe un autre jour, modifie aussi l'heure de la semaine concernée 
 | Élève à deux places d'écart | 1 |
 | Éliminé de la semaine trouvé | 3 |
 | Immunisé de la semaine trouvé | 3 |
+| Équipe gagnante trouvée (jaune ou rouge, semaines où le vote est activé) | 3 |
 | Vainqueur trouvé | +10 |
 
 Les points du classement final ne comptent que si le classement est complet (17 élèves).
