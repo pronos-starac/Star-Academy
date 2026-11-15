@@ -1,6 +1,63 @@
 {
-  "updated": "2026-11-14T20:00:37+01:00",
+  "updated": "2026-11-15T20:00:34+01:00",
   "items": [
+    {
+      "id": "2026-11-15",
+      "title": "Lendemain de prime : la lettre de Tracy, Mélina immunisée et carton rouge pour Cameron",
+      "tag": null,
+      "primeDate": "2026-11-20",
+      "points": [
+        "Retour au château un peu triste après l'élimination de Tracy au prime des équipes : les élèves vont chercher sa lettre et la lisent ensemble, très émus.",
+        "Mélina, elle, est sur un nuage : elle a remporté la battle du top 5 entre les Bleus et sera immunisée pour la semaine, avec un solo pour ouvrir le prochain prime.",
+        "Au débrief, Lydia estime que l'hymne de la soirée était le meilleur de la saison et félicite Zoé, qui a mené l'ouverture du prime « comme une reine ».",
+        "Brieuc avoue avoir été très stressé de slamer avec Grand Corps Malade ; Lydia relève quelques soucis de prononciation mais salue la joie de son duo avec Amel.",
+        "Ydriss, ému, reconnaît avoir encore du mal à entendre la voix de Léa Doffey pendant leur duo ; Lydia s'emploie à lui redonner confiance.",
+        "Cameron admet qu'il n'était pas vraiment dedans pendant la battle du top 5, et Lydia lui adresse un carton rouge.",
+        "Mosimann dévoile le programme de la semaine 6, « carte blanche » : dès lundi matin, chaque élève passe son évaluation sur la chanson de son choix (compositions personnelles interdites), à défendre comme une vraie audition, avec un moodboard sur la mise en scène, les décors, les lumières et l'ambiance.",
+        "Le vainqueur des évaluations présentera son propre tableau lors du prochain prime, avancé au vendredi 20 novembre à cause d'un match de rugby le samedi.",
+        "Annoncé pour la semaine : une visite de Tayc au château.",
+        "Côté diffusion, la quotidienne de ce dimanche est passée sur TFX vers 16h05, TF1 retransmettant du rugby."
+      ],
+      "eleves": [
+        "tracy",
+        "melina",
+        "cameron",
+        "zoe",
+        "brieuc",
+        "ydriss",
+        "amel"
+      ],
+      "sources": [
+        {
+          "name": "Stars Actu",
+          "url": "https://www.stars-actu.fr/2026/11/star-academy-du-15-novembre-2026-resume-et-replay-de-la-quotidienne/"
+        },
+        {
+          "name": "Stars Actu (programme semaine 6)",
+          "url": "https://www.stars-actu.fr/2026/11/star-academy-2026-le-programme-des-evaluations-de-la-semaine-6/"
+        },
+        {
+          "name": "M Radio",
+          "url": "https://mradio.fr/news/musique/57940/star-academy-2026-tracy-eliminee-lors-du-prime-des-equipes-du-14-novembre"
+        },
+        {
+          "name": "Toutelatélé (Ouest-France)",
+          "url": "https://toutelatele.ouest-france.fr/audiences-tv-prime-samedi-14-novembre-2026-tracy-eliminee-de-star-academy-sur-tf1-france-3-ecrase-n-oubliez-pas-les-paroles-et-la-serie-le-seigneur-des-anneaux-191399"
+        },
+        {
+          "name": "AlloCiné",
+          "url": "https://www.allocine.fr/tvactu/articles/article-1000230847.html"
+        },
+        {
+          "name": "Stéphane Larue",
+          "url": "https://stephanelarue.com/star-academy-ou-voir-la-quotidienne-de-dimanche-decalee-sur-tfx-par-le-rugby/"
+        }
+      ],
+      "primeOut": [
+        "tracy"
+      ],
+      "primeImmune": "melina"
+    },
     {
       "id": "2026-11-14",
       "title": "Jour du prime des équipes : dernières répétitions, lettres des nommés et lasagnes des Bleus",
