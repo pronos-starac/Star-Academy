@@ -1,6 +1,54 @@
 {
-  "updated": "2026-11-15T20:00:34+01:00",
+  "updated": "2026-11-16T20:00:28+01:00",
   "items": [
+    {
+      "id": "2026-11-16",
+      "title": "Cameron touché par son carton rouge, Eva au château et les élèves aux commandes du prime",
+      "tag": null,
+      "points": [
+        "Fin du débrief avec Lydia : Kylian se fait reprendre sur quelques soucis de justesse dans son duo avec Hélène Ségara, mais elle se dit fière de lui ; Isabella est félicitée pour son autoportrait, et le travail d'écriture des battles de rap est salué.",
+        "Cameron, frustré par son tableau chanté-dansé, digère mal son carton rouge et s'isole, visiblement triste ; Lydia lui rappelle que c'était sa toute première fois dans cet exercice, avant de féliciter toute la classe pour le prime.",
+        "Mosimann annonce que les élèves prendront les commandes du prime de vendredi : ils pourront remplacer l'hymne par une chanson de leur choix, participer à la présentation de l'émission et se préparer des surprises entre eux.",
+        "Eva, la « grande sœur » de la saison, passe au château pour aider chacun à préparer les évaluations « carte blanche » et promet d'être là le lendemain ; Ydriss, en plein doute, finit par appeler Mosimann, et les élèves s'entraident jusqu'au coucher.",
+        "Lundi matin, les douze élèves passent les évaluations devant les profs et Eva, Mélina comprise malgré son immunité : Amel ouvre sur « Thibaut Courtois » de Shay et Zoé conclut avec « Diego libre dans sa tête » de Johnny Hallyday.",
+        "Mélina convainc avec « Smells Like Teen Spirit » au point que Mosimann lui prête sa veste ; Cameron surprend en peignoir et couettes sur « Les bêtises », accompagné par Isabella au piano, qui met elle-même en scène un premier rendez-vous années 60 sur « On My Mind ».",
+        "Sur « Beggin' », Félix voit le son monter brusquement en pleine prestation et continue sans se démonter, mais sort mécontent de lui ; les internautes ont ironisé sur un « sabotage ».",
+        "Noémie se trompe dans les paroles de « Lo saben mis zapatos », Ydriss fond en larmes après « Oscar Winning Tears », Kylian présente un moodboard jugé léger sur « L'envie d'aimer », et Leeloo et Maud sortent insatisfaites malgré de bons moments.",
+        "Le verdict tombera dans la quotidienne de mardi avec l'annonce des nommés, avant le prime avancé au vendredi 20 novembre."
+      ],
+      "eleves": [
+        "cameron",
+        "kylian",
+        "isabella",
+        "ydriss",
+        "melina",
+        "felix",
+        "noemie",
+        "zoe"
+      ],
+      "sources": [
+        {
+          "name": "Stars Actu",
+          "url": "https://www.stars-actu.fr/2026/11/star-academy-du-16-novembre-2026-resume-et-replay-de-la-quotidienne/"
+        },
+        {
+          "name": "Stars Actu (évaluations)",
+          "url": "https://www.stars-actu.fr/2026/11/star-academy-les-evaluations-du-16-novembre-cameron-surprend-kylian-et-noemie-en-dessous-le-resume-complet/"
+        },
+        {
+          "name": "Serieously (Ouest-France)",
+          "url": "https://serieously.ouest-france.fr/star-academy-2026-kylian-nomme-zoe-top-1-le-recap-des-evaluations-du-16-novembre/"
+        },
+        {
+          "name": "AlloCiné",
+          "url": "https://www.allocine.fr/tvactu/articles/article-1000232502.html"
+        },
+        {
+          "name": "Stéphane Larue",
+          "url": "https://stephanelarue.com/star-academy-nomines-annonces-mardi-prime-avance-a-vendredi-20-novembre/"
+        }
+      ]
+    },
     {
       "id": "2026-11-15",
       "title": "Lendemain de prime : la lettre de Tracy, Mélina immunisée et carton rouge pour Cameron",
@@ -16,7 +64,7 @@
         "Mosimann dévoile le programme de la semaine 6, « carte blanche » : dès lundi matin, chaque élève passe son évaluation sur la chanson de son choix (compositions personnelles interdites), à défendre comme une vraie audition, avec un moodboard sur la mise en scène, les décors, les lumières et l'ambiance.",
         "Le vainqueur des évaluations présentera son propre tableau lors du prochain prime, avancé au vendredi 20 novembre à cause d'un match de rugby le samedi.",
         "Annoncé pour la semaine : une visite de Tayc au château.",
-        "Côté diffusion, la quotidienne de ce dimanche est passée sur TFX vers 16h05, TF1 retransmettant du rugby."
+        "Côté diffusion, la quotidienne de ce dimanche est passée sur TFX vers 16h05, TF1 retransmettant du rugby : elle y a réuni 511 000 téléspectateurs en moyenne (5,5 % de part d'audience, 11 % auprès des femmes responsables des achats de moins de 50 ans), plaçant TFX en tête de la TNT."
       ],
       "eleves": [
         "tracy",
@@ -49,8 +97,8 @@
           "url": "https://www.allocine.fr/tvactu/articles/article-1000230847.html"
         },
         {
-          "name": "Stéphane Larue",
-          "url": "https://stephanelarue.com/star-academy-ou-voir-la-quotidienne-de-dimanche-decalee-sur-tfx-par-le-rugby/"
+          "name": "Toutelatélé (audience TFX)",
+          "url": "https://toutelatele.ouest-france.fr/star-academy-le-bouleversement-opere-par-tf1-est-gagnant-191426"
         }
       ],
       "primeOut": [
