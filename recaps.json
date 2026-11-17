@@ -1,6 +1,62 @@
 {
-  "updated": "2026-11-17T00:07:24+01:00",
+  "updated": "2026-11-17T20:00:14+01:00",
   "items": [
+    {
+      "id": "2026-11-17",
+      "title": "Verdict carte blanche : Amel, Kylian et Ydriss nommés avant le prime de vendredi",
+      "tag": "nominations",
+      "nominees": [
+        "amel",
+        "kylian",
+        "ydriss"
+      ],
+      "points": [
+        "Mosimann annonce en direct depuis le château les trois nommés de la semaine, derniers du classement des évaluations « carte blanche » : Amel, Kylian et Ydriss, qui joueront leur place au prime de vendredi 20 novembre.",
+        "Au débrief, Kylian se voit reprocher par Mosimann et Jonathan une proposition « pas moderne du tout » sur « L'envie d'aimer », Sofia relevant aussi des fausses notes.",
+        "Amel séduit Papy par sa présentation mais laisse les profs perplexes : Sofia trouve que sa prestation n'a pas décollé, Jonathan la juge fade, et Mosimann regrette qu'elle ne soit pas allée au bout de sa prise de risque.",
+        "Ydriss est jugé en retrait par l'ensemble des profs : Mosimann estime qu'il stagne et qu'il a un vrai palier à franchir.",
+        "Zoé impressionne Mosimann, qui voit en elle l'étoffe d'une artiste très mature, même si Lydia et Sofia ne sont pas d'accord sur son choix ; Mélina régale avec sa version rock de « Smells Like Teen Spirit », et Cameron est salué pour sa prise de risque, malgré une Sofia qui trouve son numéro trop sombre.",
+        "Mosimann se dit globalement déçu par des évaluations qui ont manqué d'énergie ; le nom du vainqueur, qui présentera son tableau au prime, n'est pas précisé par la presse.",
+        "L'après-midi, un cours commun de chant et de danse avec Sofia et Jonathan, centré sur la respiration en dansant, tourne mal pour Kylian, qui quitte la salle avant d'être réconforté par Sofia ; Leeloo, en larmes, est soutenue par Jonathan.",
+        "Les répétitrices dévoilent les invités du prime : Tayc, Patrick Fiori, ESTL et Eva, la « grande sœur » de la saison ; les élèves reçoivent aussi une caméra pour tourner un magazine sur le prime.",
+        "Annoncé pour vendredi : un premier nommé sera sauvé par le public, le deuxième repêché par ses camarades."
+      ],
+      "eleves": [
+        "amel",
+        "kylian",
+        "ydriss",
+        "zoe",
+        "melina",
+        "cameron",
+        "leeloo"
+      ],
+      "sources": [
+        {
+          "name": "Stars Actu",
+          "url": "https://www.stars-actu.fr/2026/11/star-academy-du-17-novembre-2026-nominations-resume-et-replay-de-la-quotidienne/"
+        },
+        {
+          "name": "Serieously (Ouest-France)",
+          "url": "https://serieously.ouest-france.fr/nominations-star-academy-2026-qui-sont-les-trois-eleves-nommes-ce-17-novembre/"
+        },
+        {
+          "name": "Puremédias (Ozap)",
+          "url": "https://www.ozap.com/actu/star-academy-2026-amel-kylian-et-ydriss-nommes-qui-doit-rester-votez-dans-notre-sondage/658021"
+        },
+        {
+          "name": "PureBreak",
+          "url": "https://www.purebreak.com/news/star-academy-voici-les-trois-eleves-nommes-cette-semaine/266787"
+        },
+        {
+          "name": "Stéphane Larue",
+          "url": "https://stephanelarue.com/star-academy-ydriss-kylian-et-amel-nommes-pour-le-prime-de-vendredi/"
+        },
+        {
+          "name": "CGTV",
+          "url": "https://www.cg-tv.com/articles/star-academy-qui-sont-les-eleves-nommes-pour-le-prime-du-20-novembre"
+        }
+      ]
+    },
     {
       "id": "2026-11-16",
       "title": "Cameron touché par son carton rouge, Eva au château et les élèves aux commandes du prime",
@@ -14,7 +70,8 @@
         "Mélina convainc avec « Smells Like Teen Spirit » au point que Mosimann lui prête sa veste ; Cameron surprend en peignoir et couettes sur « Les bêtises », accompagné par Isabella au piano, qui met elle-même en scène un premier rendez-vous années 60 sur « On My Mind ».",
         "Sur « Beggin' », Félix voit le son monter brusquement en pleine prestation et continue sans se démonter, mais sort mécontent de lui ; les internautes ont ironisé sur un « sabotage ».",
         "Noémie se trompe dans les paroles de « Lo saben mis zapatos », Ydriss fond en larmes après « Oscar Winning Tears », Kylian présente un moodboard jugé léger sur « L'envie d'aimer », et Leeloo (« DANCE… » de Slayyyter) et Maud (« UNETHICAL » de Faouzia) sortent insatisfaites malgré de bons moments ; Brieuc, lui, a défendu « Material Lover » de Sienna Spiro.",
-        "Le verdict tombera dans la quotidienne de mardi avec l'annonce des nommés, avant le prime avancé au vendredi 20 novembre."
+        "Le verdict tombera dans la quotidienne de mardi avec l'annonce des nommés, avant le prime avancé au vendredi 20 novembre.",
+        "Audience : la quotidienne a réuni 1,49 million de téléspectateurs sur TF1 (15,3 % de part d'audience, 39 % chez les femmes responsables des achats de moins de 50 ans)."
       ],
       "eleves": [
         "cameron",
@@ -46,6 +103,10 @@
         {
           "name": "Stéphane Larue",
           "url": "https://stephanelarue.com/star-academy-nomines-annonces-mardi-prime-avance-a-vendredi-20-novembre/"
+        },
+        {
+          "name": "Wikipédia",
+          "url": "https://fr.wikipedia.org/wiki/Saison_14_de_Star_Academy"
         }
       ]
     },
