@@ -1,17 +1,23 @@
 {
-  "updated": "2026-11-18T20:00:47+01:00",
+  "updated": "2026-11-19T00:07:55+01:00",
   "items": [
     {
       "id": "2026-11-18",
       "title": "Bilan des évaluations : Mélina en tête, Amel en larmes et les duos du prime dévoilés",
       "tag": null,
+      "immCands": [
+        "melina",
+        "zoe",
+        "noemie"
+      ],
       "points": [
         "Au lendemain des nominations, la journée démarre par un cours de sport avec Ladji qui fait du bien à la troupe ; Mélina, malade, est absente.",
         "Mosimann revient au château pour le bilan des évaluations « carte blanche », qu'il juge très inégales : Mélina termine première devant Zoé et Noémie, tandis que Kylian, Amel et Ydriss ferment le classement.",
         "Les trois nommés passent tour à tour dans le bureau du directeur ; Amel fond en larmes et s'isole, avant que ses camarades ne viennent la réconforter.",
         "En cours d'expression scénique, Lydia fait travailler l'émotion aux élèves.",
-        "Annoncé pour le prime de vendredi : Maud chantera « Sur la piste » avec Eva, Noémie « Corsica » avec Patrick Fiori et Brieuc « Te rencontrer encore » avec ESTL ; pour décrocher le duo avec Tayc, les élèves doivent passer une audition.",
+        "Annoncé pour le prime de vendredi : Maud chantera « Sur la piste » avec Eva, Noémie « Corsica » avec Patrick Fiori et Brieuc « Te rencontrer encore » avec ESTL ; pour décrocher le duo avec Tayc, Isabella, Amel, Maud et Mélina doivent passer une audition filmée mêlant chant et danse.",
         "Zoé décroche l'autoportrait, et Leeloo un tableau chanté-dansé imaginé par Jonathan sur « Believe » de Cher ; Mélina, première des évaluations, aura droit à son tableau carte blanche.",
+        "Annoncé pour vendredi : le top 3 des évaluations, Mélina, Zoé et Noémie, s'affrontera dans une battle sur « Je t'aime » de Lara Fabian pour décrocher l'immunité de la semaine suivante.",
         "La chanson challenge fait son retour : Maud et Isabella sur « Aserejé » de Las Ketchup, face à Mélina et Kylian.",
         "Fanny et Philippine lancent les répétitions des chansons du prime, et les élèves se filment entre deux cours pour le magazine sur leur vie au château.",
         "Le soir, grâce à Ydriss, le château organise une soirée Awards avec remise de prix dans la bonne humeur."
@@ -42,6 +48,14 @@
         {
           "name": "Serie News",
           "url": "https://www.serie-news.com/tnt/tf1/72977-sta-s14-2026-11-20-nomines-18-11-2026/"
+        },
+        {
+          "name": "CGTV",
+          "url": "https://www.cg-tv.com/articles/star-academy-quel-eleve-a-remporte-une-carte-blanche-pour-le-prochain-prime"
+        },
+        {
+          "name": "Radioactu",
+          "url": "https://www.radioactu.com/star-academy-le-prime-avec-patrick-fiori-tayc-eva-et-estl-une-carte-blanche-pour-les-eleves/"
         }
       ]
     },
