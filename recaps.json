@@ -1,6 +1,38 @@
 {
-  "updated": "2026-11-19T00:07:55+01:00",
+  "updated": "2026-11-19T20:00:24+01:00",
   "items": [
+    {
+      "id": "2026-11-19",
+      "title": "Veille du prime : Tayc surprend au château et choisit Isabella pour son duo",
+      "tag": null,
+      "points": [
+        "Mélina, Maud et Isabella pensaient enregistrer une audition vidéo pour décrocher le duo avec Tayc, mais le chanteur débarque en personne au château pour les écouter sur « Girlfriend ».",
+        "Tayc garde le suspense et confie l'annonce à Philippine ; après son départ, elle révèle que c'est Isabella qui chantera avec lui au prime de vendredi.",
+        "Le chanteur prend ensuite le temps de partager un moment avec l'ensemble des élèves.",
+        "La journée démarre par le cours de théâtre de Papy, qui accueille l'acteur Vassili Schneider : les élèves jouent des scènes de sa pièce et il leur donne des conseils d'interprétation.",
+        "Dans le courrier, Ydriss ouvre une enveloppe qui dévoile un duo d'élèves pour le prime : Noémie et Félix sur « Sous le vent ».",
+        "Les répétitions du prime s'enchaînent : Leeloo retrouve Jonathan et les danseurs en salle de danse pour construire son tableau chanté-dansé sur « Believe » de Cher."
+      ],
+      "eleves": [
+        "isabella",
+        "melina",
+        "maud",
+        "ydriss",
+        "noemie",
+        "felix",
+        "leeloo"
+      ],
+      "sources": [
+        {
+          "name": "Stars Actu",
+          "url": "https://www.stars-actu.fr/2026/11/star-academy-du-19-novembre-2026-resume-et-replay-de-la-quotidienne/"
+        },
+        {
+          "name": "Viralmag",
+          "url": "https://viralmag.fr/jonathan-jenvrin-merite-une-augmentation-pour-ses-tableaux-star-academy/"
+        }
+      ]
+    },
     {
       "id": "2026-11-18",
       "title": "Bilan des évaluations : Mélina en tête, Amel en larmes et les duos du prime dévoilés",
