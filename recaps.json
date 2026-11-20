@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-20T20:00:03+01:00",
+  "updated": "2026-11-21T00:08:44+01:00",
   "items": [
     {
       "id": "2026-11-20",
@@ -12,7 +12,8 @@
         "Félix et Noémie travaillent leur duo « Sous le vent » de Céline Dion et Garou ; Félix n'est pas satisfait de lui et Fanny s'emploie à le rassurer et à le détendre.",
         "Mélina répète ensuite le tableau qu'elle a gagné grâce à sa première place aux évaluations, tandis que Maud répète avec Eva.",
         "Le soir, retour au château pour un dîner de pâtes maison, aux fourneaux desquels Kylian et Amel se sont mis avec succès.",
-        "Annoncé pour le prime de ce soir : le public sauvera l'un des trois nommés, puis les élèves départageront les deux autres."
+        "Annoncé pour le prime de ce soir : le public sauvera l'un des trois nommés, puis les élèves départageront les deux autres.",
+        "Le prime a été avancé à ce vendredi soir car TF1 diffuse samedi le match de rugby France–Argentine ; la prochaine quotidienne est attendue samedi vers 17h15."
       ],
       "eleves": [
         "amel",
@@ -45,7 +46,8 @@
         "Le chanteur prend ensuite le temps de partager un moment avec l'ensemble des élèves.",
         "La journée démarre par le cours de théâtre de Papy, qui accueille l'acteur Vassili Schneider : les élèves jouent des scènes de sa pièce et il leur donne des conseils d'interprétation.",
         "Dans le courrier, Ydriss ouvre une enveloppe qui dévoile un duo d'élèves pour le prime : Noémie et Félix sur « Sous le vent ».",
-        "Les répétitions du prime s'enchaînent : Leeloo retrouve Jonathan et les danseurs en salle de danse pour construire son tableau chanté-dansé sur « Believe » de Cher."
+        "Les répétitions du prime s'enchaînent : Leeloo retrouve Jonathan et les danseurs en salle de danse pour construire son tableau chanté-dansé sur « Believe » de Cher.",
+        "Audience : la quotidienne de ce jeudi a réuni 1,35 million de téléspectateurs sur TF1 (15 % de part d'audience), en léger recul de 90 000 fidèles sur la veille."
       ],
       "eleves": [
         "isabella",
@@ -64,6 +66,10 @@
         {
           "name": "Viralmag",
           "url": "https://viralmag.fr/jonathan-jenvrin-merite-une-augmentation-pour-ses-tableaux-star-academy/"
+        },
+        {
+          "name": "Puremédias (via Yahoo Actualités)",
+          "url": "https://fr.news.yahoo.com/audiences-pr%C3%A9-access-damien-th%C3%A9venot-090300603.html"
         }
       ]
     },
