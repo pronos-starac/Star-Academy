@@ -1,6 +1,40 @@
 {
-  "updated": "2026-11-19T20:00:24+01:00",
+  "updated": "2026-11-20T20:00:03+01:00",
   "items": [
+    {
+      "id": "2026-11-20",
+      "title": "Jour du prime : lettres d'adieu des nommés, Félix en doute et dernières répétitions",
+      "tag": null,
+      "points": [
+        "Jour de prime avancé au vendredi : Amel, Kylian et Ydriss, les trois nommés, écrivent les lettres qu'ils laisseront dans les boîtes aux lettres en cas d'élimination, le moment le plus émouvant de l'épisode.",
+        "Avant cela, les nommés suivent un cours d'expression scénique avec Lydia, qui leur fait retravailler les chansons avec lesquelles ils défendront leur place, puis une séance de sport au château.",
+        "Au Studio 217, Mélina, Noémie et Zoé répètent la battle du top 3 sur « Je t'aime » de Lara Fabian, qui doit désigner l'immunisé de la semaine suivante.",
+        "Félix et Noémie travaillent leur duo « Sous le vent » de Céline Dion et Garou ; Félix n'est pas satisfait de lui et Fanny s'emploie à le rassurer et à le détendre.",
+        "Mélina répète ensuite le tableau qu'elle a gagné grâce à sa première place aux évaluations, tandis que Maud répète avec Eva.",
+        "Le soir, retour au château pour un dîner de pâtes maison, aux fourneaux desquels Kylian et Amel se sont mis avec succès.",
+        "Annoncé pour le prime de ce soir : le public sauvera l'un des trois nommés, puis les élèves départageront les deux autres."
+      ],
+      "eleves": [
+        "amel",
+        "kylian",
+        "ydriss",
+        "felix",
+        "noemie",
+        "melina",
+        "zoe",
+        "maud"
+      ],
+      "sources": [
+        {
+          "name": "Stars Actu",
+          "url": "https://www.stars-actu.fr/2026/11/star-academy-du-20-novembre-2026-resume-et-replay-de-la-quotidienne/"
+        },
+        {
+          "name": "Femin Actu",
+          "url": "https://www.feminactu.com/2026/11/star-academy-du-20-novembre/"
+        }
+      ]
+    },
     {
       "id": "2026-11-19",
       "title": "Veille du prime : Tayc surprend au château et choisit Isabella pour son duo",
