@@ -1,6 +1,61 @@
 {
-  "updated": "2026-11-21T00:08:44+01:00",
+  "updated": "2026-11-21T20:00:08+01:00",
   "items": [
+    {
+      "id": "2026-11-21",
+      "title": "Retour sur le prime des élèves : Amel éliminée, Zoé immunisée et la lettre d'adieu",
+      "tag": null,
+      "primeOut": [
+        "amel"
+      ],
+      "primeImmune": "zoe",
+      "points": [
+        "Diffusée exceptionnellement sur TFX à cause du rugby sur TF1, la quotidienne revient sur le prime de vendredi : Kylian est sauvé par le public, puis les élèves gardent Ydriss face à Amel (5 voix contre 3), qui quitte l'aventure.",
+        "Les élèves, aux commandes de la soirée, votent aussi pour la battle du top 3 sur « Je t'aime » de Lara Fabian : ils offrent l'immunité à Zoé face à Mélina et Noémie, et c'est elle qui ouvrira le prochain prime.",
+        "Avant le direct, les trois nommés répètent au Studio 217, Isabella travaille son duo avec Tayc auprès du chorégraphe du chanteur et Noémie peaufine « Corsica » avec Patrick Fiori.",
+        "Pendant le prime, l'hymne est remplacé par « Locked Out of Heaven » de Bruno Mars et Mélina ouvre la soirée sur « Set Fire to the Rain » d'Adele.",
+        "Défilent aussi le duo d'Isabella avec Tayc sur « Girlfriend », l'autoportrait de Zoé, la chanson challenge avec une apparition surprise de Georges-Alain, et le tableau chanté-dansé de Leeloo, qui décroche la meilleure note (16,1).",
+        "Noémie a la surprise de recevoir la visite de Jeanne pendant la soirée.",
+        "De retour au château, Kylian se dit remotivé par le soutien du public, et les élèves lisent ensemble la lettre laissée par Amel, un moment très émouvant.",
+        "Les élèves découvrent sur le planning que les évaluations sont maintenues lundi, alors que le prochain prime, lui, revient au samedi 28 novembre."
+      ],
+      "eleves": [
+        "amel",
+        "zoe",
+        "kylian",
+        "ydriss",
+        "melina",
+        "noemie",
+        "isabella",
+        "leeloo"
+      ],
+      "sources": [
+        {
+          "name": "Stars Actu",
+          "url": "https://www.stars-actu.fr/2026/11/star-academy-du-21-novembre-2026-resume-et-replay-de-la-quotidienne/"
+        },
+        {
+          "name": "Serie News",
+          "url": "https://www.serie-news.com/tnt/tf1/73841-sta-s14-2026-11-20-resume-21-11-2026/"
+        },
+        {
+          "name": "Femin Actu",
+          "url": "https://www.feminactu.com/2026/11/star-academy-du-20-novembre-2026/"
+        },
+        {
+          "name": "Purepeople",
+          "url": "https://purepeople.com/article/je-ne-my-attendais-pas-apres-un-prime-riche-en-surprises-un-eleve-contraint-de-faire-ses-valises-dans-la-star-academy_a556268/1"
+        },
+        {
+          "name": "M Radio",
+          "url": "https://mradio.fr/news/musique/57992/star-academy-amel-eliminee-lors-du-7e-prime-du-vendredi-20-novembre"
+        },
+        {
+          "name": "Serieously (Ouest-France)",
+          "url": "https://serieously.ouest-france.fr/star-academy-2026-pourquoi-la-quotidienne-nest-elle-pas-diffusee-ce-samedi-21-novembre-sur-tf1/"
+        }
+      ]
+    },
     {
       "id": "2026-11-20",
       "title": "Jour du prime : lettres d'adieu des nommés, Félix en doute et dernières répétitions",
