@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-21T20:00:08+01:00",
+  "updated": "2026-11-22T00:07:25+01:00",
   "items": [
     {
       "id": "2026-11-21",
@@ -68,7 +68,8 @@
         "Mélina répète ensuite le tableau qu'elle a gagné grâce à sa première place aux évaluations, tandis que Maud répète avec Eva.",
         "Le soir, retour au château pour un dîner de pâtes maison, aux fourneaux desquels Kylian et Amel se sont mis avec succès.",
         "Annoncé pour le prime de ce soir : le public sauvera l'un des trois nommés, puis les élèves départageront les deux autres.",
-        "Le prime a été avancé à ce vendredi soir car TF1 diffuse samedi le match de rugby France–Argentine ; la prochaine quotidienne est attendue samedi vers 17h15."
+        "Le prime a été avancé à ce vendredi soir car TF1 diffuse samedi le match de rugby France–Argentine ; la prochaine quotidienne est attendue samedi vers 17h15.",
+        "Audience : la quotidienne de ce vendredi a réuni 1,29 million de téléspectateurs sur TF1 (14,2 % de part d'audience), en léger repli sur la veille."
       ],
       "eleves": [
         "amel",
@@ -88,6 +89,10 @@
         {
           "name": "Femin Actu",
           "url": "https://www.feminactu.com/2026/11/star-academy-du-20-novembre/"
+        },
+        {
+          "name": "Wikipédia",
+          "url": "https://fr.wikipedia.org/wiki/Saison_14_de_Star_Academy"
         }
       ]
     },
