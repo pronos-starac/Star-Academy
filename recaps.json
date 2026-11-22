@@ -1,6 +1,38 @@
 {
-  "updated": "2026-11-22T00:07:25+01:00",
+  "updated": "2026-11-22T20:00:12+01:00",
   "items": [
+    {
+      "id": "2026-11-22",
+      "title": "Lendemain d'euphorie : Lydia débriefe le prime et les élèves écrivent leurs chansons",
+      "tag": null,
+      "points": [
+        "La quotidienne revient sur la journée de samedi au château : les élèves se réveillent encore portés par le prime de vendredi, et Mosimann les félicite lors de l'All Access, très satisfait de leur prestation.",
+        "Lydia débriefe à son tour la soirée : elle a beaucoup aimé la reprise de « Locked Out of Heaven » de Bruno Mars qui remplaçait l'hymne et souhaite retrouver la même énergie aux prochains primes.",
+        "Très critique envers elle-même sur son ouverture du prime, Mélina entend Lydia saluer une interprétation plus détendue, mais pointer un souci de respiration.",
+        "Place ensuite à une journée entièrement consacrée à la création : la chanteuse Adèle Castillon, le Belge TeddyBear et le rappeur Kemmler animent des ateliers d'écriture pour aider chacun des onze élèves à avancer sur sa propre composition.",
+        "Le soir, Ydriss, en sa qualité de délégué, organise une pool party au château.",
+        "Annoncé pour la semaine : évaluations dès lundi, où seuls les deux premiers seront protégés ; les huit autres élèves (Zoé étant déjà immunisée) s'affronteront en face-à-face au prime du samedi 28 novembre."
+      ],
+      "eleves": [
+        "melina",
+        "ydriss",
+        "zoe"
+      ],
+      "sources": [
+        {
+          "name": "Stars Actu",
+          "url": "https://www.stars-actu.fr/2026/11/star-academy-du-22-novembre-2026-resume-et-replay-de-la-quotidienne/"
+        },
+        {
+          "name": "Puremédias (Ozap)",
+          "url": "https://www.ozap.com/actu/atelier-exceptionnel-prime-des-face-a-face-invites-au-chateau-quest-ce-qui-attend-les-eleves-de-la-star-academy-cette-semaine/658100"
+        },
+        {
+          "name": "Paris Match Belgique",
+          "url": "https://www.parismatch.be/actualites/people-belgique/2026/11/21/beau-chateau-le-belge-teddybear-passe-la-journee-a-la-star-academy-voici-pourquoi-MTTPGI5LDBHK3OLEXAHJRZYRNA/"
+        }
+      ]
+    },
     {
       "id": "2026-11-21",
       "title": "Retour sur le prime des élèves : Amel éliminée, Zoé immunisée et la lettre d'adieu",
