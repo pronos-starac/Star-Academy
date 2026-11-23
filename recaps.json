@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-23T20:00:14+01:00",
+  "updated": "2026-11-24T00:07:31+01:00",
   "items": [
     {
       "id": "2026-11-23",
@@ -9,11 +9,12 @@
         "Dimanche au château, fin du débrief de Lydia : elle remet deux étoiles, à Isabella pour son tableau chanté-dansé avec Tayc et à Noémie pour son duo avec Patrick Fiori.",
         "Lydia salue aussi les progrès d'Isabella en danse, félicite Kylian et Ydriss pour leurs prestations de nommés, tandis que Mélina admet avoir chanté faux à plusieurs reprises sur sa carte blanche.",
         "Cameron revient, ému, sur la surprise du prime : son petit frère est venu chanter avec lui sur scène.",
-        "En partant, Lydia vend la mèche en évoquant « la semaine des face-à-face » devant des élèves qui n'étaient pas au courant ; les académiciens promettent de faire comme s'ils n'avaient rien entendu.",
+        "En partant, Lydia vend la mèche en évoquant « la semaine des face-à-face » devant des élèves qui n'étaient pas au courant ; comprenant sa bourde, elle se dit sûre d'être renvoyée, et les académiciens promettent de faire comme s'ils n'avaient rien entendu.",
         "Mosimann, mis au courant, fait mine de licencier Lydia pour la remplacer par Raphaëlle Ricci, une mise en scène pour plaisanter qui fait protester les élèves : la prof garde bien son poste.",
         "Le directeur détaille ensuite la semaine : évaluations avancées au lundi matin, seuls les deux premiers seront protégés avec Zoé, et les huit autres s'affronteront en duels au prime de samedi.",
         "Règles du prime : le public désigne le gagnant de chaque duel, puis parmi les quatre perdants le public, les professeurs et les élèves sauvent chacun un élève, le dernier étant éliminé.",
         "Ydriss, qui se souvient de la formule de l'an dernier, s'inquiète déjà d'être nommé.",
+        "Six titres sont imposés pour les évaluations : « Allô maman bobo » (Souchon), « Dernière danse » (Indila), « Désenchantée » (Mylène Farmer), « La lune » (Christophe Maé), « Grandiose » (Pomme) et « J'me demande » (Ambre).",
         "Les élèves choisissent leur titre d'évaluation en version cover dans une liste fournie par le directeur, Ydriss décidant d'y glisser un couplet en créole, puis la soirée est consacrée aux répétitions."
       ],
       "eleves": [
@@ -41,6 +42,10 @@
         {
           "name": "CGTV",
           "url": "https://www.cg-tv.com/articles/star-academy-mosimann-annonce-le-prime-des-face-a-face-aux-eleves-comment-ca-va-se-passer"
+        },
+        {
+          "name": "Radioactu",
+          "url": "https://www.radioactu.com/star-academy-la-professeure-lydia-bouchard-menacee-de-licenciement-apres-une-gaffe/"
         }
       ]
     },
