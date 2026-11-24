@@ -1,6 +1,65 @@
 {
-  "updated": "2026-11-24T00:07:31+01:00",
+  "updated": "2026-11-24T20:00:34+01:00",
   "items": [
+    {
+      "id": "2026-11-24",
+      "title": "Semaine des face-à-face : Cameron et Félix immunisés, huit élèves en duel samedi",
+      "tag": "nominations",
+      "nominees": [
+        "brieuc",
+        "isabella",
+        "kylian",
+        "leeloo",
+        "maud",
+        "melina",
+        "noemie",
+        "ydriss"
+      ],
+      "points": [
+        "Verdict en fin de quotidienne : Brieuc, Isabella, Kylian, Leeloo, Maud, Mélina, Noémie et Ydriss sont en danger et s'affronteront en duels au prime du samedi 28 novembre.",
+        "Cameron, premier des évaluations, et Félix, deuxième, sont immunisés et rejoignent Zoé, déjà protégée depuis sa victoire au dernier prime.",
+        "Le classement complet, du premier au dernier : Cameron, Félix, Maud, Zoé, Isabella, Noémie, Brieuc, Leeloo, Mélina, Kylian et Ydriss.",
+        "Troisième, Maud manque l'immunité de peu mais sera la première à choisir son adversaire, les suivants choisissant ensuite dans l'ordre du classement.",
+        "Aux évaluations du lundi matin, Félix enthousiasme le jury sur « La lune » de Christophe Maé, et Maud émeut Mosimann et impressionne Papy sur « Grandiose » de Pomme.",
+        "Cameron chante « Dernière danse » d'Indila avec Maud au piano et Isabella à la guitare : Sofia et Lydia saluent ses progrès.",
+        "Plus mitigés : Jonathan réclame plus de prestance à Noémie (« Désenchantée »), trouve Kylian retombé dans ses travers sur « Allô maman bobo » et attend, avec Mosimann, plus de présence de Brieuc ; Papy est déçu par Isabella.",
+        "L'après-midi est consacré aux cours particuliers de chant, de danse et d'expression scénique.",
+        "Annoncé pour le prime : Christophe Willem, Josh Groban, Katrine Sansregret et Rosa Linn seront invités, et Zoé ouvrira la soirée avec une carte blanche sur « Diego, libre dans sa tête ».",
+        "Le soir, Ydriss, délégué, nomme Mélina co-déléguée, avant une partie d'action ou vérité."
+      ],
+      "eleves": [
+        "cameron",
+        "felix",
+        "maud",
+        "zoe",
+        "ydriss",
+        "isabella",
+        "noemie",
+        "kylian"
+      ],
+      "sources": [
+        {
+          "name": "Stars Actu",
+          "url": "https://www.stars-actu.fr/2026/11/star-academy-du-24-novembre-2026-immunite-nominations-resume-et-replay-de-la-quotidienne/"
+        },
+        {
+          "name": "Stéphane Larue",
+          "url": "https://stephanelarue.com/star-academy-cameron-et-felix-immunises-huit-eleves-en-duel-samedi/"
+        },
+        {
+          "name": "Serieously (Ouest-France)",
+          "url": "https://serieously.ouest-france.fr/nominations-star-academy-2026-qui-sont-les-huit-eleves-nommes-ce-24-novembre/"
+        },
+        {
+          "name": "CGTV",
+          "url": "https://www.cg-tv.com/articles/star-academy-qui-sont-les-eleves-nommes-pour-le-prime-du-28-novembre"
+        },
+        {
+          "name": "Viralmag",
+          "url": "https://viralmag.fr/star-academy-2026-trois-immunises-face-aux-duels-cruciaux/"
+        }
+      ]
+    },
     {
       "id": "2026-11-23",
       "title": "Gaffe de Lydia, faux licenciement et semaine des face-à-face annoncée par Mosimann",
@@ -13,9 +72,9 @@
         "Mosimann, mis au courant, fait mine de licencier Lydia pour la remplacer par Raphaëlle Ricci, une mise en scène pour plaisanter qui fait protester les élèves : la prof garde bien son poste.",
         "Le directeur détaille ensuite la semaine : évaluations avancées au lundi matin, seuls les deux premiers seront protégés avec Zoé, et les huit autres s'affronteront en duels au prime de samedi.",
         "Règles du prime : le public désigne le gagnant de chaque duel, puis parmi les quatre perdants le public, les professeurs et les élèves sauvent chacun un élève, le dernier étant éliminé.",
-        "Ydriss, qui se souvient de la formule de l'an dernier, s'inquiète déjà d'être nommé.",
         "Six titres sont imposés pour les évaluations : « Allô maman bobo » (Souchon), « Dernière danse » (Indila), « Désenchantée » (Mylène Farmer), « La lune » (Christophe Maé), « Grandiose » (Pomme) et « J'me demande » (Ambre).",
-        "Les élèves choisissent leur titre d'évaluation en version cover dans une liste fournie par le directeur, Ydriss décidant d'y glisser un couplet en créole, puis la soirée est consacrée aux répétitions."
+        "Les élèves choisissent leur titre d'évaluation en version cover dans une liste fournie par le directeur ; Ydriss, qui se souvient de la formule de l'an dernier et craint déjà d'être nommé, décide d'y glisser un couplet en créole, puis la soirée est consacrée aux répétitions.",
+        "Audience : la quotidienne de ce lundi a réuni 1,16 million de téléspectateurs sur TF1 (12,3 % de part d'audience), en recul de 3 points de part sur une semaine."
       ],
       "eleves": [
         "isabella",
@@ -46,6 +105,10 @@
         {
           "name": "Radioactu",
           "url": "https://www.radioactu.com/star-academy-la-professeure-lydia-bouchard-menacee-de-licenciement-apres-une-gaffe/"
+        },
+        {
+          "name": "Yahoo Actualités (audiences)",
+          "url": "https://fr.news.yahoo.com/audiences-pr%C3%A9-access-encore-record-090300519.html"
         }
       ]
     },
