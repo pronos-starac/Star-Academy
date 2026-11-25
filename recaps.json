@@ -1,6 +1,58 @@
 {
-  "updated": "2026-11-25T00:06:21+01:00",
+  "updated": "2026-11-25T20:00:10+01:00",
   "items": [
+    {
+      "id": "2026-11-25",
+      "title": "Duels formés : Maud défie Leeloo, Mélina en larmes, Cameron et Félix en battle",
+      "tag": null,
+      "immCands": [
+        "cameron",
+        "felix"
+      ],
+      "points": [
+        "Mosimann dévoile les notes des évaluations, de Ydriss (13,9) à Cameron (18), puis les nommés forment les duels du prime dans l'ordre du classement.",
+        "Maud, troisième, choisit d'affronter Leeloo ; Isabella désigne Ydriss et Noémie prend Brieuc, tandis que Mélina et Kylian, derniers restants, se retrouvent face à face par défaut.",
+        "Après le départ du directeur, Mélina fond en larmes et s'isole, persuadée que le public sauvera Kylian.",
+        "Fanny et Philippine annoncent les attributions : Josh Groban chantera avec Kylian (« Skyfall ») et avec Mélina (« Je vole »), Katrine Sansregret avec Noémie et Brieuc (« Minable »), Rosa Linn avec Isabella et Ydriss (« Snap »), Christophe Willem avec Leeloo et Maud.",
+        "Cameron et Félix, les deux premiers, s'affronteront dans une battle sur « La couleur menthe à l'eau » d'Eddy Mitchell, avec l'immunité de la semaine suivante en jeu.",
+        "Félix décroche l'autoportrait, Cameron un solo sur « J'envoie valser » dans la version d'Olivia Ruiz, et les deux garçons se partagent la chanson challenge, « Hakuna Matata » du Roi Lion.",
+        "Plus tard, les répétitrices retrouvent Mélina en pleurs : elle doute de pouvoir chanter « Je vole » avec Josh Groban et elles promettent de l'accompagner.",
+        "Au cours de chant, Sofia reprend encore les élèves venus en chaussons ; Ydriss, de nouveau dernier, lui confie perdre confiance en lui et elle tente de le rassurer.",
+        "En danse, Jonathan charge ceux qu'il a vus en cours particulier d'apprendre la chorégraphie aux autres et salue les progrès du groupe."
+      ],
+      "eleves": [
+        "maud",
+        "leeloo",
+        "melina",
+        "kylian",
+        "cameron",
+        "felix",
+        "ydriss",
+        "isabella"
+      ],
+      "sources": [
+        {
+          "name": "Stars Actu",
+          "url": "https://www.stars-actu.fr/2026/11/star-academy-du-25-novembre-2026-resume-et-replay-de-la-quotidienne/"
+        },
+        {
+          "name": "Viralmag",
+          "url": "https://viralmag.fr/star-academy-2026-prime-28-novembre-attributions-chansons/"
+        },
+        {
+          "name": "CGTV",
+          "url": "https://www.cg-tv.com/articles/star-academy-decouvrez-les-duos-qui-ont-ete-formes-pour-le-prime-des-face-a-face-ce-samedi-28-novembre"
+        },
+        {
+          "name": "Paris Match Belgique",
+          "url": "https://www.parismatch.be/culture/programmes/2026/11/25/star-academy-leeloo-et-brieuc-les-deux-belges-de-cette-saison-en-danger-cette-semaine-EIPN7N2XT5HZLKXGSO7IHKZHDU/"
+        },
+        {
+          "name": "Actuanews",
+          "url": "https://actuanews.fr/2026/11/25/star-academy-huit-eleves-en-danger-des-duels-impitoyables-et-une-nouvelle-regle-qui-pourrait-diviser-le-chateau/"
+        }
+      ]
+    },
     {
       "id": "2026-11-24",
       "title": "Semaine des face-à-face : Cameron et Félix immunisés, huit élèves en duel samedi",
