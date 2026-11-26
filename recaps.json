@@ -1,6 +1,40 @@
 {
-  "updated": "2026-11-26T00:07:48+01:00",
+  "updated": "2026-11-26T19:59:57+01:00",
   "items": [
+    {
+      "id": "2026-11-26",
+      "title": "Judo avec Romane Dicko, Katrine Sansregret chez Lydia et Mélina se livre à Kylian",
+      "tag": null,
+      "points": [
+        "La journée démarre par le cours de sport de Ladji, qui a invité la championne olympique de judo Romane Dicko pour une initiation : les élèves s'essaient aux prises et Ladji se fait malmener par la judokate, au grand amusement du groupe.",
+        "Romane Dicko prend ensuite le temps de partager un moment avec les académiciens, et tout le monde finit par une photo de groupe dans le bureau de Mosimann.",
+        "En cours d'expression scénique, Lydia accueille la chanteuse québécoise Katrine Sansregret, attendue au prime de samedi.",
+        "Lydia propose un exercice où chacun choisit un mot et le confie à son partenaire : Kylian retient « minable », un sentiment que Mélina dit souvent éprouver, et elle se livre longuement tandis qu'il l'écoute sans l'interrompre.",
+        "Mélina assure se reconnaître dans ce que dit Kylian et voit dans ce moment une complicité qui les soudera pour leur face-à-face de samedi.",
+        "En répétition avec Fanny sur « Je vole », le duo prévu avec Josh Groban, Mélina se sent encore en insécurité.",
+        "Les répétitions s'enchaînent pour toute la troupe, déterminée à tout donner pour ce prime décisif des duels.",
+        "Au téléphone, Isabella apprend de sa mère que sa grand-mère la regarde chaque jour."
+      ],
+      "eleves": [
+        "melina",
+        "kylian",
+        "isabella"
+      ],
+      "sources": [
+        {
+          "name": "Stars Actu",
+          "url": "https://www.stars-actu.fr/2026/11/star-academy-du-26-novembre-2026-resume-et-replay-de-la-quotidienne/"
+        },
+        {
+          "name": "Viralmag",
+          "url": "https://viralmag.fr/melina-et-kylian-star-academy-connexion-emotionnelle-surprenante/"
+        },
+        {
+          "name": "Viralmag",
+          "url": "https://viralmag.fr/star-academy-2026-duels-chocs-du-prime-28-novembre/"
+        }
+      ]
+    },
     {
       "id": "2026-11-25",
       "title": "Duels formés : Maud défie Leeloo, Mélina en larmes, Cameron et Félix en battle",
@@ -18,7 +52,8 @@
         "Félix décroche l'autoportrait, Cameron un solo sur « J'envoie valser » dans la version d'Olivia Ruiz, et les deux garçons se partagent la chanson challenge, « Hakuna Matata » du Roi Lion.",
         "Plus tard, les répétitrices retrouvent Mélina en pleurs : elle doute de pouvoir chanter « Je vole » avec Josh Groban et elles promettent de l'accompagner.",
         "Au cours de chant, Sofia reprend encore les élèves venus en chaussons ; Ydriss, de nouveau dernier, lui confie perdre confiance en lui et elle tente de le rassurer.",
-        "En danse, Jonathan charge ceux qu'il a vus en cours particulier d'apprendre la chorégraphie aux autres et salue les progrès du groupe."
+        "En danse, Jonathan charge ceux qu'il a vus en cours particulier d'apprendre la chorégraphie aux autres et salue les progrès du groupe.",
+        "Côté audience, cette quotidienne a réuni 1,33 million de téléspectateurs sur TF1 (14 % de part de marché), avec un pic à 1,9 million."
       ],
       "eleves": [
         "maud",
@@ -36,10 +71,6 @@
           "url": "https://www.stars-actu.fr/2026/11/star-academy-du-25-novembre-2026-resume-et-replay-de-la-quotidienne/"
         },
         {
-          "name": "Viralmag",
-          "url": "https://viralmag.fr/star-academy-2026-prime-28-novembre-attributions-chansons/"
-        },
-        {
           "name": "CGTV",
           "url": "https://www.cg-tv.com/articles/star-academy-decouvrez-les-duos-qui-ont-ete-formes-pour-le-prime-des-face-a-face-ce-samedi-28-novembre"
         },
@@ -54,6 +85,10 @@
         {
           "name": "Femme Actuelle (via HeadTopics)",
           "url": "https://fr.headtopics.com/news/star-academy-isabella-reconforte-melina-apres-l-annonce-90185692"
+        },
+        {
+          "name": "Toutelatele (Ouest-France)",
+          "url": "https://toutelatele.ouest-france.fr/star-academy-ce-que-revelent-vraiment-les-audiences-de-tf1-191727"
         }
       ]
     },
