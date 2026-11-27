@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-27T19:59:44+01:00",
+  "updated": "2026-11-28T00:07:15+01:00",
   "items": [
     {
       "id": "2026-11-27",
@@ -7,10 +7,10 @@
       "tag": null,
       "points": [
         "Surprise au cours de théâtre : les élèves, qui attendaient Papy seul, découvrent Louane dans la salle et viennent l'embrasser un par un.",
-        "Isabella a droit à une étreinte particulière : Louane avait été sa coach dans The Voice Kids, et les retrouvailles sont chaleureuses.",
+        "Isabella a droit à une étreinte particulière : Louane avait été sa coach dans The Voice Kids en 2022, et les retrouvailles sont chaleureuses.",
         "Sous la direction de Papy, la chanteuse se prête aux improvisations par binômes et donne la réplique aux académiciens dans des situations imposées.",
         "Le cours prend des airs de fête : Louane souffle ses 30 bougies sur un gâteau prévu en secret par Papy, et les élèves lui chantent joyeux anniversaire.",
-        "La chanteuse, actuellement à l'affiche d'une pièce à Paris, reste un long moment au château ; trop prise pour un duo au prochain prime, elle promet de revenir avant la fin de l'aventure.",
+        "La chanteuse, qui joue six soirs par semaine dans la pièce « 2:22 A Ghost Story » au théâtre Fontaine à Paris, ne peut venir qu'en journée : pas de duo au prochain prime, mais elle promet de revenir voir les élèves avant la fin de l'aventure.",
         "Pour l'All Access du directeur, la journaliste et présentatrice Canelle Sab vient former les élèves aux interviews : chacun passe tour à tour sur le gril pour gagner en aisance et en spontanéité.",
         "Les nommés poursuivent leurs répétitions du prime des face-à-face avec Fanny et Philippine.",
         "La journée se termine par une soirée de présentations des élèves, ponctuée de fous rires."
@@ -30,6 +30,10 @@
         {
           "name": "CGTV",
           "url": "https://www.cg-tv.com/articles/star-academy-isabella-tres-proche-de-louane-d-ou-les-deux-femmes-se-connaissent-elles"
+        },
+        {
+          "name": "Viralmag",
+          "url": "https://viralmag.fr/louane-explique-son-absence-au-prime-de-star-academy-2026/"
         }
       ]
     },
@@ -44,6 +48,7 @@
         "Lydia propose un exercice où chacun choisit un mot et le confie à son partenaire : Kylian retient « minable », un sentiment que Mélina dit souvent éprouver, et elle se livre longuement tandis qu'il l'écoute sans l'interrompre.",
         "Mélina assure se reconnaître dans ce que dit Kylian et voit dans ce moment une complicité qui les soudera pour leur face-à-face de samedi.",
         "En répétition avec Fanny sur « Je vole », le duo prévu avec Josh Groban, Mélina se sent encore en insécurité.",
+        "Maud et Leeloo répètent « La Grenade » de Clara Luciani pour leur face-à-face : Fanny Delaigue les pousse à aller au-delà de ce qu'elles proposent.",
         "Les répétitions s'enchaînent pour toute la troupe, déterminée à tout donner pour ce prime décisif des duels.",
         "Au téléphone, Isabella apprend de sa mère que sa grand-mère la regarde chaque jour.",
         "Audience : la quotidienne de ce jeudi a rassemblé 1,26 million de téléspectateurs sur TF1 (13,5 % de part d'audience, 30,3 % des femmes responsables des achats de moins de 50 ans), en léger recul sur la veille."
@@ -51,7 +56,9 @@
       "eleves": [
         "melina",
         "kylian",
-        "isabella"
+        "isabella",
+        "maud",
+        "leeloo"
       ],
       "sources": [
         {
@@ -69,6 +76,10 @@
         {
           "name": "Puremédias (Ozap)",
           "url": "https://www.ozap.com/actu/audiences-pre-access-quel-score-pour-lelimination-de-la-maestro-pauline-dans-noubliez-pas-les-paroles-hier-soir/658049"
+        },
+        {
+          "name": "Stéphane Larue",
+          "url": "https://stephanelarue.com/star-academy-maud-et-leeloo-repetent-la-grenade-avant-leur-face-a-face-de-samedi/"
         }
       ]
     },
