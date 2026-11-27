@@ -1,6 +1,38 @@
 {
-  "updated": "2026-11-26T19:59:57+01:00",
+  "updated": "2026-11-27T19:59:44+01:00",
   "items": [
+    {
+      "id": "2026-11-27",
+      "title": "Louane fête ses 30 ans au château, media training et dernières répétitions avant les duels",
+      "tag": null,
+      "points": [
+        "Surprise au cours de théâtre : les élèves, qui attendaient Papy seul, découvrent Louane dans la salle et viennent l'embrasser un par un.",
+        "Isabella a droit à une étreinte particulière : Louane avait été sa coach dans The Voice Kids, et les retrouvailles sont chaleureuses.",
+        "Sous la direction de Papy, la chanteuse se prête aux improvisations par binômes et donne la réplique aux académiciens dans des situations imposées.",
+        "Le cours prend des airs de fête : Louane souffle ses 30 bougies sur un gâteau prévu en secret par Papy, et les élèves lui chantent joyeux anniversaire.",
+        "La chanteuse, actuellement à l'affiche d'une pièce à Paris, reste un long moment au château ; trop prise pour un duo au prochain prime, elle promet de revenir avant la fin de l'aventure.",
+        "Pour l'All Access du directeur, la journaliste et présentatrice Canelle Sab vient former les élèves aux interviews : chacun passe tour à tour sur le gril pour gagner en aisance et en spontanéité.",
+        "Les nommés poursuivent leurs répétitions du prime des face-à-face avec Fanny et Philippine.",
+        "La journée se termine par une soirée de présentations des élèves, ponctuée de fous rires."
+      ],
+      "eleves": [
+        "isabella"
+      ],
+      "sources": [
+        {
+          "name": "Stars Actu",
+          "url": "https://www.stars-actu.fr/2026/11/star-academy-du-27-novembre-2026-resume-et-replay-de-la-quotidienne/"
+        },
+        {
+          "name": "People au quotidien",
+          "url": "https://peopleauquotidien.com/celebrites/louane-celebre-son-anniversaire-au-chateau-de-la-star-academy/"
+        },
+        {
+          "name": "CGTV",
+          "url": "https://www.cg-tv.com/articles/star-academy-isabella-tres-proche-de-louane-d-ou-les-deux-femmes-se-connaissent-elles"
+        }
+      ]
+    },
     {
       "id": "2026-11-26",
       "title": "Judo avec Romane Dicko, Katrine Sansregret chez Lydia et Mélina se livre à Kylian",
@@ -13,7 +45,8 @@
         "Mélina assure se reconnaître dans ce que dit Kylian et voit dans ce moment une complicité qui les soudera pour leur face-à-face de samedi.",
         "En répétition avec Fanny sur « Je vole », le duo prévu avec Josh Groban, Mélina se sent encore en insécurité.",
         "Les répétitions s'enchaînent pour toute la troupe, déterminée à tout donner pour ce prime décisif des duels.",
-        "Au téléphone, Isabella apprend de sa mère que sa grand-mère la regarde chaque jour."
+        "Au téléphone, Isabella apprend de sa mère que sa grand-mère la regarde chaque jour.",
+        "Audience : la quotidienne de ce jeudi a rassemblé 1,26 million de téléspectateurs sur TF1 (13,5 % de part d'audience, 30,3 % des femmes responsables des achats de moins de 50 ans), en léger recul sur la veille."
       ],
       "eleves": [
         "melina",
@@ -32,6 +65,10 @@
         {
           "name": "Viralmag",
           "url": "https://viralmag.fr/star-academy-2026-duels-chocs-du-prime-28-novembre/"
+        },
+        {
+          "name": "Puremédias (Ozap)",
+          "url": "https://www.ozap.com/actu/audiences-pre-access-quel-score-pour-lelimination-de-la-maestro-pauline-dans-noubliez-pas-les-paroles-hier-soir/658049"
         }
       ]
     },
