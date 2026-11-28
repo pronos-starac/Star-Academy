@@ -839,12 +839,12 @@ function renderHead(){
   const ns=registered()&&!S.anon&&S.tab!=='settings'&&S.tab!=='orga'&&S.tab!=='prime'&&ls.get('sa14-notifLater')!=='1'?notifState():'off';
   const nudge=['ready','ios-install','denied'].includes(ns)?`<p class="note notifnudge">🔔 Active les notifications : début du prime, commentaires des quotidiennes… <button class="linkbtn" data-act="notifShow">Comment faire</button> · <button class="linkbtn" data-act="notifLater">Plus tard</button></p>`:'';
   const spoil=S.noSpoil&&S.masked&&S.tab!=='orga'?`<p class="note spoil">Anti-spoiler activé : les résultats du dernier prime sont masqués jusqu’à dimanche minuit. <button class="linkbtn" data-act="spoil">Tout afficher</button></p>`:'';
-  $('#head').innerHTML=`
+  setHTML('#head',`
     <div class="brand"><h1>Pronos <svg class="star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.5l3.1 6.6 7.2.9-5.3 5 1.4 7.1L12 17.6l-6.4 3.5 1.4-7.1-5.3-5 7.2-.9z"/></svg><em>Star Ac’</em></h1>
       <span class="meta">Saison 14 · ${win?'Vainqueur : '+esc(C[win].name):alive+' en lice · semaine '+cur} · ${np} joueur${np>1?'s':''} · <button class="onl" data-act="online" aria-expanded="${!!S.showOnline}"><i class="gdot"></i>${onlineIds().length} en ligne</button><button class="gear" data-act="tab" data-id="settings" aria-label="Paramètres" title="Paramètres" aria-pressed="${S.tab==='settings'}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.4 13a7.6 7.6 0 0 0 0-2l2.1-1.6-2-3.5-2.5 1a7.4 7.4 0 0 0-1.7-1L15 3.3h-4l-.4 2.6a7.4 7.4 0 0 0-1.7 1l-2.5-1-2 3.5L6.6 11a7.6 7.6 0 0 0 0 2l-2.1 1.6 2 3.5 2.5-1a7.4 7.4 0 0 0 1.7 1l.4 2.6h4l.4-2.6a7.4 7.4 0 0 0 1.7-1l2.5 1 2-3.5zM12 15.5a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7z"/></svg></button></span></div>${S.showOnline?onlinePanel():''}
     <div class="when"><span class="pill">Nominations <b>${esc(nomWhen(cur))}</b></span><span class="pill">Prime <b>${esc(primeWhen(cur))}</b></span></div>
     <nav class="tabs" role="tablist">${tabs.map(([k,l])=>`<button class="tab${k==='prime'&&primeLive(latestPrime())?' onair':''}" role="tab" aria-selected="${S.tab===k}" data-act="tab" data-id="${k}">${l}</button>`).join('')}</nav>
-    ${banner?`<p class="note">${esc(banner)}</p>`:''}${spoil}${nomSpoil}${nudge}`;
+    ${banner?`<p class="note">${esc(banner)}</p>`:''}${spoil}${nomSpoil}${nudge}`);
 }
 function tile(id){
   const c=C[id],st=status(id),lab=st.k==='ko'?(st.quit?'Abandon':'KO · n°'+st.place):lbl(st.k,id);
@@ -1268,6 +1268,10 @@ function vOrga(){
     ${idCard}`;
 }
 
+// n'écrit le HTML que s'il a changé : les mises à jour Firestore en rafale (votes, chat) ne font plus clignoter la page
+let lastHTML={};
+function setHTML(sel,h){const el=$(sel);if(!el)return;if(lastHTML[sel]===h&&el.innerHTML!=='')return;lastHTML[sel]=h;el.innerHTML=h;}
+['click','change','submit','keydown','input'].forEach(t=>document.addEventListener(t,()=>{lastHTML={};},true));
 function render(){
   if(S.dragging){S.renderLater=true;return;}
   S.renderLater=false;
@@ -1280,10 +1284,10 @@ function render(){
   document.body.classList.toggle('gated',gate);
   // chat et chansons sur téléphone : la page tient dans l'écran, seule la liste défile
   document.body.classList.toggle('fitpane',!gate&&S.tab==='prime'&&(S.primeSub==='chat'||S.primeSub==='songs')&&!S.songForm);
-  if(gate){$('#head').innerHTML='';$('#view').innerHTML=vGate();}
+  if(gate){setHTML('#head','');setHTML('#view',vGate());}
   else{renderHead();
   const v={prime:vPrime,trombi:vTrombi,likes:vLikes,board:vBoard,daily:vDaily,settings:vSettings,orga:vOrga}[S.tab]||vDaily;
-  $('#view').innerHTML=v();}
+  setHTML('#view',v());}
   const sc2=document.querySelector('.bracket-scroll');if(sc2)sc2.scrollLeft=left;
   const sl2=document.getElementById('songlist');if(sl2)sl2.scrollTop=songTop;
   tabsScroll(tabLeft);
