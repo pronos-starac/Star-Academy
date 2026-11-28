@@ -1,6 +1,44 @@
 {
-  "updated": "2026-11-28T00:07:15+01:00",
+  "updated": "2026-11-28T20:00:31+01:00",
   "items": [
+    {
+      "id": "2026-11-28",
+      "title": "Jour des face-à-face : Ydriss craque, rencontre avec Josh Groban et valises bouclées",
+      "tag": null,
+      "points": [
+        "Jour du prime des face-à-face : nommé pour la quatrième fois, Ydriss appelle sa mère, qui le rassure, puis éclate en sanglots devant l'entrée du château, terrifié à l'idée d'être éliminé.",
+        "Ses camarades accourent pour le consoler ; dans les bras de Noémie, il confie son stress et sa crainte de décevoir le groupe.",
+        "Pendant que Cameron et Félix, à l'abri, partent répéter au studio 217, les huit nommés restent au château pour un cours d'expression scénique avec Lydia, qui les aide à préparer leurs duels et tente de les rassurer.",
+        "Mélina et Kylian font la connaissance de Josh Groban : Kylian répète « Skyfall » avec lui, puis Mélina enchaîne sur « Je vole ».",
+        "D'autres répétitions ont lieu au studio 217, notamment avec la chanteuse québécoise Katrine Sansregret.",
+        "Petite pause gourmande : Brieuc et Noémie se lancent dans la préparation de gaufres.",
+        "Comme avant chaque prime, tous les nommés bouclent leurs valises et écrivent leur lettre d'adieu, au cas où ils devraient quitter l'aventure le soir même.",
+        "Rugby oblige (Angleterre – Nouvelle-Zélande sur TF1), la quotidienne avait été avancée à 16h05 au lieu de 17h10."
+      ],
+      "eleves": [
+        "ydriss",
+        "noemie",
+        "melina",
+        "kylian",
+        "brieuc",
+        "cameron",
+        "felix"
+      ],
+      "sources": [
+        {
+          "name": "Stars Actu",
+          "url": "https://www.stars-actu.fr/2026/11/star-academy-du-28-novembre-2026-resume-et-replay-de-la-quotidienne/"
+        },
+        {
+          "name": "Femme Actuelle (via Yahoo)",
+          "url": "https://fr.style.yahoo.com/j-vraiment-peur-nomm%C3%A9-4e-174023520.html"
+        },
+        {
+          "name": "Serieously (Ouest-France)",
+          "url": "https://serieously.ouest-france.fr/star-academy-2026-attention-la-quotidienne-change-dhoraire-ce-samedi-28-novembre-a-quelle-heure-sera-t-elle-diffusee-sur-tf1-pourquoi/"
+        }
+      ]
+    },
     {
       "id": "2026-11-27",
       "title": "Louane fête ses 30 ans au château, media training et dernières répétitions avant les duels",
